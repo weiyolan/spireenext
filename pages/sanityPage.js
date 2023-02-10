@@ -31,8 +31,7 @@ export default function Home({pets}) {
           <div>
             <div>¯\_(ツ)_/¯</div>
             <p>
-              Your data will show up here when you've configured everything
-              correctly
+              {"Your data will show up here when you've configured everything correctly"}
             </p>
           </div>
         )}

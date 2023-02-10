@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useState, useEffect } from "react"
-import { useAppContext } from "./Context"
+import { useAppContext } from "@context/appcontext"
 
 
 export default function Background () {
