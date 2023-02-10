@@ -1,6 +1,6 @@
 import '@/styles/globals.css'
 import Head from 'next/head'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Work_Sans, Quicksand} from '@next/font/google'
 import {AppWrapper} from '@context/appcontext';
 

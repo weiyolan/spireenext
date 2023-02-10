@@ -29,7 +29,7 @@ export default function Home({pets}) {
         )}
         {!pets.length > 0 && (
           <div>
-            <div>¯\_(ツ)_/¯</div>
+            <div>{"¯\_(ツ)_/¯"}</div>
             <p>
               {"Your data will show up here when you've configured everything correctly"}
             </p>

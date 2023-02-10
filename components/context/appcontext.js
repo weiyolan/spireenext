@@ -1,6 +1,6 @@
 import React,{ createContext, useContext, useEffect } from 'react';
 
-// import useWindowSize from './useWindowSize';
+import useWindowSize from '@utils/useWindowSize';
 
 import { useRouter } from 'next/router';
 import { useCycle } from 'framer-motion';
