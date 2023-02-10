@@ -44,7 +44,6 @@ export default function App({ Component, pageProps }) {
       <AppWrapper scrolled={scrolled}>
         
         <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth cursor-default w-full overflow-hidden `}>
-          {/* <Background scrolled={scrolled}/> */}
 
           <Component {...pageProps} />
 

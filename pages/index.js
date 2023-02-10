@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import {client, urlFor} from '@lib/sanity'
+import Background from '@context/Background'
 
 export default function Home({}) {
 
@@ -13,6 +13,8 @@ export default function Home({}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={"bg-black text-white"}>
+         <Background/>
+
          <h1 className='font-sans text-2xl font-thin'>TEST, I love Spirée and the woman who founded it. 123456789</h1>
          <h1 className='font-quick text-2xl font-thin'>TEST, I love Spirée and the woman who founded it. 12345678 QQ</h1>
          {/* <h1 className='font-quick text-2xl font-light'>TEST, I love Spirée and the woman who founded it. 12345678 QQ</h1> */}
