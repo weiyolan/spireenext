@@ -1,9 +1,21 @@
+import React, {useEffect} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Background from '@context/Background'
+import { PageWrapper } from '@/components/context/pageContext'
+import Title from '@/components/Title'
+import SpireeStory from '../public/images/spireeStory.svg'
+import Story1Astrid from '@/components/story/Story1Astrid'
+import Story2Pharma from '@/components/story/Story2Pharma'
+import Story3Mountain from '@/components/story/Story3Mountain'
 
 export default function Home({}) {
-
+  // useEffect(()=>{
+  //   window.scrollTo({
+  //     top: 35,
+  //     behavior: "smooth",
+  // });
+  // },[])
   return (
     <>
       <Head>
@@ -12,35 +24,27 @@ export default function Home({}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={"bg-black text-white"}>
-         <Background/>
 
-         <h1 className='font-sans text-2xl font-thin'>TEST, I love Spirée and the woman who founded it. 123456789</h1>
-         <h1 className='font-quick text-2xl font-thin'>TEST, I love Spirée and the woman who founded it. 12345678 QQ</h1>
-         {/* <h1 className='font-quick text-2xl font-light'>TEST, I love Spirée and the woman who founded it. 12345678 QQ</h1> */}
-        {/*<h2>pets</h2>
-        {pets.length > 0 && (
-          <ul>
-            {pets.map((pet) => (
-              <li key={pet._id}>{pet?.name} <img src={urlFor(pet?.mainImage)}></img></li>
-            ))}
-          </ul>
-        )}
-        {!pets.length > 0 && <p>No pets to show</p>}
-        {pets.length > 0 && (
-          <div>
-            <pre>{JSON.stringify(pets, null, 2)}</pre>
-          </div>
-        )}
-        {!pets.length > 0 && (
-          <div>
-            <div>¯\_(ツ)_/¯</div>
-            <p>
-              Your data will show up here when you've configured everything
-              correctly
-            </p>
-          </div>
-        )} */}
+
+      <main className={"w-full h-[10000px]"}>
+        <PageWrapper darkMode={true} >
+          <Background/>
+            <Title mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+            <section className='flex w-4/5 mx-auto relative' >
+              {/* flex-col mt-6 sm:mt-12 justify-center sm:w-[80%] md:w-[60%]   lg:w-[50%] */}
+              
+              {/* <SpireeStory/> */}
+              {/* <svg className='absolute left-1/2 -translate-x-1/2' width='39' height='60' viewBox="0 0 39 60" xmlns="http://www.w3.org/2000/svg">
+                <path id="ESpiree" d="M27.8972 6.07723L0.249268 22.1264L25.0031 36.4953C20.5752 39.0544 16.147 41.6468 12.4594 44.3295C9.91372 46.1815 7.54137 48.1692 5.799 50.3838C4.04268 52.6161 2.86934 55.1536 2.86934 58.0629V59.6629H9.70056V58.0629C9.70056 57.1901 10.1405 56.0218 11.3044 54.5588C12.4521 53.1163 14.1859 51.5369 16.4707 49.8748C20.0185 47.2938 24.5202 44.6899 29.2426 41.9583C30.6656 41.1352 32.1088 40.3004 33.5518 39.4512L38.6069 36.4769L13.8853 22.1263L31.3067 12.0132L31.3107 12.0109L37.0363 8.7091V0.806641L27.8972 6.07723Z" fill={'white'}/>
+              </svg> */}
+              <Story1Astrid scrollMin={0} scrollMax={0.025}/>
+              <Story2Pharma speed={1.1} scrollMin={0.025} scrollMax={0.125}/>
+              <Story3Mountain speed={1} scrollMin={0.13} scrollMax={0.198}/>
+              {/* <Story4Flowers speed={1} scrollMin={0.205} scrollMax={0.3}/> */}
+
+            </section>
+
+        </PageWrapper>
       </main>
     </>
   )

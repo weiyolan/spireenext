@@ -26,6 +26,9 @@ module.exports = {
         sans: ['var(--font-worksans)', ...fontFamily.sans],
         quick: ['var(--font-quicksand)',...fontFamily.sans],
       },
+      letterSpacing: {
+        max: '.25em',
+      },
       colors: {
         'primary': '#171B4D',
         'accent':'#4100A4',

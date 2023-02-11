@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import Head from 'next/head'
 import React, {useState, useEffect} from 'react'
 import {Work_Sans, Quicksand} from '@next/font/google'
-import {AppWrapper} from '@context/appcontext';
+import {AppWrapper} from '@context/appContext';
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -20,6 +20,12 @@ const quickSand = Quicksand({
 export default function App({ Component, pageProps }) {
   let [scrolled, setScrolled] = useState(0)
   
+
+  useEffect(()=>{
+   console.log(scrolled) 
+  },[scrolled])
+
+
   useEffect(()=>{
 
     function handleScroll () {
@@ -44,7 +50,7 @@ export default function App({ Component, pageProps }) {
 
       <AppWrapper scrolled={scrolled}>
         
-        <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth cursor-default w-full overflow-hidden `}>
+        <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
 
           <Component {...pageProps} />
 
