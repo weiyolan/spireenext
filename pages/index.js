@@ -1,15 +1,35 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Background from '@context/Background'
 import { PageWrapper } from '@/components/context/pageContext'
+import { useAppContext } from '@/components/context/appContext'
 import Title from '@/components/Title'
+
+import ScrollVisual from '@/components/scroll/ScrollVisual'
+import ScrollingDiv from '@/components/scroll/ScrollingDiv'
+import FadeDiv from '@/components/scroll/FadeDiv'
+
 import SpireeStory from '../public/images/spireeStory.svg'
 import Story1Astrid from '@/components/story/Story1Astrid'
 import Story2Pharma from '@/components/story/Story2Pharma'
 import Story3Mountain from '@/components/story/Story3Mountain'
+import Story4Flowers from '@/components/story/Story4Flowers'
+import Story5Meaning from '@/components/story/Story5Meaning'
+import Story6Spiree from '@/components/story/Story6Spiree'
+import Story7SunMoon from '@/components/story/Story7SunMoon'
+import Story8Merino from '@/components/story/Story8Merino'
+import Story9Passion from '@/components/story/Story9Passion'
+import Story10RE from '@/components/story/Story10RE'
+import Story11Women from '@/components/story/Story11Women'
+import Story12Support from '@/components/story/Story12Support'
+import StoryText from '@/components/story/StoryText'
 
-export default function Home({}) {
+
+export default function Home({ }) {
+
+  const { scrolled } = useAppContext();
+
   // useEffect(()=>{
   //   window.scrollTo({
   //     top: 35,
@@ -26,23 +46,41 @@ export default function Home({}) {
       </Head>
 
 
-      <main className={"w-full h-[10000px]"}>
-        <PageWrapper darkMode={true} >
-          <Background/>
-            <Title mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
-            <section className='flex w-4/5 mx-auto relative' >
-              {/* flex-col mt-6 sm:mt-12 justify-center sm:w-[80%] md:w-[60%]   lg:w-[50%] */}
-              
-              {/* <SpireeStory/> */}
-              {/* <svg className='absolute left-1/2 -translate-x-1/2' width='39' height='60' viewBox="0 0 39 60" xmlns="http://www.w3.org/2000/svg">
-                <path id="ESpiree" d="M27.8972 6.07723L0.249268 22.1264L25.0031 36.4953C20.5752 39.0544 16.147 41.6468 12.4594 44.3295C9.91372 46.1815 7.54137 48.1692 5.799 50.3838C4.04268 52.6161 2.86934 55.1536 2.86934 58.0629V59.6629H9.70056V58.0629C9.70056 57.1901 10.1405 56.0218 11.3044 54.5588C12.4521 53.1163 14.1859 51.5369 16.4707 49.8748C20.0185 47.2938 24.5202 44.6899 29.2426 41.9583C30.6656 41.1352 32.1088 40.3004 33.5518 39.4512L38.6069 36.4769L13.8853 22.1263L31.3067 12.0132L31.3107 12.0109L37.0363 8.7091V0.806641L27.8972 6.07723Z" fill={'white'}/>
-              </svg> */}
-              <Story1Astrid scrollMin={0} scrollMax={0.025}/>
-              <Story2Pharma speed={1.1} scrollMin={0.025} scrollMax={0.125}/>
-              <Story3Mountain speed={1} scrollMin={0.13} scrollMax={0.198}/>
-              {/* <Story4Flowers speed={1} scrollMin={0.205} scrollMax={0.3}/> */}
+      <main className={"w-full h-[3000px]"}>
+        <ScrollVisual scrolled={scrolled} />
 
-            </section>
+        <PageWrapper darkMode={true} svgWidth={'w-4/5 xl:w-3/5'} >
+          <Background />
+          <Title mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+          
+          <section className='flex w-4/5 mx-auto relative' >
+            
+            <FadeDiv className='fixed w-full h-[80vh] top-[120px] left-1/2 -translate-x-1/2 border-red-700 border' amount={10} type='top'>
+            
+              <ScrollingDiv className='fixed w-full top-[40px] left-1/2' 
+                speed = {0}
+                step1 = {{from:0.49, for:350}}
+                step2 = {{from: 0.74, for:450}}>
+
+                <Story1Astrid speed={1} scrollMin={0} scrollMax={0} />
+                <Story2Pharma speed={1} scrollMin={0} scrollMax={0.125} />
+                <Story3Mountain speed={1} scrollMin={0.13} scrollMax={0.2} />
+                <Story4Flowers speed={1} scrollMin={0.215} scrollMax={0.35} />
+                <Story5Meaning speed={1} scrollMin={0.39} scrollMax={0.42} />
+                <Story6Spiree speed={1} scrollMin={0.45} scrollMax={0.53} />
+                <Story7SunMoon speed={1} scrollMin={0.55} scrollMax={0.62} />
+                <Story8Merino speed={1} scrollMin={0.64} scrollMax={0.71} />
+                <Story9Passion speed={1} scrollMin={0.73} scrollMax={0.76} />
+                <Story10RE speed={1} scrollMin={0.78} scrollMax={0.82} />
+                <Story11Women speed={1} scrollMin={0.83} scrollMax={0.86} />
+                <Story12Support speed={1} scrollMin={0.87} scrollMax={0.95} />
+                <StoryText/>
+
+              </ScrollingDiv>
+            </FadeDiv>
+          </section>
+
+          
 
         </PageWrapper>
       </main>
@@ -52,11 +90,11 @@ export default function Home({}) {
 
 
 export async function getStaticProps() {
-//   const pets = await client.fetch(`*[_type == "post"]`);
+  //   const pets = await client.fetch(`*[_type == "post"]`);
 
   return {
     props: {
-    //   pets
+      //   pets
     }
   };
 }

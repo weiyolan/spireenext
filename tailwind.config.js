@@ -5,6 +5,7 @@ module.exports = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
+    './utils/**/*.{js,ts,jsx,tsx}',
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
@@ -24,7 +25,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-worksans)', ...fontFamily.sans],
-        quick: ['var(--font-quicksand)',...fontFamily.sans],
+        quick: ['var(--font-quicksand)',...fontFamily.mono],
       },
       letterSpacing: {
         max: '.25em',

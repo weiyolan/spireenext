@@ -30,7 +30,7 @@ export default function Background () {
 
   // bg-cover bg-[url('/images/backgroundpng.png')
   return (
-    <div className={`w-full fixed top-0 h-screen overflow-hidden filter bg-slate-500`} >
+    <div className={`w-full fixed top-0 -z-10 h-screen overflow-hidden filter bg-slate-500`} >
 
       {/* Empty ALT for purely decorative images */}
 
