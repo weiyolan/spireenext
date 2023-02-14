@@ -13,7 +13,7 @@ import ScrollingDiv from '@/components/scroll/ScrollingDiv'
 import ScrollingDiv2 from '@/components/scroll/ScrollingDiv2'
 import FadeDiv from '@/components/scroll/FadeDiv'
 
-import SpireeStory from '../public/images/spireeStory.svg'
+// import SpireeStory from '../public/images/spireeStory.svg'
 import Story1Astrid from '@/components/story/Story1Astrid'
 import Story2Pharma from '@/components/story/Story2Pharma'
 import Story3Mountain from '@/components/story/Story3Mountain'
