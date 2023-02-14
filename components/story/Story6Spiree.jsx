@@ -69,7 +69,7 @@ export default function Story6Spiree({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
         {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-        <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg alt='Story Part 6, the logo of Spirée' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
           
           <Path drawDuration='1' position={0} handleLength={(l, i) => handleLength(1, l, i)} id="toSpireePath" d="M343.5 843C287.99 938.5 80.5098 924 34.01 896.5C-30.9772 858.066 11.51 800.961 64.5 843C139.5 902.5 -49.5003 1038.22 53.9998 1090" stroke="white" stroke-width="2" stroke-linecap="round"/>

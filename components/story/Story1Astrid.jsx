@@ -1,25 +1,34 @@
-import React, {useState,useEffect} from "react"
+import React, {useState,useEffect,useRef} from "react"
+import { useDimensions } from "@/utils/useDimensions"
 import { useAppContext } from "@context/appContext"
 import { Path, TextAnimate} from '@utils/pathUtils'
 import { SVGWrapper } from "./contextSVG"
 import { usePageContext } from "../context/pageContext"
 // import { PageWrapper } from "@context/pageContext"
 
-export default function Story1Astrid({scrollMin,scrollMax, speed}) {
+export default function Story1Astrid({scrollMin,scrollMax, speed, setSvgHeight}) { 
     let [allLengths, setAllLengths] = useState([])
     let [allOffsetLengths, setAllOffsetLengths] = useState([])
     let [allRatios, setAllRatios] = useState([0])
     let [allPrevRatios, setAllPrevRatios] = useState([0])
-    let { scrolled, locale } = useAppContext()
+    let { scrolled, locale, width:screenWidth } = useAppContext()
+    
     let {svgWidth} = usePageContext()
 
-    let [fakeScroll1,setFakeScroll1] = useState(0)
-    // let [fillStyle1,setFillStyle1] = useState(false)
-    // let [strokeColor1, setStrokeColor1] = useState('#fff')
+  
 
+
+    let [fakeScroll1,setFakeScroll1] = useState(0)
     let [fakeScroll2,setFakeScroll2] = useState(0)
     let [animate2,setAnimate2] = useState(false)
-    // let [strokeColor2, setStrokeColor2] = useState('#fff')
+
+    let svgRef = useRef(null)
+    const {width:myWidth, height:myHeight} = useDimensions(svgRef,true)
+  
+    useEffect(()=>{
+      setSvgHeight(myHeight)
+      // console.log(myWidth,myHeight, screenWidth)
+    },[myWidth,myHeight,screenWidth])
 
     function handleLength(f, newLength, position) {
       setAllLengths(prevLengths => {
@@ -34,6 +43,8 @@ export default function Story1Astrid({scrollMin,scrollMax, speed}) {
       })
     }
   
+
+    
     useEffect(() => {
       if (allLengths.length > 0) {
         let totOffsetLength = allOffsetLengths.reduce((x, y) => x + y);
@@ -67,11 +78,11 @@ export default function Story1Astrid({scrollMin,scrollMax, speed}) {
         {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'>  */}
   
         {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-        <svg alt='Story Part 1, girl in dynamic running pose' style={{transform: `translate(-50%, ${-0*scrolled}px)`}} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg ref={svgRef} alt='Story Part 1, woman Astrid in dynamic running pose' style={{transform: `translate(-50%, ${-0*scrolled}px)`}} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
           <g id="Meet Astrid">
           
-            <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="Quicksand" font-size="20" letter-spacing="0em"><tspan x="85.6895" y="56">Meet Astrid, a driven and sport-</tspan><tspan x="65.6211" y="81">loving women who&#x2019;s on a mission to </tspan><tspan x="96.8711" y="106">revolutionize the way women </tspan><tspan x="141.295" y="131">experience running.</tspan></TextAnimate>
+            {/* <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="Quicksand" font-size="20" letter-spacing="0em"><tspan x="85.6895" y="56">Meet Astrid, a driven and sport-</tspan><tspan x="65.6211" y="81">loving women who&#x2019;s on a mission to </tspan><tspan x="96.8711" y="106">revolutionize the way women </tspan><tspan x="141.295" y="131">experience running.</tspan></TextAnimate> */}
 
             <Path print={false} scrolled={fakeScroll1} drawDuration='1' position={0} inverse={false} handleLength={(l,i)=>handleLength(1,l,i)} id="toAstrid" d="M231.01 149C231.01 353 71.5 442.5 106.5 554C141.5 665.5 282 632 298.01 554" stroke="white" stroke-width="2" stroke-linecap="round"/>
 

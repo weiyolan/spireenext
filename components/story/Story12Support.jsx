@@ -69,7 +69,7 @@ export default function Story12Support({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
       {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 12, lines curling to direct attention to the Join Button' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
 
 <Path position={0} handleLength={(l, i) => handleLength(1, l, i)} id="femalePath" d="M90 1889C-10.1117 1888.54 55 2024.5 121.5 2037.5C188 2050.5 265.312 1987.49 285 2047.88C304.688 2108.28 335.944 2120.5 387.5 2106C439.056 2091.5 440.972 2138.38 480 2146.1C515.529 2153.12 543.383 2138.11 576 2157.5C587.927 2164.59 594.186 2181 613 2180.5C632.991 2179.97 639 2158 662.5 2151C679.857 2145.83 694.5 2152 706 2171.5M147 1889C252.271 1895.39 183 1987.5 159.5 2020.5C121.843 2073.38 193.636 2105.04 237 2087.5C354.118 2040.14 329.784 2153.01 387.5 2125.5C434.753 2102.97 431.853 2153.59 464 2157.5C494.538 2161.21 523.5 2142.47 555 2149.09" stroke="white" stroke-width="2" stroke-linecap="round"/>

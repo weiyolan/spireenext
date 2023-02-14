@@ -69,7 +69,7 @@ export default function Story7SunMoon({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
       {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 7, a minimalistic and elegant representation of the sun and moon.' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
 
         <Path position={0} handleLength={(l, i) => handleLength(1.5, l, i)} id="spireeSunConnect" d="M275.5 1214.5C322.5 1289 362 1194 402 1194C442 1194 469.096 1239 516.5 1259.5C563.904 1280 625.049 1286.01 672 1280" stroke="white" stroke-width="2" stroke-linecap="round"/>

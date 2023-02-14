@@ -71,7 +71,7 @@ export default function Story5Meaning({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
       {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 5, the meaning of Spirée' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
         className={`absolute ${svgWidth} left-1/2`}>
 
         <Path position={2} handleLength={(l, i) => handleLength(0.5, l, i)} id="fromFlowerPath" d="M716.51 691C639.848 562.562 449.69 615.034 419.01 717.5" stroke="white" strokeWidth="2" stroke-linecap="round" />

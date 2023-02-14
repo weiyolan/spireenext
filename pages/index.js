@@ -1,13 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState , useRef} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Background from '@context/Background'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
+import { useDimensions } from '@/utils/useDimensions'
+
 import Title from '@/components/Title'
 
 import ScrollVisual from '@/components/scroll/ScrollVisual'
 import ScrollingDiv from '@/components/scroll/ScrollingDiv'
+import ScrollingDiv2 from '@/components/scroll/ScrollingDiv2'
 import FadeDiv from '@/components/scroll/FadeDiv'
 
 import SpireeStory from '../public/images/spireeStory.svg'
@@ -25,10 +28,45 @@ import Story11Women from '@/components/story/Story11Women'
 import Story12Support from '@/components/story/Story12Support'
 import StoryText from '@/components/story/StoryText'
 
-
 export default function Home({ }) {
 
-  const { scrolled } = useAppContext();
+
+  const { scrolled, width:screenWidth, height:screenHeight, screens } = useAppContext();
+  // let svgRef = useRef(null)
+  let [svgHeight, setSvgHeight] = useState(undefined)
+  let [titleHeight, setTitleHeight] = useState(undefined)
+  let [svgViewHeight, setSvgViewHeight] = useState(undefined)
+  // const {width:svgWidth, height:svgHeight} = useDimensions(svgRef)
+
+  let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
+  
+  function getStepsFromWidth() {
+    // let screens = {
+    //   xxl: width>=1536,
+    //   xl: width>=1280,
+    //   lg: width>=1024,
+    //   md: width>=768,
+    //   sm: width>=640,
+    //   mobl: width>=420,
+    //   mobm: width>=350,
+    // }
+      if (screens.xxl) {return [{from:0.44, for:450}, {from: 0.735, for:490}]}
+
+      if (screens.xl) {return [{from:0.44, for:400}, {from: 0.73, for:540}]}
+      
+      if (screens.lg) {return [{from:0.46, for:400}, {from: 0.73, for:400}]}
+
+      // if (screens.) {return [{from:0.44, for:400}, {from: 0.74, for:450}]}
+
+      else return [{from:0.6666, for:350}, {from: 0.74, for:450}]
+      // if (myWidth > 1080) {return [{from:0.49, for:350},{from: 0.74, for:450}]}
+      // if (myWidth > 1080) {return [{from:0.49, for:350},{from: 0.74, for:450}]}
+  }
+
+  useEffect(()=>{
+    setSteps(getStepsFromWidth())
+    // console.log(getStepsFromWidth())
+  },[screenWidth])
 
   // useEffect(()=>{
   //   window.scrollTo({
@@ -36,6 +74,35 @@ export default function Home({ }) {
   //     behavior: "smooth",
   // });
   // },[])
+
+  useEffect(()=>{
+      console.log('svgViewHeight '+svgViewHeight, 'svgHeight '+svgHeight, 'screenHeight ' + screenHeight )
+
+    if (screenHeight > 0 && titleHeight > 0) {
+    setSvgViewHeight(screenHeight-titleHeight)
+      // console.log(`h-[${screenHeight-titleHeight}]`)
+    }
+
+  // let heightSVG = `h-[${svgHeight||0}px]`
+
+
+  },[screenHeight, titleHeight, svgHeight,svgViewHeight])
+
+  useEffect(()=>{console.log(svgViewHeight)},[svgViewHeight])
+
+ 
+  let speed = 0
+  let heightToScroll = 'h-[3000px]'
+
+  function getStyle (letter,value,unity) {
+    return `${letter}-[${value}${unity}]`
+  }
+
+  // let steps = getStepsFromWidth()
+
+  // let step1= {from:0.49, for:350}
+  // let step2= {from: 0.74, for:450}
+
   return (
     <>
       <Head>
@@ -46,23 +113,31 @@ export default function Home({ }) {
       </Head>
 
 
-      <main className={"w-full h-[3000px]"}>
+      <main className={`w-full ${heightToScroll}`}>
         <ScrollVisual scrolled={scrolled} />
 
         <PageWrapper darkMode={true} svgWidth={'w-4/5 xl:w-3/5'} >
           <Background />
-          <Title mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+
+          <Title setHeight={setTitleHeight} mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto relative' >
+          {/* style={{height: svgViewHeight || '90vh', top: titleHeight||100 }} */}
+          {/* ${getStyle('h', svgViewHeight,'px')} ${getStyle('top', titleHeight,'px')}  */}
+            <FadeDiv style={{height: svgViewHeight+'px', top: titleHeight+'px'}} className={`fixed w-full left-1/2 -translate-x-1/2 border-red-700 border`} amount={10} type='top'>
             
-            <FadeDiv className='fixed w-full h-[80vh] top-[120px] left-1/2 -translate-x-1/2 border-red-700 border' amount={10} type='top'>
-            
-              <ScrollingDiv className='fixed w-full top-[40px] left-1/2' 
-                speed = {0}
-                step1 = {{from:0.49, for:350}}
-                step2 = {{from: 0.74, for:450}}>
+              {/* <ScrollingDiv className='fixed w-full top-[40px] left-1/2' 
+                speed = {speed}
+                step1 = {steps[0]}
+                step2 = {steps[1]}> */}
+          {/* ${svgHeight?`h-[${svgHeight}px]`:'h-[2438px]'} */}
+          {/* h-[2438px] */}
 
-                <Story1Astrid speed={1} scrollMin={0} scrollMax={0} />
+          {/* ${getStyle('h', svgHeight,'px')} */}
+              <ScrollingDiv2 style={{height: svgHeight+'px'}} className={`fixed w-full left-1/2 -translate-x-1/2 transition-all duration-1000 top-[20px] ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[30%] ':' -translate-y-[63%] ' }`} 
+                >
+
+                <Story1Astrid setSvgHeight={setSvgHeight} speed={1} scrollMin={0} scrollMax={0} />
                 <Story2Pharma speed={1} scrollMin={0} scrollMax={0.125} />
                 <Story3Mountain speed={1} scrollMin={0.13} scrollMax={0.2} />
                 <Story4Flowers speed={1} scrollMin={0.215} scrollMax={0.35} />
@@ -76,7 +151,7 @@ export default function Home({ }) {
                 <Story12Support speed={1} scrollMin={0.87} scrollMax={0.95} />
                 <StoryText/>
 
-              </ScrollingDiv>
+              </ScrollingDiv2>
             </FadeDiv>
           </section>
 

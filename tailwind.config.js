@@ -30,6 +30,10 @@ module.exports = {
       letterSpacing: {
         max: '.25em',
       },
+      screens: {
+        'mobl':'420px',
+        'mobm':'350px',
+      },
       colors: {
         'primary': '#171B4D',
         'accent':'#4100A4',

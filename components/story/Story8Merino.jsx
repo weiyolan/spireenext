@@ -69,7 +69,7 @@ export default function Story8Merino({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
       {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 8, a healthy merino sheep' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
         
         <Path position={0} inverse={true} handleLength={(l, i) => handleLength(1, l, i)} id="moonSheepConnect" d="M1167 1214.5C1167 1173.5 1051.35 1141.64 1066.5 1083.5C1072.79 1059.35 1110.5 1062.5 1102.41 1092.05C1086.68 1149.5 930 1130 858 1158.5" stroke="white" stroke-width="2" stroke-linecap="round"/>

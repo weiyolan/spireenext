@@ -67,7 +67,7 @@ export default function Story9Passion({ scrollMin, scrollMax, speed }) {
   return (
     <SVGWrapper myRatio={allRatios} prevRatio={allPrevRatios} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
 
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 9, heart shaped line' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
 
         <Path inverse={true} position={0} handleLength={(l, i) => handleLength(1, l, i)} id="heartPath" d="M643.001 1527C666.501 1496.5 721.001 1455.5 764.001 1492C799.932 1522.5 748.501 1594 764.001 1623C781.182 1655.14 826.001 1608.23 858.001 1623C890.001 1637.77 865.677 1707.8 899.177 1724.45C917.179 1733.39 1012.35 1709.5 1017.84 1680.5C1022.62 1655.26 989.854 1647.93 974 1670.5C976.692 1639.61 950.771 1623.02 933.842 1647.45C916.913 1671.88 925.445 1709.93 931.312 1724.45C956.961 1787.9 1082.9 1801.4 1066.37 1871.17L1251.07 1759.67L1257.56 1953.73C1434.47 1831.73 1466.39 1873.08 1466.39 1873.08C1398.5 1818 1259.5 1656.5 1296 1452" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

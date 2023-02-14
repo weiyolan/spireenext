@@ -69,7 +69,7 @@ export default function Story10RE({ scrollMin, scrollMax, speed }) {
       {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'> */}
 
       {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-      <svg alt='Story Part 1, girl in dynamic running pose' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg alt='Story Part 10, the logo of Run Everywhere' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
           
           <Path inverse={true} position={0} handleLength={(l, i) => handleLength(2, l, i)}  id="RECircle" d="M642.397 1527.06C627.962 1518.29 610.622 1513 592.5 1513C539.757 1513 497 1555.76 497 1608.5C497 1661.24 539.757 1704 592.5 1704C645.243 1704 688 1661.24 688 1608.5C688 1574.01 669.713 1543.78 642.306 1527" stroke="white" stroke-width="2" stroke-linecap="round"/>

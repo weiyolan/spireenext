@@ -69,7 +69,7 @@ export default function Story3Mountain({scrollMin,scrollMax, speed}) {
         {/* <div className='fixed w-full top-[140px] left-1/2 -translate-x-1/2'>  */}
   
         {/* <svg alt='Roadmap title' style={{transform: `translate(-50%, ${!fakeScroll?20:-20}px)`, transition:'all 4s ease-out'}}  className='relative w-full px-4 left-1/2' viewBox="0 0 807 160" fill="none" xmlns="http://www.w3.org/2000/svg"> */}
-        <svg alt='Story Part 1, girl in dynamic running pose' style={{transform: `translate(-50%, ${-0*scrolled}px)`}} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg alt='Story Part 3, mountains' style={{transform: `translate(-50%, ${-0*scrolled}px)`}} viewBox="0 0 1468 2328" fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
 
             <Path drawDuration='1' position={0} handleLength={(l,i)=>handleLength(1,l,i)} inverse={false} id="fromPharma1" d="M897.5 312C856.5 312 816 297.524 816 250.5C816 159.384 948.012 247.061 950.041 160.5M999.5 312C1061 312 1079.5 292.5 1079.5 250.5C1079.5 152 950.041 255 950.041 161.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
