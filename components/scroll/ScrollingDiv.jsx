@@ -1,6 +1,6 @@
 import useDimensions from '@/utils/useDimensions'
 import React, { useState, useEffect, useRef } from 'react'
-import { useAppContext } from '../context/appContext'
+import { useAppContext } from '../context/appContext.js'
 import { usePageContext } from '../context/pageContext'
 
 export default function ScrollingDiv ({children, className, style, animationLocation, screenHeight, titleHeight, svgHeight}) {

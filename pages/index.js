@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Background from '@context/Background'
 import { PageWrapper } from '@/components/context/pageContext'
-import { useAppContext } from '@/components/context/appContext'
+import { useAppContext } from '@/components/context/appContext.js'
 import { useDimensions } from '@/utils/useDimensions'
 
 import Title from '@/components/Title'
