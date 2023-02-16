@@ -76,7 +76,7 @@ export default function Home({ }) {
 
  
   let speed = 0
-  let heightToScroll = 'h-[3000px]'
+  let heightToScroll = screenWidth<768?'h-[6000px]':'h-[3000px]'
 
 
   // let steps = getStepsFromWidth()
@@ -95,7 +95,7 @@ export default function Home({ }) {
 
 
       <main className={`w-full ${heightToScroll}`}>
-        {/* <ScrollVisual scrolled={scrolled} /> */}
+      {screenWidth<768 && <ScrollVisual scrolled={scrolled} />}
         {/* {console.log(screenWidth, !screens.md)} */}
         <PageWrapper 
         darkMode={true} 

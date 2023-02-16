@@ -86,7 +86,7 @@ export function Path(props) {
         scale = Math.min(scaleX, scaleY);
         // const scaledPathLength = originalPath.getTotalLength() * scale;
       }
-
+      
       if (props.print) {
         // console.log('length is:' + length); console.log('double is: ' + props.double); console.log('so pathlength is : ' + length/props.double)
         // console.log(usePath)
@@ -104,7 +104,7 @@ export function Path(props) {
     if (pathLength>0) {
       props.handleLength(pathLength, props.position)
     }
-  },[pathLength, props.position, props.lengthFactor,])
+  },[pathLength, props.position,])
 
 
   // useEffect(() => {
@@ -134,6 +134,7 @@ export function Path(props) {
       setDashArray(newStringDash)
       setDashLineLength(+lineString)
     }
+
   },[props.initialDash, pathLength])
 
   useEffect(()=>{
@@ -141,6 +142,7 @@ export function Path(props) {
     if (animationSpeed) {speed = speed*animationSpeed}
     if (props.lineSpeed) {speed = speed*props.lineSpeed}
     setMySpeed(speed)
+
   },[animationSpeed, props.lineSpeed])
 
   // USE lineSpeed to draw stroke faster
@@ -155,20 +157,24 @@ export function Path(props) {
     childProps.strokeDashoffset = (pathLength + (dashLineLength>0?0:0)) + (pathLength + (dashLineLength>0?0:0))*newOffset
     childProps.strokeWidth = props?.strokeWidth || '2'
     
-    if (newOffset!=0) {
+    if (newOffset!=0 && visible) {
       let myStroke = props.myGradient?props.myGradient:props?.strokeColor||'white'
       childProps.stroke = props.animateStroke?Math.abs(newOffset)===1?'transparent':myStroke:myStroke
       childProps.fill = props.animateFill?Math.abs(newOffset)===1?props?.fillColor||'white':'transparent':'transparent';
       // console.log('NEW STROKE IS: ' + childProps.stroke)
+      console.log('print!')
+
     }
 
     if (Math.abs(newOffset) === 0 && visible) {
       setVisible(false)
       // Fast transition
+
       if (props.fastErase) {
         // childProps.stroke = 'transparent'
         childProps.fill = 'transparent'
     }} else if (Math.abs(newOffset) > 0 && !visible) {
+
       setVisible(true)
       // Default transition
     } 
@@ -183,6 +189,7 @@ export function Path(props) {
       // console.log(newOffset)
     };
     setNewProps(childProps)
+
   },[pathLength, dashArray, props.fastErase, pathRef,props.animateStroke, props.inverse, props.print, props.myGradient, props.strokeWidth, props.position, scrollMin, scrollMax, mySpeed, dashLineLength , props.strokeColor, props.animateFill, prevRatio, myRatio, visible, scrolled, props.initialDash])
   
 
