@@ -7,14 +7,15 @@ import { useAppContext } from '@/components/context/appContext'
 import { useDimensions } from '@/utils/useDimensions'
 
 import Title from '@/components/Title'
+import Layout from '@/components/atoms/Layout'
 
 import ScrollVisual from '@/components/scroll/ScrollVisual'
 import ScrollingDiv from '@/components/scroll/ScrollingDiv'
-import ScrollingDiv2 from '@/components/scroll/ScrollingDiv2'
 import FadeDiv from '@/components/scroll/FadeDiv'
 
 // import SpireeStory from '../public/images/spireeStory.svg'
 import Story1Astrid from '@/components/story/Story1Astrid'
+// import Story2Pharma from '@/components/story/Story2PharmaBackup'
 import Story2Pharma from '@/components/story/Story2Pharma'
 import Story3Mountain from '@/components/story/Story3Mountain'
 import Story4Flowers from '@/components/story/Story4Flowers'
@@ -30,73 +31,53 @@ import StoryText from '@/components/story/StoryText'
 
 export default function Home({ }) {
 
-
   const { scrolled, width:screenWidth, height:screenHeight, screens } = useAppContext();
   // let svgRef = useRef(null)
   let [svgHeight, setSvgHeight] = useState(undefined)
   let [titleHeight, setTitleHeight] = useState(undefined)
   let [svgViewHeight, setSvgViewHeight] = useState(undefined)
-  // const {width:svgWidth, height:svgHeight} = useDimensions(svgRef)
+  let [animationLocation, setAnimationLocation] = useState({top:undefined, bottom:undefined})
+  let [moved, setMoved] = useState(false)
 
+  let [finished, setFinished] = useState(false)
+  // const {width:svgWidth, height:svgHeight} = useDimensions(svgRef)
   let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
   
-  function getStepsFromWidth() {
-    // let screens = {
-    //   xxl: width>=1536,
-    //   xl: width>=1280,
-    //   lg: width>=1024,
-    //   md: width>=768,
-    //   sm: width>=640,
-    //   mobl: width>=420,
-    //   mobm: width>=350,
-    // }
-      if (screens.xxl) {return [{from:0.44, for:450}, {from: 0.735, for:490}]}
-
-      if (screens.xl) {return [{from:0.44, for:400}, {from: 0.73, for:540}]}
-      
-      if (screens.lg) {return [{from:0.46, for:400}, {from: 0.73, for:400}]}
-
-      // if (screens.) {return [{from:0.44, for:400}, {from: 0.74, for:450}]}
-
-      else return [{from:0.6666, for:350}, {from: 0.74, for:450}]
-      // if (myWidth > 1080) {return [{from:0.49, for:350},{from: 0.74, for:450}]}
-      // if (myWidth > 1080) {return [{from:0.49, for:350},{from: 0.74, for:450}]}
-  }
+  useEffect(()=>{
+    if (scrolled >= 0.97) {setFinished(true)}
+  },[scrolled])
 
   useEffect(()=>{
-    setSteps(getStepsFromWidth())
-    // console.log(getStepsFromWidth())
-  },[screenWidth])
+    window.scrollTo(0,0)
+  },[])
 
   // useEffect(()=>{
-  //   window.scrollTo({
-  //     top: 35,
-  //     behavior: "smooth",
-  // });
-  // },[])
+  //   if (moved) {
+  //     setAnimationLocation({top:undefined, bottom:undefined})
+  //   }
+  // },[moved])
+
+  // useEffect(()=>{
+  //   console.log(animationLocation)
+  // },[animationLocation])
+
 
   useEffect(()=>{
-      console.log('svgViewHeight '+svgViewHeight, 'svgHeight '+svgHeight, 'screenHeight ' + screenHeight )
+      // console.log('svgViewHeight '+svgViewHeight, 'svgHeight '+svgHeight, 'screenHeight ' + screenHeight )
 
     if (screenHeight > 0 && titleHeight > 0) {
     setSvgViewHeight(screenHeight-titleHeight)
       // console.log(`h-[${screenHeight-titleHeight}]`)
     }
 
-  // let heightSVG = `h-[${svgHeight||0}px]`
+  },[screenHeight, titleHeight, svgViewHeight])
 
-
-  },[screenHeight, titleHeight, svgHeight,svgViewHeight])
-
-  useEffect(()=>{console.log(svgViewHeight)},[svgViewHeight])
+  // useEffect(()=>{console.log(svgViewHeight)},[svgViewHeight])
 
  
   let speed = 0
   let heightToScroll = 'h-[3000px]'
 
-  function getStyle (letter,value,unity) {
-    return `${letter}-[${value}${unity}]`
-  }
 
   // let steps = getStepsFromWidth()
 
@@ -115,16 +96,27 @@ export default function Home({ }) {
 
       <main className={`w-full ${heightToScroll}`}>
         <ScrollVisual scrolled={scrolled} />
-
-        <PageWrapper darkMode={true} svgWidth={'w-4/5 xl:w-3/5'} >
+        {/* {console.log(screenWidth, !screens.md)} */}
+        <PageWrapper 
+        darkMode={true} 
+        svgWidth={'w-11/12 md:w-4/5 xl:w-3/5'} 
+        viewBox={screens.md?"0 0 1468 2328":"0 0 701 5205"} 
+        finished={finished} 
+        mobile={screenWidth<768}
+        setAnimationLocation={setAnimationLocation}
+        moved={moved}
+        setMoved={setMoved}
+        >
+        {/* 1468 */}
           <Background />
-
-          <Title setHeight={setTitleHeight} mainTitle={'About Spirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+          
+          <Layout>
+          <Title style={{position:'fixed', display:'absolute', left:'-50%', top:0, transform:'translate(50%,0)'}} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto relative' >
           {/* style={{height: svgViewHeight || '90vh', top: titleHeight||100 }} */}
           {/* ${getStyle('h', svgViewHeight,'px')} ${getStyle('top', titleHeight,'px')}  */}
-            <FadeDiv style={{height: svgViewHeight+'px', top: titleHeight+'px'}} className={`fixed w-full left-1/2 -translate-x-1/2 border-red-700 border`} amount={10} type='top'>
+            <FadeDiv style={{height: svgViewHeight+'px', top: titleHeight+'px'}} className={`fixed md:fixed w-full left-1/2 -translate-x-1/2 `} amount={10} type={``}>
             
               {/* <ScrollingDiv className='fixed w-full top-[40px] left-1/2' 
                 speed = {speed}
@@ -134,8 +126,12 @@ export default function Home({ }) {
           {/* h-[2438px] */}
 
           {/* ${getStyle('h', svgHeight,'px')} */}
-              <ScrollingDiv2 style={{height: svgHeight+'px'}} className={`fixed w-full left-1/2 -translate-x-1/2 transition-all duration-1000 top-[20px] ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[30%] ':' -translate-y-[63%] ' }`} 
-                >
+              <ScrollingDiv animationLocation={animationLocation} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
+              className={`fixed flex w-full left-1/2 -translate-x-1/2 
+              ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
+              `} >
+               {/* ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[500px] ':' -translate-y-[100px] ' } */}
+               
 
                 <Story1Astrid setSvgHeight={setSvgHeight} speed={1} scrollMin={0} scrollMax={0} />
                 <Story2Pharma speed={1} scrollMin={0} scrollMax={0.125} />
@@ -144,19 +140,19 @@ export default function Home({ }) {
                 <Story5Meaning speed={1} scrollMin={0.39} scrollMax={0.42} />
                 <Story6Spiree speed={1} scrollMin={0.45} scrollMax={0.53} />
                 <Story7SunMoon speed={1} scrollMin={0.55} scrollMax={0.62} />
-                <Story8Merino speed={1} scrollMin={0.64} scrollMax={0.71} />
+                <Story8Merino speed={1} scrollMin={0.65} scrollMax={0.70} />
                 <Story9Passion speed={1} scrollMin={0.73} scrollMax={0.76} />
                 <Story10RE speed={1} scrollMin={0.78} scrollMax={0.82} />
-                <Story11Women speed={1} scrollMin={0.83} scrollMax={0.86} />
+                <Story11Women speed={1} scrollMin={0.84} scrollMax={0.86} />
                 <Story12Support speed={1} scrollMin={0.87} scrollMax={0.95} />
                 <StoryText/>
 
-              </ScrollingDiv2>
+              </ScrollingDiv>
             </FadeDiv>
           </section>
 
           
-
+          </Layout>
         </PageWrapper>
       </main>
     </>

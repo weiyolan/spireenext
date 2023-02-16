@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react"
 import { useAppContext } from '@context/appContext'
 import { useSVGContext } from "@components/story/contextSVG"
+import { usePageContext } from "@/components/context/pageContext"
 
 // function getOffset(lengthArray, i) {
 //   let included = lengthArray.map((l, index) => index < i ? l : 0)
@@ -22,6 +23,8 @@ function getPathProps(props) {
   delete pathProps.home
   delete pathProps.drawDuration
   delete pathProps.scrolled
+  delete pathProps.useId
+  delete pathProps.lengthFactor
   delete pathProps.fastErase
   delete pathProps.myGradient
   delete pathProps['stroke-width']
@@ -43,7 +46,8 @@ function getPathProps(props) {
 
 export function Path(props) {
   let {myRatio, prevRatio, scrollMin, scrollMax, animationSpeed} = useSVGContext();
- 
+  let {finished} = usePageContext();
+
   let pathRef = useRef(null)
   let [pathLength, setPathLength] = useState(0)
   let [mySpeed, setMySpeed] = useState(1)
@@ -52,7 +56,7 @@ export function Path(props) {
   let [newProps, setNewProps] = useState(getPathProps(props))
   let [visible, setVisible] = useState(false)
 
-  let fakeScrolled = props.scrolled;
+  let fakeScrolled = finished?1:props.scrolled;
   let realScrolled = useAppContext().scrolled;
   let scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
@@ -69,19 +73,38 @@ export function Path(props) {
   // },[fakeScrolled, realScrolled])
 
   useEffect(() => {
-    let path = pathRef.current;
-    let length = path.getTotalLength()
-    if (props.print) {
-      // console.log('length is:' + length); console.log('double is: ' + props.double); console.log('so pathlength is : ' + length/props.double)
-    }
-    setPathLength(length/(props.double?props.double:1));
-  },[props.double, props.print])
+      let usePath = pathRef.current;
+      let originalPath = props.useId!==undefined?document.querySelector(usePath.getAttribute('href')):usePath
+      let length = originalPath.getTotalLength()
+      let scale = 1
+
+      if (originalPath !== usePath) {
+        const bbox = usePath.getBoundingClientRect();
+        const scaleX = bbox.width / originalPath.getBBox().width;
+        const scaleY = bbox.height / originalPath.getBBox().height;
+        // if (props.print) {console.log('PATHS UNEQUAL')}   
+        scale = Math.min(scaleX, scaleY);
+        // const scaledPathLength = originalPath.getTotalLength() * scale;
+      }
+
+      if (props.print) {
+        // console.log('length is:' + length); console.log('double is: ' + props.double); console.log('so pathlength is : ' + length/props.double)
+        // console.log(usePath)
+        // console.log(originalPath)
+        // console.log(usePath===originalPath)
+        console.log('My (' + props.print + ') path has length of: ' + scale * length / (props?.double||1))
+        // console.log(scale * length / (props?.double||1))
+      }
+
+      setPathLength(scale * length / (props?.double||1));
+
+    },[props.double, props.print, props.useId])
 
   useEffect(()=>{
     if (pathLength>0) {
       props.handleLength(pathLength, props.position)
     }
-  },[pathLength, props.position])
+  },[pathLength, props.position, props.lengthFactor,])
 
 
   // useEffect(() => {
@@ -151,8 +174,8 @@ export function Path(props) {
     } 
 
     if (props.print) {
-      console.log(newOffset)
-      console.log(childProps.stroke)
+      // console.log(newOffset)
+      // console.log(childProps.stroke)
       // console.log(style)
       // console.log(visible)
       // console.log(pathLength)
@@ -169,7 +192,7 @@ export function Path(props) {
     
     if (props.print) {
       // console.log({transition: visible?props.home?'all 0.5s ease':`all ${props?.drawDuration||1}s ease`:'all 0.1s ease'})
-      console.log('style changed')
+      // console.log('style changed')
     }
   },[visible])
 // },[visible, props.home, props.drawDuration, props.fastErase,props.print])
@@ -183,6 +206,8 @@ export function Path(props) {
       return <rect ref={pathRef} style={style} {...newProps} />
     case 'circle' :
       return <circle ref={pathRef} style={style} {...newProps} />
+    case 'use' :
+      return <use href={props.useId} ref={pathRef} style={style} {...newProps} />
     default :
       return <path ref={pathRef} style={style} {...newProps} />
     }
@@ -191,7 +216,9 @@ export function Path(props) {
 
 export function AnimateIn({children, scrolled, at}) {
   // let {scrolled} = useAppContext();
-  let fakeScrolled = scrolled;
+  let {finished} = usePageContext()
+
+  let fakeScrolled = finished?1:scrolled;
   let realScrolled = useAppContext().scrolled;
   scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
@@ -206,8 +233,9 @@ export function AnimateIn({children, scrolled, at}) {
 
 export function TextAnimate(props) {
 // let {scrolled} = useAppContext();
+const {finished} = usePageContext();
 
-let fakeScrolled = props.scrolled;
+let fakeScrolled = finished?1:props.scrolled;
 let realScrolled = useAppContext().scrolled;
 let scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
