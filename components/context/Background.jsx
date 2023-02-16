@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useAppContext } from "@/components/context/appContext"
 
 
-export default function Background () {
+export default function Background ({src}) {
 //   const [myWidth, setMyWidth] = useState(0)
 //   let {width, breakPointSmall, scrolled} = useAppContext();
 
@@ -31,7 +31,7 @@ export default function Background () {
   // bg-cover bg-[url('/images/backgroundpng.png')
   return (
     <div className={`w-full fixed top-0 -z-10 h-screen overflow-hidden filter bg-slate-500`} >
-
+      {/* <Image alt='' fill src='/images/mountains.jpg' className='object-cover object-center' /> */}
       {/* Empty ALT for purely decorative images */}
 
       {/* {myWidth<breakPointSmall && <Image priority src='/images/backgroundpng.png' alt='' fill sizes='100vw' className='object-cover object-center'/>} */}

@@ -45,9 +45,9 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   },[dimensions, screenHeight])
 
   useEffect(()=>{
-      // console.log('MAX MOVES CALCULATION')
-      console.log('svgHeight to scroll ' + (svgHeight-visibleHeight)+ '\nmove Height ' + (visibleHeight*factor))
-      console.log('maxMoves: ' + maxMoves)
+      // console.log('svgHeight to scroll ' + (svgHeight-visibleHeight)+ '\nmove Height ' + (visibleHeight*factor))
+      // console.log('maxMoves: ' + maxMoves)
+      
       // console.log((svgHeight-visibleHeight)/(visibleHeight*factor))
       // console.log(Math.floor((svgHeight-visibleHeight)/(visibleHeight*factor)))
       setMaxMoves(Math.ceil((svgHeight-visibleHeight)/(visibleHeight*factor)))
@@ -58,7 +58,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
       // console.log('bottom animation: ' + animationLocation.bottom + ' & screenHeight: ' + screenHeight )
       let amount = Math.max(Math.floor((animationLocation.bottom - screenHeight)/(moveHeight)),1)
       print?console.log('===> moves + ' + amount + '!'):''
-      setMoves(moves=>Math.min(moves+amount, maxMoves))
+      setMoves(moves=>Math.min(moves+amount, maxMoves)||0)
       setMoved(true)
     }
     if (animationLocation?.top && animationLocation.top < (titleHeight)) {
@@ -66,7 +66,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
       print?console.log('===> moves - ' + amount + '!'):''
       // print?console.log('moves - 1!'):''
       // console.log('top animation: ' + animationLocation.top + ' & maxHeight: ' + titleHeight )
-      setMoves(moves=>Math.max(moves-amount,0))
+      setMoves(moves=>Math.max(moves-amount,0)||0)
       setMoved(true)
     }
 
