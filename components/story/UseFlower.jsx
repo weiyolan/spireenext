@@ -1,6 +1,5 @@
 import React from 'react'
 import { Path, AnimateIn, TextAnimate } from '@/utils/pathUtils'
-import { useAppContext } from '../context/appContext';
 
 export default function UseFlower ({at, pos, useId, handleLength, transform}) {
   

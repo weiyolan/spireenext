@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useAppContext } from "@context/appContext"
+import { useAppContext } from "@components/context/appContext.js"
 import { Path, TextAnimate } from '@utils/pathUtils'
 import { SVGWrapper } from "./contextSVG"
 import { usePageContext } from "../context/pageContext"

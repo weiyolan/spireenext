@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import Head from 'next/head'
 import React, {useState, useEffect} from 'react'
 import {Work_Sans, Quicksand} from '@next/font/google'
-import {AppWrapper} from '@context/appContext';
+import {AppWrapper} from '@components/context/appContext';
 import ScrollVisual from '@/components/scroll/ScrollVisual';
 
 const workSans = Work_Sans({

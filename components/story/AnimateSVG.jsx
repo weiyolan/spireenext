@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useCallback} from "react"
-import { useAppContext } from "@context/appContext.js"
+import { useAppContext } from "@components/context/appContext"
 // import { Path, TextAnimate} from '@utils/pathUtils'
 import { Path} from "@/utils/pathUtils"
 import UseFlower from "./UseFlower"

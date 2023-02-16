@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react"
-import { useAppContext } from '@context/appContext'
+import { useAppContext } from "@components/context/appContext.js"
 import { useSVGContext } from "@components/story/contextSVG"
 import { usePageContext } from "@/components/context/pageContext"
 

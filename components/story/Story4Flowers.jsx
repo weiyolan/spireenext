@@ -1,5 +1,5 @@
 import React from "react"
-import { useAppContext } from "@context/appContext"
+import { useAppContext } from "@components/context/appContext.js"
 import { Path } from '@utils/pathUtils'
 import { usePageContext } from "../context/pageContext"
 import AnimateSVG from './AnimateSVG'

@@ -7,8 +7,6 @@ import { useCycle } from 'framer-motion';
 
 const AppContext = createContext();
 
-
-
 export function AppWrapper({ children, breakPointSmall, scrolled }) {
   let {width, height} = useWindowSize();
   let {locale} = useRouter();

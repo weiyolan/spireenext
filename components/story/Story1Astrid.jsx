@@ -1,6 +1,6 @@
 import React, {useState,useEffect,useRef} from "react"
 import { useDimensions } from "@/utils/useDimensions"
-import { useAppContext } from "../context/appContext"
+import { useAppContext } from "@components/context/appContext.js"
 import { Path, TextAnimate} from '@utils/pathUtils'
 import { SVGWrapper } from "./contextSVG"
 import { usePageContext } from "../context/pageContext"
