@@ -18,6 +18,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   const factor=mobile?0.55:0.30
   const moveHeight = visibleHeight*factor
   let footerHeight = 250
+  let breakTime = mobile?20:20
 
   useEffect(()=>{
     if (print) {
@@ -88,7 +89,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
      timer = setTimeout(()=>{
       setMoved(false);
       // console.log('timer removed')
-    }, 1000)
+    }, breakTime)
     //  console.log('Timer set!')
     }
     // console.log(moves, moved)
