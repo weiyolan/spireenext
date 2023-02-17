@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Background from '@components/context/Background'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
-import { useDimensions } from '@/utils/useDimensions'
+// import { useDimensions } from '@/utils/useDimensions'
 
 import Title from '@/components/Title'
 import Layout from '@/components/atoms/Layout'
@@ -37,11 +37,11 @@ export default function Home({ }) {
   let [titleHeight, setTitleHeight] = useState(undefined)
   let [svgViewHeight, setSvgViewHeight] = useState(undefined)
   let [animationLocation, setAnimationLocation] = useState({top:undefined, bottom:undefined})
-  let [moved, setMoved] = useState(false)
+  // let [moved, setMoved] = useState(false)
 
   let [finished, setFinished] = useState(false)
   // const {width:svgWidth, height:svgHeight} = useDimensions(svgRef)
-  let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
+  // let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
   
   useEffect(()=>{
     if (scrolled >= 0.97) {setFinished(true)}
@@ -104,8 +104,8 @@ export default function Home({ }) {
         finished={finished} 
         mobile={screenWidth<768}
         setAnimationLocation={setAnimationLocation}
-        moved={moved}
-        setMoved={setMoved}
+        // moved={moved}
+        // setMoved={setMoved}
         >
         {/* 1468 */}
           <Background />
@@ -127,7 +127,7 @@ export default function Home({ }) {
 
           {/* ${getStyle('h', svgHeight,'px')} */}
               <ScrollingDiv animationLocation={animationLocation} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
-              className={`fixed flex w-full left-1/2 -translate-x-1/2 
+              className={`absolute flex w-full left-1/2 -translate-x-1/2 
               ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
               `} >
                {/* ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[500px] ':' -translate-y-[100px] ' } */}
@@ -149,6 +149,7 @@ export default function Home({ }) {
 
               </ScrollingDiv>
             </FadeDiv>
+
           </section>
 
           

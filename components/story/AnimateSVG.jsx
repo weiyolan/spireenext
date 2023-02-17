@@ -17,7 +17,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     let { scrolled } = useAppContext()
     let [located, setLocated] = useState(false)
 
-    let {svgWidth, viewBox, setAnimationLocation, moved, mobile} = usePageContext()
+    let {svgWidth, viewBox, setAnimationLocation, mobile} = usePageContext()
     // let newChildren = useGoodChildren(children.props.children, handleLength)
 
     let animationRef = useRef(null)
@@ -72,12 +72,13 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     useEffect(()=>{
       if (scrolled>scrollMin && scrolled < scrollMax && !located) {
         const {top, bottom} = animationRef.current.getBoundingClientRect();
+        const {top: svgStart} = svgRef.current.getBoundingClientRect();
         setLocated(true)
-        setAnimationLocation({top: top, bottom: bottom})
+        setAnimationLocation({top: top-svgStart, bottom: bottom-svgStart})
       } else if ((scrolled<scrollMin || scrolled > scrollMax) && located) {
         setLocated(false)
       }
-    },[scrolled, moved, scrollMin, scrollMax, setLocated])
+    },[scrolled, scrollMin, scrollMax, setLocated])
 
 
     useEffect(() => {
