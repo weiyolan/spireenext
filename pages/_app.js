@@ -4,6 +4,7 @@ import React, {useState, useEffect} from 'react'
 import {Work_Sans, Quicksand} from '@next/font/google'
 import {AppWrapper} from '@components/context/appContext';
 import ScrollVisual from '@/components/scroll/ScrollVisual';
+// import { useScrollPercentage } from 'react-scroll-percentage';
 
 const workSans = Work_Sans({
   subsets: ['latin'],
@@ -21,22 +22,24 @@ const quickSand = Quicksand({
 
 export default function App({ Component, pageProps }) {
   let [scrolled, setScrolled] = useState(0)
-  
-
-  // useEffect(()=>{
-  //  console.log(scrolled) 
-  // },[scrolled])
-
+  // let scrolled=0;
+    // let [ref, percentage] = useScrollPercentage();
 
   useEffect(()=>{
+   console.log(scrolled) 
+  //  console.log(percentage) 
+  })
 
-    function handleScroll () {
-      let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)
-      setScrolled(ratio)
-    }
+  function handleScroll () {
+    let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)
+    setScrolled(ratio)
+    // scrolled = ratio
+  }
+  useEffect(()=>{
     
     let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)
     setScrolled(ratio)
+    // scrolled = ratio;
     
     window.addEventListener('scroll', handleScroll, {passive:true})
 
@@ -50,7 +53,7 @@ export default function App({ Component, pageProps }) {
 
       </Head>
 
-      <AppWrapper scrolled={scrolled}>
+      <AppWrapper scrolled={scrolled.toPrecision(2)}>
         <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
           
           <Component {...pageProps} />

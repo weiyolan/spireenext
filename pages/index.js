@@ -95,7 +95,7 @@ export default function Home({ }) {
 
 
       <main className={`w-full ${heightToScroll}`}>
-      {screenWidth<768 && <ScrollVisual scrolled={scrolled} />}
+      {/* {screenWidth<768 && <ScrollVisual scrolled={scrolled} />} */}
         {/* {console.log(screenWidth, !screens.md)} */}
         <PageWrapper 
         darkMode={true} 
@@ -134,8 +134,8 @@ export default function Home({ }) {
                
 
                 <Story1Astrid setSvgHeight={setSvgHeight} speed={1} scrollMin={0} scrollMax={0} />
-                <Story2Pharma speed={1} scrollMin={0} scrollMax={0.125} />
-                <Story3Mountain speed={1} scrollMin={0.13} scrollMax={0.2} />
+                <Story2Pharma speed={1} scrollMin={0} scrollMax={0.10} />
+                <Story3Mountain speed={1} scrollMin={0.11} scrollMax={0.2} />
                 <Story4Flowers speed={1} scrollMin={0.215} scrollMax={0.35} />
                 <Story5Meaning speed={1} scrollMin={0.39} scrollMax={0.42} />
                 <Story6Spiree speed={1} scrollMin={0.45} scrollMax={0.53} />

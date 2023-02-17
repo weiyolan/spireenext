@@ -25,7 +25,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['var(--font-worksans)', ...fontFamily.sans],
-        quick: ['var(--font-quicksand)',...fontFamily.mono],
+        quick: ['var(--font-quicksand)',...fontFamily.sans],
       },
       letterSpacing: {
         max: '.25em',

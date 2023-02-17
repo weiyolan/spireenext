@@ -21,7 +21,7 @@ export default function Story5Meaning({ scrollMin, scrollMax, speed }) {
         </g>: 
         
         <g id='desktop'>
-        <Path position={0} lengthFactor={1} id="fromFlowerPath" d="M716.51 691C639.848 562.562 449.69 615.034 419.01 717.5" stroke="white" strokeWidth="2" stroke-linecap="round" />
+        <Path print={false}  position={0} lengthFactor={1} id="fromFlowerPath" d="M716.51 691C639.848 562.562 449.69 615.034 419.01 717.5" stroke="white" strokeWidth="2" stroke-linecap="round" />
         <UseFlower at={scrollMin+0.02} pos={0} transform= 'translate(-645, 310) rotate(50) scale(0.7)' />
         {/* <UseFlower at={start + 12 * diff} pos={12} transform= 'translate(-420, 475) rotate(10) scale(0.7)'/> */}
 
