@@ -76,7 +76,9 @@ export default function Home({ }) {
 
  
   let speed = 0
-  let heightToScroll = screenWidth<768?'h-[6000px]':'h-[3000px]'
+  let footerHeight = screenWidth<768?300:250
+  // let heightToScroll = finished?`${svgViewHeight+titleHeight+footerHeight}px`:screenWidth<768?'6000px':'3000px'
+  let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:screenWidth<768?'6000px':'3000px'
 
 
   // let steps = getStepsFromWidth()
@@ -94,7 +96,7 @@ export default function Home({ }) {
       </Head>
 
 
-      <main className={`w-full ${heightToScroll}`}>
+      <main style={{height: heightToScroll}} className={`w-full`}>
       {/* {screenWidth<768 && <ScrollVisual scrolled={scrolled} />} */}
         {/* {console.log(screenWidth, !screens.md)} */}
         <PageWrapper 
@@ -110,24 +112,19 @@ export default function Home({ }) {
         {/* 1468 */}
           <Background />
           
-          <Layout>
-          <Title style={{position:'fixed', display:'absolute', left:'-50%', top:0, transform:'translate(50%,0)'}} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+          {/* <Layout> */}
+          <Title style={{position:'fixed', left:'-50%', top:0, transform:'translate(50%,0)'}} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto relative' >
-          {/* style={{height: svgViewHeight || '90vh', top: titleHeight||100 }} */}
-          {/* ${getStyle('h', svgViewHeight,'px')} ${getStyle('top', titleHeight,'px')}  */}
-            <FadeDiv style={{height: svgViewHeight+'px', top: titleHeight+'px'}} className={`fixed md:fixed w-full left-1/2 -translate-x-1/2 `} amount={10} type={``}>
-            
-              {/* <ScrollingDiv className='fixed w-full top-[40px] left-1/2' 
-                speed = {speed}
-                step1 = {steps[0]}
-                step2 = {steps[1]}> */}
-          {/* ${svgHeight?`h-[${svgHeight}px]`:'h-[2438px]'} */}
-          {/* h-[2438px] */}
 
-          {/* ${getStyle('h', svgHeight,'px')} */}
-              <ScrollingDiv animationLocation={animationLocation} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
-              className={`absolute flex w-full left-1/2 -translate-x-1/2 
+            {/* <FadeDiv style={{height: svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute overflow-scroll ':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?10:10} type={finished?`top`:''}> */}
+            <FadeDiv style={{height: finished?svgHeight+footerHeight+'px':svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:10} type={finished?`top`:''}>
+            {/* finished?svgHeight+footerHeight+'px': */}
+
+
+          {/* style={{height: svgHeight+'px'}} */}
+              <ScrollingDiv  animationLocation={animationLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
+              className={`absolute w-full left-1/2 -translate-x-1/2 
               ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
               `} >
                {/* ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[500px] ':' -translate-y-[100px] ' } */}
@@ -153,7 +150,7 @@ export default function Home({ }) {
           </section>
 
           
-          </Layout>
+          {/* </Layout> */}
         </PageWrapper>
       </main>
     </>
