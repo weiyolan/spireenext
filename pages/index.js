@@ -6,8 +6,9 @@ import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
 
-import Title from '@/components/Title'
-import Layout from '@/components/atoms/Layout'
+import Title from '@/components/sections/Title'
+import Layout from '@/components/sections/Layout'
+import Footer from '@/components/sections/Footer'
 
 import ScrollVisual from '@/components/scroll/ScrollVisual'
 import ScrollingDiv from '@/components/scroll/ScrollingDiv'
@@ -36,6 +37,7 @@ export default function Home({ }) {
   let [svgHeight, setSvgHeight] = useState(undefined)
   let [titleHeight, setTitleHeight] = useState(undefined)
   let [svgViewHeight, setSvgViewHeight] = useState(undefined)
+  let [footerHeight, setFooterHeight] = useState(undefined)
   let [animationLocation, setAnimationLocation] = useState({top:undefined, bottom:undefined})
   // let [moved, setMoved] = useState(false)
 
@@ -43,19 +45,24 @@ export default function Home({ }) {
   // const {width:svgWidth, height:svgHeight} = useDimensions(svgRef)
   // let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
   
+  let mobile = screenWidth<768
+  let speed = 0
+    // let footerHeight = screenWidth<768?300:250
+    let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:screenWidth<768?'8000px':'3000px'
+    // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
+
   useEffect(()=>{
-    if (scrolled >= 0.97) {setFinished(true)}
+    if (scrolled >= 0.99) {setFinished(true)}
+    // if (scrolled >= 0.97 && !mobile) {setFinished(true)}
   },[scrolled])
 
   useEffect(()=>{
     window.scrollTo(0,0)
   },[])
 
-  // useEffect(()=>{
-  //   if (moved) {
-  //     setAnimationLocation({top:undefined, bottom:undefined})
-  //   }
-  // },[moved])
+  useEffect(()=>{
+   console.log(footerHeight)
+  },[footerHeight])
 
   // useEffect(()=>{
   //   console.log(animationLocation)
@@ -75,10 +82,6 @@ export default function Home({ }) {
   // useEffect(()=>{console.log(svgViewHeight)},[svgViewHeight])
 
  
-  let speed = 0
-  let footerHeight = screenWidth<768?300:250
-  // let heightToScroll = finished?`${svgViewHeight+titleHeight+footerHeight}px`:screenWidth<768?'6000px':'3000px'
-  let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:screenWidth<768?'6000px':'3000px'
 
 
   // let steps = getStepsFromWidth()
@@ -104,7 +107,7 @@ export default function Home({ }) {
         svgWidth={'w-11/12 md:w-4/5 xl:w-3/5'} 
         viewBox={screens.md?"0 0 1468 2328":"0 0 701 5205"} 
         finished={finished} 
-        mobile={screenWidth<768}
+        mobile={mobile}
         setAnimationLocation={setAnimationLocation}
         // moved={moved}
         // setMoved={setMoved}
@@ -118,7 +121,7 @@ export default function Home({ }) {
           <section className='flex w-4/5 mx-auto relative' >
 
             {/* <FadeDiv style={{height: svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute overflow-scroll ':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?10:10} type={finished?`top`:''}> */}
-            <FadeDiv style={{height: finished?svgHeight+footerHeight+'px':svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:10} type={finished?`top`:''}>
+            <FadeDiv style={{height: finished?svgHeight+footerHeight+'px':svgViewHeight+'px', width: screenWidth+'px',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:mobile?2:10} type={finished?`top`:'both'}>
             {/* finished?svgHeight+footerHeight+'px': */}
 
 
@@ -149,6 +152,9 @@ export default function Home({ }) {
 
           </section>
 
+          <section>
+            <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position:'absolute', top:finished?titleHeight+svgHeight+'px':heightToScroll-footerHeight+'px'} }/>
+          </section>
           
           {/* </Layout> */}
         </PageWrapper>

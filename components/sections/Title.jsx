@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
-import { usePageContext } from './context/pageContext';
-import ESpiree from './atoms/ESpiree';
+import { usePageContext } from '../context/pageContext';
+import ESpiree from '../atoms/ESpiree';
 import useDimensions from '@/utils/useDimensions';
 
 const Title = ({mainTitle, subTitle, setHeight, style}) => {

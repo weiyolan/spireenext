@@ -103,7 +103,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   // transition: `${(scrolled>step1.from && scrolled <step1.to) || (scrolled > step2.from && scrolled < step2.to)?'all 1s ease':'none'
   
   // let Y =  finished?((svgHeight-visibleHeight)+footerHeight)*scrolled:moves>=maxMoves?((svgHeight-visibleHeight)+footerHeight)*0.97:moves*visibleHeight*factor
-  let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)+footerHeight)*0.97:moves*visibleHeight*factor
+  let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:moves*visibleHeight*factor
   // let Y =  0  
   return (
     

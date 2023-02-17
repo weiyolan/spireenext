@@ -29,6 +29,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     width: width, 
     height: height, 
     screens:screens,
+    // mobile:width<768,
     // breakPointSmall: breakPointSmall,
     // noBlur: true,
     scrolled: scrolled,
