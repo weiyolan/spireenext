@@ -7,7 +7,7 @@ import { usePageContext } from "../context/pageContext"
 // import { PageWrapper } from "@context/pageContext"
 import AnimateSVG from "./AnimateSVG"
 
-export default function Story1Astrid({scrollMin,scrollMax, speed, setSvgHeight}) { 
+export default function Story1Astrid({scrollMin,scrollMax, speed, setSvgHeight, setSvgWidth}) { 
 
     let { locale } = useAppContext()
     
@@ -31,7 +31,7 @@ export default function Story1Astrid({scrollMin,scrollMax, speed, setSvgHeight})
 
     return (
       <AnimateSVG alt='Story Part 1, woman named Astrid in dynamic running pose' 
-      scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} setSvgHeight={setSvgHeight}>
+      scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} setSvgHeight={setSvgHeight} setSvgWidth={setSvgWidth}>
 
           {mobile?
             <g id='mobile'>

@@ -8,7 +8,7 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
   let [moves , setMoves] = useState(0)
   let {mobile, finished} = usePageContext();
   let [maxMoves, setMaxMoves] = useState(undefined)
-  let [offset,setOffset] = useState(0)
+  // let [offset,setOffset] = useState(0)
 
   // let [moved, setMoved] = useState(false)
   let [visibleHeight, setVisibleHeight] = useState(undefined) //only the svg that is not faded => from top of scrollingdiv (no margin) to bottom screen

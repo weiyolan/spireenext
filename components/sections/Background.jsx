@@ -38,9 +38,9 @@ export default function Background ({src, moves, maxMoves}) {
   return (
     <div className={`w-full fixed top-[0] -z-10 h-[100vh] overflow-hidden overflow-hidden  `} >
       <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}>
-        {console.log(height*(1+overflow)+'px')}
-        {console.log(`translate(-${Y}px,0)`)}
-        <Image alt='' fill src='/images/StoryBackground.png' className={`object-cover ${moves===undefined?'object-center':'object-center'}`} sizes="100vw" quality={100} priority={true}/>
+        {/* {console.log(height*(1+overflow)+'px')} */}
+        {/* {console.log(`translate(-${Y}px,0)`)} */}
+        <Image alt='' fill src='/images/StoryBackground5.png' className={`object-fill ${moves===undefined?'object-center':'object-center'}`} sizes="100vw" quality={100} priority={true}/>
          {/* Empty ALT for purely decorative images */}
       </div>
       

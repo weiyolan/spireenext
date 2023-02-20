@@ -8,7 +8,7 @@ import { usePageContext } from "../context/pageContext"
 import { useDimensions } from "@/utils/useDimensions"
 // import useGoodChildren from "./useGoodChildren"
 
-export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, setSvgHeight, print}) { 
+export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, setSvgHeight, setSvgWidth, print}) { 
 
     let [allLengths, setAllLengths] = useState([])
     let [allOffsetLengths, setAllOffsetLengths] = useState([])
@@ -54,8 +54,10 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
       function handleSize(){
         let bbox = svgRef.current.getBoundingClientRect()
         let height = bbox.bottom - bbox.top;
+        let width = bbox.width;
         if (height>=0 && setSvgHeight!==undefined) {
           setSvgHeight(height)
+          setSvgWidth(width)
         }
   
       }

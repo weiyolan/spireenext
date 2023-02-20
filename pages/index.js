@@ -10,6 +10,8 @@ import Title from '@/components/sections/Title'
 import Layout from '@/components/sections/Layout'
 import Footer from '@/components/sections/Footer'
 
+import ButtonBig from '@components/atoms/ButtonBig'
+
 import ScrollVisual from '@/components/scroll/ScrollVisual'
 import ScrollingDiv from '@/components/scroll/ScrollingDiv'
 import FadeDiv from '@/components/scroll/FadeDiv'
@@ -35,6 +37,7 @@ export default function Home({ }) {
   const { scrolled, width:screenWidth, height:screenHeight, screens } = useAppContext();
   // let svgRef = useRef(null)
   let [svgHeight, setSvgHeight] = useState(undefined)
+  let [svgWidth, setSvgWidth] = useState(undefined)
   let [titleHeight, setTitleHeight] = useState(undefined)
   let [svgViewHeight, setSvgViewHeight] = useState(undefined) //For calculation of FadeDiv
   let [scrollingDivHeight, setScrollingDivHeight] = useState(undefined)
@@ -55,7 +58,8 @@ export default function Home({ }) {
   let speed = 0
     // let footerHeight = screenWidth<768?300:250
     // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
-  let finishingScroll = 0.98
+    
+  let finishingScroll = 0.95 // Same as ending of animation
   useEffect(()=>{
     if (scrolled >= finishingScroll) {setFinished(true)}
     // if (scrolled >= 0.97 && !mobile) {setFinished(true)}
@@ -66,10 +70,10 @@ export default function Home({ }) {
   },[])
 
   useEffect(()=>{
-   console.log('footerHeight: ' + footerHeight)
-   console.log('titleHeight: ' + titleHeight)
-  //  console.log('svgHeight: ' + svgHeight)
-   console.log('scrollingDivHeight: ' + scrollingDivHeight)
+  //  console.log('footerHeight: ' + footerHeight)
+  //  console.log('titleHeight: ' + titleHeight)
+   console.log('svgWidth: ' + svgWidth)
+  //  console.log('scrollingDivHeight: ' + scrollingDivHeight)
 
   // console.log('================')
   // console.log('total: titleH + scrollingDivH + footerH: ' + (titleHeight+scrollingDivHeight+footerHeight) )
@@ -101,7 +105,7 @@ export default function Home({ }) {
 
   // let step1= {from:0.49, for:350}
   // let step2= {from: 0.74, for:450}
-  let heightToScroll = finished?scrollingDivHeight+titleHeight+footerHeight:screenWidth<768?10000:3000
+  let heightToScroll = finished?scrollingDivHeight+titleHeight+footerHeight:screenWidth<768?12000:3000
 
   return (
     <>
@@ -119,7 +123,7 @@ export default function Home({ }) {
         <PageWrapper 
         darkMode={true} 
         svgWidth={'w-11/12 md:w-4/5 xl:w-3/5'} 
-        viewBox={screens.md?"0 0 1468 2328":"0 0 701 5205"} 
+        viewBox={screens.md?"0 0 1468 2322":"0 0 701 5137"} 
         finished={finished} 
         mobile={mobile}
         setAnimationLocation={setAnimationLocation}
@@ -132,7 +136,7 @@ export default function Home({ }) {
           
           {/* <Layout> */}
           <Title style={{position: mobile?finished?'relative':'fixed':'fixed', left:'50%', top:0, transform:'translate(-50%, 0)'}} 
-          className={`${finished?`inline-flex flex-col justify-center items-center mx-auto ${mobile?'':'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full'}  w-fit px-10 z-10 transition-all duration-1000 `
+          className={`${finished?`inline-flex flex-col justify-center items-center mx-auto ${mobile?'':'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full shadow-sm '}  w-fit px-14 z-10 transition-all duration-1000 `
           :'w-full'}`} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto ' >
@@ -148,7 +152,7 @@ export default function Home({ }) {
                {/* ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[500px] ':' -translate-y-[100px] ' } */}
                
 
-                <Story1Astrid setSvgHeight={setSvgHeight} speed={1} scrollMin={0} scrollMax={0} />
+                <Story1Astrid setSvgHeight={setSvgHeight} setSvgWidth={setSvgWidth} speed={1} scrollMin={0} scrollMax={0} />
                 <Story2Pharma speed={1} scrollMin={0} scrollMax={0.10} />
                 <Story3Mountain speed={1} scrollMin={0.11} scrollMax={0.2} />
                 <Story4Flowers speed={1} scrollMin={0.215} scrollMax={0.35} />
@@ -165,9 +169,13 @@ export default function Home({ }) {
               </ScrollingDiv>
             </FadeDiv>
 
+            <ButtonBig tabIndex={finished?0:-1} className={`${finished?'visible':'invisible'}`} style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
+            left:'50%', transform:'translate(-50%,0)', top:(titleHeight+scrollingDivHeight-(svgHeight*(mobile?0.0209414:0.044709))+(mobile?3:2))+'px',
+            opacity:finished?1:0, transition: 'opacity 1.5s ease, background 0.5s ease, border 0.5s ease' }} text='join'/>
+
           </section>
 
-          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: finished?'absolute':'fixed', top: finished?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1s ease'} }/>
+          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: finished?'absolute':'fixed', top: finished?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease'} }/>
           {/* {console.log('footer position from top: '+ (heightToScroll-footerHeight-screenHeight))} */}
           {/* {console.log(heightToScroll)} */}
           {/* {console.log(footerHeight)} */}
