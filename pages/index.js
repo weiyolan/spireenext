@@ -1,7 +1,7 @@
 import React, { useEffect, useState , useRef} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Background from '@components/context/Background'
+import Background from '@/components/sections/Background'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
@@ -36,10 +36,15 @@ export default function Home({ }) {
   // let svgRef = useRef(null)
   let [svgHeight, setSvgHeight] = useState(undefined)
   let [titleHeight, setTitleHeight] = useState(undefined)
-  let [svgViewHeight, setSvgViewHeight] = useState(undefined)
+  let [svgViewHeight, setSvgViewHeight] = useState(undefined) //For calculation of FadeDiv
+  let [scrollingDivHeight, setScrollingDivHeight] = useState(undefined)
+  
   let [footerHeight, setFooterHeight] = useState(undefined)
   let [animationLocation, setAnimationLocation] = useState({top:undefined, bottom:undefined})
   let [textLocation, setTextLocation] = useState({top:undefined, bottom:undefined})
+
+  let [moveTracker,setMoveTracker] = useState(0) //Tracker to move background when animation moves
+  let [maxMoveTracker,setMaxMoveTracker] = useState(0) //Tracker to move background when animation moves
   // let [moved, setMoved] = useState(false)
 
   let [finished, setFinished] = useState(false)
@@ -50,9 +55,9 @@ export default function Home({ }) {
   let speed = 0
     // let footerHeight = screenWidth<768?300:250
     // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
-
+  let finishingScroll = 0.98
   useEffect(()=>{
-    if (scrolled >= 0.99) {setFinished(true)}
+    if (scrolled >= finishingScroll) {setFinished(true)}
     // if (scrolled >= 0.97 && !mobile) {setFinished(true)}
   },[scrolled])
 
@@ -61,8 +66,16 @@ export default function Home({ }) {
   },[])
 
   useEffect(()=>{
-   console.log(footerHeight)
-  },[footerHeight])
+   console.log('footerHeight: ' + footerHeight)
+   console.log('titleHeight: ' + titleHeight)
+  //  console.log('svgHeight: ' + svgHeight)
+   console.log('scrollingDivHeight: ' + scrollingDivHeight)
+
+  // console.log('================')
+  // console.log('total: titleH + scrollingDivH + footerH: ' + (titleHeight+scrollingDivHeight+footerHeight) )
+  // console.log('max scroll: total - screenHeight: ' + (titleHeight+scrollingDivHeight+footerHeight-screenHeight) )
+
+  },[footerHeight, titleHeight, scrollingDivHeight, svgHeight, screenHeight])
 
   // useEffect(()=>{
   //   console.log(animationLocation)
@@ -71,13 +84,13 @@ export default function Home({ }) {
 
   useEffect(()=>{
       // console.log('svgViewHeight '+svgViewHeight, 'svgHeight '+svgHeight, 'screenHeight ' + screenHeight )
-
+    
     if (screenHeight > 0 && titleHeight > 0) {
     setSvgViewHeight(screenHeight-titleHeight)
       // console.log(`h-[${screenHeight-titleHeight}]`)
     }
 
-  },[screenHeight, titleHeight, svgViewHeight])
+  },[screenHeight, titleHeight])
 
   // useEffect(()=>{console.log(svgViewHeight)},[svgViewHeight])
 
@@ -88,7 +101,7 @@ export default function Home({ }) {
 
   // let step1= {from:0.49, for:350}
   // let step2= {from: 0.74, for:450}
-  let heightToScroll = finished?`${svgHeight+titleHeight+(footerHeight||200)}px`:screenWidth<768?'10000px':'3000px'
+  let heightToScroll = finished?scrollingDivHeight+titleHeight+footerHeight:screenWidth<768?10000:3000
 
   return (
     <>
@@ -100,7 +113,7 @@ export default function Home({ }) {
       </Head>
 
 
-      <main style={{height: heightToScroll}} className={`w-full`}>
+      <main style={{height: heightToScroll+'px'}} className={`w-full`}>
       {/* {screenWidth<768 && <ScrollVisual scrolled={scrolled} />} */}
         {/* {console.log(screenWidth, !screens.md)} */}
         <PageWrapper 
@@ -115,20 +128,20 @@ export default function Home({ }) {
         // setMoved={setMoved}
         >
         {/* 1468 */}
-          <Background />
+          <Background moves={moveTracker} maxMoves={maxMoveTracker}/>
           
           {/* <Layout> */}
-          <Title style={{position:'fixed', left:'-50%', top:0, transform:'translate(50%,0)'}} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
+          <Title style={{position: mobile?finished?'relative':'fixed':'fixed', left:'50%', top:0, transform:'translate(-50%, 0)'}} 
+          className={`${finished?`inline-flex flex-col justify-center items-center mx-auto ${mobile?'':'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full'}  w-fit px-10 z-10 transition-all duration-1000 `
+          :'w-full'}`} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere, with confidence and style.'} />
           
-          <section className='flex w-4/5 mx-auto relative' >
+          <section className='flex w-4/5 mx-auto ' >
 
             {/* <FadeDiv style={{height: svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute overflow-scroll ':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?10:10} type={finished?`top`:''}> */}
-            <FadeDiv style={{height: finished?svgHeight+(footerHeight||0)+'px':svgViewHeight+'px', width: screenWidth+'px',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:mobile?2:10} type={finished?`top`:'both'}>
-            {/* finished?svgHeight+footerHeight+'px': */}
-
+            <FadeDiv style={{height: finished?scrollingDivHeight+'px':svgViewHeight+'px', width: screenWidth+'px', top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:mobile?2:10} type={finished?`top`:'both'}>
 
           {/* style={{height: svgHeight+'px'}} */}
-              <ScrollingDiv  animationLocation={animationLocation} textLocation={textLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
+              <ScrollingDiv setMoveTracker={setMoveTracker} setMaxMoveTracker={setMaxMoveTracker} setScrollingDivHeight={setScrollingDivHeight} finishingScroll={finishingScroll} animationLocation={animationLocation} textLocation={textLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
               className={`absolute w-full left-1/2 -translate-x-1/2 
               ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
               `} >
@@ -145,8 +158,8 @@ export default function Home({ }) {
                 <Story8Merino speed={1} scrollMin={0.65} scrollMax={0.70} />
                 <Story9Passion speed={1} scrollMin={0.73} scrollMax={0.76} />
                 <Story10RE speed={1} scrollMin={0.78} scrollMax={0.82} />
-                <Story11Women speed={1} scrollMin={0.84} scrollMax={0.86} />
-                <Story12Support speed={1} scrollMin={0.87} scrollMax={0.95} />
+                <Story11Women speed={1} scrollMin={0.83} scrollMax={0.86} />
+                <Story12Support speed={1} scrollMin={0.88} scrollMax={0.95} />
                 <StoryText/>
 
               </ScrollingDiv>
@@ -154,10 +167,11 @@ export default function Home({ }) {
 
           </section>
 
-          <section>
-{            !mobile && <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position:'absolute', top:finished?titleHeight+svgHeight+'px':heightToScroll-footerHeight+'px'} }/>
-}          </section>
-          
+          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: finished?'absolute':'fixed', top: finished?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1s ease'} }/>
+          {/* {console.log('footer position from top: '+ (heightToScroll-footerHeight-screenHeight))} */}
+          {/* {console.log(heightToScroll)} */}
+          {/* {console.log(footerHeight)} */}
+{/* titleHeight+svgHeight+'px' */}
           {/* </Layout> */}
         </PageWrapper>
       </main>

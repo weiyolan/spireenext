@@ -3,21 +3,21 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useAppContext } from '../context/appContext.js'
 import { usePageContext } from '../context/pageContext'
 
-export default function ScrollingDiv ({children, className, style, animationLocation, screenHeight, footerHeight, titleHeight, svgHeight}) {
+export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracker,setScrollingDivHeight, finishingScroll, className, style, animationLocation, screenHeight, footerHeight, titleHeight, svgHeight}) {
   const {scrolled} = useAppContext()
   let [moves , setMoves] = useState(0)
   let {mobile, finished} = usePageContext();
-  let [maxMoves,setMaxMoves] = useState(undefined)
+  let [maxMoves, setMaxMoves] = useState(undefined)
   let [offset,setOffset] = useState(0)
 
   // let [moved, setMoved] = useState(false)
-  let [visibleHeight, setVisibleHeight] = useState(undefined)
+  let [visibleHeight, setVisibleHeight] = useState(undefined) //only the svg that is not faded => from top of scrollingdiv (no margin) to bottom screen
   
   let scrollDivRef = useRef(null)
   let [dimensions, setDimensions] = useState({width: undefined, height: undefined , top: undefined, bottom: undefined})
-  let print = true;
+  let print = false;
 
-  const factor=mobile?0.30:0.40
+  const factor=mobile?0.35:0.3
   const moveHeight = visibleHeight*factor
   // let breakTime = mobile?500:500
 
@@ -36,21 +36,39 @@ export default function ScrollingDiv ({children, className, style, animationLoca
 
   useEffect(()=>{
     // print && console.log(dimensions?.height === undefined || )
-    if (dimensions?.height === undefined || dimensions.height <= 0) {
-      const { width, height, y} = scrollDivRef.current.getBoundingClientRect();
-      setDimensions({ width: width, height: height , top: y, bottom: y + height});
-      print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
+
+    function handleSize() {
+      if (svgHeight > 0) {
+        const { width, y} = scrollDivRef.current.getBoundingClientRect();
+        setDimensions({ width: width, height: svgHeight , top: y, bottom: y + svgHeight});
+        print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ svgHeight+ ', top: '+y+', bottom: '+(y + svgHeight) )
+      }
     }
-  },[children])
+
+    window.addEventListener('resize', handleSize)
+
+    handleSize()
+
+    return window.removeEventListener('resize',handleSize)
+
+
+  },[titleHeight, svgHeight])
 
   useEffect(()=>{
-    let myVisibleHeight = screenHeight-titleHeight-dimensions.top
+    // let myVisibleHeight = screenHeight-titleHeight-dimensions.top
+    let myVisibleHeight = screenHeight-dimensions.top
     if (myVisibleHeight>0) {
       setVisibleHeight(myVisibleHeight)
-      // console.log(myVisibleHeight)
-      print && console.log('visibleHeight setted: ' + myVisibleHeight)
+      // print && console.log('visibleHeight setted: ' + myVisibleHeight)
     }
-  },[dimensions, screenHeight])
+
+
+    if (setScrollingDivHeight !== undefined) {
+      setScrollingDivHeight(dimensions.height + dimensions.top - titleHeight)
+      // print && console.log(dimensions.height, dimensions.top, titleHeight )
+    }
+
+  },[dimensions, screenHeight, titleHeight])
 
   useEffect(()=>{
       // console.log('svgHeight to scroll ' + (svgHeight-visibleHeight)+ '\nmove Height ' + (visibleHeight*factor))
@@ -58,7 +76,9 @@ export default function ScrollingDiv ({children, className, style, animationLoca
       
       // console.log((svgHeight-visibleHeight)/(visibleHeight*factor))
       // console.log(Math.floor((svgHeight-visibleHeight)/(visibleHeight*factor)))
-      setMaxMoves(Math.ceil((svgHeight-visibleHeight)/moveHeight))
+      let max = Math.ceil((svgHeight-visibleHeight)/moveHeight);
+      setMaxMoves(max)
+      setMaxMoveTracker(max)
       // print && console.log('maxMoves setted')
 
   },[visibleHeight, svgHeight])
@@ -69,7 +89,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
     // if (animationLocation?.bottom) {
       let visibleTop = moves* moveHeight 
       let visibleBottom = moves*moveHeight + visibleHeight
-      print && console.log('visibleTop: ' + visibleTop + ', visibleBottom: ' + visibleBottom)
+      // print && console.log('visibleTop: ' + visibleTop + ', visibleBottom: ' + visibleBottom)
 
       // // let newVisibleB = newMoves*moveHeight
       // // let newVisibleT = newVisibleB + visibleHeight
@@ -80,9 +100,11 @@ export default function ScrollingDiv ({children, className, style, animationLoca
         // print && console.log()
         let newMoves = Math.max(Math.ceil((animationLocation.bottom - visibleHeight)/moveHeight),0) 
         print && console.log('newMoves: ' + newMoves + ', oldMoves: ' + moves + (newMoves !== moves?' => updated':' => NOT updated') )
+        print && console.log('maxMoves: ' + maxMoves )
 
         if ((newMoves) !== moves) {
           setMoves(newMoves||0)
+          setMoveTracker(newMoves||0)
       }
       // } else if (animationLocation.top < visibleTop) {
       //   newMoves = Math.max(Math.ceil((animationLocation.top - visibleHeight)/moveHeight),0)
@@ -91,12 +113,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
       // CHECK WHEN MOVED if animation top is in the visible zone, and if not correct for the diff which can be calculated.
 
         // setOffset(newOffset)
-
-
     }
-
-
-
     }
 
 
@@ -125,16 +142,25 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   // }
   // transition: `${(scrolled>step1.from && scrolled <step1.to) || (scrolled > step2.from && scrolled < step2.to)?'all 1s ease':'none'
   
-  // let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:(moves*visibleHeight*factor - offset)
-  let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:(moves*visibleHeight*factor)
+  // let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)+(footerHeight/2)):(moves*moveHeight)
+  let Y =  finished?0:moves>=maxMoves?(titleHeight + (dimensions.height + dimensions.top - titleHeight)  + footerHeight - screenHeight):(moves*moveHeight)
+
   // let Y =  0  
   return (
     
     // transition:scrolled===step1.at || scrolled===step2.at || scrolled===step3.at?'all ease 0.8s':'none'
     // style={{ transform: `translate(-50%, ${-Y}px)`, transition: 'all 1s ease'}}>
     // transform:`translate(-50%,-${moves<totalMoves?moves*visibleHeight*factor:svgHeight-visibleHeight}px)`
-      <div id={`${svgHeight}`} ref={scrollDivRef} style={{...style, height: `${svgHeight}px`, transition: `${finished?'none':'all 0.7s ease'}` , transform: `translate(-50%,-${Y}px)`}} className={className} >
-          {/* {console.log({...style, transform: `translate(-50%,-${moves>maxMoves?svgHeight-visibleHeight:moves*visibleHeight*factor }px)`})} */}
+      <div id={`${svgHeight}`} ref={scrollDivRef} style={{...style, height: `${svgHeight}px`, transition: `${finished?'none':'all 1s ease'}` , transform: `translate(-50%,-${Y}px)`}} className={className} >
+          
+          {/* {console.log('Y: ' + (Y))}
+          {console.log('MaxMove: ' + (titleHeight + (dimensions.height + dimensions.top - titleHeight)  + footerHeight-screenHeight))}
+          {console.log('scrollingDivHeight: ' + (dimensions.height + dimensions.top - titleHeight))}
+          {console.log('titleHeight: ' + (titleHeight))}
+          {console.log('footerHeight: ' + (footerHeight))}
+          {console.log('svgHeight: ' + (svgHeight))}
+          {console.log('screenHeight: ' + (screenHeight))} */}
+
           {/* {console.log({ transform: `translate(-50%, ${-Y}px)`, transition: `${(scrolled>step1.from && scrolled <step1.to) || (scrolled > step2.from && scrolled < step2.to)?'all 1s ease':'none'}`}.transition)} */}
           {children}
 

@@ -50,11 +50,19 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     },[print,allLengths,allOffsetLengths, children])
 
     useEffect(()=>{
-      let bbox = svgRef.current.getBoundingClientRect()
-      let height = bbox.bottom - bbox.top;
-      if (height>=0 && setSvgHeight!==undefined) {
-        setSvgHeight(height)
+
+      function handleSize(){
+        let bbox = svgRef.current.getBoundingClientRect()
+        let height = bbox.bottom - bbox.top;
+        if (height>=0 && setSvgHeight!==undefined) {
+          setSvgHeight(height)
+        }
+  
       }
+
+      window.addEventListener('resize',handleSize)
+      handleSize()
+      return window.removeEventListener('resize',handleSize)
     },[svgWidth, viewBox, children, setSvgHeight])
 
     // useEffect(()=>{

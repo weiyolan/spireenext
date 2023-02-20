@@ -47,41 +47,50 @@ fr: [
 export default function Footer({style, noMotion, setFooterHeight}) {
   let {width, mobile, scrolled, locale} = useAppContext();
   let breakPointSmall = 640;
+
   let footerRef = useRef(null)
-  let {width:myWidth, height:myHeight} = useDimensions(footerRef)
+
+  let [dimensions,setDimensions] = useState({width:undefined, height:undefined})
 
   useEffect(()=>{
-    if (myHeight > 0 && setFooterHeight !== undefined) {
-      setFooterHeight(myHeight)
-    }
-  },[ myHeight])
-  // let [style,setStyle] = useState({transform: 'translateY(100%) ', opacity:0 })
-  // let [appeared,setAppeared] = useState(false)
 
-  // useEffect(()=>{console.log(breakPointSmall)})
+    function handleSize() {
+      const { width, y} = footerRef.current.getBoundingClientRect();
+      const height = footerRef.current.offsetHeight;
+      let styles = window.getComputedStyle(footerRef.current);
+      let margin = parseFloat(styles['marginTop']) +
+                   parseFloat(styles['marginBottom']);
+      if (height > 0) {
 
-  // useEffect(()=>{
-  
-  //   if (!appeared && scrolled>0.85) {
-  //     setStyle({transform: 'translateY(0) ', opacity:1})
-  //     setAppeared(true)
-  //   } else if (appeared && scrolled<0.85) {
-  //     setStyle({transform: 'translateY(100%) ', opacity:0})
-  //     setAppeared(false)
-  //   }
-
-
-  // },[appeared, scrolled]) 
-
-  return (
-    <motion.section 
-      initial={{y: `${noMotion?0:width<breakPointSmall?100:200}` }} 
-      whileInView={{y: 0, transition: {type:'spring', stiffness: 200, damping:25}}} 
-      viewport={{once : true}}
-      style={style}
-      className={`${style!==undefined && 'relative'} backdrop-blur bg-black/20  mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-16 lg:pb-2 bottom-0  w-full`}>
       
-      <div ref={footerRef} className='flex flex-wrap sm:flex-nowrap justify-between max-w-4xl mx-auto items-start sm:items-center '>
+        // Math.ceil(height + margin);
+  
+        setDimensions({ width: width, height: Math.ceil(height + margin) , normalHeight:height, top: y, bottom: y + height});
+        // print && console.log('dimensions setted: ' + 'width: ' + width+' , height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
+      }
+    }
+
+    window.addEventListener("resize", handleSize);
+
+    handleSize()
+
+    return () => window.removeEventListener("resize", handleSize);
+    // print && console.log(dimensions?.height === undefined || )
+
+  },[])
+
+
+
+  useEffect(()=>{
+    if (dimensions.height > 0 && setFooterHeight !== undefined) {
+      setFooterHeight(dimensions.height)
+    }
+  },[dimensions])
+
+  function getContent () {
+    return (
+      <>
+            <div  className='flex flex-wrap sm:flex-nowrap justify-between max-w-4xl mx-auto items-start sm:items-center '>
         
         {/* {width<breakPointSmall && <div className="mb-4 w-full sm:w-fit">
           <div className='mx-auto w-fit'><Link href='/'><YWD className='w-8 sm:w-14' alt='ywdesign logo in white'/></Link></div>
@@ -108,6 +117,51 @@ export default function Footer({style, noMotion, setFooterHeight}) {
         {financialInfo[locale].map((val,i)=>{return (<li role='presentation' className={`${i===0?'':'pl-1'}`} key={val}>{`${i===0?'':'∘ '}${val}`}</li>)})}
         </ul>
       </div>
+
+</>
+
+    )
+  }
+
+  // let [style,setStyle] = useState({transform: 'translateY(100%) ', opacity:0 })
+  // let [appeared,setAppeared] = useState(false)
+
+  // useEffect(()=>{console.log(breakPointSmall)})
+
+  // useEffect(()=>{
+  
+  //   if (!appeared && scrolled>0.85) {
+  //     setStyle({transform: 'translateY(0) ', opacity:1})
+  //     setAppeared(true)
+  //   } else if (appeared && scrolled<0.85) {
+  //     setStyle({transform: 'translateY(100%) ', opacity:0})
+  //     setAppeared(false)
+  //   }
+
+
+  // },[appeared, scrolled]) 
+
+  if (noMotion) {
+    return (
+    <section 
+    ref={footerRef}
+    style={{...style}} 
+    className={`${style.position===undefined?'relative':''} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-16 lg:pb-2 w-full`}>
+      {getContent()}
+      {/* {console.log('NOmotion')} */}
+
+    </section>)
+  }
+
+  return (
+    <motion.section ref={footerRef}
+      initial={{y: `${noMotion?0:width<breakPointSmall?100:200}` }} 
+      whileInView={{y: 0, transition: {type:'spring', stiffness: 200, damping:25}}} 
+      viewport={{once : true}}
+      
+      className={`${style.position===undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-16 lg:pb-2 bottom-0 w-full`}>
+        {/* {console.log('motion')} */}
+        {getContent()}
 
     </motion.section>
   )
