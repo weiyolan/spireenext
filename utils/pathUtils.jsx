@@ -337,33 +337,51 @@ export function AnimateIn({children, scrolled, at}) {
 
 export function TextAnimate(props) {
 // let {scrolled} = useAppContext();
-const {finished} = usePageContext();
+  let {scrollMin, scrollMax, handleNewPosition} = useSVGContext();
+  const {finished} = usePageContext();
+
+  const animationRef = useRef();
+let [located, setLocated] = useState(false);
 
 let fakeScrolled = finished?1:props.scrolled;
 let realScrolled = useAppContext().scrolled;
 let scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
-  function handleTextProps (props) {
-    let newProps = {...props}
-    newProps.fontFamily = newProps['font-family']
-    newProps.fontSize = newProps['font-size']
-    newProps.letterSpacing = newProps['letter-spacing']
-    newProps.fontWeight = newProps['font-weight']
-    // delete newProps['xml:space']
-    delete newProps['font-family']
-    delete newProps['font-size']
-    delete newProps['letter-spacing']
-    delete newProps['font-weight']
-    delete newProps.children
-    delete newProps.at
-    delete newProps.print
-    delete newProps.fromTop
-    delete newProps.transform
-    // newProps.fill = '#171B4D'
-    newProps.fill='white'
-    // console.log(newProps)
-    return newProps
+let scrollMaxCompensation = 0.05
+
+useEffect(()=>{
+  if (scrolled>props.at && scrolled < (props.at+scrollMaxCompensation) && !located) {
+    const {top, bottom} = animationRef.current.getBoundingClientRect();
+    // const {top: svgStart} = svgRef.current.getBoundingClientRect();
+    setLocated(true)
+    handleNewPosition({top: top, bottom: bottom}) 
+    // SVG offset is added in parent component
+  } else if ((scrolled<props.at || scrolled > props.at+scrollMaxCompensation) && located) {
+    setLocated(false)
   }
+},[realScrolled, setLocated])
+
+function handleTextProps (props) {
+  let newProps = {...props}
+  newProps.fontFamily = newProps['font-family']
+  newProps.fontSize = newProps['font-size']
+  newProps.letterSpacing = newProps['letter-spacing']
+  newProps.fontWeight = newProps['font-weight']
+  // delete newProps['xml:space']
+  delete newProps['font-family']
+  delete newProps['font-size']
+  delete newProps['letter-spacing']
+  delete newProps['font-weight']
+  delete newProps.children
+  delete newProps.at
+  delete newProps.print
+  delete newProps.fromTop
+  delete newProps.transform
+  // newProps.fill = '#171B4D'
+  newProps.fill='white'
+  // console.log(newProps)
+  return newProps
+}
 
   // translate(185 181)
 
@@ -390,7 +408,7 @@ let scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
   }
 
   return (
-    <text {...handleTextProps(props)} 
+    <text ref={animationRef} {...handleTextProps(props)} 
     style={{
       opacity:(scrolled>props.at?1:0),
       transform: scrolled>props.at?handleTransform(0):handleTransform(props.fromTop?-25:0), 

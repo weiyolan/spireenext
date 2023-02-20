@@ -7,17 +7,17 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   const {scrolled} = useAppContext()
   let [moves , setMoves] = useState(0)
   let {mobile, finished} = usePageContext();
+  let [maxMoves,setMaxMoves] = useState(undefined)
+  let [offset,setOffset] = useState(0)
 
   // let [moved, setMoved] = useState(false)
-  
-  let [maxMoves,setMaxMoves] = useState(undefined)
   let [visibleHeight, setVisibleHeight] = useState(undefined)
   
   let scrollDivRef = useRef(null)
   let [dimensions, setDimensions] = useState({width: undefined, height: undefined , top: undefined, bottom: undefined})
-  let print = false;
+  let print = true;
 
-  const factor=mobile?0.40:0.30
+  const factor=mobile?0.30:0.40
   const moveHeight = visibleHeight*factor
   // let breakTime = mobile?500:500
 
@@ -39,7 +39,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
     if (dimensions?.height === undefined || dimensions.height <= 0) {
       const { width, height, y} = scrollDivRef.current.getBoundingClientRect();
       setDimensions({ width: width, height: height , top: y, bottom: y + height});
-      print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ height+ ', top: '+y+', bottom: '+y + height )
+      print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
     }
   },[children])
 
@@ -48,7 +48,7 @@ export default function ScrollingDiv ({children, className, style, animationLoca
     if (myVisibleHeight>0) {
       setVisibleHeight(myVisibleHeight)
       // console.log(myVisibleHeight)
-      // print && console.log('visibleHeight setted')
+      print && console.log('visibleHeight setted: ' + myVisibleHeight)
     }
   },[dimensions, screenHeight])
 
@@ -64,14 +64,37 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   },[visibleHeight, svgHeight])
 
   useEffect(()=>{
-
-    if (animationLocation?.bottom) {
     
-      let newMoves = Math.max(Math.ceil((animationLocation.bottom - visibleHeight)/moveHeight),0)
-      if (newMoves !== moves) {
-        setMoves(newMoves)
+      if (animationLocation?.bottom) {
+    // if (animationLocation?.bottom) {
+      let visibleTop = moves* moveHeight 
+      let visibleBottom = moves*moveHeight + visibleHeight
+      print && console.log('visibleTop: ' + visibleTop + ', visibleBottom: ' + visibleBottom)
+
+      // // let newVisibleB = newMoves*moveHeight
+      // // let newVisibleT = newVisibleB + visibleHeight
+      // // let newOffset = animationLocation.top > newVisibleT?0:(newVisibleT-animationLocation.top) // in case top of animation is out of screen.
+
+      if (animationLocation.bottom > visibleBottom || animationLocation.top < visibleTop) {
+      // // let newMovesT = Math.max(Math.ceil((animationLocation.top - visibleHeight)/moveHeight),0)
+        // print && console.log()
+        let newMoves = Math.max(Math.ceil((animationLocation.bottom - visibleHeight)/moveHeight),0) 
+        print && console.log('newMoves: ' + newMoves + ', oldMoves: ' + moves + (newMoves !== moves?' => updated':' => NOT updated') )
+
+        if ((newMoves) !== moves) {
+          setMoves(newMoves||0)
       }
-      print && console.log('newMoves: ' + newMoves + ', oldMoves: ' + moves + (newMoves !== moves?' => updated':' => NOT updated') )
+      // } else if (animationLocation.top < visibleTop) {
+      //   newMoves = Math.max(Math.ceil((animationLocation.top - visibleHeight)/moveHeight),0)
+      // }
+
+      // CHECK WHEN MOVED if animation top is in the visible zone, and if not correct for the diff which can be calculated.
+
+        // setOffset(newOffset)
+
+
+    }
+
 
 
     }
@@ -102,8 +125,8 @@ export default function ScrollingDiv ({children, className, style, animationLoca
   // }
   // transition: `${(scrolled>step1.from && scrolled <step1.to) || (scrolled > step2.from && scrolled < step2.to)?'all 1s ease':'none'
   
-  // let Y =  finished?((svgHeight-visibleHeight)+footerHeight)*scrolled:moves>=maxMoves?((svgHeight-visibleHeight)+footerHeight)*0.97:moves*visibleHeight*factor
-  let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:moves*visibleHeight*factor
+  // let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:(moves*visibleHeight*factor - offset)
+  let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)*0.97)*1:(moves*visibleHeight*factor)
   // let Y =  0  
   return (
     

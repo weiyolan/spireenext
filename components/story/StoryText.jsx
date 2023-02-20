@@ -1,56 +1,21 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { useAppContext } from "@components/context/appContext.js"
 import { Path, TextAnimate } from '@utils/pathUtils'
 import { SVGWrapper } from "./contextSVG"
 import { usePageContext } from "../context/pageContext"
 
 export default function StoryText({ scrollMin, scrollMax, speed }) {
-  let [allLengths, setAllLengths] = useState([])
-  let [allOffsetLengths, setAllOffsetLengths] = useState([])
-  let [allRatios, setAllRatios] = useState([0])
-  let [allPrevRatios, setAllPrevRatios] = useState([0])
+
   let { scrolled, locale, screens, width} = useAppContext();
-    let {svgWidth,viewBox,mobile} = usePageContext()
+    let {svgWidth, viewBox, mobile, setTextLocation,setAnimationLocation} = usePageContext()
   let [fakeScroll1, setFakeScroll1] = useState(0)
+
+  let svgRef = useRef(null)
   // // let [fillStyle1,setFillStyle1] = useState(false)
   // // let [strokeColor1, setStrokeColor1] = useState('#fff')
   // let [fakeScroll2,setFakeScroll2] = useState(0)
   // let [fillStyle2,setFillStyle2] = useState(false)
   // let [strokeColor2, setStrokeColor2] = useState('#fff')
-
-  function handleLength(f, newLength, position) {
-    setAllLengths(prevLengths => {
-      let copyLengths = [...prevLengths];
-      copyLengths[position] = newLength * f;
-      return copyLengths
-    })
-    setAllOffsetLengths(prevOffsets => {
-      let copyOffsetLengths = [...prevOffsets];
-      copyOffsetLengths[position] = newLength * f;
-      return copyOffsetLengths
-    })
-  }
-
-  // useEffect(() => {
-  //   console.log(allLengths)
-  //   console.log(allRatios)
-  // }, [allLengths, allRatios])
-
-  useEffect(() => {
-    if (allLengths.length > 0) {
-      let totOffsetLength = allOffsetLengths.reduce((x, y) => x + y);
-      let allRatios = allLengths.map(itemLength => itemLength / totOffsetLength);
-      let newPrevRatios = allLengths.map((itemLength, index) => {
-        let prevOffsetLength = allOffsetLengths.reduce((acc, y, i) => {
-          return (i < index ? acc + y : acc)
-        }, 0);
-        return prevOffsetLength / totOffsetLength
-      })
-
-      setAllRatios(allRatios)
-      setAllPrevRatios(newPrevRatios)
-    }
-  }, [allLengths, allOffsetLengths])
 
   useEffect(()=>{
     let timer = setTimeout(()=>{setFakeScroll1(1)},500)
@@ -64,12 +29,30 @@ export default function StoryText({ scrollMin, scrollMax, speed }) {
     }
   },[])
 
-  let fontSize=screens.md?20:24
+  function handleNewPosition ({top, bottom}) {
+    // if (scrolled>scrollMin && scrolled < scrollMax && !located) {
+      // const {top, bottom} = animationRef.current.getBoundingClientRect();
+      const {top: svgStart} = svgRef.current.getBoundingClientRect();
+      // setTextLocation({top: top-svgStart, bottom: bottom-svgStart})
+      setAnimationLocation({top: top-svgStart, bottom: bottom-svgStart})
+  }
+  // useEffect(()=>{
+  //   if (scrolled>scrollMin && scrolled < scrollMax && !located) {
+  //     const {top, bottom} = animationRef.current.getBoundingClientRect();
+  //     const {top: svgStart} = svgRef.current.getBoundingClientRect();
+  //     setLocated(true)
+  //     setAnimationLocation({top: top-svgStart, bottom: bottom-svgStart})
+  //   } else if ((scrolled<scrollMin || scrolled > scrollMax) && located) {
+  //     setLocated(false)
+  //   }
+  // },[scrolled, scrollMin, scrollMax, setLocated])
+
+  let fontSize=mobile?25:20
 
   return (
-    <SVGWrapper myRatio={allRatios} prevRatio={allPrevRatios} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
+    <SVGWrapper handleNewPosition={handleNewPosition} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
 
-      <svg alt='Story text explaining the founding story, as well as mission and vision of Spirée' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg ref={svgRef} alt='Story text explaining the founding story, as well as mission and vision of Spirée' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
           className={`absolute ${svgWidth} left-1/2`}>
       {!mobile?<g id='desktop'>
         <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="85.6895" y="56">Meet Astrid, a driven and sport-</tspan><tspan x="65.6211" y="81">loving women who&#x2019;s on a mission to </tspan><tspan x="96.8711" y="106">revolutionize the way women </tspan><tspan x="141.295" y="131">experience running.</tspan></TextAnimate>
@@ -86,19 +69,19 @@ export default function StoryText({ scrollMin, scrollMax, speed }) {
         <TextAnimate at={0.87} fromTop={true} id="JoinText1" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="276.488" y="1839">So why not join Astrid and Spir&#xe9;e </tspan><tspan x="293.715" y="1864">on this exciting journey? Your </tspan><tspan x="289.184" y="1889">support will help bring the Sun </tspan><tspan x="291.645" y="1914">and Moon series to life, giving </tspan><tspan x="290.697" y="1939">women the tools they need to </tspan><tspan x="296.713" y="1964">push themselves further and </tspan><tspan x="337.992" y="1989">chase their dreams. </tspan></TextAnimate>
         <TextAnimate at={0.94} fromTop={true}  id="Support" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="809.889" y="2101">Join Spir&#xe9;e&#x2019;s movement now to be </tspan><tspan x="825.66" y="2126">part of something truly special. </tspan><tspan x="809.723" y="2151">Together, let&#39;s empower women to </tspan><tspan x="882.857" y="2176">reach new heights.</tspan></TextAnimate>
         </g>:<g id='mobile'>
-        <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="168.527" y="54.875">Meet Astrid, a driven and sport-</tspan><tspan x="143.441" y="85.875">loving women who&#x2019;s on a mission to </tspan><tspan x="182.504" y="116.875">revolutionize the way women </tspan><tspan x="238.034" y="147.875">experience running.</tspan></TextAnimate>
-        <TextAnimate at={0.04} fromTop={true} id="Doctor in Pharmacy" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="370.525" y="332.875">As a recent graduate with </tspan><tspan x="372.906" y="363.875">a doctorate in pharmacy, </tspan><tspan x="418.572" y="394.875">Astrid has a deep </tspan><tspan x="398.223" y="425.875">understanding of the </tspan><tspan x="368.414" y="456.875">body and its needs during </tspan><tspan x="425.164" y="487.875">physical activity.</tspan></TextAnimate>
-        <TextAnimate at={0.175} fromTop={true} id="Mountains" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="390.025" y="968.875">One day, while on a run in </tspan><tspan x="417.71" y="999.875">the mountains, Astrid </tspan><tspan x="387.913" y="1030.88">stumbled upon a beautiful </tspan><tspan x="390.843" y="1061.88">and delicate flower called </tspan><tspan x="501.304" y="1092.88">Spir&#xe9;e.</tspan></TextAnimate>
-        <TextAnimate at={0.36} fromTop={true} id="Willpower" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="48.0791" y="1613.88">As she learned more </tspan><tspan x="45.6377" y="1644.88">about the flower, she </tspan><tspan x="24.4341" y="1675.88">discovered that its name </tspan><tspan x="34.7856" y="1706.88">means &#34;willpower&#34; and </tspan><tspan x="89.3145" y="1737.88">&#34;persistence.&#34; </tspan></TextAnimate>
-        <TextAnimate at={0.42} fromTop={true} id="Inspiration" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="379.856" y="1891.88"> She realized that these </tspan><tspan x="380.284" y="1922.88">traits reflected her own </tspan><tspan x="349.266" y="1953.88">mentality during challenging </tspan><tspan x="373.35" y="1984.88">runs and that they could </tspan><tspan x="392.088" y="2015.88">inspire others as well. </tspan></TextAnimate>
-        <TextAnimate at={0.53} fromTop={true} id="SpireeText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="287.317" y="2224.88">This led her to create Spir&#xe9;e, a </tspan><tspan x="263.086" y="2255.88">start-up dedicated to creating  the </tspan><tspan x="280.579" y="2286.88">ultimate sportswear for women </tspan><tspan x="304.163" y="2317.88">made of 100% Merino wool.</tspan></TextAnimate>
-        <TextAnimate at={0.61} fromTop={true} id="SunText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="164.798" y="2620.88">Spir&#xe9;e&#39;s first </tspan><tspan x="141.165" y="2651.88">clothing line, the </tspan><tspan x="151.26" y="2682.88">Sun and Moon </tspan><tspan x="139.2" y="2713.88">series, leverages </tspan><tspan x="129.556" y="2744.88">the many benefits </tspan><tspan x="146.158" y="2775.88">of Merino wool,</tspan></TextAnimate>
-        <TextAnimate at={0.62} fromTop={true} id="MoonText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="415.14" y="2775.88">... to provide </tspan><tspan x="403.531" y="2806.88">women with a </tspan><tspan x="387.162" y="2837.88">comfortable and </tspan><tspan x="385.428" y="2868.88">effective solution </tspan><tspan x="392.752" y="2899.88">for their athletic </tspan><tspan x="436.246" y="2930.88">pursuits.</tspan></TextAnimate>
-        <TextAnimate at={0.69} fromTop={true} id="MerinoText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="107.541" y="3125.88">The natural softness, </tspan><tspan x="65.3657" y="3156.88">temperature regulation, and </tspan><tspan x="96.103" y="3187.88">anti-odor properties of </tspan><tspan x="67.4409" y="3218.88">Merino wool will ensure that </tspan><tspan x="62.0942" y="3249.88">women stay comfortable, no </tspan><tspan x="78.5737" y="3280.88">matter the weather or the </tspan><tspan x="82.248" y="3311.88">intensity of their workout. </tspan></TextAnimate>
-        <TextAnimate at={0.75} fromTop={true} id="PassionText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="241.918" y="3474.88">Astrid&#39;s passion for </tspan><tspan x="258.715" y="3505.88">running and her </tspan><tspan x="262.206" y="3536.88">commitment to </tspan><tspan x="254.32" y="3567.88">creating a brand </tspan><tspan x="263.695" y="3598.88">that empowers </tspan><tspan x="257.006" y="3629.88">women to reach </tspan><tspan x="237.975" y="3660.88">their full potential is </tspan><tspan x="250.402" y="3691.88">reflected in every </tspan><tspan x="255.126" y="3722.88">aspect of Spir&#xe9;e.</tspan></TextAnimate>
-        <TextAnimate at={0.82} fromTop={true} id="REText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="277.863" y="3991.88">From the playful and vibrant </tspan><tspan x="289.96" y="4022.88">designs to the precise cuts </tspan><tspan x="272.871" y="4053.88">and attention to detail, Spir&#xe9;e </tspan><tspan x="270.197" y="4084.88">is more than just sportswear - </tspan><tspan x="348.701" y="4115.88">it&#39;s a movement.</tspan></TextAnimate>
-        <TextAnimate at={0.87} fromTop={true} id="JoinText1" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="69.3408" y="4383.88">So why not join Astrid and </tspan><tspan x="41.521" y="4414.88">Spir&#xe9;e on this exciting journey? </tspan><tspan x="41.2769" y="4445.88">Your support will help bring the </tspan><tspan x="62.3584" y="4476.88">Sun and Moon series to life, </tspan><tspan x="57.0361" y="4507.88">giving women the tools they </tspan><tspan x="76.6406" y="4538.88">need to push themselves </tspan><tspan x="87.7368" y="4569.88">further and chase their </tspan><tspan x="173.674" y="4600.88">dreams. </tspan></TextAnimate>
-        <TextAnimate at={0.94} fromTop={true} id="JoinText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size="25" letter-spacing="0em"><tspan x="26.6772" y="4836.88">Join Spir&#xe9;e&#x2019;s movement now to </tspan><tspan x="56.0474" y="4867.88">be part of something truly </tspan><tspan x="23.8086" y="4898.88">special. Together, let&#39;s empower </tspan><tspan x="38.6279" y="4929.88">women to reach new heights.</tspan></TextAnimate>
+        <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="168.527" y="54.875">Meet Astrid, a driven and sport-</tspan><tspan x="143.441" y="85.875">loving women who&#x2019;s on a mission to </tspan><tspan x="182.504" y="116.875">revolutionize the way women </tspan><tspan x="238.034" y="147.875">experience running.</tspan></TextAnimate>
+        <TextAnimate at={0.04} fromTop={true} id="Doctor in Pharmacy" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="370.525" y="332.875">As a recent graduate with </tspan><tspan x="372.906" y="363.875">a doctorate in pharmacy, </tspan><tspan x="418.572" y="394.875">Astrid has a deep </tspan><tspan x="398.223" y="425.875">understanding of the </tspan><tspan x="368.414" y="456.875">body and its needs during </tspan><tspan x="425.164" y="487.875">physical activity.</tspan></TextAnimate>
+        <TextAnimate at={0.17} fromTop={true} id="Mountains" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="390.025" y="968.875">One day, while on a run in </tspan><tspan x="417.71" y="999.875">the mountains, Astrid </tspan><tspan x="387.913" y="1030.88">stumbled upon a beautiful </tspan><tspan x="390.843" y="1061.88">and delicate flower called </tspan><tspan x="501.304" y="1092.88">Spir&#xe9;e.</tspan></TextAnimate>
+        <TextAnimate at={0.35} fromTop={true} id="Willpower" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="48.0791" y="1613.88">As she learned more </tspan><tspan x="45.6377" y="1644.88">about the flower, she </tspan><tspan x="24.4341" y="1675.88">discovered that its name </tspan><tspan x="34.7856" y="1706.88">means &#34;willpower&#34; and </tspan><tspan x="89.3145" y="1737.88">&#34;persistence.&#34; </tspan></TextAnimate>
+        <TextAnimate at={0.41} fromTop={true} id="Inspiration" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="379.856" y="1891.88"> She realized that these </tspan><tspan x="380.284" y="1922.88">traits reflected her own </tspan><tspan x="349.266" y="1953.88">mentality during challenging </tspan><tspan x="373.35" y="1984.88">runs and that they could </tspan><tspan x="392.088" y="2015.88">inspire others as well. </tspan></TextAnimate>
+        <TextAnimate at={0.52} fromTop={true} id="SpireeText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="287.317" y="2224.88">This led her to create Spir&#xe9;e, a </tspan><tspan x="263.086" y="2255.88">start-up dedicated to creating  the </tspan><tspan x="280.579" y="2286.88">ultimate sportswear for women </tspan><tspan x="304.163" y="2317.88">made of 100% Merino wool.</tspan></TextAnimate>
+        <TextAnimate at={0.60} fromTop={true} id="SunText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="164.798" y="2620.88">Spir&#xe9;e&#39;s first </tspan><tspan x="141.165" y="2651.88">clothing line, the </tspan><tspan x="151.26" y="2682.88">Sun and Moon </tspan><tspan x="139.2" y="2713.88">series, leverages </tspan><tspan x="129.556" y="2744.88">the many benefits </tspan><tspan x="146.158" y="2775.88">of Merino wool,</tspan></TextAnimate>
+        <TextAnimate at={0.61} fromTop={true} id="MoonText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="415.14" y="2775.88">... to provide </tspan><tspan x="403.531" y="2806.88">women with a </tspan><tspan x="387.162" y="2837.88">comfortable and </tspan><tspan x="385.428" y="2868.88">effective solution </tspan><tspan x="392.752" y="2899.88">for their athletic </tspan><tspan x="436.246" y="2930.88">pursuits.</tspan></TextAnimate>
+        <TextAnimate at={0.67} fromTop={true} id="MerinoText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="107.541" y="3125.88">The natural softness, </tspan><tspan x="65.3657" y="3156.88">temperature regulation, and </tspan><tspan x="96.103" y="3187.88">anti-odor properties of </tspan><tspan x="67.4409" y="3218.88">Merino wool will ensure that </tspan><tspan x="62.0942" y="3249.88">women stay comfortable, no </tspan><tspan x="78.5737" y="3280.88">matter the weather or the </tspan><tspan x="82.248" y="3311.88">intensity of their workout. </tspan></TextAnimate>
+        <TextAnimate at={0.74} fromTop={true} id="PassionText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="241.918" y="3474.88">Astrid&#39;s passion for </tspan><tspan x="258.715" y="3505.88">running and her </tspan><tspan x="262.206" y="3536.88">commitment to </tspan><tspan x="254.32" y="3567.88">creating a brand </tspan><tspan x="263.695" y="3598.88">that empowers </tspan><tspan x="257.006" y="3629.88">women to reach </tspan><tspan x="237.975" y="3660.88">their full potential is </tspan><tspan x="250.402" y="3691.88">reflected in every </tspan><tspan x="255.126" y="3722.88">aspect of Spir&#xe9;e.</tspan></TextAnimate>
+        <TextAnimate at={0.81} fromTop={true} id="REText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="277.863" y="3991.88">From the playful and vibrant </tspan><tspan x="289.96" y="4022.88">designs to the precise cuts </tspan><tspan x="272.871" y="4053.88">and attention to detail, Spir&#xe9;e </tspan><tspan x="270.197" y="4084.88">is more than just sportswear - </tspan><tspan x="348.701" y="4115.88">it&#39;s a movement.</tspan></TextAnimate>
+        <TextAnimate at={0.86} fromTop={true} id="JoinText1" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="69.3408" y="4383.88">So why not join Astrid and </tspan><tspan x="41.521" y="4414.88">Spir&#xe9;e on this exciting journey? </tspan><tspan x="41.2769" y="4445.88">Your support will help bring the </tspan><tspan x="62.3584" y="4476.88">Sun and Moon series to life, </tspan><tspan x="57.0361" y="4507.88">giving women the tools they </tspan><tspan x="76.6406" y="4538.88">need to push themselves </tspan><tspan x="87.7368" y="4569.88">further and chase their </tspan><tspan x="173.674" y="4600.88">dreams. </tspan></TextAnimate>
+        <TextAnimate at={0.93} fromTop={true} id="JoinText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="26.6772" y="4836.88">Join Spir&#xe9;e&#x2019;s movement now to </tspan><tspan x="56.0474" y="4867.88">be part of something truly </tspan><tspan x="23.8086" y="4898.88">special. Together, let&#39;s empower </tspan><tspan x="38.6279" y="4929.88">women to reach new heights.</tspan></TextAnimate>
         </g>
         }
       </svg>

@@ -39,6 +39,7 @@ export default function Home({ }) {
   let [svgViewHeight, setSvgViewHeight] = useState(undefined)
   let [footerHeight, setFooterHeight] = useState(undefined)
   let [animationLocation, setAnimationLocation] = useState({top:undefined, bottom:undefined})
+  let [textLocation, setTextLocation] = useState({top:undefined, bottom:undefined})
   // let [moved, setMoved] = useState(false)
 
   let [finished, setFinished] = useState(false)
@@ -48,7 +49,6 @@ export default function Home({ }) {
   let mobile = screenWidth<768
   let speed = 0
     // let footerHeight = screenWidth<768?300:250
-    let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:screenWidth<768?'8000px':'3000px'
     // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
 
   useEffect(()=>{
@@ -88,6 +88,7 @@ export default function Home({ }) {
 
   // let step1= {from:0.49, for:350}
   // let step2= {from: 0.74, for:450}
+  let heightToScroll = finished?`${svgHeight+titleHeight+(footerHeight||200)}px`:screenWidth<768?'10000px':'3000px'
 
   return (
     <>
@@ -109,6 +110,7 @@ export default function Home({ }) {
         finished={finished} 
         mobile={mobile}
         setAnimationLocation={setAnimationLocation}
+        setTextLocation={setTextLocation}
         // moved={moved}
         // setMoved={setMoved}
         >
@@ -121,12 +123,12 @@ export default function Home({ }) {
           <section className='flex w-4/5 mx-auto relative' >
 
             {/* <FadeDiv style={{height: svgViewHeight+'px', width: finished?screenWidth+'px':'100%',top: titleHeight+'px'}} className={`${finished?'absolute overflow-scroll ':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?10:10} type={finished?`top`:''}> */}
-            <FadeDiv style={{height: finished?svgHeight+footerHeight+'px':svgViewHeight+'px', width: screenWidth+'px',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:mobile?2:10} type={finished?`top`:'both'}>
+            <FadeDiv style={{height: finished?svgHeight+(footerHeight||0)+'px':svgViewHeight+'px', width: screenWidth+'px',top: titleHeight+'px'}} className={`${finished?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={finished?0:mobile?2:10} type={finished?`top`:'both'}>
             {/* finished?svgHeight+footerHeight+'px': */}
 
 
           {/* style={{height: svgHeight+'px'}} */}
-              <ScrollingDiv  animationLocation={animationLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
+              <ScrollingDiv  animationLocation={animationLocation} textLocation={textLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
               className={`absolute w-full left-1/2 -translate-x-1/2 
               ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
               `} >
@@ -153,8 +155,8 @@ export default function Home({ }) {
           </section>
 
           <section>
-            <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position:'absolute', top:finished?titleHeight+svgHeight+'px':heightToScroll-footerHeight+'px'} }/>
-          </section>
+{            !mobile && <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position:'absolute', top:finished?titleHeight+svgHeight+'px':heightToScroll-footerHeight+'px'} }/>
+}          </section>
           
           {/* </Layout> */}
         </PageWrapper>

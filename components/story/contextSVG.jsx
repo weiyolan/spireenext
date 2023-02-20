@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react';
 
 const SVGContext = createContext();
 
-export function SVGWrapper({ children, prevRatio, myRatio,scrollMin,scrollMax ,handleLength, animationSpeed}) {
+export function SVGWrapper({ children, prevRatio, myRatio,scrollMin,scrollMax ,handleLength, animationSpeed, ...props}) {
 
   let sharedState = {
     myRatio: myRatio,
@@ -13,8 +13,9 @@ export function SVGWrapper({ children, prevRatio, myRatio,scrollMin,scrollMax ,h
     handleLength:handleLength,
     }
 
+
   return (
-    <SVGContext.Provider value={sharedState}>
+    <SVGContext.Provider value={{...sharedState, ...props}}>
       {children}
     </SVGContext.Provider>
   );

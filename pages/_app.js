@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
     // let [ref, percentage] = useScrollPercentage();
 
   useEffect(()=>{
-   console.log(scrolled) 
+  //  console.log(scrolled) 
   //  console.log(percentage) 
   })
 
