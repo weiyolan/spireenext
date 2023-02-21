@@ -13,7 +13,7 @@ export default function ButtonBig ({to, text, style, className}){
     px-4 py-2
     font-sans font-semibold ${mobile?'text-xl':'text-xl'} text-center justify-center items-center self-center whitespace-nowrap select-none uppercase tracking-max
     cursor-pointer ${className}
-    outline-none focus-visible:outline-primary border border-solid border-transparent text-white hover:border-white active:bg-black/40`}
+    outline-none focus-visible:outline-primary border border-solid border-transparent text-white hover:bg-black/40 active:bg-black/40`}
       href={`/${to||''}`}
       onClick={()=>handleClick(title)}
       title={`Go to the ${text} page`}>

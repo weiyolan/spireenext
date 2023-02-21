@@ -54,8 +54,8 @@ export default function App({ Component, pageProps }) {
           <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
 
       </Head>
-
-      <AppWrapper scrolled={scrolled.toPrecision(2)}>
+{/* scrolled.toPrecision(2) */}
+      <AppWrapper scrolled={scrolled}>
         <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
           
           <Component {...pageProps} />

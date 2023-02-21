@@ -30,6 +30,9 @@ export default function Story6Spiree({ scrollMin, scrollMax, speed }) {
   //   }
   // },[])
 
+
+    
+
   return (
     <AnimateSVG alt='Story Part 6, the logo of Spirée' scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
 

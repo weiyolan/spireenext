@@ -347,7 +347,7 @@ let fakeScrolled = finished?1:props.scrolled;
 let realScrolled = useAppContext().scrolled;
 let scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
-let scrollMaxCompensation = 0.05
+let scrollMaxCompensation = 0.005
 
 useEffect(()=>{
   if (scrolled>props.at && scrolled < (props.at+scrollMaxCompensation) && !located) {

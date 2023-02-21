@@ -23,9 +23,12 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
 
   useEffect(()=>{
     if (print) {
-    // console.log('maxMoves: '+ maxMoves)
+    // console.log('maxMoves: '+ maxMoves)(moves>=1?(titleHeight*0.7):0)
+    console.log(moves>=1)
+    console.log(titleHeight*0.7)
     // console.log(titleHeight + ' < ' + animationLocation.top + ' && ' + animationLocation.bottom + ' < ' + visibleHeight + ' ==> ' + ((titleHeight<animationLocation.top && animationLocation.bottom<visibleHeight)?'OK':'Not allowed!'))
-    console.log(animationLocation.bottom + ' < ' + (visibleHeight + moves*moveHeight )  + ' ==> ' + ((animationLocation.bottom < (visibleHeight + moves*moveHeight )  )?'OK':'Not allowed!'))
+    console.log('top: '+ animationLocation.top + ' > ' + (moves*moveHeight - (moves>=1?(titleHeight*0.1):0))  + ' ==> ' + ((animationLocation.top > (moves*moveHeight - (moves>=1?(titleHeight*0.1):0) )  )?'OK':'Not allowed!'))
+    console.log('bottom: ' + animationLocation.bottom + ' < ' + (visibleHeight + moves*moveHeight )  + ' ==> ' + ((animationLocation.bottom < (visibleHeight + moves*moveHeight )  )?'OK':'Not allowed!'))
     // console.log('moves: '+ moves + ', maxMoves: ' + maxMoves + ' of height ' + (moveHeight))
     // console.log('moved: '+ moved)
     // console.log('translation: ' + `-${moves>=maxMoves?(svgHeight-visibleHeight)+footerHeight:moves*visibleHeight*factor}px`)
@@ -34,16 +37,19 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
     }
   },[moves, maxMoves, animationLocation, titleHeight, svgHeight, visibleHeight])
 
+
+  function handleSize() {
+    if (svgHeight > 0) {
+      const { width, y} = scrollDivRef.current.getBoundingClientRect();
+      setDimensions({ width: width, height: svgHeight , top: y, bottom: y + svgHeight});
+      print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ svgHeight+ ', top: '+y+', bottom: '+(y + svgHeight) )
+      // console.log('fired')
+    }
+  }
+
   useEffect(()=>{
     // print && console.log(dimensions?.height === undefined || )
 
-    function handleSize() {
-      if (svgHeight > 0) {
-        const { width, y} = scrollDivRef.current.getBoundingClientRect();
-        setDimensions({ width: width, height: svgHeight , top: y, bottom: y + svgHeight});
-        print && console.log('dimensions setted: ' + 'width: ' + width+', height: '+ svgHeight+ ', top: '+y+', bottom: '+(y + svgHeight) )
-      }
-    }
 
     window.addEventListener('resize', handleSize)
 
@@ -55,8 +61,13 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
   },[titleHeight, svgHeight])
 
   useEffect(()=>{
-    // let myVisibleHeight = screenHeight-titleHeight-dimensions.top
+    
     let myVisibleHeight = screenHeight-dimensions.top
+
+
+    // let myVisibleHeight = screenHeight-dimensions.top
+
+
     if (myVisibleHeight>0) {
       setVisibleHeight(myVisibleHeight)
       // print && console.log('visibleHeight setted: ' + myVisibleHeight)
@@ -86,9 +97,10 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
   useEffect(()=>{
     
       if (animationLocation?.bottom) {
-    // if (animationLocation?.bottom) {
-      let visibleTop = moves* moveHeight 
-      let visibleBottom = moves*moveHeight + visibleHeight
+
+        //  WITHOUT FADE THE TITLE GOES UP SO VISIBLE HEIGTH ON TOP IS LARGER AFTER FIRST MOVE,
+      let visibleTop = moves*moveHeight - (moves>=1?(titleHeight*0.04):0)
+      let visibleBottom = moves*moveHeight + visibleHeight - 80
       // print && console.log('visibleTop: ' + visibleTop + ', visibleBottom: ' + visibleBottom)
 
       // // let newVisibleB = newMoves*moveHeight
@@ -105,15 +117,19 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
         if ((newMoves) !== moves) {
           setMoves(newMoves||0)
           setMoveTracker(newMoves||0)
-      }
-      // } else if (animationLocation.top < visibleTop) {
-      //   newMoves = Math.max(Math.ceil((animationLocation.top - visibleHeight)/moveHeight),0)
-      // }
-
-      // CHECK WHEN MOVED if animation top is in the visible zone, and if not correct for the diff which can be calculated.
-
-        // setOffset(newOffset)
+          }
     }
+
+    //  if (animationLocation.top < visibleTop) {
+    //   let newMoves = Math.max(Math.ceil((visibleTop-animationLocation.top)/moveHeight),0) 
+    //   print && console.log('newMoves: ' + newMoves + ', oldMoves: ' + moves + (newMoves !== moves?' => updated':' => NOT updated') )
+    //   print && console.log('maxMoves: ' + maxMoves )
+
+    //   if ((newMoves) !== moves) {
+    //     setMoves(newMoves||0)
+    //     setMoveTracker(newMoves||0)
+    //     }
+    //  }
     }
 
 

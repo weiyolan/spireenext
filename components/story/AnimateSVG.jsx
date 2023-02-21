@@ -12,10 +12,12 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
 
     let [allLengths, setAllLengths] = useState([])
     let [allOffsetLengths, setAllOffsetLengths] = useState([])
-    let [allRatios, setAllRatios] = useState([0])
-    let [allPrevRatios, setAllPrevRatios] = useState([0])
+    let [allRatios, setAllRatios] = useState([])
+    let [allPrevRatios, setAllPrevRatios] = useState([])
     let { scrolled } = useAppContext()
     let [located, setLocated] = useState(false)
+    let [myHeight, setMyHeight] = useState(undefined)
+    // let [newChildren, setNewChildren] = useState(makeNewChildren())
 
     let {svgWidth, viewBox, setAnimationLocation, mobile} = usePageContext()
     // let newChildren = useGoodChildren(children.props.children, handleLength)
@@ -39,31 +41,36 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
           copyOffsetLengths[position] = newLength * f;
           return copyOffsetLengths
       })
+      // console.log('fired')
 
     },[setAllLengths,setAllOffsetLengths])
 
-    useEffect(()=>{
-      if (print) {
-        // console.log(allLengths)
-        // console.log(allOffsetLengths)
+    // useEffect(()=>{
+    //   if (print) {
+    //     // console.log(allLengths)
+    //     // console.log(allOffsetLengths)
+    //   }
+    // },[print,allLengths,allOffsetLengths, children])
+
+    function handleSize(){
+      let bbox = svgRef.current.getBoundingClientRect()
+      let height = bbox.bottom - bbox.top;
+      let width = bbox.width;
+      if (height>=0 && height!==myHeight && setSvgHeight!==undefined) {
+        setSvgHeight(height)
+        setMyHeight(height)
+        setSvgWidth(width)
+        // console.log('effect fired!')
       }
-    },[print,allLengths,allOffsetLengths, children])
+
+    }
 
     useEffect(()=>{
-
-      function handleSize(){
-        let bbox = svgRef.current.getBoundingClientRect()
-        let height = bbox.bottom - bbox.top;
-        let width = bbox.width;
-        if (height>=0 && setSvgHeight!==undefined) {
-          setSvgHeight(height)
-          setSvgWidth(width)
-        }
-  
-      }
 
       window.addEventListener('resize',handleSize)
+
       handleSize()
+
       return window.removeEventListener('resize',handleSize)
     },[svgWidth, viewBox, children, setSvgHeight])
 
@@ -92,7 +99,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
 
 
     useEffect(() => {
-      if (allLengths.length > 0) {
+      if (allLengths.length > 0 && allRatios.length<allLengths.length ) {
         let totOffsetLength = allOffsetLengths.reduce((x, y) => x + y);
         let allRatios = allLengths.map(itemLength => itemLength / totOffsetLength);
         let newPrevRatios = allLengths.map((itemLength, index) => {
@@ -103,34 +110,73 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
         })
   
         setAllRatios(allRatios)
+        // console.log('fired')
         setAllPrevRatios(newPrevRatios)
       }
     }, [allLengths, allOffsetLengths, children])
 
     // Generate children from props with the handleLength function defined here and remove lengthFactor.
     // Pass children to this component nested 1 layer deep in a <></>.
+    // let newChildren = undefined;
+
     // useEffect(()=>{
-      const newChildren = React.Children.map(children.props.children, child => {
+
+    function makeNewChildren() {
+      let newChildren = React.Children.map(children.props.children, child => {
         let newChild;
         if (React.isValidElement(child) && child.type === Path) {
+          // console.log('fired')
+      
           const {lengthFactor, ...rest} = child.props
-          newChild = React.cloneElement(child, {
-            ...rest, 
-            handleLength: (l,i) => handleLength(lengthFactor===undefined?1:lengthFactor,l,i),
-            key: alt[12,13] + `${mobile?'-mobile':'-desk'}` 
-          })
+          newChild = <Path {...rest} handleLength={(l,i) => handleLength(lengthFactor===undefined?1:lengthFactor,l,i)} key={alt[12,13] + `${mobile?'-mobile':'-desk'}`} />
         } else if (React.isValidElement(child) && child.type === UseFlower) {
+          // console.log('fired')
+      
           const props = child.props
-          newChild = React.cloneElement(child, {
-            ...props, 
-            handleLength: handleLength,
-            key: alt[12,13] + `${mobile?'-mobile':'-desk'}` 
-          })
-  
+          newChild = <UseFlower {...props} handleLength={handleLength} key={alt[12,13] + `${mobile?'-mobile':'-desk'}`} />
+        } else {
+          newChild = child
         }
-        else {newChild = child}
         return newChild
       })
+
+      return newChildren
+      
+    }
+    const newChildren = makeNewChildren()
+
+    // useEffect(()=>{
+    //   setNewChildren
+    // },[])
+      //  const newChildren = React.Children.map(children.props.children, child => {
+      //   let newChild;
+      //   if (React.isValidElement(child) && child.type === Path) {
+        
+      //     // console.log('fired')
+
+      //     const {lengthFactor, ...rest} = child.props
+      //     newChild = React.cloneElement(child, {
+      //       ...rest, 
+      //       handleLength: (l,i) => handleLength(lengthFactor===undefined?1:lengthFactor,l,i),
+      //       key: alt[12,13] + `${mobile?'-mobile':'-desk'}` 
+      //     })
+      //   } else if (React.isValidElement(child) && child.type === UseFlower) {
+        
+      //     // console.log('fired')
+
+      //     const props = child.props
+      //     newChild = React.cloneElement(child, {
+      //       ...props, 
+      //       handleLength: handleLength,
+      //       key: alt[12,13] + `${mobile?'-mobile':'-desk'}` 
+      //     })
+  
+      //   }
+      //   else {newChild = child}
+      //   return newChild
+      // })
+
+
     // },[children])
     
     

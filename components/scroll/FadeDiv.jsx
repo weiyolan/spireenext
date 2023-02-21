@@ -35,6 +35,8 @@ const FadeDiv = ({children, className, type, amount, style}) => {
         return fadeStyleTop(amount)
     case 'bottom' :
         return fadeStyleBottom(amount)
+    case 'none' :
+        return {}
     default: 
       return fadeStyleDefault(amount)
     }

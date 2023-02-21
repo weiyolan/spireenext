@@ -10,6 +10,7 @@ const AppContext = createContext();
 export function AppWrapper({ children, breakPointSmall, scrolled }) {
   let {width, height} = useWindowSize();
   let {locale} = useRouter();
+  const [navIsOpen, toggleNavOpen] = useCycle(false, true);
 
   let screens = {
     xxl: width>=1536,
@@ -28,13 +29,13 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   let sharedState = {
     width: width, 
     height: height, 
-    screens:screens,
+    screens: screens,
     // mobile:width<768,
     // breakPointSmall: breakPointSmall,
     // noBlur: true,
     scrolled: scrolled,
-    // isOpen: isOpen,
-    // toggleOpen: toggleOpen,
+    navIsOpen: navIsOpen,
+    toggleNavOpen: toggleNavOpen,
     locale: locale, 
 }
 
