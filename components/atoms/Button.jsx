@@ -4,14 +4,16 @@ import { usePageContext } from '../context/pageContext';
 import { useAppContext } from '../context/appContext';
 import SpireeLogo from './SpireeLogo';
 
-export default function ButtonBig ({to, text, style, className}){
-    let {locale} = useAppContext()
+export default function Button ({to, text, style, className}){
+    // let {locale} = useAppContext()
     let {mobile} = usePageContext()
 
   return (
-    <Link style={{...style}} className={`flex flex-row absolute rounded-full bg-black/30 backdrop-blur
-    px-4 py-2
-    font-sans font-semibold ${mobile?'text-xl':'text-xl'} text-center justify-center items-center self-center whitespace-nowrap select-none uppercase tracking-max
+    <Link style={{...style, ...{transition: 'background-color 0.3s ease'}}} 
+
+    className={`inline-flex relative rounded-full bg-black/30 backdrop-blur
+    px-4 py-2 justify-center items-center
+    font-sans font-semibold ${mobile?'text-sm':'text-base'} text-center whitespace-nowrap select-none uppercase tracking-max
     cursor-pointer ${className}
     outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/40 active:bg-black/50`}
       href={`/${to||''}`}
@@ -21,7 +23,7 @@ export default function ButtonBig ({to, text, style, className}){
         {/* <div className=''> */}
             
             {text} 
-            <span><SpireeLogo className='w-6 md:w-6 ml-2'/></span>
+            {/* <span><SpireeLogo className='w-6 md:w-6 ml-2'/></span> */}
         
         {/* </div> */}
     </Link>

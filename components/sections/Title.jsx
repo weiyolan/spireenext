@@ -1,19 +1,20 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { usePageContext } from '../context/pageContext';
-import ESpiree from '../atoms/ESpiree';
+import Spiree from '../atoms/Spiree';
 import useDimensions from '@/utils/useDimensions';
 
-const Title = ({mainTitle, subTitle, setHeight, style, className}) => {
-  const {darkMode} = usePageContext()
+const Title = ({ mainTitle, subTitle, setHeight, style, className }) => {
+  const { darkMode } = usePageContext()
 
   const titleRef = useRef(null)
 
-  const {height} = useDimensions(titleRef)
+  const { height } = useDimensions(titleRef)
 
-  useEffect(()=>{
-    // if (height>0) {
+  useEffect(() => {
+    if (height>0 && setHeight !==undefined) {
     setHeight(height)
-  },[height])
+    }
+  }, [height])
 
 
   // const [dimensions, setDimensions] = useState({width:undefined,height:undefined})
@@ -47,18 +48,27 @@ const Title = ({mainTitle, subTitle, setHeight, style, className}) => {
 
 
   return (
-    <div ref={titleRef} style={style} className={`${style===undefined?'relative':''} text-center ${className} ${darkMode?'text-white':'text-black'}`}>
-        <h1 className={`font-sans inline-flex font-semibold tracking-max uppercase 
+    <div ref={titleRef} style={style} className={`${style === undefined ? 'relative' : ''} text-center ${className} ${darkMode ? 'text-white' : 'text-black'}`}>
+      <h1 className={`font-sans inline-flex font-semibold tracking-max uppercase 
         whitespace-nowrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
         text-2xl sm:text-3xl lg:text-4xl mb-2 mt-8 md:mt-16 px-4`}>
-          {mainTitle.split("Spirée")[0]} 
-          {mainTitle.split("Spirée").length>1 && (<>Spir<ESpiree className='inline-flex w-4 mr-1 sm:w-5 lg:w-6 mb-0.5 sm:mb-0'/><span className='tracking-normal'>e</span></>)} 
-          {mainTitle.split("Spirée").length>1 &&  mainTitle.split("Spirée")[1]}
-        </h1>
+        {mainTitle.split("Spirée").length > 1 ?
+          <>
+            {mainTitle.split("Spirée")[0]}
+            <Spiree />
+            {mainTitle.split("Spirée")[1]}
+          </>
+          : <>
+            {mainTitle}
+          </>
 
-        <h2 className='font-quick font-light whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-md sm:text-lg mb-2 sm:mb-4'>
-    {subTitle}
-        </h2>
+        }
+
+      </h1>
+
+      <h2 className='font-quick font-light whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-md sm:text-lg mb-2 sm:mb-4'>
+        {subTitle}
+      </h2>
 
     </div>
   )

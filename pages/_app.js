@@ -25,11 +25,11 @@ export default function App({ Component, pageProps }) {
   // let scrolled=0;
     // let [ref, percentage] = useScrollPercentage();
 
-  useEffect(()=>{
+  // useEffect(()=>{
   //  console.log(scrolled) 
   //  console.log(document.documentElement.scrollTop)
   //  console.log(percentage) 
-  })
+  // })
 
   function handleScroll () {
     let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)

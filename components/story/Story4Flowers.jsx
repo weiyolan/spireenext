@@ -9,8 +9,8 @@ export default function Story3Mountain({ scrollMin, scrollMax, speed }) {
   let { locale } = useAppContext();
   let { mobile } = usePageContext()
 
-  let start = 0.221;
-  let diff = mobile?0.012:0.012;
+  let start = mobile?scrollMin:0.221;
+  let diff = mobile?0.010:0.012;
   let posi = mobile?1:1;
   let offset=mobile?1:1;
   return (

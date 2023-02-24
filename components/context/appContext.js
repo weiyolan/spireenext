@@ -8,39 +8,65 @@ import { useCycle } from 'framer-motion';
 const AppContext = createContext();
 
 export function AppWrapper({ children, breakPointSmall, scrolled }) {
-  let {width, height} = useWindowSize();
-  let {locale} = useRouter();
-  const [navIsOpen, toggleNavOpen] = useCycle(false, true);
+  let { width, height } = useWindowSize();
+  let { locale } = useRouter();
+
+  const [navIsOpen, toggleNav] = useCycle(false, true);
+  const [cartIsOpen, toggleCart] = useCycle(false, true);
+  //   Checkout Open?
+  //   Order Confirmation Pop Up?
+
+  // const lightboxClick = (event) => {
+  //   if (lightbox && event.target === document.getElementById('lightboxBackground')) {
+  //     setLightbox(false);
+  //   };
+  // };
+
+  function handleLightboxes(event) {
+    if (navIsOpen && event.target === document.getElementById('navBackground')) {
+      toggleNav()
+    } else if (cartIsOpen && event.target === document.getElementById('cartBackground')) {
+      toggleCart()
+    }
+  };
 
   let screens = {
-    xxl: width>=1536,
-    xl: width>=1280,
-    lg: width>=1024,
-    md: width>=768,
-    sm: width>=640,
-    mobl: width>=420,
-    mobm: width>=350,
+    xxl: width >= 1536,
+    xl: width >= 1280,
+    lg: width >= 1024,
+    md: width >= 768,
+    sm: width >= 640,
+    mobl: width >= 420,
+    mobm: width >= 350,
   }
-//   Navbar Open?
-//   Shopping Cart Open?
-//   Checkout Open?
-//   const [isOpen, toggleOpen] = useCycle(false, true);
 
-  let sharedState = {
-    width: width, 
-    height: height, 
-    screens: screens,
-    // mobile:width<768,
-    // breakPointSmall: breakPointSmall,
-    // noBlur: true,
-    scrolled: scrolled,
-    navIsOpen: navIsOpen,
-    toggleNavOpen: toggleNavOpen,
-    locale: locale, 
-}
+// ===================== CART LOGIC ========================
+  function addOne () {
+    
+  }
+
+
 
   return (
-    <AppContext.Provider value={sharedState}>
+    <AppContext.Provider
+      value={{
+        width: width,
+        height: height,
+        screens: screens,
+        locale: locale,
+        // mobile:width<768,
+        // breakPointSmall: breakPointSmall,
+        // noBlur: true,
+        scrolled: scrolled,
+        navIsOpen: navIsOpen,
+        toggleNav: toggleNav,
+        cartIsOpen: cartIsOpen,
+        toggleCart: toggleCart,
+        handleLightboxes:handleLightboxes,
+
+        cart: {}
+      }}>
+
       {children}
     </AppContext.Provider>
   );

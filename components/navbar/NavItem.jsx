@@ -38,7 +38,7 @@ const deskVariants = {
 
 // const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
 
-export default function MenuItem ({ children, className }) {
+export default function NavItem ({ children, className }) {
 
   const {mobile} = usePageContext();
   // const style = { border: `2px solid ${colors[i]}` };

@@ -3,10 +3,10 @@ import { useRouter } from 'next/router'
 import{TfiWorld} from 'react-icons/tfi'
 import { useAppContext } from '@components/context/appContext'
 
-export default function ChooseLanguage({mobile, toggleNavOpen}) {
+export default function ChooseLanguage({mobile, toggleNav}) {
   const router = useRouter()
   const { locales, locale : activeLocal } = router
-  // const {toggleNavOpen} = useAppContext()
+  // const {toggleNav} = useAppContext()
 
   const otherLocales = (locales || []).filter(
     (locale) => locale !== activeLocal
@@ -14,7 +14,7 @@ export default function ChooseLanguage({mobile, toggleNavOpen}) {
 
   return (
     <div 
-    // onClick={()=>toggleNavOpen()}
+    // onClick={()=>toggleNav()}
     className={`text-white ${mobile?'text-lg':'text-base'} text-left font-sans duration-500 
     font-extralight self-center inline-flex border border-transparent 
     focus-within:outline-white hover:border-b-white active:bg-white/20 cursor-pointer select-none px-0 py-0 mx-0 md:mx-4 lg:mx-6 `}>

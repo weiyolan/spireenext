@@ -14,7 +14,7 @@ const Path = props => (
   />
 );
 
-export default function MenuToggle ({ open, toggle, className }) {
+export default function NavToggle ({ open, toggle, className }) {
     const {locale} = useAppContext()
     return (
     <button title={`${locale==='en'?'Menu toggle':'Ouvrir et fermer le menu'}`} 

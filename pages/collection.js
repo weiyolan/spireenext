@@ -13,10 +13,10 @@ import Footer from '@/components/sections/Footer'
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 
-export default function Merino() {
+export default function Collection() {
 
-  const { scrolled, width, height,handleLightboxes } = useAppContext();
-  let mobile = width<768
+  const { scrolled, width, height, handleLightboxes } = useAppContext();
+  let mobile = width < 768
 
   return (
 
@@ -28,22 +28,20 @@ export default function Merino() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <main className={`w-full`} onClick={handleLightboxes}>
-      <PageWrapper 
-        darkMode={true} 
-        mobile={mobile}
+
+        <PageWrapper
+          darkMode={true}
+          mobile={mobile}
         >
           <Background />
-          <Title mainTitle='Main Page' subTitle='' />
+          {/* <Title text={'Merino'}/> */}
+          <Title mainTitle='Celestial Design' subTitle='Every woman deserves to feel confident and stylish during their favourite sports.' />
 
-        {/* <Title text={'Merino'}/> */}
+          <Navbar from='collection#sun' />
+          <ShoppingCart />
+        </PageWrapper>
 
-
-      <Navbar from=''/>
-      <ShoppingCart/>
-      </PageWrapper>
-        
       </main>
     </>
 

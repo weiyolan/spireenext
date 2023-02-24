@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import MenuItem from "./NavbarItem";
+import NavItem from "./NavItem";
 import { usePageContext } from "../context/pageContext";
 
 const variants = {
@@ -16,7 +16,7 @@ const variants = {
 
 // const itemIds = [0, 1, 2, 3, 4];
 
-export default function NavbarList({ children, onMouseEnter, onMouseLeave, setNavWidth }) {
+export default function NavList({ children, onMouseEnter, onMouseLeave, setNavWidth }) {
 
   const { mobile } = usePageContext()
 
@@ -58,12 +58,12 @@ export default function NavbarList({ children, onMouseEnter, onMouseLeave, setNa
       variants={variants}>
       {children.map((child, i) => {
         return (
-          <MenuItem
+          <NavItem
             className={`${mobile ? `p-0 ml-2 list-none mb-4 flex z-[51] justify-start items-center`
               : `p-0 m-0 list-none inline-flex z-[51] justify-start items-center`}`}
             key={i}>
             {child}
-          </MenuItem>)
+          </NavItem>)
       })}
     </motion.ul>
   )

@@ -5,7 +5,7 @@ import { useAppContext } from "../context/appContext";
 import { usePageContext } from "../context/pageContext";
 
 
-export default function NavbarButton({ to, text, selectedB, handleClick, darkMode }) {
+export default function NavButton({ to, text, selectedB, handleClick }) {
   const { locale } = useAppContext();
   const {mobile} = usePageContext()
   // let variants = {
@@ -19,14 +19,14 @@ export default function NavbarButton({ to, text, selectedB, handleClick, darkMod
 
   return (
     // ${locale === 'en' ? 'md:mx-4 lg:mx-6' : 'md:mx-0 lg:mx-2'}
-    <Link className={`${selectedB === to ? 'border-b-white font-normal ' : ' hover:border-b-white '}
+    <Link className={`${selectedB === to ? 'font-normal' : `${mobile ? 'text-lg font-extralight' : 'text-base font-extralight'} hover:border-b-white`}
         border border-solid border-transparent text-white active:font-medium
         flex px-0 py-0 mx-0 md:mx-4 lg:mx-6 
-        font-sans  ${mobile ? 'text-lg font-thin' : 'text-base font-extralight'} textcenter self-center whitespace-nowrap
+        font-sans textcenter self-center whitespace-nowrap
         duration-500 cursor-pointer select-none 
         outline-none focus-visible:outline-primary  `}
       href={`/${to}`}
-      onClick={() => handleClick(title)}
+      onClick={() => handleClick(to)}
     // title={`Go to the ${text} page`}
     >
 

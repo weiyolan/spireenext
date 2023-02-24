@@ -35,12 +35,12 @@ export default function Merino() {
         mobile={mobile}
         >
           <Background />
-          <Title mainTitle='Main Page' subTitle='' />
+          <Title mainTitle='Support Spirée' subTitle='Join Astrid and Spirée on their journey to empower women in sports.' />
 
         {/* <Title text={'Merino'}/> */}
 
 
-      <Navbar from=''/>
+      <Navbar from='support'/>
       <ShoppingCart/>
       </PageWrapper>
         

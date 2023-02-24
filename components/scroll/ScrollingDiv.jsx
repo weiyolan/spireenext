@@ -159,7 +159,7 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
   // transition: `${(scrolled>step1.from && scrolled <step1.to) || (scrolled > step2.from && scrolled < step2.to)?'all 1s ease':'none'
   
   // let Y =  finished?0:moves>=maxMoves?((svgHeight-visibleHeight)+(footerHeight/2)):(moves*moveHeight)
-  let Y =  finished?0:moves>=maxMoves?(titleHeight + (dimensions.height + dimensions.top - titleHeight)  + footerHeight - screenHeight):(moves*moveHeight)
+  let Y =  (mobile || finished)?0:moves>=maxMoves?(titleHeight + (dimensions.height + dimensions.top - titleHeight)  + footerHeight - screenHeight):(moves*moveHeight)
 
   // let Y =  0  
   return (

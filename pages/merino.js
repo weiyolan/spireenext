@@ -35,12 +35,12 @@ export default function Merino() {
         mobile={mobile}
         >
           <Background />
-          <Title mainTitle='Main Page' subTitle='' />
+          <Title mainTitle='100% Merino Wool' subTitle='As if you’re wearing nothing, bathing in the sun.' />
 
         {/* <Title text={'Merino'}/> */}
 
 
-      <Navbar from=''/>
+      <Navbar from='merino'/>
       <ShoppingCart/>
       </PageWrapper>
         

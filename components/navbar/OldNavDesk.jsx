@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
-import MenuToggle from "./NavbarToggle";
-import Navigation from "./Navigation";
+import MenuToggle from "./NavToggle";
+import Navigation from "./OldNavigation";
 import useWindowSize from "./useWindowSize";
-import Button from "./NavbarButton";
+import Button from "./NavButton";
 import { useDimensions } from "./useDimension";
 import Link from "next/link";
 import YW from "../public/images/logo_yw_b.svg";
