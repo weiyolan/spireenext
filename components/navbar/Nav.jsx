@@ -19,7 +19,7 @@ export default function Nav({ from }) {
   let [selectedB, setSelectedB] = useState(from);
   let { locale, width, navIsOpen, toggleNav } = useAppContext()
   let { mobile } = usePageContext()
-   let [clicked, setClicked] = useState(false)
+  let [clicked, setClicked] = useState(false)
   //  let [navWidth, setNavWidth] = useState(false)
 
   // const containerRef = useRef(null);
@@ -28,7 +28,13 @@ export default function Nav({ from }) {
   // let [lastTop, setLastTop] = useState(0)
 
   function selectButton(selection) {
+
+    // if (mobile) {
+      toggleNav()
+    // }
+
     setSelectedB(selection)
+
   }
 
   function handleClick() {
@@ -39,7 +45,7 @@ export default function Nav({ from }) {
       toggleNav()
     } else if (clicked) {
       setClicked(false)
-    } 
+    }
     // When unclicking the hover will take care of the closing 
     // else if (clicked && !navIsOpen) {
     //   setClicked(false)
@@ -83,7 +89,7 @@ export default function Nav({ from }) {
 
   const sidebarMob = {
     open: {
-      y: 0, x: 0, width: '100%', height: 600, 
+      y: 0, x: 0, width: '100%', height: 600,
       // opacity:1,
       transition: {
         type: "spring",
@@ -93,7 +99,7 @@ export default function Nav({ from }) {
       }
     },
     closed: {
-      y:0,x:0,
+      y: 0, x: 0,
       // x: mobile ? (width - 70) : (350 - 70),
       // y: mobile ? (-600 + 70) : (-510 + 70),
       width: 70,
@@ -246,15 +252,22 @@ export default function Nav({ from }) {
 
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
-        className={`${mobile ? ` overflow-hidden z-[51] absolute top-0 left-0 ${navIsOpen?'rounded-none':'rounded-br-[40px]'} `
-          : `border ${clicked?' border-white animate-borderPulse':'border-transparent'} overflow-hidden z-[51] absolute top-2 left-2 rounded-full`}`}
-        style={{transition:'border-radius 0.5s ease'}}  
+        className={`${mobile ? `shadow-xl z-[51] absolute top-0 left-0 ${navIsOpen ? 'rounded-none shadow-xl' : 'rounded-br-[40px]'} `
+          : `border z-[51] absolute top-2 left-2 rounded-full
+           ${clicked ? ' border-white animate-borderPulse ' : 'border-transparent'} 
+           ${navIsOpen ? '' : ''}
+           `}`}
+
+        style={{ transition: 'border-radius 0.5s ease' }}
         variants={mobile ? sidebarMob : sidebarDesk}
-        onMouseEnter={() => { if(!mobile && !clicked){toggleNav()} }}
-        onMouseLeave={() => { if(!mobile && !clicked){toggleNav()} }}
+        onMouseEnter={() => { if (!mobile && !clicked) { toggleNav() } }}
+        onMouseLeave={() => { if (!mobile && !clicked) { toggleNav() } }}
       >
-        <div className={`transition-all duration-300 ${navIsOpen ? 'opacity-100 delay-[0]' : 'opacity-0 delay-500'} 
-        bg-gradient-to-r from-black/30 ${false ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[110%] h-full`} />
+        <div className={`transition-all rounded-full duration-300 ${navIsOpen ? 'opacity-100 delay-[0]' : 'opacity-0 delay-500'} 
+        bg-gradient-to-r from-black/30 ${false ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full
+        after:w-full after:rounded-full after:h-full after:absolute after:top-0 after:left-0 after:opacity-70 after:shadow-xl
+        `}
+        />
       </motion.div>
 
       {/* =================LOGO================= */}
@@ -265,22 +278,22 @@ export default function Nav({ from }) {
           variants={mobile ? logoMob : logoDesk}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className={`${mobile?'absolute inline-flex rounded-full w-fit top-[18px] z-[51] left-[18px] '
-          :'absolute inline-flex rounded-full w-fit z-[51] cursor-pointer'}`}
-          onMouseEnter={() => { if(!mobile && !clicked){toggleNav()} }}
-          onMouseLeave={() => { if(!mobile && !clicked){toggleNav()} }}
-          onClick={() => { if(!mobile) {handleClick()} }}
+          className={`${mobile ? 'absolute inline-flex rounded-full w-fit top-[18px] z-[51] left-[18px] '
+            : 'absolute inline-flex rounded-full w-fit z-[51] cursor-pointer'}`}
+          onMouseEnter={() => { if (!mobile && !clicked) { toggleNav() } }}
+          onMouseLeave={() => { if (!mobile && !clicked) { toggleNav() } }}
+          onClick={() => { if (!mobile) { handleClick() } }}
         >
           {/* <Link className='rounded-full' href={`/`} onClick={() => selectButton('Home')}> */}
-            {/* title='Go to the homepage' */}
-            <SpireeLogo className='w-10 h-10 rounded-full overflow-visible' />
+          {/* title='Go to the homepage' */}
+          <SpireeLogo className='w-10 h-10 rounded-full overflow-visible' />
           {/* </Link> */}
-          
+
         </motion.div>
       </motion.div>
 
       {/* =================NavButtons================= */}
-      <NavList  onMouseEnter={() => { if(!mobile && !clicked){toggleNav()} }} onMouseLeave={() => { if(!mobile && !clicked){toggleNav()} }} >
+      <NavList onMouseEnter={() => { if (!mobile && !clicked) { toggleNav() } }} onMouseLeave={() => { if (!mobile && !clicked) { toggleNav() } }} >
         <NavButton className='' to="collection/#pre-order" text={order[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="collection/#sun" text={sun[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} />
@@ -296,7 +309,7 @@ export default function Nav({ from }) {
 
       {mobile && <NavToggle className={`outline-none border-transparent border-2 duration-300 rounded-none 
     focus:outline-none focus-visible:border-white hover:cursor-pointer z-[51] w-fit h-fit top-0 left-0 absolute p-[23px] bg-transparent`}
-      open={navIsOpen} toggle={() => {toggleNav()}} />}
+        open={navIsOpen} toggle={() => { toggleNav() }} />}
 
     </motion.nav>
 

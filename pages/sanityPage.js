@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import {client, urlFor} from '@lib/sanity'
 
-export default function Home({pets}) {
+export default function Home({pets, products}) {
   return (
     <>
       <Head>
@@ -43,10 +43,11 @@ export default function Home({pets}) {
 
 export async function getStaticProps() {
   const pets = await client.fetch(`*[_type == "post"]`);
-
+  const products = await client.fetch(`*[_type == "product"]`);
+  
   return {
     props: {
-      pets
+      pets, products
     }
   };
 }

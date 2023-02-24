@@ -28,6 +28,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     } else if (cartIsOpen && event.target === document.getElementById('cartBackground')) {
       toggleCart()
     }
+    // console.log(event.target)
   };
 
   let screens = {

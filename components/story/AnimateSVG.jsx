@@ -19,7 +19,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     let [myHeight, setMyHeight] = useState(undefined)
     // let [newChildren, setNewChildren] = useState(makeNewChildren())
 
-    let {svgWidth, viewBox, setAnimationLocation, mobile} = usePageContext()
+    let {viewBox, setAnimationLocation, mobile} = usePageContext()
     // let newChildren = useGoodChildren(children.props.children, handleLength)
 
     let animationRef = useRef(null)
@@ -72,7 +72,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
       handleSize()
 
       return window.removeEventListener('resize',handleSize)
-    },[svgWidth, viewBox, children, setSvgHeight])
+    },[ viewBox, children, setSvgHeight])
 
     // useEffect(()=>{
     //   setMyWidth
@@ -84,7 +84,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     //   }
     //   // console.log('something changed. This is height: ' + height)
     //   // console.log('viewbox: ' + viewBox)
-    // },[width, height, svgWidth, viewBox, children, setSvgHeight])
+    // },[width, height,  viewBox, children, setSvgHeight])
 
     useEffect(()=>{
       if (scrolled>scrollMin && scrolled < scrollMax && !located) {
@@ -185,7 +185,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     return (
       <SVGWrapper handleLength={handleLength} myRatio={allRatios} prevRatio={allPrevRatios} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
         <svg  ref={svgRef} alt={alt} style={{transform: `translate(-50%, ${-0*scrolled}px)`}} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
-          className={`absolute ${svgWidth} left-1/2`}>
+          className={`absolute w-5/6 md:w-4/5 xl:w-3/5 left-1/2`}>
           
           <g ref={animationRef}>
         

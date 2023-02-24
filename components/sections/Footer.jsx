@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link"
 import AccentTitle from "../atoms/AccentTitle"
 import SpireeLogo from "../atoms/SpireeLogo"
+import StayInTouch from "../atoms/StayInTouch"
 import Image from "next/image";
 
 // import useWindowSize from "@utils/useWindowSize";
@@ -11,44 +12,44 @@ import { useAppContext } from "../context/appContext";
 import { usePageContext } from "../context/pageContext";
 import useDimensions from "@/utils/useDimensions";
 
-const designList = {
-  en: [{ text: 'Logo', link: '/services/#Logo' }, { text: 'Website', link: '/services/#Website' }, { text: 'e-Commerce', link: '/services/#e-Commerce' }, { text: 'Analysis', link: '/services/#Analysis' }],
-  fr: [{ text: 'Logo', link: '/services/#Logo' }, { text: 'Site web', link: '/services/#Website' }, { text: 'e-Commerce', link: '/services/#e-Commerce' }, { text: 'Analyse', link: '/services/#Analysis' }]
+const socialList = {
+  en: [{ text: 'Instagram',ext:true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext:true, link: 'https://www.facebook.com/groups/runeverywhere.spiree/' }],
+  fr: [{ text: 'Instagram', ext:true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext:true, link: '/services/#Website' }]
 };
-const supportList = {
-  en: [{ text: 'Roadmap', link: '/roadmap' }, { text: 'FAQ', link: '/contact/#Form', disabled: false }, { text: 'T&C', link: '', disabled: true }, { text: 'Simulation', link: '', disabled: true }],
-  fr: [{ text: 'Votre Chemin', link: '/roadmap', disabled: false }, { text: 'QFP', link: '/contact/#Form', disabled: true }, { text: 'T&C', link: '', disabled: true }, { text: 'Simulation', link: '', disabled: true }]
+const navigateList = {
+  en: [{ text: 'Our Collection', link: '/collection' }, { text: 'Pre-Order Sun & Moon', link: '/collection/#pre-order', disabled: false }, { text: 'About Spirée', link: '/about', disabled: false }],
+  fr: [{ text: 'Notre Collection', link: '/collection', disabled: false }, { text: 'Pre-Commander', link: '/collection/#pre-order', disabled: false }, { text: 'A Propos Spirée', link: '/about', disabled: false }]
 };
-const linksList = {
-  en: [{ text: 'Home', link: '/' }, { text: 'Services', link: '/services' }, { text: 'About me', link: '/aboutme' }, { text: 'Contact', link: '/contact' }],
-  fr: [{ text: 'Accueil', link: '/' }, { text: 'Services', link: '/services' }, { text: 'A Propos', link: '/aboutme' }, { text: 'Contact', link: '/contact' }]
+const legalList = {
+  en: [{ text: 'Legal Notice', link: '/', disable:true }, { text: 'Terms of Use', link: '/services', disable:true }, { text: 'Cookie Notice', link: '/aboutme', disable:true }],
+  fr: [{ text: 'Legal Notice', link: '/', disable:true }, { text: 'Terms of Use', link: '/services', disable:true }, { text: 'Cookie Notice', link: '/aboutme', disable:true }],
 };
 const contactList = {
   en: [
-    { text: 'Info', ext: false, link: '/contact/#informations' },
-    { text: 'Call', ext: false, link: 'tel:+33638565302' },
-    { text: 'Whatsapp', ext: true, link: 'https://wa.me/32471124525?text=Hi+Yolan%2C+%0D%0AI+got+your+WhatsApp+from+your+website+ywdesign.co.+Are+you+free+to+talk+any+time+soon+about+a+project+I+have+in+mind%3F+%0D%0AThanks%2C%0D%0A' },
-    { text: 'Mail', ext: true, link: "mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A" },
+    // { text: 'Info', ext: false, link: '/contact/#informations' },
+    { text: 'hello@spiree.run', ext: true, link: "mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A" },
+    { text: 'Call', ext: false, link: 'tel:+33659775111' },
+    // { text: 'Whatsapp', ext: true, link: 'https://wa.me/32471124525?text=Hi+Yolan%2C+%0D%0AI+got+your+WhatsApp+from+your+website+ywdesign.co.+Are+you+free+to+talk+any+time+soon+about+a+project+I+have+in+mind%3F+%0D%0AThanks%2C%0D%0A' },
   ], fr: [
-    { text: 'Infos', ext: false, link: '/contact/#informations' },
-    { text: 'Appeler', ext: false, link: 'tel:+33638565302' },
-    { text: 'Whatsapp', ext: true, link: 'https://wa.me/32471124525?text=Hi+Yolan%2C+%0D%0AI+got+your+WhatsApp+from+your+website+ywdesign.co.+Are+you+free+to+talk+any+time+soon+about+a+project+I+have+in+mind%3F+%0D%0AThanks%2C%0D%0A' },
-    { text: 'Email', ext: true, link: "mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A" },
+    // { text: 'Infos', ext: false, link: '/contact/#informations' },
+    { text: 'hello@spiree.run', ext: true, link: "mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A" },
+    { text: 'Appeler', ext: false, link: 'tel:+33659775111' },
+    // { text: 'Whatsapp', ext: true, link: 'https://wa.me/32471124525?text=Hi+Yolan%2C+%0D%0AI+got+your+WhatsApp+from+your+website+ywdesign.co.+Are+you+free+to+talk+any+time+soon+about+a+project+I+have+in+mind%3F+%0D%0AThanks%2C%0D%0A' },
   ]
 };
 
 const financialInfo = {
   en: [
-    '2023 YWdesign',
-    'VAT: BE0794.586.584',
-    'legal address: Hof Savelkoul 40, 2640 Mortsel, Antwerp, Belgium',
+    '2023 SPIRÉE, Inc. All rights reserved.',
+    // 'VAT: BE0794.586.584',
+    // 'legal address: Hof Savelkoul 40, 2640 Mortsel, Antwerp, Belgium',
     // 'tel: +33638565302', 
     // 'email: contact@ywdesign.co', 
   ],
   fr: [
-    '2023 ywdesign.co',
-    'TVA: BE0794.586.584',
-    'adresse juridique: Hof Savelkoul 40, 2640 Mortsel, Antwerp, Belgique',
+    '2023 SPIRÉE, Inc. All rights reserved.',
+    // 'TVA: BE0794.586.584',
+    // 'adresse juridique: Hof Savelkoul 40, 2640 Mortsel, Antwerp, Belgique',
     // 'tel: +33638565302', 
     // 'email: contact@ywdesign.co', 
   ]
@@ -104,27 +105,35 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
   function getContent() {
     return (
       <>
-        <div className='flex flex-wrap sm:flex-nowrap justify-between max-w-4xl mx-auto items-start sm:items-center '>
+        <div className='flex justify-between'>
 
 
-          <Links text='Design' list={designList[locale]} position={width < breakPointSmall ? 'center' : 'left'} />
-          <Links text='Navigation' list={linksList[locale]} position={width < breakPointSmall ? 'center' : 'left'} />
+          {/* <Links title='Design' list={designList[locale]} position={width < breakPointSmall ? 'center' : 'left'} /> */}
+          <Links title='Socials' list={socialList[locale]} position={'left'} />
+          <Links title='Navigate' list={navigateList[locale]} position={'left'} />
           {/* {console.log(mobile, setFooterHeight === undefined)} */}
 
-          {(!mobile || (mobile && setFooterHeight === undefined)) &&
-            <>
-              <div className="mb-4 w-full sm:w-fit">
+
+          <div className='flex flex-col '>
+            <AccentTitle text='Stay In Touch'/>
+            <StayInTouch/>
+          </div>
+
+          {/* {(!mobile || (mobile && setFooterHeight === undefined)) && */}
+            {/* <> */}
+              {/* <div className="mb-4 w-full sm:w-fit">
                 <div className='mx-auto w-fit text-center'>
                   <Link href='/' title='Go to homepage'>
                     <SpireeLogo className='w-8 sm:w-14' alt='Spiree logo in white' />
                   </Link>
                 </div><p className='text-white text-center text-xs font-extralight' ><br /></p>
-              </div>
+              </div> */}
 
-              <Links text='Support' list={supportList[locale]} position={width < breakPointSmall ? 'center' : 'right'} />
-              <Links text='Contact' list={contactList[locale]} position={width < breakPointSmall ? 'center' : 'right'} />
-            </>
-          }
+              <Links title='Contact' list={contactList[locale]} position={'left'} />
+              <Links title='Legal' list={legalList[locale]} position={'left'} />
+              {/* <Links title='Contact' list={contactList[locale]} position={'left'} /> */}
+            {/* </> */}
+          {/* } */}
 
         </div>
 
@@ -163,9 +172,9 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-16 lg:pb-2 w-full`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:px-20 sm:pt-8 sm:pb-2 w-full`}>
+        
         {getContent()}
-        {/* {console.log('NOmotion')} */}
 
       </section>)
   }
@@ -176,18 +185,18 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
 
-      className={`${style.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-16 lg:pb-2 bottom-0 w-full`}>
-      {/* {console.log('motion')} */}
+      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-8 lg:pb-2 bottom-0 w-full`}>
+
       {getContent()}
 
     </motion.section>
   )
 }
 
-function Links({ position, text, list }) {
+function Links({ position, title, list }) {
   return (
-    <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0 mb-4 w-[49%] sm:w-[25%]`}>
-      <AccentTitle text={text} />
+    <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0`}>
+      <AccentTitle text={title} />
       <List list={list} />
     </div>
   )
@@ -196,16 +205,18 @@ function Links({ position, text, list }) {
 function List({ list }) {
 
   return (
-    <ul className='flex-1 '>
+    <ul className='flex flex-col font-quick'>
       {list.map((item, i) => {
         if (item.ext) {
           return (
             <li key={i}
               className={`text-white font-light whitespace-nowrap 
-            my-3 sm:my-3
-            text-sm sm:text-sm focus-within:scale-110 duration-200 focus-within:text-primary hover:text-primary hover:scale-110 `} >
-              <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias' rel="noopener noreferrer" >
-                {item.text}
+            my-3 sm:my-1
+            text-sm sm:text-sm  `} >
+              <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white ' rel="noopener noreferrer" >
+                  {item.text}
+                  
+                  
               </Link>
             </li>
           )
@@ -214,9 +225,10 @@ function List({ list }) {
           return (
             <li key={i}
               className={`${item.disabled ? 'text-primary/90' : 'text-white'} font-light whitespace-nowrap 
-          my-3 sm:my-3
-          text-sm sm:text-sm focus-within:scale-110 duration-200 focus-within:text-primary hover:text-primary hover:scale-110`} >
-              {item.disabled ? item.text : <Link className='focus:outline-none ' href={item.link}>
+          my-3 sm:my-1
+          text-sm sm:text-sm `} >
+              {item.disabled ? item.text : 
+              <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>
                 {item.text}
               </Link>}
             </li>)

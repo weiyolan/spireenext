@@ -4,28 +4,28 @@ import { usePageContext } from '../context/pageContext';
 import { useAppContext } from '../context/appContext';
 import SpireeLogo from './SpireeLogo';
 
-export default function Button ({to, text, style, className}){
-    // let {locale} = useAppContext()
-    let {mobile} = usePageContext()
+export default function Button({text, className , small, handleClick}) {
+  // let {locale} = useAppContext()
+  // let { mobile } = usePageContext()
 
   return (
-    <Link style={{...style, ...{transition: 'background-color 0.3s ease'}}} 
+    
+    // px-4 py-2 text-sm md:text-sm
+    <div
+      className={`inline-flex w-fit relative rounded-full bg-black/30 backdrop-blur
+    transition-all
+    font-sans font-semibold whitespace-nowrap select-none uppercase tracking-max
+    
+    cursor-pointer ${small?'text-xs px-4 py-2':' px-4 py-2'}   ${className}
+    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/50 active:bg-black/50`}
+      onClick={handleClick}
+    >
+      {/* <div className=''> */}
 
-    className={`inline-flex relative rounded-full bg-black/30 backdrop-blur
-    px-4 py-2 justify-center items-center
-    font-sans font-semibold ${mobile?'text-sm':'text-base'} text-center whitespace-nowrap select-none uppercase tracking-max
-    cursor-pointer ${className}
-    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/40 active:bg-black/50`}
-      href={`/${to||''}`}
-      onClick={()=>handleClick(title)}
-      title={`Go to the ${text} page`}>
+      {text}
+      {/* <span><SpireeLogo className='w-6 md:w-6 ml-2'/></span> */}
 
-        {/* <div className=''> */}
-            
-            {text} 
-            {/* <span><SpireeLogo className='w-6 md:w-6 ml-2'/></span> */}
-        
-        {/* </div> */}
-    </Link>
-    )
+      {/* </div> */}
+    </div>
+  )
 }

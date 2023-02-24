@@ -3,7 +3,7 @@ import Cart from "./Cart";
 import { useAppContext } from "@components/context/appContext";
 import { usePageContext } from "../context/pageContext";
 
-export default function Navbar ({from}) {
+export default function ShoppingCart () {
   let {width, noBlur, cartIsOpen} = useAppContext()
   let {mobile} = usePageContext()
 
@@ -27,7 +27,9 @@ export default function Navbar ({from}) {
   //   return () => {window.removeEventListener('scroll', handleScroll)}
   // },[lastTop])
 // =================================
-
+// useEffect(()=>{
+//   console.log(cartIsOpen)
+// })
 
   return (
       // {/* {width>1023? 
@@ -37,8 +39,9 @@ export default function Navbar ({from}) {
       //   {/* : */}
         <>  
           {/* PLANE TO DETECT CLICKS OUTSIDE MENU */}
-          {cartIsOpen && <div id='cartBackground' className='z-20 fixed w-screen h-screen'/>}
-          <Cart from = {from} />
+          {cartIsOpen && <div id='cartBackground' className='z-20 fixed top-0 w-screen h-screen'/>}
+          {/* {console.log(cartIsOpen)} */}
+          <Cart  />
           {/* <NavMobile noBlur={noBlur} from = {from} /> */}
         </>
 )  

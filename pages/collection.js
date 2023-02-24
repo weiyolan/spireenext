@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Background from '@/components/sections/Background'
+import BackgroundSun from '@/components/sections/BackgroundSun'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
@@ -34,11 +35,11 @@ export default function Collection() {
           darkMode={true}
           mobile={mobile}
         >
-          <Background />
+          <BackgroundSun />
           {/* <Title text={'Merino'}/> */}
           <Title mainTitle='Celestial Design' subTitle='Every woman deserves to feel confident and stylish during their favourite sports.' />
 
-          <Navbar from='collection#sun' />
+          <Navbar from='collection/#sun' />
           <ShoppingCart />
         </PageWrapper>
 

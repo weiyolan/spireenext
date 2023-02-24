@@ -34,7 +34,7 @@ export default function Merino() {
         darkMode={true} 
         mobile={mobile}
         >
-          <Background />
+          <Background/>
           <Title mainTitle='The Finish Line' subTitle='Read along and get updated on when you will receive your celestial shirt' />
 
         {/* <Title text={'Merino'}/> */}

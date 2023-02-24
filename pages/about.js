@@ -58,6 +58,15 @@ export default function Home({ }) {
   // let [steps, setSteps] = useState([{from:0.45, for:400}, {from: 0.74, for:450}]);
   
   let mobile = screenWidth<768
+
+  // let [mobile, setMobile] = useState(false)
+
+  // useEffect(()=>{
+  //   if (screenWidth<768 && !mobile) {
+  //     setMobile(true)
+  //   } else if (screenWidth>768 && mobile) {setMobile(false)}
+  // },[screenWidth])
+
   let speed = 0
     // let footerHeight = screenWidth<768?300:250
     // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
@@ -132,8 +141,8 @@ export default function Home({ }) {
 
         <PageWrapper 
         darkMode={true} 
-        svgWidth={'w-5/6 md:w-4/5 xl:w-3/5'} 
-        viewBox={screens.md?"0 0 1468 2322":"0 0 701 5137"} 
+        viewBox={mobile?"0 0 701 5137":"0 0 1468 2322"} 
+        // svgWidth={""} 
         finished={finished} 
         mobile={mobile}
         setAnimationLocation={setAnimationLocation}
@@ -142,7 +151,7 @@ export default function Home({ }) {
         // setMoved={setMoved}
         >
         {/* 1468 */}
-          <Background moves={moveTracker} maxMoves={maxMoveTracker}/>
+          <Background src={'/images/StoryBackground5.png'} moves={moveTracker} maxMoves={maxMoveTracker}/>
           
           {/* <Layout> */}
           <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}} 
@@ -178,9 +187,9 @@ export default function Home({ }) {
               </ScrollingDiv>
             </FadeDiv>
 
-            <ButtonBig tabIndex={mobile?(scrolled>0.92?0:-1):finished?0:-1} className={`${mobile?(scrolled>0.92?'visible':'invisble'):finished?'visible':'invisible'}`} style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
+            <ButtonBig tabIndex={finished?0:mobile?(scrolled>0.92?0:-1):-1} className={`${finished?'visible':mobile?(scrolled>0.92?'visible':'invisble'):'invisible'}`} style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
             left:'50%', transform:'translate(-50%,0)', top:(titleHeight+scrollingDivHeight-(svgHeight*(mobile?0.0209414:0.044709))+(mobile?3.5:2))+'px',
-            opacity:mobile?(scrolled>0.92?1:0):finished?1:0, transition: 'opacity 1.5s ease, background 0.5s ease, border 0.5s ease' }} text='join'/>
+            opacity:finished?1:mobile?(scrolled>0.92?1:0):0, transition: 'opacity 1.5s ease, background 0.5s ease, border 0.5s ease' }} text='join' to='support'/>
 
           </section>
 

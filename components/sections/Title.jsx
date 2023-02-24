@@ -50,8 +50,8 @@ const Title = ({ mainTitle, subTitle, setHeight, style, className }) => {
   return (
     <div ref={titleRef} style={style} className={`${style === undefined ? 'relative' : ''} text-center ${className} ${darkMode ? 'text-white' : 'text-black'}`}>
       <h1 className={`font-sans inline-flex font-semibold tracking-max uppercase 
-        whitespace-nowrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
-        text-2xl sm:text-3xl lg:text-4xl mb-2 mt-8 md:mt-16 px-4`}>
+        whitespace-pre-wrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
+        text-2xl sm:text-3xl lg:text-4xl mb-2 mt-8 md:mt-10 px-4`}>
         {mainTitle.split("Spirée").length > 1 ?
           <>
             {mainTitle.split("Spirée")[0]}

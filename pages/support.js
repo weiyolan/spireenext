@@ -12,11 +12,13 @@ import Footer from '@/components/sections/Footer'
 
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
+import SupportCard from '@/components/support/SupportCard'
+import AddSupport from '@/components/support/AddSupport'
 
-export default function Merino() {
+export default function Support() {
 
-  const { scrolled, width, height,handleLightboxes } = useAppContext();
-  let mobile = width<768
+  const { scrolled, width, height, handleLightboxes } = useAppContext();
+  let mobile = width < 768
 
   return (
 
@@ -30,20 +32,42 @@ export default function Merino() {
 
 
       <main className={`w-full`} onClick={handleLightboxes}>
-      <PageWrapper 
-        darkMode={true} 
-        mobile={mobile}
+        <PageWrapper
+          darkMode={true}
+          mobile={mobile}
         >
-          <Background />
-          <Title mainTitle='Support Spirée' subTitle='Join Astrid and Spirée on their journey to empower women in sports.' />
+          <Background src='/images/mountainsRed.jpg' />
+          <Title mainTitle='Join Spirée' subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
+          <section className='w-3/5 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
+            <p>
+              {`Dear Supporter,\n
+Thank you for considering supporting Spirée on our mission to revolutionize sportswear for women. We are so grateful for your contribution in making the Sun and Moon series a reality. As a token of our appreciation, we are offering the following packages.\n
+Your support means everything to us, and we can't wait to show you the incredible products we have in store. Thank you for helping us empower women to reach their full potential.`}
+            </p>
 
-        {/* <Title text={'Merino'}/> */}
+            <div className='mt-8'>
+              <AddSupport/>
+            </div>
+  
+
+          </section>
 
 
-      <Navbar from='support'/>
-      <ShoppingCart/>
-      </PageWrapper>
-        
+          <section className='w-2/3 flex justify-between mx-auto mt-8'>
+            <SupportCard amount={50} title='Run With Purpose' percent={5} />
+            <SupportCard amount={100} title='Chase The Horizon' percent={10} />
+            <SupportCard amount={200} title='Reach New Heights' percent={20} />
+          </section>
+
+
+          {/* <Title text={'Merino'}/> */}
+          <Footer noMotion={true} />
+
+          <Navbar from='support' />
+          <ShoppingCart />
+
+        </PageWrapper>
+
       </main>
     </>
 

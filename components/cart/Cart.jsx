@@ -42,20 +42,20 @@ export default function Cart({ from }) {
   //   }
 
 
-  function handleClick() {
-    if (!cartIsOpen) {
-      toggleCart()
-      // setClicked(true)
-    } else if (cartIsOpen) {
-      toggleCart()
-      // setClicked(false)
-    }
+  // function handleClick() {
+  //   if (!cartIsOpen) {
+  //     toggleCart()
+  //     // setClicked(true)
+  //   } else if (cartIsOpen) {
+  //     toggleCart()
+  //     // setClicked(false)
+  //   }
 
-    // When unclicking the hover will take care of the closing 
-    // else if (clicked && !cartIsOpen) {
-    //   setClicked(false)
-    // }
-  }
+  //   // When unclicking the hover will take care of the closing 
+  //   // else if (clicked && !cartIsOpen) {
+  //   //   setClicked(false)
+  //   // }
+  // }
 
 
 
@@ -193,8 +193,8 @@ export default function Cart({ from }) {
       {/* =================COLORED MENU BAR=====================*/}
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
-        className={`${mobile ? ` overflow-hidden z-[51] absolute top-2 right-2 ${cartIsOpen ? 'rounded-none' : 'rounded-br-[40px]'} `
-          : `border overflow-hidden z-[51] absolute top-2 right-2 ${cartIsOpen ? 'rounded-3xl' : 'rounded-[40px]'} border-transparent `}`}
+        className={`${mobile ? ` z-[51] absolute top-2 right-2 ${cartIsOpen ? 'rounded-none' : 'rounded-br-[40px]'} `
+          : `border  z-[51] absolute top-2 right-2 border-transparent `}`}
         style={{ transition: 'border-radius 0.5s ease' }}
         variants={false ? cartSidebarMob : cartSidebarDesk}
         onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
@@ -204,7 +204,10 @@ export default function Cart({ from }) {
       >
 
         <div className={`relative transition-all duration-300 ${cartIsOpen || hover ? 'opacity-100 delay-[0]' : 'opacity-0 delay-200'}  
-        bg-gradient-to-r from-black/30 ${false ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[120%] h-[120%]`} />
+        bg-gradient-to-r from-black/30 ${false ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-[100%]
+        after:w-full after:h-full after:absolute after:top-0 after:left-0 after:opacity-70 after:shadow-xl
+        ${cartIsOpen ? 'rounded-3xl after:rounded-3xl' : 'rounded-[40px] after:rounded-[40px]'}
+        `} />
 
       </motion.div>
 
@@ -230,7 +233,7 @@ export default function Cart({ from }) {
             : ''}`}
           onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
           onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false) } }}
-          onClick={() => { if ((!mobile)) { handleClick() } }}
+          onClick={() => { if ((!mobile)) { toggleCart() } }}
         >
           <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-9'} transition-all duration-300 rounded-full overflow-visible`} />
         </motion.div>
