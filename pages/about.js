@@ -67,7 +67,6 @@ export default function Home({ }) {
   //   } else if (screenWidth>768 && mobile) {setMobile(false)}
   // },[screenWidth])
 
-  let speed = 0
     // let footerHeight = screenWidth<768?300:250
     // let heightToScroll = finished?`${svgHeight+titleHeight+footerHeight}px`:mobile?svgHeight+titleHeight+footerHeight+'px':'3000px'
     
@@ -155,12 +154,12 @@ export default function Home({ }) {
           
           {/* <Layout> */}
           <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}} 
-          className={`${finished?`inline-flex flex-col justify-center items-center mx-auto ${1<0?'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full shadow-sm':''}  w-fit transition-all duration-1000 `
+          className={`${(mobile || finished)?`inline-flex flex-col justify-center items-center mx-auto ${false?'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full shadow-sm':''}  w-fit transition-all duration-1000 `
           :'w-full'}`} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere,\nwith confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto ' >
 
-            <FadeDiv style={{height: (mobile || finished)?scrollingDivHeight+'px':svgViewHeight+'px', width: screenWidth+'px', top: titleHeight+'px'}} className={`${(mobile || finished)?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={1<0?(finished?0:mobile?2:10):0} type={1<0?(finished?`top`:'both'):'none'}>
+            <FadeDiv style={{height: (mobile || finished)?scrollingDivHeight+'px':svgViewHeight+'px', width: screenWidth+'px', top: titleHeight+'px'}} className={`${(mobile || finished)?'absolute':'fixed'} flex left-1/2 -translate-x-1/2 `} amount={false?(finished?0:mobile?2:10):0} type={false?(finished?`top`:'both'):'none'}>
 
           {/* style={{height: svgHeight+'px'}} */}
               <ScrollingDiv setMoveTracker={setMoveTracker} setMaxMoveTracker={setMaxMoveTracker} setScrollingDivHeight={setScrollingDivHeight} finishingScroll={finishingScroll} animationLocation={animationLocation} textLocation={textLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
@@ -193,7 +192,7 @@ export default function Home({ }) {
 
           </section>
 
-          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: (mobile || finished)?'absolute':'fixed', top: finished?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease', transitionDelay: '1s'} }/>
+          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: (mobile || finished)?'absolute':'fixed', top: (mobile || finished)?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease', transitionDelay: '1s'} }/>
           {/* {console.log('footer position from top: '+ (heightToScroll-footerHeight-screenHeight))} */}
           {/* {console.log(heightToScroll)} */}
           {/* {console.log(footerHeight)} */}

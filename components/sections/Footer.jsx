@@ -13,16 +13,16 @@ import { usePageContext } from "../context/pageContext";
 import useDimensions from "@/utils/useDimensions";
 
 const socialList = {
-  en: [{ text: 'Instagram',ext:true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext:true, link: 'https://www.facebook.com/groups/runeverywhere.spiree/' }],
-  fr: [{ text: 'Instagram', ext:true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext:true, link: '/services/#Website' }]
+  en: [{ text: 'Instagram', ext: true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext: true, link: 'https://www.facebook.com/groups/runeverywhere.spiree/' }],
+  fr: [{ text: 'Instagram', ext: true, link: 'https://www.instagram.com/spiree_officiel/' }, { text: 'Facebook', ext: true, link: '/services/#Website' }]
 };
 const navigateList = {
   en: [{ text: 'Our Collection', link: '/collection' }, { text: 'Pre-Order Sun & Moon', link: '/collection/#pre-order', disabled: false }, { text: 'About Spirée', link: '/about', disabled: false }],
   fr: [{ text: 'Notre Collection', link: '/collection', disabled: false }, { text: 'Pre-Commander', link: '/collection/#pre-order', disabled: false }, { text: 'A Propos Spirée', link: '/about', disabled: false }]
 };
 const legalList = {
-  en: [{ text: 'Legal Notice', link: '/', disable:true }, { text: 'Terms of Use', link: '/services', disable:true }, { text: 'Cookie Notice', link: '/aboutme', disable:true }],
-  fr: [{ text: 'Legal Notice', link: '/', disable:true }, { text: 'Terms of Use', link: '/services', disable:true }, { text: 'Cookie Notice', link: '/aboutme', disable:true }],
+  en: [{ text: 'Legal Notice', link: '/', disable: true }, { text: 'Terms of Use', link: '/services', disable: true }, { text: 'Cookie Notice', link: '/aboutme', disable: true }],
+  fr: [{ text: 'Legal Notice', link: '/', disable: true }, { text: 'Terms of Use', link: '/services', disable: true }, { text: 'Cookie Notice', link: '/aboutme', disable: true }],
 };
 const contactList = {
   en: [
@@ -105,23 +105,19 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
   function getContent() {
     return (
       <>
-        <div className='flex justify-between'>
+        <div className='flex flex-col sm:flex-row items-center sm:items-start justify-between max-w-4xl mx-auto'>
 
 
-          {/* <Links title='Design' list={designList[locale]} position={width < breakPointSmall ? 'center' : 'left'} /> */}
-          <Links title='Socials' list={socialList[locale]} position={'left'} />
-          <Links title='Navigate' list={navigateList[locale]} position={'left'} />
-          {/* {console.log(mobile, setFooterHeight === undefined)} */}
+          <Links title='Navigate' list={navigateList[locale]} />
+          <Links title='Socials' list={socialList[locale]} />
 
-
-          <div className='flex flex-col '>
-            <AccentTitle text='Stay In Touch'/>
-            <StayInTouch/>
+          <div className='flex flex-col items-center'>
+            <AccentTitle text='Stay In Touch' />
+            <StayInTouch />
           </div>
 
           {/* {(!mobile || (mobile && setFooterHeight === undefined)) && */}
-            {/* <> */}
-              {/* <div className="mb-4 w-full sm:w-fit">
+          {/* <div className="mb-4 w-full sm:w-fit">
                 <div className='mx-auto w-fit text-center'>
                   <Link href='/' title='Go to homepage'>
                     <SpireeLogo className='w-8 sm:w-14' alt='Spiree logo in white' />
@@ -129,11 +125,8 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
                 </div><p className='text-white text-center text-xs font-extralight' ><br /></p>
               </div> */}
 
-              <Links title='Contact' list={contactList[locale]} position={'left'} />
-              <Links title='Legal' list={legalList[locale]} position={'left'} />
-              {/* <Links title='Contact' list={contactList[locale]} position={'left'} /> */}
-            {/* </> */}
-          {/* } */}
+          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Contact' list={contactList[locale]} />}
+          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Legal' list={legalList[locale]} />}
 
         </div>
 
@@ -172,8 +165,8 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:px-20 sm:pt-8 sm:pb-2 w-full`}>
-        
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 px-4 pt-4 pb-2  sm:pb-2 lg:pt-8 lg:px-8 w-full`}>
+
         {getContent()}
 
       </section>)
@@ -193,9 +186,10 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
   )
 }
 
-function Links({ position, title, list }) {
+function Links({ title, list }) {
   return (
-    <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0`}>
+    // <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0`}>
+    <div className={`text-center sm:text-left `}>
       <AccentTitle text={title} />
       <List list={list} />
     </div>
@@ -205,18 +199,18 @@ function Links({ position, title, list }) {
 function List({ list }) {
 
   return (
-    <ul className='flex flex-col font-quick'>
+    <ul className='font-quick'>
       {list.map((item, i) => {
         if (item.ext) {
           return (
             <li key={i}
               className={`text-white font-light whitespace-nowrap 
-            my-3 sm:my-1
+            my-1 sm:my-1 first:mt-0 last:mb-4
             text-sm sm:text-sm  `} >
               <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white ' rel="noopener noreferrer" >
-                  {item.text}
-                  
-                  
+                {item.text}
+
+
               </Link>
             </li>
           )
@@ -225,12 +219,12 @@ function List({ list }) {
           return (
             <li key={i}
               className={`${item.disabled ? 'text-primary/90' : 'text-white'} font-light whitespace-nowrap 
-          my-3 sm:my-1
+          my-1 sm:my-1 first:mt-0 last:mb-4
           text-sm sm:text-sm `} >
-              {item.disabled ? item.text : 
-              <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>
-                {item.text}
-              </Link>}
+              {item.disabled ? item.text :
+                <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>
+                  {item.text}
+                </Link>}
             </li>)
         }
       })}

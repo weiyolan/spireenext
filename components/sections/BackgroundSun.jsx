@@ -42,7 +42,7 @@ export default function BackgroundSun ({src, moves, maxMoves}) {
         linear-gradient(115deg, rgb(211 255 215), rgb(0 0 0)), 
         radial-gradient( 90% 100% at calc( 50% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(200 200 200), rgb(022 000 045)),
         radial-gradient(100% 100% at calc( 80% - calc(${position.x} * 1px)) calc( 0% - calc(${position.y} * 1px)), rgb(250 255 000), rgb(036 000 000)), 
-        radial-gradient(150% 210% at calc(100% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(020 175 125), rgb(000 010 255)), 
+        radial-gradient(150% 210% at calc(100% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(020 175 125), rgb(184 009 009)), 
         radial-gradient(100% 100% at calc(100% - calc(${position.x} * 1px)) calc(30% - calc(${position.y} * 1px)), rgb(255 077 000), rgb(000 200 255)), 
         linear-gradient(60deg, rgb(255 000 000), rgb(120 086 255))`,
         backgroundBlendMode: `overlay, overlay, difference, difference, difference, normal`

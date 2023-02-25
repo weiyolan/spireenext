@@ -252,21 +252,24 @@ export default function Nav({ from }) {
 
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
-        className={`${mobile ? `shadow-xl z-[51] absolute top-0 left-0 ${navIsOpen ? 'rounded-none shadow-xl' : 'rounded-br-[40px]'} `
-          : `border z-[51] absolute top-2 left-2 rounded-full
+        className={`z-[51] absolute top-0 left-0 md:top-2 md:left-2 border-none md:border rounded-none md:rounded-full
            ${clicked ? ' border-white animate-borderPulse ' : 'border-transparent'} 
-           ${navIsOpen ? '' : ''}
-           `}`}
+           `}
+           
 
-        style={{ transition: 'border-radius 0.5s ease' }}
+        // style={{ transition: 'border-radius 0.5s ease' }}
         variants={mobile ? sidebarMob : sidebarDesk}
         onMouseEnter={() => { if (!mobile && !clicked) { toggleNav() } }}
         onMouseLeave={() => { if (!mobile && !clicked) { toggleNav() } }}
       >
-        <div className={`transition-all rounded-full duration-300 ${navIsOpen ? 'opacity-100 delay-[0]' : 'opacity-0 delay-500'} 
-        bg-gradient-to-r from-black/30 ${false ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full
-        after:w-full after:rounded-full after:h-full after:absolute after:top-0 after:left-0 after:opacity-70 after:shadow-xl
+        <div style={{transition: `opacity 0.5s ease, border-radius 0.5s ease`,
+        transitionDelay: `${navIsOpen?'0s':'0.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] ${navIsOpen ? 'opacity-100' : 'opacity-0'} 
+        bg-gradient-to-r from-black/30 ${true ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full 
+        after:w-full after:h-full after:absolute after:top-0 after:left-0 after:shadow-xl 
+        rounded-[40px] md:rounded-full after:rounded-[40px] after:md:rounded-full  
+        ${navIsOpen ? ' rounded-tr-none rounded-b-none after:rounded-b-none after:rounded-tr-none' : ' after:rounded-br-[40px] rounded-br-[40px]'}
         `}
+        // rounded-[40px] rounded-br-none after:rounded-[40px] after:rounded-br-none
         />
       </motion.div>
 
@@ -278,7 +281,7 @@ export default function Nav({ from }) {
           variants={mobile ? logoMob : logoDesk}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className={`${mobile ? 'absolute inline-flex rounded-full w-fit top-[18px] z-[51] left-[18px] '
+          className={`${mobile ? 'fixed inline-flex rounded-full w-fit bottom-[18px] z-[51] right-[18px] '
             : 'absolute inline-flex rounded-full w-fit z-[51] cursor-pointer'}`}
           onMouseEnter={() => { if (!mobile && !clicked) { toggleNav() } }}
           onMouseLeave={() => { if (!mobile && !clicked) { toggleNav() } }}
