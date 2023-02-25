@@ -24,8 +24,8 @@ export default function CartItem({ item, title }) {
 
 
   return (
-    <motion.div variants={childVariants} className={`w-full flex text-white ${title ? 'text-sm font-normal pb-1 border-b-[1px] border-white' : ' font-light text-sm'} font-sans `}>
-      <div className=' flex justify-center text-center items-start w-3/12'>
+    <motion.div variants={childVariants} className={`w-full flex text-white text-base min-[480px]:text-sm ${title ? ' font-normal pb-1 border-b-[1px] border-white' : ' font-light'} font-sans `}>
+      <div className=' flex justify-center text-center items-center w-3/12'>
         {title ? <p>#</p> :
           <>
             <Add/>

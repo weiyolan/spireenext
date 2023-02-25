@@ -17,7 +17,7 @@ import NavToggle from "./NavToggle";
 // let borderDebug = 'border border-red-500';
 
 export default function Cart({ from }) {
-  let { locale, width, cartIsOpen, toggleCart } = useAppContext()
+  let { locale, width, cartIsOpen, toggleCart, navIsOpen,toggleNav } = useAppContext()
   let { mobile } = usePageContext()
   let [clicked, setClicked] = useState(false)
   let [hover, setHover] = useState(false)
@@ -42,20 +42,21 @@ export default function Cart({ from }) {
   //   }
 
 
-  // function handleClick() {
-  //   if (!cartIsOpen) {
-  //     toggleCart()
-  //     // setClicked(true)
-  //   } else if (cartIsOpen) {
-  //     toggleCart()
-  //     // setClicked(false)
-  //   }
+  function handleClick() {
 
-  //   // When unclicking the hover will take care of the closing 
-  //   // else if (clicked && !cartIsOpen) {
-  //   //   setClicked(false)
-  //   // }
-  // }
+    if (navIsOpen) {
+      toggleNav()
+    }
+    
+    toggleCart()
+      // setClicked(true)
+  
+
+    // When unclicking the hover will take care of the closing 
+    // else if (clicked && !cartIsOpen) {
+    //   setClicked(false)
+    // }
+  }
 
 
 
@@ -193,7 +194,7 @@ export default function Cart({ from }) {
             : ''}`}
           onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
           onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false) } }}
-          onClick={() => { toggleCart() }}
+          onClick={handleClick}
         >
           <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 rounded-full overflow-visible`} />
         </motion.div>

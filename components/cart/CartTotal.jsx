@@ -21,8 +21,8 @@ const childVariants = {
 export default function CartItem({total: {totalPrice, tva, shipping}}) {
     
 
-  return (<>
-    <motion.div variants={childVariants} className={`w-full flex text-white  font-light text-sm font-sans `}>
+  return (<div className='text-white  font-light text-base min-[480px]:text-sm font-sans'>
+    <motion.div variants={childVariants} className={`w-full flex `}>
       <div className=' flex justify-left items-center w-1/2'>
         <p>Subtotal</p>
       </div>
@@ -30,7 +30,7 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
         <p>€{totalPrice}</p>
       </div>
     </motion.div>
-    <motion.div variants={childVariants} className={`w-full flex text-white  font-light text-sm font-sans `}>
+    <motion.div variants={childVariants} className={`w-full flex `}>
       <div className=' flex justify-left items-center w-1/2'>
         <p>incl. TVA</p>
       </div>
@@ -39,7 +39,7 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
         <p>€{tva}</p>
       </div>
     </motion.div>
-    <motion.div variants={childVariants} className={`w-full flex pb-2 text-white border-b-[1px] border-b-white font-light text-sm font-sans `}>
+    <motion.div variants={childVariants} className={`w-full flex pb-2  border-b-[1px] border-b-white  `}>
       <div className=' flex justify-left items-center w-1/2'>
         <p>Shipping</p>
       </div>
@@ -48,17 +48,17 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
       </div>
     </motion.div>
 
-    <motion.div variants={childVariants} className={`w-full flex pb-2 text-white  font-light text-sm font-sans `}>
+    <motion.div variants={childVariants} className={`w-full flex pb-2 font-medium text-lg min-[480px]:text-base `}>
       <div className='flex justify-end w-2/3 items-center'>
-        <p className='font-medium text-base'>Total:</p>
+        <p className=''>Total:</p>
       </div>
       <div className='flex justify-end w-1/3 items-center'>
-        <p className='font-medium text-base'>€{totalPrice}</p>
+        <p className=''>€{totalPrice}</p>
       </div>
     </motion.div>
 
 
-    </>
+    </div>
   )
 
 }
