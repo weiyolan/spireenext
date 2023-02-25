@@ -19,7 +19,7 @@ export default function NavButton({ to, text, selectedB, handleClick }) {
 
   return (
     // ${locale === 'en' ? 'md:mx-4 lg:mx-6' : 'md:mx-0 lg:mx-2'}
-    <Link className={`${selectedB === to ? 'font-normal' :' font-extralight hover:border-b-white' } 
+    <Link className={`${selectedB === to ? 'font-normal border-b-white hover:border-b-white/20 ' :' font-extralight hover:border-b-white' } 
         border border-solid border-transparent text-white active:font-medium text-lg md:text-base
         flex px-0 py-0 mx-0 md:mx-4 lg:mx-6 
         font-sans textcenter self-center whitespace-nowrap

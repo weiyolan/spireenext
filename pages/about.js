@@ -192,7 +192,7 @@ export default function Home({ }) {
 
           </section>
 
-          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: (mobile || finished)?'absolute':'fixed', top: (mobile || finished)?titleHeight+scrollingDivHeight:(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease', transitionDelay: '1s'} }/>
+          <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: (mobile || finished)?'absolute':'fixed', top: (mobile || finished)?(titleHeight+scrollingDivHeight || 0):(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease', transitionDelay: '1s'} }/>
           {/* {console.log('footer position from top: '+ (heightToScroll-footerHeight-screenHeight))} */}
           {/* {console.log(heightToScroll)} */}
           {/* {console.log(footerHeight)} */}

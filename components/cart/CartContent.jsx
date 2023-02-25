@@ -27,7 +27,7 @@ const childVariants = {
     }
   },
   closed: {
-    y: 0,
+    y: 20,
     opacity: 0,
     transition: {
       y: { stiffness: 1000, staggerChildren: 0.05, staggerDirection: -1, when: "afterChildren" }
@@ -69,7 +69,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
 
   return (
     <motion.div  onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
-      className={`m-0 px-5 z-[51] absolute flex flex-col justify-between text-center w-[320px] right-2 top-2`}
+      className={`m-0 px-4 z-[51] absolute flex flex-col justify-between text-center w-screen min-[480px]:w-[320px] top-0 right-0 min-[480px]:right-2 min-[480px]:top-2`}
       variants={containerVariants}>
 
       {/* <div className='grid grid-flow-row gap-4 grid-cols-1 h-full '> */}

@@ -20,7 +20,7 @@ export default function NavToggle ({ open, toggle, className }) {
     <button title={`${locale==='en'?'Menu toggle':'Ouvrir et fermer le menu'}`} 
     className={' ' + className}
     onClick={toggle}>
-        <svg width="23" height="23" viewBox="0 0 23 23">
+        <svg className='w-[17px] sm:w-[23px]' viewBox="0 0 23 23">
         <Path open={open}
             variants={{
             closed: { d: "M 2 2.5 L 20 2.5" },
