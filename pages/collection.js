@@ -36,11 +36,18 @@ export default function Collection() {
           mobile={mobile}
         >
           <BackgroundSun />
+          <Layout>
           {/* <Title text={'Merino'}/> */}
           <Title mainTitle='Celestial Design' subTitle='Every woman deserves to feel confident and stylish during their favourite sports.' />
 
+          <div className=''>
+            <h3 className='font-quick font-thin text-9xl text-white'>Moon</h3>
+            <h4 className='font-sans font-thin text-2xl text-white whitespace-pre-wrap ml-2'>{`Embrace Your Ethereal Side\nA touch of mystery, tranquility, and grace`}</h4>
+          </div>
+          </Layout>
           <Navbar from='collection/#sun' />
           <ShoppingCart />
+          <Footer noMotion/>
         </PageWrapper>
 
       </main>

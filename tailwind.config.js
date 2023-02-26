@@ -71,12 +71,12 @@ module.exports = {
             transform: 'scale(1) translate(0,0)',
             // opacity: 1,
           },
-          '33%': {
-            transform: 'scale(1.1) translate(20%,20%)',
+          '50%': {
+            transform: 'scale(1.05) translate(0,0)',
             // opacity: 0.9,
-          },
-          '66%': {
-            transform: 'scale(0.9) translateX(10%,-20%)',
+          }
+          // '66%': {
+            // transform: 'scale(0.9) translateX(10%,-20%)',
             // opacity: 0.8,
           },
         },
@@ -99,13 +99,13 @@ module.exports = {
         wiggle: 'wiggle 1s ease infinite',
         outlinePulse: 'outlinePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         borderPulse: 'borderPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        blob: 'blob 7s ease infinite',
+        blob: 'blob 20s ease infinite',
         blob2: 'blob2 7s ease infinite',
       },
       variants: {
         animation: ["motion-safe"]
       },  
-    },
+    
   },
   plugins: [],
 }

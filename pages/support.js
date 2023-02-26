@@ -37,15 +37,16 @@ export default function Support() {
           mobile={mobile}
         >
           <Background src='/images/mountainsRed.jpg' />
+<Layout>
           <Title mainTitle='Join Spirée' subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
-          <section className='w-3/5 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
+          <section className='w-full md:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
             <p>
               {`Dear Supporter,\n
 Thank you for considering supporting Spirée on our mission to revolutionize sportswear for women. We are so grateful for your contribution in making the Sun and Moon series a reality. As a token of our appreciation, we are offering the following packages.\n
 Your support means everything to us, and we can't wait to show you the incredible products we have in store. Thank you for helping us empower women to reach their full potential.`}
             </p>
 
-            <div className='mt-8'>
+            <div className='mt-4 sm:mt-8'>
               <AddSupport/>
             </div>
   
@@ -58,8 +59,7 @@ Your support means everything to us, and we can't wait to show you the incredibl
             <SupportCard amount={100} title='Chase The Horizon' percent={10} />
             <SupportCard amount={200} title='Reach New Heights' percent={20} />
           </section>
-
-
+          </Layout>
           {/* <Title text={'Merino'}/> */}
           <Footer noMotion={true} />
 

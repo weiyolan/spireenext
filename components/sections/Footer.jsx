@@ -105,7 +105,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
   function getContent() {
     return (
       <>
-        <div className='flex flex-col sm:flex-row items-center sm:items-start justify-between max-w-4xl mx-auto'>
+        <div className='flex flex-col sm:flex-row items-center sm:items-start justify-between max-w-6xl mx-auto'>
 
 
           <Links title='Navigate' list={navigateList[locale]} />
@@ -165,7 +165,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 px-4 pt-4 pb-2  sm:pb-2 lg:pt-8 lg:px-8 w-full`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 px-4 pt-4 pb-2 sm:pb-2 lg:pt-8 lg:px-8 w-full`}>
 
         {getContent()}
 
