@@ -1,5 +1,6 @@
   import React from 'react'
 import { motion } from 'framer-motion'
+import { useAppContext } from '../context/appContext';
 
 const childVariants = {
   open: {
@@ -20,6 +21,9 @@ const childVariants = {
 
 export default function CartItem({total: {totalPrice, tva, shipping}}) {
     
+  const {content, total} = useAppContext().cart
+
+
 
   return (<div className='text-white  font-light text-base min-[480px]:text-sm font-sans'>
     <motion.div variants={childVariants} className={`w-full flex `}>
@@ -27,7 +31,7 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
         <p>Subtotal</p>
       </div>
       <div className='flex justify-end items-center w-1/2'>
-        <p>€{totalPrice}</p>
+        <p>€{total}</p>
       </div>
     </motion.div>
     <motion.div variants={childVariants} className={`w-full flex `}>
@@ -36,7 +40,7 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
       </div>
 
       <div className='flex justify-end items-center w-1/2'>
-        <p>€{tva}</p>
+        <p>€{total-total/1.2}</p>
       </div>
     </motion.div>
     <motion.div variants={childVariants} className={`w-full flex pb-2  border-b-[1px] border-b-white  `}>
@@ -53,7 +57,7 @@ export default function CartItem({total: {totalPrice, tva, shipping}}) {
         <p className=''>Total:</p>
       </div>
       <div className='flex justify-end w-1/3 items-center'>
-        <p className=''>€{totalPrice}</p>
+        <p className=''>€{total}</p>
       </div>
     </motion.div>
 

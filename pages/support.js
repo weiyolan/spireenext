@@ -14,6 +14,7 @@ import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 import SupportCard from '@/components/support/SupportCard'
 import AddSupport from '@/components/support/AddSupport'
+import AllSupportCards from '@/components/support/AllSupportCards'
 
 export default function Support() {
 
@@ -37,28 +38,31 @@ export default function Support() {
           mobile={mobile}
         >
           <Background src='/images/mountainsRed.jpg' />
-<Layout>
-          <Title mainTitle='Join Spirée' subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
-          <section className='w-full md:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
-            <p>
-              {`Dear Supporter,\n
+          <Layout>
+            <Title mainTitle={'Join\nSpirée'} subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
+            <section className='w-full sm:w-4/5 lg:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
+              <p>
+                {`Dear Supporter,\n
 Thank you for considering supporting Spirée on our mission to revolutionize sportswear for women. We are so grateful for your contribution in making the Sun and Moon series a reality. As a token of our appreciation, we are offering the following packages.\n
 Your support means everything to us, and we can't wait to show you the incredible products we have in store. Thank you for helping us empower women to reach their full potential.`}
-            </p>
+              </p>
 
-            <div className='mt-4 sm:mt-8'>
-              <AddSupport/>
-            </div>
-  
-
-          </section>
+              <div className='mt-4 sm:mt-8'>
+                <AddSupport />
+              </div>
 
 
-          <section className='w-2/3 flex justify-between mx-auto mt-8'>
-            <SupportCard amount={50} title='Run With Purpose' percent={5} />
-            <SupportCard amount={100} title='Chase The Horizon' percent={10} />
-            <SupportCard amount={200} title='Reach New Heights' percent={20} />
-          </section>
+            </section>
+
+
+            <AllSupportCards/>
+            {/* <section className='w-full flex h-[382px] md:h-auto md:flex-wrap relative md:justify-center mx-auto mt-8'>
+              <SupportCard amount={50} title='Run With Purpose' percent={5} />
+              <SupportCard amount={100} title='Chase The Horizon' percent={10} />
+              <SupportCard amount={200} title='Reach New Heights' percent={20} />
+            </section> */}
+
+
           </Layout>
           {/* <Title text={'Merino'}/> */}
           <Footer noMotion={true} />

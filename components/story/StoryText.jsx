@@ -52,8 +52,8 @@ export default function StoryText({ scrollMin, scrollMax, speed }) {
   return (
     <SVGWrapper handleNewPosition={handleNewPosition} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
 
-      <svg ref={svgRef} alt='Story text explaining the founding story, as well as mission and vision of Spirée' style={{ transform: `translate(-50%, ${-0 * scrolled}px)` }} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
-          className={`absolute w-5/6 md:w-4/5 xl:w-3/5 left-1/2`}>
+      <svg ref={svgRef} alt='Story text explaining the founding story, as well as mission and vision of Spirée' style={{ transform: `translate(-50%, 0px)` }} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
+          className={`absolute w-5/6 xs:w-4/6 sm:w-3/6 md:w-5/6 xl:w-3/5 max-w-6xl left-1/2`}>
       {!mobile?<g id='desktop'>
         <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="85.6895" y="56">Meet Astrid, a driven and sport-</tspan><tspan x="65.6211" y="81">loving women who&#x2019;s on a mission to </tspan><tspan x="96.8711" y="106">revolutionize the way women </tspan><tspan x="141.295" y="131">experience running.</tspan></TextAnimate>
         <TextAnimate at={0.04} fromTop={true} id="DoctorText" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="598.521" y="343">As a recent graduate with a </tspan><tspan x="588.688" y="368">doctorate in pharmacy, Astrid </tspan><tspan x="575.338" y="393">has a deep understanding of the </tspan><tspan x="605.631" y="418">body and its needs during </tspan><tspan x="651.031" y="443">physical activity.</tspan></TextAnimate>

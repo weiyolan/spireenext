@@ -38,13 +38,13 @@ export default function BackgroundSun ({src, moves, maxMoves}) {
 
   return (
     <>
-    <div ref={backgroundRef} className={`w-full fixed top-[0] -z-10 h-[100vh] overflow-hidden `} style={{
+    <div ref={backgroundRef} className={`w-full absolute top-0 -z-10 h-[100vh] overflow-hidden `} style={{
         backgroundImage: `
         linear-gradient(115deg, rgb(211 255 215), rgb(0 0 0)), 
-        radial-gradient( 90% 100% at calc( 50% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(200 200 200), rgb(022 000 045)),
-        radial-gradient(100% 100% at calc( 80% - calc(${position.x} * 1px)) calc( 0% - calc(${position.y} * 1px)), rgb(250 255 000), rgb(036 000 000)), 
-        radial-gradient(150% 210% at calc(100% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(255 153 000), rgb(184 009 009)), 
-        radial-gradient(100% 100% at calc(100% - calc(${position.x} * 1px)) calc(30% - calc(${position.y} * 1px)), rgb(255 077 000), rgb(55 200 255)), 
+        radial-gradient( 90% 100% at calc( 50% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(0 200 200), rgb(022 000 045)),
+        radial-gradient(100% 100% at calc( 80% - calc(${position.x} * 1px)) calc( 0% - calc(${position.y} * 1px)), rgb(000 255 255), rgb(036 000 000)), 
+        radial-gradient(150% 210% at calc(100% + calc(${position.x} * 1px)) calc( 0% + calc(${position.y} * 1px)), rgb(000 153 255), rgb(184 009 009)), 
+        radial-gradient(100% 100% at calc(100% - calc(${position.x} * 1px)) calc(30% - calc(${position.y} * 1px)), rgb(000 077 255), rgb(55 200 255)), 
         linear-gradient(60deg, rgb(255 000 000), rgb(255 92 0))`,
         backgroundBlendMode: `overlay, overlay, difference, difference, difference, normal`
     }} >
@@ -57,8 +57,8 @@ export default function BackgroundSun ({src, moves, maxMoves}) {
          {/* Empty ALT for purely decorative images */}
       {/* </div> */}
     </div>
-    <div className={`w-full fixed top-[0] -z-10 h-[100vh] bg-accent/50 bg-blend-overlay`}> 
-    <Image src='/images/moon.png' className={`absolute animate-blob -left-80 -top-40 blur-[0]`} width={1000} height={1000}/>
+    <div className={`w-full absolute top-0 -z-10 h-[100vh] bg-red-800/50 bg-blend-overlay`}> 
+    <Image alt='' src='/images/moon.png' className={`absolute animate-blob -right-80 -top-40 blur-[0]`} width={800} height={800}/>
     </div>
 </>
   )

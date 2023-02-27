@@ -40,7 +40,7 @@ export default function Background ({src, moves, maxMoves}) {
       <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}>
         {/* {console.log(height*(1+overflow)+'px')} */}
         {/* {console.log(`translate(-${Y}px,0)`)} */}
-        {src&&<Image alt='' fill src={src} className={`object-fill object-center`} sizes="100vw" quality={100}/>}
+        {src&&<Image alt='' fill src={src} className={`object-cover object-right sm:object-center`} sizes="100vw" quality={100}/>}
          {/* Empty ALT for purely decorative images */}
       </div>
       

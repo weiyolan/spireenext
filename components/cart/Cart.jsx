@@ -190,13 +190,13 @@ export default function Cart({ from }) {
           variants={cartLogo}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          className={`${true ? 'absolute flex rounded-full top-[0] z-[51] right-[0] cursor-pointer '
+          className={`${true ? 'absolute flex sm:rounded-full top-[0] z-[51] right-[0] cursor-pointer '
             : ''}`}
           onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
           onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false) } }}
           onClick={handleClick}
         >
-          <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 rounded-full overflow-visible`} />
+          <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 sm:rounded-full overflow-visible`} />
         </motion.div>
  
 

@@ -163,9 +163,8 @@ export default function Home({ }) {
 
           {/* style={{height: svgHeight+'px'}} */}
               <ScrollingDiv setMoveTracker={setMoveTracker} setMaxMoveTracker={setMaxMoveTracker} setScrollingDivHeight={setScrollingDivHeight} finishingScroll={finishingScroll} animationLocation={animationLocation} textLocation={textLocation} footerHeight={footerHeight} screenHeight={screenHeight} svgHeight={svgHeight} titleHeight={titleHeight}
-              className={`absolute w-full left-1/2 -translate-x-1/2 
-              ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'} 
-              `} >
+              className={`absolute w-full left-1/2 -translate-x-1/2 ${screenHeight>1000?'top-[60px]':'top-6 md:top-[20px]'}`} >
+              
                {/* ${scrolled<steps[0]?.from?'-translate-y-[0]':scrolled<steps[1]?.from?' -translate-y-[500px] ':' -translate-y-[100px] ' } */}
                
 
@@ -186,7 +185,9 @@ export default function Home({ }) {
               </ScrollingDiv>
             </FadeDiv>
 
-            <ButtonBig tabIndex={finished?0:mobile?(scrolled>0.92?0:-1):-1} className={`${finished?'visible':mobile?(scrolled>0.92?'visible':'invisble'):'invisible'}`} style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
+            <ButtonBig tabIndex={finished?0:mobile?(scrolled>0.92?0:-1):-1} 
+            className={`${finished?'visible':mobile?(scrolled>0.92?'visible':'invisble'):'invisible'}`} 
+            style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
             left:'50%', transform:'translate(-50%,0)', top:(titleHeight+scrollingDivHeight-(svgHeight*(mobile?0.0209414:0.044709))+(mobile?3.5:2))+'px',
             opacity:finished?1:mobile?(scrolled>0.92?1:0):0, transition: 'opacity 1.5s ease, background 0.5s ease, border 0.5s ease' }} text='join' to='support'/>
 

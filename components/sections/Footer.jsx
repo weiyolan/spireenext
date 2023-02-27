@@ -111,7 +111,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
           <Links title='Navigate' list={navigateList[locale]} />
           <Links title='Socials' list={socialList[locale]} />
 
-          <div className='flex flex-col items-center'>
+          <div className='flex flex-col items-start'>
             <AccentTitle text='Stay In Touch' />
             <StayInTouch />
           </div>
@@ -130,7 +130,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
 
         </div>
 
-        <div role='presentation' className='w-full text-xs text-center mt-2 sm:mt-1 lg:mt-4 text-white font-thin'>
+        <div role='presentation' className='w-full text-xs text-center mt-2 text-white font-thin'>
           <ul role='presentation' className='inline-flex flex-wrap justify-center'>
             {financialInfo[locale].map((val, i) => { return (<li role='presentation' className={`${i === 0 ? '' : 'pl-1'}`} key={val}>{`${i === 0 ? '' : '∘ '}${val}`}</li>) })}
           </ul>
@@ -165,7 +165,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-12 px-4 pt-4 pb-2 sm:pb-2 lg:pt-8 lg:px-8 w-full`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-10 px-4 pt-4 pb-2 lg:pt-8 w-full`}>
 
         {getContent()}
 
@@ -174,11 +174,11 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
 
   return (
     <motion.section ref={footerRef}
-      initial={{ y: `${noMotion ? 0 : width < breakPointSmall ? 100 : 200}` }}
+      initial={{ y: `${width < breakPointSmall ? 100 : 200}` }}
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
 
-      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-12 p-10 pb-2 sm:p-8 sm:pb-2 lg:p-8 lg:pb-2 bottom-0 w-full`}>
+      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-10 pb-2 sm:p-8 lg:p-8 bottom-0 w-full`}>
 
       {getContent()}
 
@@ -205,7 +205,7 @@ function List({ list }) {
           return (
             <li key={i}
               className={`text-white font-light whitespace-nowrap 
-            my-1 sm:my-1 first:mt-0 last:mb-4
+            my-1 first:mt-0
             text-sm sm:text-sm  `} >
               <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white ' rel="noopener noreferrer" >
                 {item.text}
@@ -219,7 +219,7 @@ function List({ list }) {
           return (
             <li key={i}
               className={`${item.disabled ? 'text-primary/90' : 'text-white'} font-light whitespace-nowrap 
-          my-1 sm:my-1 first:mt-0 last:mb-4
+          my-1  first:mt-0
           text-sm sm:text-sm `} >
               {item.disabled ? item.text :
                 <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>

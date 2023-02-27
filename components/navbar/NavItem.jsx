@@ -31,6 +31,7 @@ const deskVariants = {
     x: -50,
     opacity: 0,
     transition: {
+      delay: 1,
       y: { stiffness: 1000 }
     }
   }

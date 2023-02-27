@@ -31,6 +31,7 @@ module.exports = {
         max: '.25em',
       },
       screens: {
+        'xs':'480px',
         'mobl':'420px',
         'mobm':'350px',
       },
@@ -79,7 +80,6 @@ module.exports = {
             // transform: 'scale(0.9) translateX(10%,-20%)',
             // opacity: 0.8,
           },
-        },
         blob2: {
           '0%, 100%': {
             transform: 'scale(1) translate(0,0)',
@@ -94,6 +94,77 @@ module.exports = {
             // opacity: 0.9,
           },
         },
+
+        toBack: {
+          '0%':{
+            transform: 'translateY(30%)',
+          },
+          '100%':{
+            // 'zIndex':0,
+            transform: 'translateY(0%)',
+          },
+
+        },
+        toFront: {
+          '0%':{
+            // 'zIndex':0,
+            transform: 'translateY(0%)',
+          },
+          '100%':{
+            transform: 'translateY(80px)',
+          },
+        },
+        toLeft: {
+          '0%':{
+            // 'zIndex':0,
+            transform: 'translateX(0px)',
+          },
+          '100%':{
+            transform: 'translateX(-4px)',
+          },
+        },        
+        toRight: {
+          '0%':{
+            // 'zIndex':0,
+            'zIndex':0,
+            transform: 'translateX(0px)',
+          },
+          '100%':{
+            'zIndex':3,
+            transform: 'translateX(4px)',
+          },
+        },toRight2: {
+          '0%':{
+            // 'zIndex':0,
+            'zIndex':2,
+            transform: 'translateX(4px)',
+          },
+          '100%':{
+            'zIndex':0,
+            transform: 'translateX(0px)',
+          },
+        },
+        toLeft: {
+          '0%':{
+            'zIndex':0,
+            transform: 'translateX(0px)',
+          },
+          '100%':{
+            'zIndex':3,
+            transform: 'translateX(-4px)',
+          },
+        },toLeft2: {
+          '0%':{
+            'zIndex':2,
+            transform: 'translateX(-4px)',
+          },
+          '100%':{
+            'zIndex':0,
+            transform: 'translateX(0px)',
+          },
+        },
+
+      },
         },
       animation: {
         wiggle: 'wiggle 1s ease infinite',
@@ -101,6 +172,14 @@ module.exports = {
         borderPulse: 'borderPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         blob: 'blob 20s ease infinite',
         blob2: 'blob2 7s ease infinite',
+        toFrontR: 'toFront 1s linear 1, toRight 1s cubic-bezier(0,30,1,30) 1',
+        toRight: 'toRight 0.5s cubic-bezier(0,30,1,30) 1',
+        toRight2: 'toRight2 0.5s cubic-bezier(0,-30,1,-30) 1',
+        toLeft: 'toLeft 0.5s cubic-bezier(0,30,1,30) 1',
+        toLeft2: 'toLeft2 0.5s cubic-bezier(0,-30,1,-30) 1',
+        // toFrontR: 'toFrontR 1s cubic-bezier(0.4, 0, 0.2, 1) 1, ',
+        // toBackL: 'toBackL 1s cubic-bezier(0.4, 0, 0.2, 1) 1',
+        // toBackR: 'toBackR 1s cubic-bezier(0.4, 0, 0.2, 1) 1',
       },
       variants: {
         animation: ["motion-safe"]

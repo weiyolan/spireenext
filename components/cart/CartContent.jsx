@@ -41,7 +41,7 @@ const childVariants = {
 export default function CartContent({ onMouseEnter, onMouseLeave }) {
 // Dimensions caluclation is not possible on mount because intially display is none
   // let [dimensions, setDimensions] = useState({width:undefined,height:undefined})
-  let {cartIsOpen} = useAppContext()
+  let {cartIsOpen, cart} = useAppContext()
   const { mobile } = usePageContext()
   // const {items} = useAppContext().cart
   // const {total} = useAppContext().cart
@@ -50,16 +50,27 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
     details: ' ',
     price: 99,
     image: ' ',
-    qty: 2,
-    size: 'l'
+    qty: cart.content.sun,
+    size: 'l',
+    id:'sun'
   }
   let item2 = {
     name: 'Moon Merino Base Layer',
     details: ' ',
     price: 99,
     image: ' ',
-    qty: 10,
-    size: 'xs'
+    qty: cart.content.moon,
+    size: 'xs',
+    id:'moon',
+  }
+  let item3 = {
+    name: 'Support',
+    details: ' ',
+    price: 15,
+    image: ' ',
+    qty: cart.content.support,
+    size: 'xs',
+    id:'support',
   }
   let total = {
     totalPrice:198,
@@ -81,7 +92,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
         <CartItem title />
         <CartItem item={item1} />
         <CartItem item={item2}/>
-        <CartItem item={item1}/>
+        <CartItem item={item3}/>
       </motion.div>
 
       <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl' style={{ bottom: 0 + 'px' }} variants={childVariants}>

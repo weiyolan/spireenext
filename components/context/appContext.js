@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import useWindowSize from '@utils/useWindowSize';
 
@@ -12,7 +12,11 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   let { locale } = useRouter();
 
   const [navIsOpen, toggleNav] = useCycle(false, true);
+  let [navLocked, setNavLocked] = useState(false)
   const [cartIsOpen, toggleCart] = useCycle(false, true);
+  let [content, setContent] = useState({ sun: 0, moon: 0, support: 0 })
+  let [total, setTotal] = useState(0)
+
   //   Checkout Open?
   //   Order Confirmation Pop Up?
 
@@ -41,11 +45,30 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     mobm: width >= 350,
   }
 
-// ===================== CART LOGIC ========================
-  function addOne () {
-    
+  // ===================== CART LOGIC ========================
+  function addOne(item) {
+    setContent(contents => {
+      // let oldAmount = contents[item.id]
+      let copy = { ...contents }
+      copy[item.id] += 1
+      return copy
+    })
+
+    setTotal(old => old + item.price)
   }
 
+  function removeOne(item) {
+    setContent(contents => {
+      let copy = { ...contents }
+      copy[item.id] = Math.max(copy[item.id] - 1, 0)
+      return copy
+    })
+    setTotal(old => Math.max(old - item.price, 0))
+  }
+
+  // useEffect(()=>{
+  //   let newTotal = 
+  // },[content])
 
 
   return (
@@ -61,11 +84,18 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
         scrolled: scrolled,
         navIsOpen: navIsOpen,
         toggleNav: toggleNav,
+        navLocked: navLocked,
+        setNavLocked: setNavLocked,
         cartIsOpen: cartIsOpen,
         toggleCart: toggleCart,
-        handleLightboxes:handleLightboxes,
+        handleLightboxes: handleLightboxes,
 
-        cart: {}
+        cart: {
+          addOne: addOne,
+          removeOne: removeOne,
+          total: total,
+          content: content
+        }
       }}>
 
       {children}

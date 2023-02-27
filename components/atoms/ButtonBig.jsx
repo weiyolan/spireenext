@@ -15,7 +15,7 @@ export default function ButtonBig ({to, text, style, className}){
     cursor-pointer ${className}
     outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/40 active:bg-black/50`}
       href={`/${to||''}`}
-      onClick={()=>handleClick(title)}
+      // onClick={()=>handleClick(title)}
       title={`Go to the ${text} page`}>
 
         {/* <div className=''> */}

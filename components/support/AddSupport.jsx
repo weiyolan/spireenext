@@ -8,9 +8,13 @@ export default function AddSupport () {
   return (
     <div className=''>
       <form>
-        <label required htmlFor='amount' className='text-base inline-flex cursor-pointer'>Your Amount:</label>  
+        <label required htmlFor='amount' className='text-base inline-flex cursor-pointer'>
+          Your Amount:
+          </label>  
 
-        <span className='text-base ml-6 font-medium'>€</span><input name='amount' id='amount' type='number' value={amount} className='inline-flex w-10 font-medium text-base mr-6 bg-transparent text-center border border-transparent focus:outline-none outline-none target:outline-none appearance-none focus:border-b-white/50' onChange={(e)=>{setAmount(e.target.value)}}/>
+        <span className='text-base ml-2 xs:ml-6 font-medium'>€</span>
+        <input name='amount' id='amount' type='number' value={amount} className={`transition-all inline-flex w-10 font-medium text-base mr-2 xs:mr-6 bg-transparent text-center border-b
+         border-b-white/50 animate-borderPulse focus:outline-none outline-none target:outline-none appearance-none hover:border-white/50  `} onChange={(e)=>{setAmount(e.target.value)}}/>
 
         <Button small text='Change'/>
 
