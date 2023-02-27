@@ -42,11 +42,11 @@ export default function StayInTouch() {
   };
 
   return (
-    <form className='sm:-translate-x-2 flex flex-wrap justify-center '
+    <form className='sm:-translate-x-2 flex flex-col justify-center sm:justify-start '
       onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true">
       {/* initial='hidden' viewport={{ once: true }} whileInView='visible' variants={variant}  netlify-honeypot="bot-field" */}
       <input required type='email' onChange={(e) => {setEmail(e.target.value) }}
-        className={`p-2 px-3 mb-2 mx-2 min-w-fit ml-0 text-sm block
+        className={`p-1 px-3 mb-2 mx-2 min-w-fit ml-0 text-sm block
           backdrop-blur bg-black/30 font-light text-white placeholder:text-white/50 
           target:outline-white rounded-full
           autofill:bg-white/10  valid:scale-[0.99]
@@ -63,7 +63,7 @@ export default function StayInTouch() {
         className={`inline-flex justify-center items-center mb-2 w-fit relative rounded-full bg-black/30 backdrop-blur
     transition-all
     font-sans font-semibold whitespace-nowrap select-none uppercase tracking-max
-    cursor-pointer text-xs px-4 py-2 
+    cursor-pointer text-xs px-3 py-1.5  
     outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/50 active:bg-black/50`}>
         SUBMIT
         </button>

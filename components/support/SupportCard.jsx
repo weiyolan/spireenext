@@ -29,7 +29,7 @@ export default function SupportCard({ amount, percent, title }) {
         {`${percent}% on your first purchase when the Sun and Moon collection becomes available.`}
       </p>
       </div>
-      <Button text='Add To Cart' small/>
+      <Button text='Add To Cart' med/>
 
     </div>
   )

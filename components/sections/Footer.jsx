@@ -111,7 +111,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
           <Links title='Navigate' list={navigateList[locale]} />
           <Links title='Socials' list={socialList[locale]} />
 
-          <div className='flex flex-col items-start'>
+          <div className='flex flex-col items-center sm:items-start'>
             <AccentTitle text='Stay In Touch' />
             <StayInTouch />
           </div>
@@ -199,7 +199,7 @@ function Links({ title, list }) {
 function List({ list }) {
 
   return (
-    <ul className='font-quick'>
+    <ul className='font-quick '>
       {list.map((item, i) => {
         if (item.ext) {
           return (

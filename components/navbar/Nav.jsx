@@ -251,7 +251,7 @@ export default function Nav({ from }) {
 
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
-        className={`z-[51] absolute top-0 left-0 md:top-2 md:left-2 md:border md:rounded-full
+        className={`z-[51] absolute top-0 left-0 min-[480px]:top-2 min-[480px]:left-2 md:border md:rounded-full
            ${navLocked ? ' border-white animate-borderPulse ' : 'border-transparent'} 
            `}
            
@@ -264,7 +264,7 @@ export default function Nav({ from }) {
         <div style={{transition: `opacity 0.5s ease, border-radius 0.5s ease`,
         transitionDelay: `${navIsOpen?'0s':'1.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] ${navIsOpen ? 'opacity-100' : 'opacity-0'} 
         bg-gradient-to-r from-black/30 ${true ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full 
-        after:w-full after:h-full after:absolute after:top-0 after:left-0 after:shadow-xl 
+        after:w-full after:h-full after:absolute after:top-0 after:left-0  after:shadow-xl 
         rounded-[40px] md:rounded-full after:rounded-[40px] after:md:rounded-full  
         ${navIsOpen ? ' rounded-tl-none after:rounded-tl-none ' : ''}
         `}

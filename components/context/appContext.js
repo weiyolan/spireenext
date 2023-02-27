@@ -4,6 +4,7 @@ import useWindowSize from '@utils/useWindowSize';
 
 import { useRouter } from 'next/router';
 import { useCycle } from 'framer-motion';
+import useLocalStorage from '@/utils/useLocalStorage';
 
 const AppContext = createContext();
 
@@ -14,8 +15,14 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   const [navIsOpen, toggleNav] = useCycle(false, true);
   let [navLocked, setNavLocked] = useState(false)
   const [cartIsOpen, toggleCart] = useCycle(false, true);
-  let [content, setContent] = useState({ sun: 0, moon: 0, support: 0 })
-  let [total, setTotal] = useState(0)
+  let [content, setContent] = useState([])
+
+  let [supportAmount, setSupportAmount] = useState(0)
+  let [oldSupportAmount, setOldSupportAmount] = useState(undefined)
+
+  let [totalPrice, setTotalPrice] = useState(0)
+
+  // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
 
   //   Checkout Open?
   //   Order Confirmation Pop Up?
@@ -46,61 +53,126 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   }
 
   // ===================== CART LOGIC ========================
-  function addOne(item) {
-    setContent(contents => {
-      // let oldAmount = contents[item.id]
-      let copy = { ...contents }
-      copy[item.id] += 1
-      return copy
+  function addOne(newItem) {
+    setContent(oldContent => {
+      if (oldContent.find((item) => item.id === newItem.id)) {
+        let newContent = oldContent.map((item) => {
+          if (item.id === newItem.id) {
+            // item.qty += 1
+            return { ...item, qty: item.qty + 1 }
+          } else {
+            return item
+          }
+        })
+        return newContent
+      }
+      else {
+        return [...oldContent, { ...newItem, qty: 1 }]
+      }
     })
-
-    setTotal(old => old + item.price)
+    setTotalPrice(old => old + newItem.price)
   }
 
-  function removeOne(item) {
-    setContent(contents => {
-      let copy = { ...contents }
-      copy[item.id] = Math.max(copy[item.id] - 1, 0)
-      return copy
+  function removeOne(newItem) {
+    setContent(oldContent => {
+      let oldQty = oldContent.find((item) => item.id === newItem.id).qty
+      if (oldQty > 1) {
+        let newContent = oldContent.map((item) => {
+          if (item.id === newItem.id) {
+            return { ...item, qty: item.qty - 1 }
+          } else {
+            return item
+          }
+        })
+        return newContent
+      } else if (oldQty = 1) {
+        let newContent = oldContent.filter((item) => item.id !== newItem.id)
+        return newContent
+      }
     })
-    setTotal(old => Math.max(old - item.price, 0))
+    setTotalPrice(old => Math.max(old - newItem.price, 0))
+  }
+
+  function updateSupport(amount) {
+    if (oldSupportAmount === undefined) {
+      setContent(oldContent => {
+        // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
+        return [...oldContent, { id: 'support', price: amount+0, name: 'Support', qty:1 }]
+      })
+      // console.log(amount)
+      // console.log(typeof(amount +0 ))
+      setTotalPrice(oldTotal => oldTotal + amount)
+      setOldSupportAmount(amount+0)
+    } else if (amount !== oldSupportAmount) {
+      setContent(oldContent => {
+        let newContent = oldContent.map((item) => {
+          if (item.id === 'support') {
+            // item.qty += 1
+            return { ...item, price: amount }
+          } else {
+            return item
+          }
+        })
+        return newContent
+      })
+      setTotalPrice(oldPrice => (oldPrice + amount - oldSupportAmount));
+      setOldSupportAmount(amount)
+    }
   }
 
   // useEffect(()=>{
-  //   let newTotal = 
-  // },[content])
+  //   console.log(totalPrice)
+  // },[totalPrice])
 
 
-  return (
-    <AppContext.Provider
-      value={{
-        width: width,
-        height: height,
-        screens: screens,
-        locale: locale,
-        // mobile:width<768,
-        // breakPointSmall: breakPointSmall,
-        // noBlur: true,
-        scrolled: scrolled,
-        navIsOpen: navIsOpen,
-        toggleNav: toggleNav,
-        navLocked: navLocked,
-        setNavLocked: setNavLocked,
-        cartIsOpen: cartIsOpen,
-        toggleCart: toggleCart,
-        handleLightboxes: handleLightboxes,
+// function updateSupport(newAmount) {
+//   let diff = newAmount - support;
 
-        cart: {
-          addOne: addOne,
-          removeOne: removeOne,
-          total: total,
-          content: content
-        }
-      }}>
+//   setSupport(oldAmount => {
+//     if (oldAmount !== newAmount) {
+//       return newAmount
+//     }
+//   })
+//   setTotalPrice(oldPrice => oldPrice + Math.max(diff, -support))
+// }
+// useEffect(()=>{
+//   let newTotal = 
+// },[content])
 
-      {children}
-    </AppContext.Provider>
-  );
+
+return (
+  <AppContext.Provider
+    value={{
+      width: width,
+      height: height,
+      screens: screens,
+      locale: locale,
+      // mobile:width<768,
+      // breakPointSmall: breakPointSmall,
+      // noBlur: true,
+      scrolled: scrolled,
+      navIsOpen: navIsOpen,
+      toggleNav: toggleNav,
+      navLocked: navLocked,
+      setNavLocked: setNavLocked,
+      cartIsOpen: cartIsOpen,
+      toggleCart: toggleCart,
+      handleLightboxes: handleLightboxes,
+
+      cart: {
+        addOne: addOne,
+        removeOne: removeOne,
+        totalPrice: totalPrice,
+        content: content,
+        updateSupport: updateSupport,
+        supportAmount:supportAmount,
+        setSupportAmount:setSupportAmount,
+      }
+    }}>
+
+    {children}
+  </AppContext.Provider>
+);
 }
 
 export function useAppContext() {

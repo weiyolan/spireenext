@@ -4,7 +4,7 @@ import { usePageContext } from '../context/pageContext';
 import { useAppContext } from '../context/appContext';
 import SpireeLogo from './SpireeLogo';
 
-export default function Button({text, className , small, handleClick}) {
+export default function Button({text, className , small, med, handleClick, to}) {
   // let {locale} = useAppContext()
   // let { mobile } = usePageContext()
 
@@ -16,13 +16,15 @@ export default function Button({text, className , small, handleClick}) {
     transition-all text-center
     font-sans font-semibold whitespace-nowrap select-none uppercase tracking-max 
     
-    cursor-pointer ${small?'text-xs px-2 py-1':' px-4 py-2'} ${className}
+    cursor-pointer ${small?'text-xs px-2 py-1': med?' text-xs px-3 py-2':' px-4 py-2'} ${className}
     outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:scale-105 active:scale-95 hover:bg-black/50 hover:shadow-md active:shadow-none active:bg-black/30`}
       onClick={handleClick}
     >
       {/* <div className=''> */}
-    <p className='ml-0.5'>
-      {text}</p>
+      {/* TO COMPENSATE FOR TRACKING */}
+      <p className='ml-0.5'> 
+      {to?<Link href={to}>{text}</Link>:text}
+      </p>
       {/* <span><SpireeLogo className='w-6 md:w-6 ml-2'/></span> */}
 
       {/* </div> */}

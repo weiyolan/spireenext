@@ -17,7 +17,7 @@ import NavToggle from "./NavToggle";
 // let borderDebug = 'border border-red-500';
 
 export default function Cart({ from }) {
-  let { locale, width, cartIsOpen, toggleCart, navIsOpen,toggleNav } = useAppContext()
+  let { locale, width, cartIsOpen, toggleCart, navIsOpen,toggleNav, cart } = useAppContext()
   let { mobile } = usePageContext()
   let [clicked, setClicked] = useState(false)
   let [hover, setHover] = useState(false)
@@ -165,7 +165,8 @@ export default function Cart({ from }) {
       // custom={cartDimensions.height}
       >
         <div style={{transition: `opacity 0.5s ease, border-radius 0.5s ease`,
-        transitionDelay: `${cartIsOpen?'0s':hover?'0s':'0.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] ${cartIsOpen || hover ? 'opacity-100' : 'opacity-0'} 
+        transitionDelay: `${cartIsOpen?'0s':hover?'0s':'0.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] 
+        ${cartIsOpen || hover ? 'opacity-100' : 'opacity-0'} 
         bg-gradient-to-r from-black/30 ${true ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full 
         after:w-full after:h-full after:absolute after:top-0 after:right-0 after:shadow-xl 
         rounded-[40px] after:rounded-[40px]  
@@ -193,10 +194,15 @@ export default function Cart({ from }) {
           className={`${true ? 'absolute flex sm:rounded-full top-[0] z-[51] right-[0] cursor-pointer '
             : ''}`}
           onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
-          onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false) } }}
+          onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false)  } }}
           onClick={handleClick}
         >
           <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 sm:rounded-full overflow-visible`} />
+          {cart.content?.length >=1 && <span className={`rounded-full w-4 h-4 text-center justify-center top-3 right-2 xs:top-4 xs:right-4 items-center flex 
+          transition-all duration-500 ${cartIsOpen?'delay-[0] invisible opacity-0':'delay-300 visible opacity-100'}
+          absolute border-2 bg-red-600 border-red-600 select-none text-white text-xs font-normal`}>
+            {cart.content.reduce((acc,item)=> (acc + item.qty),0)}
+          </span>}
         </motion.div>
  
 
