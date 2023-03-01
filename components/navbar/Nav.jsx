@@ -29,9 +29,9 @@ export default function Nav({ from }) {
 
   function selectButton(selection) {
 
-    if (!navLocked) {
-      toggleNav()
-    }
+    // if (!navLocked) {
+    //   toggleNav()
+    // }
 
     setSelectedB(selection)
 
@@ -79,7 +79,7 @@ export default function Nav({ from }) {
       height: 55,
       // opacity: state?1:0,
       transition: {
-        delay: 1.3,
+        delay: 0.5+0.3,
         type: "spring",
         stiffness: 400,
         damping: 40
@@ -129,7 +129,7 @@ export default function Nav({ from }) {
       // transition: {
       transition: {
         x: { stiffness: 1000, },
-        delay: 1.3
+        delay: 0.5 +0.3
         // staggerChildren: 0.05, staggerDirection: -1, when: "afterChildren",
       }
     }
@@ -262,7 +262,7 @@ export default function Nav({ from }) {
         onMouseLeave={() => { if (!mobile && !navLocked) { toggleNav() } }}
       >
         <div style={{transition: `opacity 0.5s ease, border-radius 0.5s ease`,
-        transitionDelay: `${navIsOpen?'0s':'1.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] ${navIsOpen ? 'opacity-100' : 'opacity-0'} 
+        transitionDelay: `${navIsOpen?'0s':'1s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] ${navIsOpen ? 'opacity-100' : 'opacity-0'} 
         bg-gradient-to-r from-black/30 ${true ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full 
         after:w-full after:h-full after:absolute after:top-0 after:left-0  after:shadow-xl 
         rounded-[40px] md:rounded-full after:rounded-[40px] after:md:rounded-full  

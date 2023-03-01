@@ -8,7 +8,7 @@ import { usePageContext } from "../context/pageContext"
 import { useDimensions } from "@/utils/useDimensions"
 // import useGoodChildren from "./useGoodChildren"
 
-export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, setSvgHeight, setSvgWidth, print}) { 
+export default function AnimateSVG({children, fakeScroll, scrollMin, scrollMax, speed, alt, setSvgHeight, setSvgWidth, print}) { 
 
     let [allLengths, setAllLengths] = useState([])
     let [allOffsetLengths, setAllOffsetLengths] = useState([])
@@ -17,9 +17,9 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
     let { scrolled } = useAppContext()
     let [located, setLocated] = useState(false)
     let [myHeight, setMyHeight] = useState(undefined)
-    // let [newChildren, setNewChildren] = useState(makeNewChildren())
-
     let {viewBox, setAnimationLocation, mobile} = usePageContext()
+    // let [newChildren, setNewChildren] = useState(undefined)
+
     // let newChildren = useGoodChildren(children.props.children, handleLength)
 
     let animationRef = useRef(null)
@@ -121,7 +121,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
 
     // useEffect(()=>{
 
-    function makeNewChildren() {
+    const makeNewChildren = ()=> {
       let newChildren = React.Children.map(children.props.children, child => {
         let newChild;
         if (React.isValidElement(child) && child.type === Path) {
@@ -139,15 +139,16 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
         }
         return newChild
       })
-
+      // console.log('animateSVG')
       return newChildren
       
     }
-    const newChildren = makeNewChildren()
+    // const newChildren = makeNewChildren()
 
     // useEffect(()=>{
-    //   setNewChildren
-    // },[])
+      // setNewChildren(makeNewChildren())
+    // },[children])
+
       //  const newChildren = React.Children.map(children.props.children, child => {
       //   let newChild;
       //   if (React.isValidElement(child) && child.type === Path) {
@@ -191,7 +192,7 @@ export default function AnimateSVG({children, scrollMin, scrollMax, speed, alt, 
         
         
             {/* {console.log(goodChildren.map(child=>child.type===Path))} */}
-            {newChildren}
+            {makeNewChildren()}
 
           </g>
         </svg>

@@ -34,7 +34,7 @@ export default function BackgroundMoon({ src, moves, maxMoves }) {
     return () => document.body.removeEventListener("pointermove", handlePosition)
   }, [])
 
-
+  
 
   return (
     <>

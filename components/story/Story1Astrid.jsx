@@ -31,7 +31,7 @@ export default function Story1Astrid({scrollMin,scrollMax, speed, setSvgHeight, 
 
     return (
       <AnimateSVG alt='Story Part 1, woman named Astrid in dynamic running pose' 
-      scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} setSvgHeight={setSvgHeight} setSvgWidth={setSvgWidth}>
+      scrollMin={scrollMin} fakeScroll={[]} scrollMax={scrollMax} speed={speed} setSvgHeight={setSvgHeight} setSvgWidth={setSvgWidth}>
 
           {mobile?
             <g id='mobile'>

@@ -125,7 +125,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
           {/* </motion.div> */}
 
           <motion.div className='block mb-5' style={{ bottom: 0 + 'px' }} variants={childVariants}>
-            <Button text='Checkout' handleClick={handleCheckout} />
+            <Button text='To Checkout' handleClick={handleCheckout} />
           </motion.div>
         </>
       }

@@ -1,0 +1,51 @@
+<svg width="1147" height="756" viewBox="0 0 1147 756" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 97">
+<g id="2ndSkinPoint">
+<g id="circle5131_4" filter="url(#filter9_b_635_13091)">
+<path d="M782.77 337.541C784.853 337.541 786.541 335.853 786.541 333.771C786.541 331.688 784.853 330 782.77 330C780.688 330 779 331.688 779 333.771C779 335.853 780.688 337.541 782.77 337.541Z" fill="white"/>
+</g>
+<g id="circle5133_4" filter="url(#filter10_b_635_13091)">
+<path d="M782.535 346.103C789.476 346.103 795.103 340.476 795.103 333.535C795.103 326.594 789.476 320.967 782.535 320.967C775.594 320.967 769.967 326.594 769.967 333.535C769.967 340.476 775.594 346.103 782.535 346.103Z" stroke="white" strokeWidth="1.90136"/>
+</g>
+</g>
+<g id="2ndSkinPath" filter="url(#filter11_b_635_13091)">
+<path d="M987 282.5H843.5L783 334" stroke="url(#paint3_linear_635_13091)" strokeWidth="2.14452"/>
+</g>
+<text id="2ndSkin" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+<tspan x="862" y="273.866">Second Skin</tspan></text>
+<g id="NaturalPoint">
+<g id="circle5131_5" filter="url(#filter12_b_635_13091)">
+<path d="M641.774 164.716C643.857 164.716 645.545 163.028 645.545 160.946C645.545 158.863 643.857 157.175 641.774 157.175C639.692 157.175 638.004 158.863 638.004 160.946C638.004 163.028 639.692 164.716 641.774 164.716Z" fill="white"/>
+</g>
+<g id="circle5133_5" filter="url(#filter13_b_635_13091)">
+<path d="M641.535 173.103C648.476 173.103 654.103 167.476 654.103 160.535C654.103 153.594 648.476 147.967 641.535 147.967C634.594 147.967 628.967 153.594 628.967 160.535C628.967 167.476 634.594 173.103 641.535 173.103Z" stroke="white" strokeWidth="1.90136"/>
+</g>
+</g>
+<g id="naturalPath" filter="url(#filter14_b_635_13091)">
+<path d="M437.74 69H561L642.255 161.083" stroke="url(#paint4_linear_635_13091)" strokeWidth="2.14452"/>
+</g>
+<text id="Natural" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+<tspan x="438" y="58.8664">Natural</tspan></text>
+</g>
+<linearGradient id="paint0_linear_635_13091" x1="566" y1="307" x2="402" y2="307" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_635_13091" x1="856.5" y1="272.161" x2="951" y2="272.161" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint2_linear_635_13091" x1="874.519" y1="103.5" x2="992" y2="103.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint3_linear_635_13091" x1="870" y1="334" x2="987" y2="334" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint4_linear_635_13091" x1="539.997" y1="69" x2="438" y2="69" gradientUnits="userSpaceOnUse">
+<stop stop-color="white"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>

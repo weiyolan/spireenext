@@ -34,7 +34,7 @@ export default function Story2Pharma({scrollMin, scrollMax, speed}) {
 
     return (
         <AnimateSVG print={false} alt='Story Part 2, a medical staff caduceus illustrating Astrids doctorate in pharmacy'
-        scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} >
+        scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} fakeScroll={[]}>
             {!mobile?<g id='mobile'>
             <Path drawDuration='1' position={0} scrolled={fakeScroll1} inverse={false} double={1} lengthFactor={1} id="fromAstrid1aMob" d="M574 511.623C586.334 521.557 623.44 552.279 669.003 543.413" stroke="white" stroke-width="2" stroke-linecap="round"/>
             <Path drawDuration='0.5' position={0} inverse={false} double={1} lengthFactor={1} id="fromAstrid1bMob" d="M574 511.623C586.334 521.557 623.44 552.279 669.003 543.413" stroke="white" stroke-width="2" stroke-linecap="round"/>

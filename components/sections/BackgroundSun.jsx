@@ -58,6 +58,7 @@ export default function BackgroundSun ({src, moves, maxMoves}) {
       {/* </div> */}
     </div>
     <div className={`w-full absolute top-0 -z-10 h-[100vh] bg-red-800/50 bg-blend-overlay`}> 
+            <div style={{backgroundImage: `radial-gradient(circle at 0% 100% , rgb(255 153 000), rgb(184 009 009))`}} className='z-10 w-screen h-screen'  > HELLO </div>
     <Image alt='' src='/images/moon.png' className={`absolute animate-blob -right-80 -top-40 blur-[0]`} width={800} height={800}/>
     </div>
 </>

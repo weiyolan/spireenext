@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Background from '@/components/sections/Background'
+import Background from '@/components/sections/BackgroundMoving'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'

@@ -1,7 +1,7 @@
 import React, { useEffect, useState , useRef} from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Background from '@/components/sections/Background'
+import BackgroundMoving from '@/components/sections/BackgroundMoving'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
@@ -150,7 +150,7 @@ export default function Home({ }) {
         // setMoved={setMoved}
         >
         {/* 1468 */}
-          <Background src={'/images/StoryBackground5.png'} moves={moveTracker} maxMoves={maxMoveTracker}/>
+          <BackgroundMoving src={'/images/StoryBackground5.png'} moves={moveTracker} maxMoves={maxMoveTracker}/>
           
           {/* <Layout> */}
           <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}} 
