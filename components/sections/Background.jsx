@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 // import { useAppContext } from "@/components/context/appContext"
 
 
-export default function Background ({src, color}) {
+export default function Background ({src, color, className, style}) {
 //   const [myWidth, setMyWidth] = useState(0)
 
 //   let blurOn = true
@@ -36,7 +36,7 @@ export default function Background ({src, color}) {
       {/* <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}> */}
         {/* {console.log(height*(1+overflow)+'px')} */}
         {/* {console.log(`translate(-${Y}px,0)`)} */}
-        {src&&<Image alt='' fill src={src} className={`object-cover object-left-bottom `} sizes="100vw" quality={100}/>}
+        {src && <Image style={{style}} alt='' fill src={src} className={`${className?className:'object-cover object-left-bottom'} `} sizes="100vw" quality={100}/>}
          {/* Empty ALT for purely decorative images */}
       {/* </div> */}
       

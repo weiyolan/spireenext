@@ -43,37 +43,37 @@ const childVariants = {
 export default function CartContent({ onMouseEnter, onMouseLeave }) {
   // Dimensions caluclation is not possible on mount because intially display is none
   // let [dimensions, setDimensions] = useState({width:undefined,height:undefined})
-  let { cartIsOpen, cart, width } = useAppContext()
+  let { cartIsOpen, cart, width , toggleCart} = useAppContext()
   const { mobile } = usePageContext()
   // const {items} = useAppContext().cart
   // const {total} = useAppContext().cart
-  let item1 = {
-    name: 'Sun Merino Base Layer',
-    details: ' ',
-    price: 99,
-    image: ' ',
-    qty: cart.content.sun,
-    size: 'l',
-    id: 'sun'
-  }
-  let item2 = {
-    name: 'Moon Merino Base Layer',
-    details: ' ',
-    price: 99,
-    image: ' ',
-    qty: cart.content.moon,
-    size: 'xs',
-    id: 'moon',
-  }
-  let item3 = {
-    name: 'Support',
-    details: ' ',
-    price: 15,
-    image: ' ',
-    qty: cart.content.support,
-    size: 'xs',
-    id: 'support',
-  }
+  // let item1 = {
+  //   name: 'Sun Merino Base Layer',
+  //   details: ' ',
+  //   price: 99,
+  //   image: ' ',
+  //   qty: cart.content.sun,
+  //   size: 'l',
+  //   id: 'sun'
+  // }
+  // let item2 = {
+  //   name: 'Moon Merino Base Layer',
+  //   details: ' ',
+  //   price: 99,
+  //   image: ' ',
+  //   qty: cart.content.moon,
+  //   size: 'xs',
+  //   id: 'moon',
+  // }
+  // let item3 = {
+  //   name: 'Support',
+  //   details: ' ',
+  //   price: 15,
+  //   image: ' ',
+  //   qty: cart.content.support,
+  //   size: 'xs',
+  //   id: 'support',
+  // }
 
 
   const handleCheckout = async () => {
@@ -143,12 +143,12 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
         </motion.div>
 
         <motion.div className='block mb-5' style={{ bottom: 0 + 'px' }} variants={childVariants}>
-          <Button med text='Visit collection' to='/order' />
+          <Button med text='Visit collection' to='/order' handleClick={()=>{if(width<648){toggleCart()}}} />
           {/* <ArrowLink tabIndex={0} text='SEE OUR COLLECTION' to='collection'/> */}
         </motion.div>
 
         <motion.div className='block mb-5' style={{ bottom: 0 + 'px' }} variants={childVariants}>
-          <Button med text='Add Support' to='/support'/>
+          <Button med text='Add Support' to='/support'  handleClick={()=>{if(width<648){toggleCart()}}}/>
         </motion.div>
 
       </>

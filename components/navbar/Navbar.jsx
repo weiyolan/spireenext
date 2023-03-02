@@ -37,7 +37,7 @@ export default function Navbar ({from}) {
       //   {/* : */}
         <>  
           {/* PLANE TO DETECT CLICKS OUTSIDE MENU */}
-          {mobile && navIsOpen && <div id='navBackground' className='z-20 fixed w-screen h-screen'/>}
+          {mobile && navIsOpen && <div id='navBackground' className='z-20 top-0 fixed w-screen h-screen'/>}
           <Nav from = {from} />
           {/* <NavMobile noBlur={noBlur} from = {from} /> */}
         </>

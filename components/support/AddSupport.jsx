@@ -4,13 +4,14 @@ import { useAppContext } from '../context/appContext'
 
 export default function AddSupport () {
 
-  let {updateSupport,supportAmount, setSupportAmount} = useAppContext().cart
+  let {updateSupport, supportAmount, setSupportAmount} = useAppContext().cart
   // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
 
-function addSupport () {
-  // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
-  updateSupport(supportAmount)
-}
+// function addSupport () {
+//   // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
+//   // console.log(supportAmount)
+//   updateSupport()
+// }
 
   return (
     <div className=''>
@@ -21,9 +22,10 @@ function addSupport () {
 
         <span className='text-base ml-2 xs:ml-6 font-medium invalid:text-red-400'>€</span>
         <input name='supportAmount' min={0} id='supportAmount' type='number' value={supportAmount} className={`transition-all inline-flex w-10 font-medium text-base mr-2 xs:mr-6 bg-transparent text-center border-b
-         border-b-white/50 animate-borderPulse focus:outline-none outline-none target:outline-none appearance-none hover:border-white/50 hover:invalid:border-red-400 invalid:text-red-400 invalid:border-red-400 invalid:border-b-2 `} onChange={(e)=>{setSupportAmount(e.target.value)}}/>
+         border-b-white/50 animate-borderPulse focus:outline-none outline-none target:outline-none appearance-none hover:border-white/50 hover:invalid:border-red-400 invalid:text-red-400 invalid:border-red-400 invalid:border-b-2 `} 
+         onChange={(e)=>{setSupportAmount(+e.target.value)}}/>
 
-        <Button med text='Change' handleClick={addSupport}/>
+        <Button med text='Change' handleClick={updateSupport}/>
 
 {/* 
         <div  className='inline-block relative col-start-1 col-span-1 pr-3'>
