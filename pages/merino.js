@@ -70,7 +70,7 @@ export default function Merino() {
         >
           <Background color='bg-[#091627]' />
 
-          <TitleMoving setHeight={setTitleHeight} className='z-10' mainTitle='100% Merino Wool' subTitle={'As if you’re wearing nothing,\nbathing in the sun.'} />
+          <Title setHeight={setTitleHeight} className='z-10' mainTitle='100% Merino Wool' subTitle={'As if you’re wearing nothing,\nbathing in the sun.'} />
 
           {/* <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}}  */}
           {/* // className={`${(mobile || finished)?`inline-flex flex-col justify-center items-center mx-auto  w-fit transition-all duration-1000 ` */}

@@ -56,7 +56,7 @@ const financialInfo = {
 };
 
 
-export default function Footer({ style, className, noMotion, setFooterHeight }) {
+export default function Footer({ style, className, noMotion, setFooterHeight, setFooterNormalHeight }) {
   let { width, scrolled, locale } = useAppContext();
   let { mobile } = usePageContext();
   let breakPointSmall = 640;
@@ -65,10 +65,7 @@ export default function Footer({ style, className, noMotion, setFooterHeight }) 
 
   let [dimensions, setDimensions] = useState({ width: undefined, height: undefined })
 
-
-
   useEffect(() => {
-
     function handleSize() {
       const { width, y } = footerRef.current.getBoundingClientRect();
       const height = footerRef.current.offsetHeight;
@@ -76,29 +73,26 @@ export default function Footer({ style, className, noMotion, setFooterHeight }) 
       let margin = parseFloat(styles['marginTop']) +
         parseFloat(styles['marginBottom']);
       if (height > 0) {
-
-
         // Math.ceil(height + margin);
-
         setDimensions({ width: width, height: Math.ceil(height + margin), normalHeight: height, top: y, bottom: y + height });
         // print && console.log('dimensions setted: ' + 'width: ' + width+' , height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
       }
     }
 
     window.addEventListener("resize", handleSize);
-
     handleSize()
-
     return () => window.removeEventListener("resize", handleSize);
     // print && console.log(dimensions?.height === undefined || )
 
-  }, [mobile, setFooterHeight])
+  }, [mobile])
 
 
 
   useEffect(() => {
     if (dimensions.height > 0 && setFooterHeight !== undefined) {
       setFooterHeight(dimensions.height)
+    } else if (dimensions.normalHeight > 0 && setFooterNormalHeight !== undefined) {
+      setFooterNormalHeight(dimensions.normalHeight)
     }
   }, [dimensions])
 
@@ -165,7 +159,7 @@ export default function Footer({ style, className, noMotion, setFooterHeight }) 
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-10 px-4 pt-4 pb-2 lg:pt-8 w-full ${className}`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-10 px-4 pt-4 pb-2 lg:pt-4 w-full ${className}`}>
 
         {getContent()}
 
@@ -178,7 +172,7 @@ export default function Footer({ style, className, noMotion, setFooterHeight }) 
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
 
-      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-10 pb-2 sm:p-8 lg:p-8 bottom-0 w-full ${className}`}>
+      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-10 pb-2 sm:p-8 lg:p-6 bottom-0 w-full ${className}`}>
 
       {getContent()}
 

@@ -122,7 +122,7 @@ export default function MerinoQualities({ name, title, span, text, position, rea
 
 
   return (
-    <div  style={{ height: height - (titleHeight || 0), 'margin-top': titleHeight+'px' }  } id={name} className={`flex w-full flex-col md:flex-row`}>
+    <div  style={{ height: height - (titleHeight || 0) }  } id={name} className={`flex w-full flex-col md:flex-row`}>
       <div style={{ ...fadeStyle(), ...{ height: height } }} className='absolute z-0 top-0 left-0 h-[720px] w-full '>
         {/* <img style={{objectPosition:`-${218}px 0px`}} alt='' src='/images/merinoBackgroundWide.jpg' className={`object-cover h-full object-left-bottom `}/> */}
         <Image style={{ objectPosition: `-${218 + offset}px 0px` }} alt='' fill src='/images/merinoBackgroundWide.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} />

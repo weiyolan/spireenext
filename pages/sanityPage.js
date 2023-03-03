@@ -17,7 +17,7 @@ export default function Home({pets, products}) {
         {pets.length > 0 && (
           <ul>
             {pets.map((pet) => (
-              <li key={pet._id}>{pet?.name} <img src={urlFor(pet?.mainImage)}></img></li>
+              <li key={pet._id}>{pet?.name} </li>
             ))}
           </ul>
         )}

@@ -1,11 +1,9 @@
 import React,{useState,useEffect} from "react";
 import Nav from "./Nav";
 import { useAppContext } from "@components/context/appContext";
-import { usePageContext } from "../context/pageContext";
 
 export default function Navbar ({from}) {
-  let {width, noBlur, navIsOpen} = useAppContext()
-  let {mobile} = usePageContext()
+  let {width, mobile, noBlur, navIsOpen} = useAppContext()
 
 // =================================
   // FOR A NAVBAR THAT DISAPPEARS UP WHEN SCROLLING DOWN

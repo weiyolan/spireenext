@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { useAppContext } from "@/components/context/appContext"
 
 
-export default function BackgroundMoving ({src, moves, maxMoves}) {
+export default function BackgroundMoving ({src, moves, maxMoves,className}) {
 //   const [myWidth, setMyWidth] = useState(0)
   let {height} = useAppContext();
 
@@ -40,7 +40,7 @@ export default function BackgroundMoving ({src, moves, maxMoves}) {
       <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}>
         {/* {console.log(height*(1+overflow)+'px')} */}
         {/* {console.log(`translate(-${Y}px,0)`)} */}
-        {src&&<Image alt='' fill src={src} className={`object-cover object-left sm:object-center`} sizes="100vw" quality={100}/>}
+        {src&&<Image alt='' fill src={src} className={`object-cover object-left sm:object-center ${className}`} sizes="100vw" quality={100}/>}
          {/* Empty ALT for purely decorative images */}
       </div>
       

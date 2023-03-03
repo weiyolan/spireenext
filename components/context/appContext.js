@@ -34,7 +34,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   // };
 
   function handleLightboxes(event) {
-    console.log(event.target)
+    // console.log(event.target)
     if (navIsOpen && event.target === document.getElementById('navBackground')) {
       toggleNav()
     } else if (cartIsOpen && event.target === document.getElementById('cartBackground')) {

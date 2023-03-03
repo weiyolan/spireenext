@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import Background from '@/components/sections/BackgroundMoving'
+import Background from '@/components/sections/Background'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
@@ -37,7 +37,7 @@ export default function Support() {
           darkMode={true}
           mobile={mobile}
         >
-          <Background src='/images/mountainsRed.jpg' />
+          <Background src='/images/mountainsRed.jpg' className='object-cover object-left-bottom '/>
           <Layout>
             <Title mainTitle={'Join\nSpirée'} subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
             <section className='w-full sm:w-4/5 lg:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>

@@ -120,7 +120,7 @@ export default function Index() {
           {/* <Background style={{ objectPosition: `-${0 }px 0px` }} className='object-cover' src='/images/mainBackground.jpg'/> */}
           <div style={{}} className='absolute top-0 left-0 h-screen w-full '>
             {/* <img style={{objectPosition:`-${218}px 0px`}} alt='' src='/images/merinoBackgroundWide.jpg' className={`object-cover h-full object-left-bottom `}/> */}
-            <Image style={{ objectPosition: `-${width<350? 230:width<400?height<700?260:400:width < 550 ? 185 :width < 640 ? 300 : width < 792 ? 200 :width < 1025 ? 300 : 0}px ${width < 900 ? 60 : 0}px` }} alt='' fill src='/images/mainBackground3.jpg' className={`object-cover `} sizes="100vw" quality={100} />
+            <Image style={{ objectPosition: `-${width<350? 230:width<420?height<700?260:400:width < 550 ? 185 :width < 640 ? 300 : width < 792 ? 200 :width < 1025 ? height<500?0: 300 : 0}px ${width < 900 ? 60 : 0}px` }} alt='' fill src='/images/mainBackground3.jpg' className={`object-cover `} sizes="100vw" quality={100} />
             {/* <Image alt='' fill src='/images/merinoBackground.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} /> */}
           </div>
 
