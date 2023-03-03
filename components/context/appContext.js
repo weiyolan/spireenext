@@ -202,12 +202,14 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
 // useEffect(()=>{
 //   let newTotal = 
 // },[content])
+let mobile = width < 986
 
 
 return (
   <AppContext.Provider
     value={{
       width: width,
+      mobile:mobile,
       height: height,
       screens: screens,
       locale: locale,

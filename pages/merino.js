@@ -14,6 +14,7 @@ import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 import MerinoText2 from '@/components/merino/MerinoOdour'
 import MerinoQualities from '@/components/sections/MerinoQualities'
+import TitleMoving from '@/components/sections/TitleMoving'
 
 let qualities = [
   { id:'Natural',title: 'Natural', list: ['Merino wool is natural, it comes from the shearing of sheep. In addition to being natural, it is renewable, biodegradable and consumes little water.'] }, 
@@ -69,8 +70,10 @@ export default function Merino() {
         >
           <Background color='bg-[#091627]' />
 
-          <Title setHeight={(x)=>setTitleHeight(x)} className='z-10' mainTitle='100% Merino Wool' subTitle={'As if you’re wearing nothing,\nbathing in the sun.'} />
+          <TitleMoving setHeight={setTitleHeight} className='z-10' mainTitle='100% Merino Wool' subTitle={'As if you’re wearing nothing,\nbathing in the sun.'} />
 
+          {/* <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}}  */}
+          {/* // className={`${(mobile || finished)?`inline-flex flex-col justify-center items-center mx-auto  w-fit transition-all duration-1000 ` */}
 
           <MerinoQualities titleHeight={titleHeight} qualities={qualities} />
           {/* <Layout> */}
@@ -87,7 +90,7 @@ export default function Merino() {
 
             {/* <Title text={'Merino'}/> */}
           {/* </Layout> */}
-          <Footer noMotion />
+          <Footer noMotion className='mt-0 md:mt-0'/>
           <Navbar from='merino' />
           <ShoppingCart />
         </PageWrapper>

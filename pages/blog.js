@@ -13,7 +13,7 @@ import Footer from '@/components/sections/Footer'
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 
-export default function Merino() {
+export default function Blog() {
 
   const { scrolled, width, height,handleLightboxes } = useAppContext();
   let mobile = width<768

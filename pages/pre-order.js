@@ -19,7 +19,7 @@ import ArrowLink from '@/components/atoms/ArrowLink'
 import MoonLogo from '@/components/atoms/MoonLogo'
 
 
-export default function Order() {
+export default function PreOrder() {
 
   const { scrolled, width, height, handleLightboxes, cart } = useAppContext();
   let mobile = width < 768

@@ -56,7 +56,7 @@ const financialInfo = {
 };
 
 
-export default function Footer({ style, noMotion, setFooterHeight }) {
+export default function Footer({ style, className, noMotion, setFooterHeight }) {
   let { width, scrolled, locale } = useAppContext();
   let { mobile } = usePageContext();
   let breakPointSmall = 640;
@@ -165,7 +165,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-10 px-4 pt-4 pb-2 lg:pt-8 w-full`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 mt-4 md:mt-10 px-4 pt-4 pb-2 lg:pt-8 w-full ${className}`}>
 
         {getContent()}
 
@@ -178,7 +178,7 @@ export default function Footer({ style, noMotion, setFooterHeight }) {
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
 
-      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-10 pb-2 sm:p-8 lg:p-8 bottom-0 w-full`}>
+      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 mt-4 md:mt-10 pb-2 sm:p-8 lg:p-8 bottom-0 w-full ${className}`}>
 
       {getContent()}
 

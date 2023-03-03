@@ -1,6 +1,6 @@
 import * as React from "react";
 import { motion } from "framer-motion";
-import { usePageContext } from "../context/pageContext";
+import { useAppContext } from "../context/appContext";
 
 const variants = {
   open: {
@@ -18,13 +18,12 @@ const variants = {
     }
   }
 };
-
 const deskVariants = {
   open: {
     x: 0,
     opacity: 1,
     transition: {
-      y: { stiffness: 1000, velocity: -100 }
+      x: { stiffness: 1000, velocity: -100 }
     }
   },
   closed: {
@@ -32,7 +31,7 @@ const deskVariants = {
     opacity: 0,
     transition: {
       delay: 0.5,
-      y: { stiffness: 1000 }
+      x: { stiffness: 1000 }
     }
   }
 };
@@ -41,7 +40,7 @@ const deskVariants = {
 
 export default function NavItem ({ children, className }) {
 
-  const {mobile} = usePageContext();
+  const {mobile} = useAppContext();
   // const style = { border: `2px solid ${colors[i]}` };
   return (
     <motion.li className={className}

@@ -3,22 +3,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from "framer-motion";
 import { useAppContext } from '../context/appContext';
-import { usePageContext } from '../context/pageContext';
+// import { usePageContext } from '../context/pageContext';
 
 
 import SpireeLogo from '@components/atoms/SpireeLogo'
 import ChooseLanguage from '@components/navbar/ChooseLanguage'
 
 import NavButton from './NavButton'
-import NavToggle from "./NavToggle";
+import NavToggle from "./NavToggle";  
 import NavList from "./NavList";
 
 // let borderDebug = 'border border-red-500';
 
 export default function Nav({ from }) {
   let [selectedB, setSelectedB] = useState(from);
-  let { locale, width, navIsOpen, toggleNav, navLocked, setNavLocked, toggleCart,cartIsOpen} = useAppContext()
-  let { mobile } = usePageContext()
+  let { mobile, locale, width, navIsOpen, toggleNav, navLocked, setNavLocked, toggleCart,cartIsOpen} = useAppContext()
+  // let {  } = usePageContext()
   // let [navLocked, setNavLocked] = useState(false)
   //  let [navWidth, setNavWidth] = useState(false)
 
@@ -288,7 +288,7 @@ export default function Nav({ from }) {
         >
           {/* <Link className='rounded-full' href={`/`} onClick={() => selectButton('Home')}> */}
           {/* title='Go to the homepage' */}
-          <SpireeLogo className='w-10 h-10 rounded-full overflow-visible' />
+          <SpireeLogo fill={width<1025?'white':false} className='w-10 h-10 rounded-full overflow-visible' />
           {/* </Link> */}
 
         </motion.div>

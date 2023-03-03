@@ -154,7 +154,7 @@ export default function Home({ }) {
           
           {/* <Layout> */}
           <Title style={{position:(mobile || finished)?'relative':'fixed', left:'50%', top:0, transform:`translate(-50%, -${(mobile || finished)?0:moveTracker>=1?titleHeight:0}px)`, transition:'all 1s ease'}} 
-          className={`${(mobile || finished)?`inline-flex flex-col justify-center items-center mx-auto ${false?'bg-black/30 backdrop-blur mt-2 sm:mt-2 rounded-full shadow-sm':''}  w-fit transition-all duration-1000 `
+          className={`${(mobile || finished)?`inline-flex flex-col justify-center items-center mx-auto  w-fit transition-all duration-1000 `
           :'w-full'}`} setHeight={setTitleHeight} mainTitle={'About\nSpirée'} subTitle={'Empowering women to run everywhere,\nwith confidence and style.'} />
           
           <section className='flex w-4/5 mx-auto ' >

@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import NavItem from "./NavItem";
-import { usePageContext } from "../context/pageContext";
+import { useAppContext } from "../context/appContext";
 
 const variants = {
   open: {
@@ -18,7 +18,7 @@ const variants = {
 
 export default function NavList({ children, onMouseEnter, onMouseLeave, setNavWidth }) {
 
-  const { mobile } = usePageContext()
+  const { mobile } = useAppContext()
 
   // =====================CALCULATE WDTH DYNAMICALLY ==========================
   // let [dimensions, setDimensions] = useState({ width: undefined, height: undefined })
@@ -53,7 +53,7 @@ export default function NavList({ children, onMouseEnter, onMouseLeave, setNavWi
 
   return (
     <motion.ul onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
-      className={`${mobile ? `m-0 p-6 pt-2 pb-0 z-[51] absolute justify-start text-start left-0 top-[60px] w-[200px]`
+      className={`${mobile ? `m-0 p-6 pt-2 pb-0 z-[51] absolute justify-start text-start left-0 top-[40px] w-[200px]`
         : `z-[51] absolute flex flex-row justify-start left-24 top-[22px]`}`}
       variants={variants}>
       {children.map((child, i) => {
