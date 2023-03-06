@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 import useWindowSize from '@utils/useWindowSize';
-
+import { toast } from 'react-hot-toast';
 import { useRouter } from 'next/router';
 import { useCycle } from 'framer-motion';
 import useLocalStorage from '@/utils/useLocalStorage';
@@ -76,7 +76,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   }
 
   function removeOne(newItem) {
-    console.log('removeOne')
+    // console.log('removeOne')
     setContent(oldContent => {
       let oldQty = oldContent.find((item) => item.id === newItem.id).qty
       if (oldQty > 1) {
@@ -93,153 +93,224 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
         return newContent
       }
     })
-    
-      setTotalPrice(old => Math.max(old - newItem.price, 0))
-    
+
+    setTotalPrice(old => Math.max(old - newItem.price, 0))
+
   }
 
-  function updateSupport() {
-    console.log('updateSupport', supportAmount)
-          // console.log(content)
-          // console.log(supportAmount, oldSupportAmount)
-
+  function updateSupport(amount) {
+    let newSupportAmount = typeof amount === 'Number' ? amount : supportAmount
+    let update = false;
+    console.log(supportAmount, newSupportAmount)
+    // console.log(update)
+    if (newSupportAmount < 5 && newSupportAmount !== 0) {
+      // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
+      toast.error(`${'Your amount should be 5€ or more.'}`, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      })
+  
+      // console.log('less than 5')
+      // console.log(content)
+      return
+    }
+    // console.log(newSupportAmount, oldSupportAmount)
     setContent(oldContent => {
-      //============== NO SUPPORT YET==============
-      if (!oldContent.find((item) => item.id === 'support') && supportAmount>=5) {
-        // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
+      // //============== DELETE SUPPORT==============
+      // if (newSupportAmount === 0) {
+      //   let newContent = oldContent.filter((item) => item.id !== 'support')
+      //   // console.log('updated content 2')
+      //   // console.log(newContent)
+      //   return newContent
+      // }
+
+      //============== ADD SUPPORT TO BASKET==============
+      if (!oldContent.find((item) => item.id === 'support')) {
         // console.log('updated content 1')
-        // console.log([...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }])
-        return [...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }]
-      } else if (!oldContent.find((item) => item.id === 'support') && supportAmount<5){
-          // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
-          console.log('less than 5')
-          console.log(content)
-          return [...oldContent]
+        // console.log([...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }])
+
+        return [...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }]
+      }
       //============== CHANGE SUPPORT AMOUNT==============
-      } else if (supportAmount>=5) {
+      else {
         let newContent = oldContent.map((item) => {
           if (item.id === 'support') {
-            return { ...item, price: supportAmount }
+            return { ...item, price: newSupportAmount }
           } else {
             return item
           }
         })
+        update = true;
         return newContent
 
-      } else if (supportAmount===0) {
-        let newContent = oldContent.filter((item) => item.id !== 'support')
-        // console.log('updated content 2')
-        // console.log(newContent)
-        return newContent
       }
     })
-    setTotalPrice(oldPrice => (oldPrice + supportAmount - (oldSupportAmount||0)));
-    setOldSupportAmount(supportAmount)
+    // console.log(update)
+    setTotalPrice(oldPrice => (oldPrice + newSupportAmount - (oldSupportAmount || 0)));
+    setOldSupportAmount(newSupportAmount)
+    toast.success(`${update ? 'Support modified successfully' : 'Support added successfully'}`, {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    })
   }
+
+
+  // function updateSupport() {
+  //   // console.log('updateSupport', supportAmount)
+  //         // console.log(content)
+  //         // console.log(supportAmount, oldSupportAmount)
+  //   setContent(oldContent => {
+  //     //============== NO SUPPORT YET==============
+  //     if (!oldContent.find((item) => item.id === 'support') && supportAmount>=5) {
+  //       // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
+  //       // console.log('updated content 1')
+  //       // console.log([...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }])
+  //       return [...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }]
+  //     } else if (!oldContent.find((item) => item.id === 'support') && supportAmount<5){
+  //         // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
+  //         console.log('less than 5')
+  //         console.log(content)
+  //         return [...oldContent]
+  //     //============== CHANGE SUPPORT AMOUNT==============
+  //     } else if (supportAmount>=5) {
+  //       let newContent = oldContent.map((item) => {
+  //         if (item.id === 'support') {
+  //           return { ...item, price: supportAmount }
+  //         } else {
+  //           return item
+  //         }
+  //       })
+  //       return newContent
+
+  //     } else if (supportAmount===0) {
+  //       let newContent = oldContent.filter((item) => item.id !== 'support')
+  //       // console.log('updated content 2')
+  //       // console.log(newContent)
+  //       return newContent
+  //     }
+  //   })
+  //   setTotalPrice(oldPrice => (oldPrice + supportAmount - (oldSupportAmount||0)));
+  //   setOldSupportAmount(supportAmount)
+  // }
 
   function removeSupport() {
     setContent(oldContent => {
       let newContent = oldContent.filter((item) => item.id !== 'support')
       return newContent
     })
-    setTotalPrice(oldPrice => (oldPrice - (oldSupportAmount||0)));
+    setTotalPrice(oldPrice => (oldPrice - (oldSupportAmount || 0)));
     setOldSupportAmount(0)
+
+    toast.success('Support removed successfully.', {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      },
+    })
+
     // setSupportAmount(0)
   }
 
-// useEffect(()=>{console.log(supportAmount)},[supportAmount])
+  // useEffect(()=>{console.log(supportAmount)},[supportAmount])
 
-// function updateSupport() {
-//   console.log(supportAmount, oldSupportAmount)
+  // function updateSupport() {
+  //   console.log(supportAmount, oldSupportAmount)
 
-//   if (oldSupportAmount === undefined) {
-//     setContent(oldContent => {
-//       // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
-//       console.log('updated content')
-//       console.log([...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }])
-//       return [...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }]
-//     })
+  //   if (oldSupportAmount === undefined) {
+  //     setContent(oldContent => {
+  //       // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
+  //       console.log('updated content')
+  //       console.log([...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }])
+  //       return [...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }]
+  //     })
 
-//     // console.log(typeof(amount +0 ))
-//     setTotalPrice(oldTotal => oldTotal + supportAmount)
-//     setOldSupportAmount(supportAmount)
-//   } else if (supportAmount !== oldSupportAmount) {
-//     setContent(oldContent => {
-//       let newContent = oldContent.map((item) => {
-//         if (item.id === 'support') {
-//           // item.qty += 1
-
-
-//           return { ...item, price: supportAmount }
-//         } else {
-//           return item
-//         }
-//       })
-//       console.log('updated content')
-//       console.log(newContent)
-//       return newContent
-//     })
-//     setTotalPrice(oldPrice => (oldPrice + supportAmount - oldSupportAmount));
-//     setOldSupportAmount(supportAmount)
-//   }
-// }
-
-// useEffect(()=>{
-//   console.log(totalPrice)
-// },[totalPrice])
+  //     // console.log(typeof(amount +0 ))
+  //     setTotalPrice(oldTotal => oldTotal + supportAmount)
+  //     setOldSupportAmount(supportAmount)
+  //   } else if (supportAmount !== oldSupportAmount) {
+  //     setContent(oldContent => {
+  //       let newContent = oldContent.map((item) => {
+  //         if (item.id === 'support') {
+  //           // item.qty += 1
 
 
-// function updateSupport(newAmount) {
-//   let diff = newAmount - support;
+  //           return { ...item, price: supportAmount }
+  //         } else {
+  //           return item
+  //         }
+  //       })
+  //       console.log('updated content')
+  //       console.log(newContent)
+  //       return newContent
+  //     })
+  //     setTotalPrice(oldPrice => (oldPrice + supportAmount - oldSupportAmount));
+  //     setOldSupportAmount(supportAmount)
+  //   }
+  // }
 
-//   setSupport(oldAmount => {
-//     if (oldAmount !== newAmount) {
-//       return newAmount
-//     }
-//   })
-//   setTotalPrice(oldPrice => oldPrice + Math.max(diff, -support))
-// }
-// useEffect(()=>{
-//   let newTotal = 
-// },[content])
-let mobile = width < 986
+  // useEffect(()=>{
+  //   console.log(totalPrice)
+  // },[totalPrice])
 
 
-return (
-  <AppContext.Provider
-    value={{
-      width: width,
-      mobile:mobile,
-      height: height,
-      screens: screens,
-      locale: locale,
-      // mobile:width<768,
-      // breakPointSmall: breakPointSmall,
-      // noBlur: true,
-      scrolled: scrolled,
-      navIsOpen: navIsOpen,
-      toggleNav: toggleNav,
-      navLocked: navLocked,
-      setNavLocked: setNavLocked,
-      cartIsOpen: cartIsOpen,
-      toggleCart: toggleCart,
-      handleLightboxes: handleLightboxes,
+  // function updateSupport(newAmount) {
+  //   let diff = newAmount - support;
 
-      cart: {
-        addOne: addOne,
-        removeOne: removeOne,
-        totalPrice: totalPrice,
-        content: content,
-        updateSupport: updateSupport,
-        removeSupport: removeSupport,
-        supportAmount: supportAmount,
-        setSupportAmount: setSupportAmount,
-      }
-    }}>
+  //   setSupport(oldAmount => {
+  //     if (oldAmount !== newAmount) {
+  //       return newAmount
+  //     }
+  //   })
+  //   setTotalPrice(oldPrice => oldPrice + Math.max(diff, -support))
+  // }
+  // useEffect(()=>{
+  //   let newTotal = 
+  // },[content])
+  let mobile = width < 986
 
-    {children}
-  </AppContext.Provider>
-);
+
+  return (
+    <AppContext.Provider
+      value={{
+        width: width,
+        mobile: mobile,
+        height: height,
+        screens: screens,
+        locale: locale,
+        // mobile:width<768,
+        // breakPointSmall: breakPointSmall,
+        // noBlur: true,
+        scrolled: scrolled,
+        navIsOpen: navIsOpen,
+        toggleNav: toggleNav,
+        navLocked: navLocked,
+        setNavLocked: setNavLocked,
+        cartIsOpen: cartIsOpen,
+        toggleCart: toggleCart,
+        handleLightboxes: handleLightboxes,
+
+        cart: {
+          addOne: addOne,
+          removeOne: removeOne,
+          totalPrice: totalPrice,
+          content: content,
+          updateSupport: updateSupport,
+          removeSupport: removeSupport,
+          supportAmount: supportAmount,
+          setSupportAmount: setSupportAmount,
+        }
+      }}>
+
+      {children}
+    </AppContext.Provider>
+  );
 }
 
 export function useAppContext() {

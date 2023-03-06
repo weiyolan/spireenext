@@ -38,6 +38,7 @@ export default function Support() {
           mobile={mobile}
         >
           <Background src='/images/mountainsRed.jpg' className='object-cover object-left-bottom '/>
+
           <Layout>
             <Title mainTitle={'Join\nSpirée'} subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
             <section className='w-full sm:w-4/5 lg:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
@@ -65,7 +66,7 @@ Your support means everything to us, and we can't wait to show you the incredibl
 
           </Layout>
           {/* <Title text={'Merino'}/> */}
-          <Footer noMotion={true} />
+          <Footer noMargin noMotion={true} />
 
           <Navbar from='support' />
           <ShoppingCart />

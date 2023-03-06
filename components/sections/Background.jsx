@@ -32,7 +32,7 @@ export default function Background ({src, color, className, style}) {
 
   
   return (
-    <div className={`w-full fixed top-[0] -z-10 h-screen ${src?'':color?color:'bg-slate-600'} `} >
+    <div className={`w-full fixed top-[0] -z-[1] h-screen ${src?'':color?color:'bg-slate-600'} `} >
       {/* <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}> */}
         {/* {console.log(height*(1+overflow)+'px')} */}
         {/* {console.log(`translate(-${Y}px,0)`)} */}

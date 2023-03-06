@@ -77,8 +77,9 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
 
 
   const handleCheckout = async () => {
+    console.log(cart.content)
     const stripe = await getStripe();
-
+    // console.log(stripe)
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers: {
@@ -87,8 +88,9 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
       },
       body: JSON.stringify({content:cart.content}),
     });
-
+    // console.log(response)
     if (response.statusCode === 500) return;
+
     const data = await response.json();
     // console.log(data)
     stripe.redirectToCheckout({ sessionId: data.id });

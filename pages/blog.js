@@ -28,17 +28,26 @@ export default function Blog({ posts }) {
   let [clicked, setClicked] = useState(false)
   // let [blogHeight,setBlogHeight]
   let [visibility, setVisibility] = useState(() => { let newArray = new Array(posts.length).fill(false); newArray[posts.length - 1] = true; return newArray })
-  
+
   function handleTouchStart(e) {
     console.log(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
     // console.log()
 
-      // setTouchStart(e.targetTouches[0].clientY);
-      // setTouchElement(e.target)
+    // setTouchStart(e.targetTouches[0].clientY);
+    // setTouchElement(e.target)
 
- // console.log(e.target.parents('div#blogPost'))
+    // console.log(e.target.parents('div#blogPost'))
   }
-  
+
+  function handleVisibility(newVal, i) {
+    if (newVal === true) {
+      let newVisibility = new Array(qualities.length).fill(false);
+      newVisibility[i] = newVal;
+      setVisibleItem(newVisibility)
+    } else if (newVal === false) {
+      randomVisibility(visibleItem)
+    }
+  }
 
   // const [touchStart, setTouchStart] = useState(undefined);
   // const [touchEnd, setTouchEnd] = useState(undefined);
@@ -192,16 +201,16 @@ export default function Blog({ posts }) {
           pageMobile={pageMobile}
         // mobile={mobile}
         >
-          <Background className='object-cover object-bottom' src='/images/blogBackground3.png' />
+          <Background className='object-cover object-bottom' src='/images/blogBackground2.png' />
           {/* <Overlay className='fixed min-h-screen min-w-full opacity-90 left-1/2 top-0 -translate-x-1/2' /> */}
           <Title setHeight={setTitleHeight} mainTitle='The Finish Line' subTitle={`Read along and get updated on when\nyou will receive your celestial shirt`} />
-          
-          <div className='text-black text-sm mt-2 font-sans uppercase font-medium tracking-wide mx-auto text-center'>
+
+          <div className='text-black text-xs sm:text-sm mt-2 font-sans uppercase font-medium tracking-wide mx-auto text-center'>
             <p>{`Current completion`}</p>
-          <p className='text-xl font-quick'>{`${posts[posts.length-1].completion}%`}</p>
+            <p className='text-lg sm:text-xl font-quick'>{`${posts[posts.length - 1].completion}%`}</p>
           </div>
 
-          <FadeDiv amount={pageMobile?10:20} style={{}} className='relative font-quick border border-white flex w-full mt-4 sm:mt-10 h-[70vh] min-h-[50vh] left-1/2 -translate-x-1/2 '>
+          <FadeDiv amount={pageMobile ? 10 : 20} style={{}} className='relative font-quick border border-white flex w-full mobl:mt-4 sm:mt-10 h-[70vh] sm:h-[60vh] left-1/2 -translate-x-1/2 '>
 
             <div style={{ left: positions?.linePosition }} className='absolute top-1/2 -translate-x-1/2 -translate-y-1/2  flex h-[90vh] mr-10'>
               <div id='line' className='h-full border-l-2 border-l-black' />
@@ -209,13 +218,19 @@ export default function Blog({ posts }) {
 
             <div className='flex flex-col w-full'>
               {/* {console.log(posts.length)} */}
-              {posts.map((post, i) => <BlogPost setPositions={i === 0 ? setPositions : undefined} visibility={visibility} style={{}} myKey={i} key={i} post={post} />)}
+              {posts.map((post, i) => <BlogPost linePosition={positions?.linePosition || undefined} setPositions={i === 0 ? setPositions : undefined} visibility={visibility} style={{}} myKey={i} key={i} post={post} />)}
             </div>
 
-            <div style={{ left: pageMobile?'50%':positions?.buttonPosition}} className='absolute bottom-0 sm:top-1/2 -translate-x-1/2 -translate-y-1/2 flex w-full sm:w-fit sm:mr-10'>
+            <div style={{ left: pageMobile ? '50%' : positions?.buttonPosition }} className='absolute bottom-0 sm:top-1/2 -translate-x-1/2 -translate-y-1/2 flex w-full sm:w-fit sm:mr-10'>
               <div className='flex sm:flex-col sm:my-auto w-full sm:w-fit'>
-                <div className='flex w-1/2 justify-end' onClick={()=>{if(pageMobile) {setClicked(true)}; prevPost()}}><Arrow up={!pageMobile} left={pageMobile} disable={visibility[0]} handleClick={()=>{if(pageMobile) {setClicked(true)}; prevPost()}} className={`w-8 sm:w-6 mx-10 sm:mx-0 my-4 transition-all  ${visibility[0] ? clicked?'opacity-0':'opacity-50' : clicked?'opacity-10':'opacity-100 cursor-pointer'}`} /></div>
-                <div className='flex w-1/2 justify-start' onClick={()=>{if(pageMobile) {setClicked(true)}; nextPost()}}><Arrow down={!pageMobile} right={pageMobile} disable={visibility[visibility.length - 1]} handleClick={()=>{if(pageMobile) {setClicked(true)}; nextPost()}} className={`w-8 sm:w-6 mx-10  sm:mx-0 my-4 transition-all  ${visibility[visibility.length - 1] ? clicked? 'opacity-0': 'opacity-50' : clicked? 'opacity-10':'opacity-100 cursor-pointer'}`} /></div>
+                <div className='flex w-1/2 justify-end' onClick={() => { if (pageMobile) { setClicked(true) }; prevPost() }}>
+                  <Arrow up={!pageMobile} left={pageMobile} disable={visibility[0]} handleClick={() => { if (pageMobile) { setClicked(true) }; prevPost() }} 
+                  className={`w-8 sm:w-8 mx-10 sm:mx-0 my-4 transition-all  ${visibility[0] ? clicked ? 'opacity-0' : 'opacity-50' : clicked ? 'opacity-10' : 'opacity-100 cursor-pointer'}`} />
+                </div>
+                <div className='flex w-1/2 justify-start' onClick={() => { if (pageMobile) { setClicked(true) }; nextPost() }}>
+                  <Arrow down={!pageMobile} right={pageMobile} disable={visibility[visibility.length - 1]} handleClick={() => { if (pageMobile) { setClicked(true) }; nextPost() }} 
+                  className={`w-8 sm:w-8 mx-10  sm:mx-0 my-4 transition-all  ${visibility[visibility.length - 1] ? clicked ? 'opacity-0' : 'opacity-50' : clicked ? 'opacity-10' : 'opacity-100 cursor-pointer'}`} />
+                </div>
               </div>
             </div>
 

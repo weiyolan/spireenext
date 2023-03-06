@@ -56,7 +56,7 @@ const TitleMoving = ({ mainTitle, subTitle, setHeight, style, className }) => {
 
       </h1>
 
-      <h2 className='font-quick font-light whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-md sm:text-lg lg:text-xl mb-2 sm:mb-4'>
+      <h2 className='font-quick  whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-md sm:text-lg lg:text-xl mb-2 sm:mb-4'>
         {subTitle}
       </h2>
 

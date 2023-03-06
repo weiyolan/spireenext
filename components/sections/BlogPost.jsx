@@ -3,13 +3,16 @@ import { PortableText } from '@portabletext/react';
 import { motion } from 'framer-motion';
 import { usePageContext } from '../context/pageContext';
 import { BsFillCircleFill } from 'react-icons/bs'
-export default function BlogPost({ style, myKey, visibility, className, post, setPositions }) {
+import { useAppContext } from '../context/appContext';
+
+export default function BlogPost({ style, myKey, visibility, className, post, setPositions , linePosition}) {
 
   let [visible, setVisible] = useState(visibility[myKey])
   let [distance, setDistance] = useState(myKey - visibility.indexOf(true))
   let [date, setDate] = useState(new Intl.DateTimeFormat("en-US", { day: 'numeric', month: 'short' }).format(new Date(post.date)))
 
   let [myPosition, setMyPosition] = useState(0)
+  // let [linePosition, setLineposition] = useState(linePosition)
   // let [textPosition, setTextPosition] = useState(0)
   // let [datePosition, setDatePosition] = useState(0)
 
@@ -17,6 +20,7 @@ export default function BlogPost({ style, myKey, visibility, className, post, se
   let textRef = useRef(null)
   let dateRef = useRef(null)
   const { pageMobile } = usePageContext()
+  const { width } = useAppContext()
 
   useEffect(() => {
     function handleSize() {
@@ -41,7 +45,7 @@ export default function BlogPost({ style, myKey, visibility, className, post, se
   }, [])
 
   useEffect(() => {
-    if (myPosition.percLeft > 0 && setPositions !== undefined) {
+    if (myPosition.percLeft > 0 && setPositions !== undefined && linePosition === undefined) {
       let { percLeft, percRight, textLeft, dateRight } = myPosition;
       setPositions({ buttonPosition: percRight + (textLeft - percRight) / 2, linePosition: pageMobile ? dateRight + (textLeft - dateRight) / 2 : dateRight + (percLeft - dateRight) / 2 })
     }
@@ -64,8 +68,8 @@ export default function BlogPost({ style, myKey, visibility, className, post, se
   // },[post])
 
   let incr = pageMobile ? 40 : 40
-  let basePos = pageMobile ? 250 : 170
-  let baseNeg = -70
+  let basePos = width < 350 ? 300 : width < 648 ? 250 : 250
+  let baseNeg = pageMobile ? -70 : -80
 
   function getTranslation() {
     if (distance > 0) {
@@ -76,29 +80,31 @@ export default function BlogPost({ style, myKey, visibility, className, post, se
   }
 
   return (
-    <div style={{ transform: `translate(0%, calc(-50% + ${visible ? 0 : getTranslation()}px))` }} className='absolute self-center transition-all px-2  sm:px-10 duration-700 flex top-1/2'>
+    <div style={{ transform: `translate(0%, calc(-50% + ${visible ? 0 : getTranslation()}px))` }} className='absolute justify-center transition-all w-full px-2 sm:px-10 duration-700 flex top-1/2'>
 
       <div style={{ alignItems: visible ? 'center' : 'start' }}
-        className={` mobm:w-1/6 transition-all duration-500 flex mt-2
-      text-sm `}>
-        <div className='flex flex-col sm:flex-row items-end justify-start'>
-          <motion.p layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} ref={dateRef} className='whitespace-nowrap sm:mr-4 '>{date}</motion.p>
-          <motion.p layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} className='sm:w-7' ref={percRef}>{post.completion}%</motion.p>
+        className={`w-3/12 flex transition-all duration-500 mt-2
+        text-sm   `}>
+
+        <div className='  flex flex-col w-[65%] sm:flex-row items-end justify-start sm:justify-end  '>
+          <motion.p layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} ref={dateRef} className='   whitespace-nowrap sm:mr-4 '>{date}</motion.p>
+          <motion.p layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} className='   sm:w-7' ref={percRef}>{post.completion}%</motion.p>
+
         </div>
 
-        <motion.div layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} className='flex '>
+        <motion.div layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }} style={{left: linePosition+'px'}} className='absolute flex w-fit  translate-y-4 '>
           {/* <motion.span layout transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
             className='font-bold mx-auto'> */}
-            <BsFillCircleFill className='w-[6px] h-[6px] mx-auto' />
+          <BsFillCircleFill className={`w-[7px] -translate-x-1/2 h-[7px] ${visible ? '' : 'mt-1'}  `} />
           {/* </motion.span> */}
         </motion.div>
 
       </div>
 
 
-      <div name='blogPost' className='flex flex-col w-4/5 mobm:w-5/6 mobm:px-4 sm:ml-20 max-w-xl items-start'>
-        <h2 ref={textRef} className={`text-2xl border-b transition-all duration-500 mb-2 ${visible ? 'border-b-black' : 'border-b-transparent'}`}>{post.title}</h2>
-        <div className={`transition-all text-sm sm:text-base text-justify duration-500 ${visible ? 'opacity-1 delay-300 block' : 'opacity-0'}`}>
+      <div ref={textRef} name='blogPost' className=' flex flex-col w-9/12 max-w-xl items-start'>
+        <h2 className={`border-b transition-all duration-500 mb-2 ${visible ? 'border-b-black text-2xl mobm:text-3xl mobm:ml-1 sm:ml-3 ' : ' ml-0 border-b-transparent text-xl'}`}>{post.title}</h2>
+        <div className={`w-full mobm:px-1 mobm:pr-2 sm:px-3 transition-all text-sm sm:text-base text-justify duration-500 ${visible ? 'opacity-1 delay-300 visible' : 'opacity-0 invisible'}`}>
           <PortableText value={post.body} />
         </div>
       </div>

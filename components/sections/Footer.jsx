@@ -106,7 +106,7 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
           <Links title='Socials' list={socialList[locale]} />
 
           <div className='flex flex-col items-center sm:items-start'>
-            <AccentTitle text='Stay In Touch' />
+            <AccentTitle noMargin text='Stay In Touch' />
             <StayInTouch />
           </div>
 
@@ -184,7 +184,7 @@ function Links({ title, list }) {
   return (
     // <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0`}>
     <div className={`text-center sm:text-left `}>
-      <AccentTitle text={title} />
+      <AccentTitle noMargin text={title} />
       <List list={list} />
     </div>
   )

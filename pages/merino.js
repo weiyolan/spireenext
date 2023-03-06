@@ -62,7 +62,7 @@ export default function Merino() {
       </Head>
 
 
-      <main className={`w-full min-h-screen`} onClick={handleLightboxes}>
+      <main className={`w-full min-h-screen bg-[#091627] `} onClick={handleLightboxes}>
         <PageWrapper
           darkMode={true}
           mobile={mobile}

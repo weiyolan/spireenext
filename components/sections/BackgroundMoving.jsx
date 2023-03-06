@@ -36,7 +36,7 @@ export default function BackgroundMoving ({src, moves, maxMoves,className}) {
   let Y = moves*moveHeight
   
   return (
-    <div className={`w-full fixed top-[0] -z-10 h-[100vh] overflow-hidden overflow-hidden ${src?'':'bg-slate-600'} `} >
+    <div className={`w-full fixed top-[0] z-0 h-[100vh] overflow-hidden overflow-hidden ${src?'':'bg-slate-600'} `} >
       <div className='flex w-full absolute top-0 transition-all duration-1000' style={{height: height*(1+overflow)+'px' , transform: `translate(0,-${Y}px)`}}>
         {/* {console.log(height*(1+overflow)+'px')} */}
         {/* {console.log(`translate(-${Y}px,0)`)} */}

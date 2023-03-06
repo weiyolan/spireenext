@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 // import { useScrollPercentage } from 'react-scroll-percentage';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Router } from 'next/router';
+import { Toaster } from 'react-hot-toast';
 const workSans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-worksans',
@@ -77,10 +78,10 @@ export default function App({ Component, pageProps }) {
               // opacity:0
             }}
           }
-          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
+          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden  `}>
           
           <Component {...pageProps} />
-
+          <Toaster/>
         </motion.div>
         </AnimatePresence>
       </AppWrapper>
