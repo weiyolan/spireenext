@@ -20,13 +20,13 @@ export default function SupportCard({ amount, percent, title }) {
 
       <div className='text-sm'>
       <p className=''>
-        {amount === 50 && `a limited edition Spirée Headband matching with the Sun and Moon collection, made of 100% merino wool`}
-        {amount === 100 && `a limited edition Spirée Headband and Spirée Buff, matching with the Sun and Moon collection, made of 100% merino wool`}
-        {amount === 200 && `a limited edition Spirée Headband, Spirée Buff and Spirée Gloves, matching with the Sun and Moon collection made of 100% merino wool`}
+        {amount === 50 && <>a limited edition <span className='font-semibold'>Spirée Headband</span> matching with the Sun and Moon collection, made of 100% merino wool</>}
+        {amount === 100 && <>a limited edition <span className='font-semibold'>Spirée Headband and Spirée Buff</span>, matching with the Sun and Moon collection, made of 100% merino wool</>}
+        {amount === 200 && <>a limited edition <span className='font-semibold'>Spirée Headband, Spirée Buff and Spirée Gloves</span>, matching with the Sun and Moon collection made of 100% merino wool</>}
       </p>
 
       <p className='mt-4'>
-        {`${percent}% on your first purchase when the Sun and Moon collection becomes available.`}
+        {<> <span className='font-semibold'>{`${percent}%`}</span> on your first purchase when the Sun and Moon collection becomes available. </>}
       </p>
       </div>
       <Button text='Add To Cart' med/>

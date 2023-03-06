@@ -38,7 +38,7 @@ export default function MerinoQualities({ name, title, span, text, position, rea
   useEffect(() => {
     let interval = setInterval(() => {
       if (!clicked) { nextVisibility(visibleItem) }
-    }, 10000)
+    }, 4000)
 
     return () => clearInterval(interval)
 
@@ -128,6 +128,7 @@ export default function MerinoQualities({ name, title, span, text, position, rea
         <Image style={{ objectPosition: `-${218 + offset}px 0px` }} alt='' fill src='/images/merinoBackgroundWide.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} />
         {/* <Image alt='' fill src='/images/merinoBackground.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} /> */}
       </div>
+      
       <div style={{ height: height }} className='absolute z-0 top-0 w-full'>
         {/* <div style={{}} className='z-10 w-screen h-screen'  > HELLO </div> */}
         <div style={{
@@ -191,24 +192,24 @@ export default function MerinoQualities({ name, title, span, text, position, rea
 //     </svg>)
 // }
 
-function ServiceIcon({ icon, clicked, handleClick, noBlur, left, title }) {
+// function ServiceIcon({ icon, clicked, handleClick, noBlur, left, title }) {
 
-  return (
-    // <motion.div variants={iconAnimation} initial='hidden' custom={clicked} whileTap='tap' whileInView='visible'
-    <div tabIndex={0} title={title}
-      className={`flex ${noBlur ? '' : 'backdrop-blur-md'} justify-center select-none cursor-pointer items-center duration-200 bg-white/10 filter 
-    ${!left ? 'ml-2 min-[350px]:ml-3 lg:ml-4 ' : ' mr-2 min-[350px]:mr-3 lg:mr-4 '}
-      w-9 h-9 sm:mt-2  min-[350px]:w-10 min-[350px]:h-10
-      sm:w-10 sm:h-10 md:h-12 md:w-12 rounded-lg md:rounded-xl lg:h-14 lg:w-14
-     p-2
-    border-2 hover:border-white/30 focus:outline-none outline-none
-    `+
-        (clicked ? ` border-white/30 focus:border-white/30 focus:animate-none animate-borderPulse shadow-md scale-95 translate-y-1 ` : `border-transparent hover:scale-[1.08] shadow-2xl focus:border-white/30 focus:scale-[1.08] `)}
-      onClick={() => handleClick(!clicked)} onKeyDown={(e) => { if (e.code === 'Enter') { handleClick(!clicked) } }}
-    >
+//   return (
+//     // <motion.div variants={iconAnimation} initial='hidden' custom={clicked} whileTap='tap' whileInView='visible'
+//     <div tabIndex={0} title={title}
+//       className={`flex ${noBlur ? '' : 'backdrop-blur-md'} justify-center select-none cursor-pointer items-center duration-200 bg-white/10 filter 
+//     ${!left ? 'ml-2 min-[350px]:ml-3 lg:ml-4 ' : ' mr-2 min-[350px]:mr-3 lg:mr-4 '}
+//       w-9 h-9 sm:mt-2  min-[350px]:w-10 min-[350px]:h-10
+//       sm:w-10 sm:h-10 md:h-12 md:w-12 rounded-lg md:rounded-xl lg:h-14 lg:w-14
+//      p-2
+//     border-2 hover:border-white/30 focus:outline-none outline-none
+//     `+
+//         (clicked ? ` border-white/30 focus:border-white/30 focus:animate-none animate-borderPulse shadow-md scale-95 translate-y-1 ` : `border-transparent hover:scale-[1.08] shadow-2xl focus:border-white/30 focus:scale-[1.08] `)}
+//       onClick={() => handleClick(!clicked)} onKeyDown={(e) => { if (e.code === 'Enter') { handleClick(!clicked) } }}
+//     >
 
-      {icon}
+//       {icon}
 
-    </div>
-  )
-}
+//     </div>
+//   )
+// }

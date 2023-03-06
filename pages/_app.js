@@ -4,8 +4,10 @@ import React, {useState, useEffect} from 'react'
 import {Work_Sans, Quicksand} from '@next/font/google'
 import {AppWrapper} from '@components/context/appContext';
 import ScrollVisual from '@/components/scroll/ScrollVisual';
+import { useRouter } from 'next/router';
 // import { useScrollPercentage } from 'react-scroll-percentage';
-
+import { AnimatePresence, motion } from 'framer-motion';
+import { Router } from 'next/router';
 const workSans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-worksans',
@@ -22,6 +24,7 @@ const quickSand = Quicksand({
 
 export default function App({ Component, pageProps }) {
   let [scrolled, setScrolled] = useState(0)
+  let router = useRouter();
   // let scrolled=0;
     // let [ref, percentage] = useScrollPercentage();
 
@@ -56,11 +59,30 @@ export default function App({ Component, pageProps }) {
       </Head>
 {/* scrolled.toPrecision(2) */}
       <AppWrapper scrolled={scrolled}>
-        <div className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
+        <AnimatePresence mode='wait'>
+          <motion.div 
+          key={router.route}
+          initial='initial'
+          animate='animate'
+          exit ='exit'
+          transition={{duration:0.75}}
+          variants={
+            {initial: {
+              opacity:0
+            },
+            animate: {
+              opacity:1
+            },
+            exit: {
+              // opacity:0
+            }}
+          }
+          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden `}>
           
           <Component {...pageProps} />
 
-        </div>
+        </motion.div>
+        </AnimatePresence>
       </AppWrapper>
 
     </>

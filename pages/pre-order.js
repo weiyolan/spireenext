@@ -42,7 +42,7 @@ export default function PreOrder() {
         >
           <Background src='/images/orderBackground.png' />
           {/* </Sun><Moon/> */}
-          <Title mainTitle='Pre-Order' subTitle='Be the first to run everywhere with a 100% merino woolen Spirée base layer' />
+          <Title mainTitle='Pre-Order' subTitle={`Be the first to run everywhere with a\n100% merino woolen Spirée base layer`} />
           <Layout>
             <div className='flex justify-center items-start'>
 

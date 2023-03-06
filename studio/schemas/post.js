@@ -9,6 +9,7 @@ export default defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+      validation: Rule => Rule.required()
     }),
     defineField({
       name: 'slug',
@@ -18,11 +19,13 @@ export default defineType({
         source: 'title',
         maxLength: 96,
       },
+      validation: Rule => Rule.required()
     }),
     defineField({
       name: 'completion',
       title: 'Completion Percentage',
       type: 'number',
+      validation: Rule => Rule.required()
     }),
 
     // defineField({
@@ -49,11 +52,14 @@ export default defineType({
       name: 'date',
       title: 'Date',
       type: 'datetime',
+      validation: Rule => Rule.required()
+
     }),
     defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',
+      validation: Rule => Rule.required()
     }),
   ],
 

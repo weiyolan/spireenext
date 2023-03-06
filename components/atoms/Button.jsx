@@ -15,9 +15,9 @@ export default function Button({text, className , small, med, handleClick, to}) 
       className={`inline-flex w-fit relative rounded-full bg-black/30 backdrop-blur
     transition-all text-center
     font-sans font-semibold whitespace-nowrap select-none uppercase tracking-max 
-    
-    cursor-pointer ${small?'text-xs px-2 py-1': med?' text-xs px-3 py-2':' px-4 py-2'} ${className}
-    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:scale-105 active:scale-95 hover:bg-black/50 hover:shadow-md active:shadow-none active:bg-black/30`}
+    cursor-pointer ${small?'text-xs px-2 py-1': med?' text-xs px-3 py-2':' px-4 py-2'}
+    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:scale-105 active:scale-95 hover:bg-black/50 hover:shadow-md active:shadow-none active:bg-black/30
+    ${className}`}
       onClick={handleClick}
     >
       {/* <div className=''> */}

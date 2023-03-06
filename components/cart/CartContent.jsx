@@ -143,7 +143,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
         </motion.div>
 
         <motion.div className='block mb-5' style={{ bottom: 0 + 'px' }} variants={childVariants}>
-          <Button med text='Visit collection' to='/order' handleClick={()=>{if(width<648){toggleCart()}}} />
+          <Button med text='Visit collection' to='/collection' handleClick={()=>{if(width<648){toggleCart()}}} />
           {/* <ArrowLink tabIndex={0} text='SEE OUR COLLECTION' to='collection'/> */}
         </motion.div>
 

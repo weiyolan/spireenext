@@ -296,13 +296,13 @@ export default function Nav({ from }) {
 
       {/* =================NavButtons================= */}
       <NavList onMouseEnter={() => { if (!mobile && !navLocked) { toggleNav() } }} onMouseLeave={() => { if (!mobile && !navLocked) { toggleNav() } }} >
+        <NavButton className='' to="collection" text={collection[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="pre-order" text={order[locale].text} selectedB={selectedB} handleClick={selectButton} />
-        <NavButton className='' to="collection/#sun" text={sun[locale].text} selectedB={selectedB} handleClick={selectButton} />
-        <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} />
-        <NavButton className='' to="about" text={about[locale].text} selectedB={selectedB} handleClick={selectButton} />
+        {/* <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} /> */}
         <NavButton className='' to="support" text={support[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="merino" text={merino[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="blog" text={progress[locale].text} selectedB={selectedB} handleClick={selectButton} />
+        <NavButton className='' to="about" text={about[locale].text} selectedB={selectedB} handleClick={selectButton} />
         {/* <NavButton className='' to="contact/#Form" title="Contact" text={merino[locale].text} handleClick={selectButton} mode={'dark'} /> */}
         {/* <NavButton className='' to="contact/#Form" title="Contact" text={progress[locale].text} handleClick={selectButton} mode={'dark'} /> */}
         <ChooseLanguage mobile={mobile} toggleNav={toggleNav} />
@@ -319,6 +319,7 @@ export default function Nav({ from }) {
 }
 
 let order = { en: { text: 'Pre-Order' }, fr: { text: 'Pre-Order' } }
+let collection = { en: { text: 'Collection' }, fr: { text: 'Collection' } }
 let sun = { en: { text: 'Sun' }, fr: { text: 'Soleil' } }
 let moon = { en: { text: 'Moon' }, fr: { text: 'Lune' } }
 let about = { en: { text: 'About' }, fr: { text: 'A Propos' } }

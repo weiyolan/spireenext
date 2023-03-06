@@ -16,13 +16,14 @@ import ESpiree from '@/components/atoms/ESpiree'
 import SpireeLogo from '@/components/atoms/SpireeLogo'
 import SubTitleAnimate from '@/components/atoms/SubTitleAnimate'
 import ArrowLink from '@/components/atoms/ArrowLink'
+import Button from '@/components/atoms/Button'
 
 
 
 
 export default function Index() {
 
-  const { scrolled, width, height, handleLightboxes,mobile } = useAppContext();
+  const { scrolled, width, height, handleLightboxes, mobile } = useAppContext();
 
   let [visible, setVisible] = useState([1, 0, 0, 0])
   let [loaded, setLoaded] = useState(false)
@@ -76,7 +77,7 @@ export default function Index() {
   };
   const childVariants = {
     first: {
-      x: -30,
+      x: 0,
       opacity: 0,
 
       // transition: {
@@ -94,7 +95,7 @@ export default function Index() {
     }
   };
 
-  let darkMode = false
+  let darkMode = true
   let normalAttribute = 'text-[#2C0012] fill-[#2C0012]'
   let normalColor = '#2C0012'
 
@@ -119,9 +120,10 @@ export default function Index() {
         >
           {/* <Background style={{ objectPosition: `-${0 }px 0px` }} className='object-cover' src='/images/mainBackground.jpg'/> */}
           <div style={{}} className='absolute top-0 left-0 h-screen w-full '>
-            {/* <img style={{objectPosition:`-${218}px 0px`}} alt='' src='/images/merinoBackgroundWide.jpg' className={`object-cover h-full object-left-bottom `}/> */}
-            <Image style={{ objectPosition: `-${width<350? 230:width<420?height<700?260:400:width < 550 ? 185 :width < 640 ? 300 : width < 792 ? 200 :width < 1025 ? height<500?0: 300 : 0}px ${width < 900 ? 60 : 0}px` }} alt='' fill src='/images/mainBackground3.jpg' className={`object-cover `} sizes="100vw" quality={100} />
-            {/* <Image alt='' fill src='/images/merinoBackground.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} /> */}
+
+            <Image style={{ objectPosition: `-${width < 350 ? 230 : width < 420 ? height < 700 ? 260 : 400 : width < 550 ? 185 : width < 640 ? 300 : width < 792 ? 200 : width < 1025 ? height < 500 ? 0 : 300 : 0}px ${ 0}px` }} alt='' fill src='/images/mainBackground.jpg' className={`object-cover object-right-bottom`} sizes="100vw" quality={100} />
+            {/* <Image style={{ objectPosition: `-${width < 350 ? 230 : width < 420 ? height < 700 ? 260 : 400 : width < 550 ? 185 : width < 640 ? 300 : width < 792 ? 200 : width < 1025 ? height < 500 ? 0 : 300 : 0}px ${width < 900 ? 60 : 0}px` }} alt='' fill src='/images/mainBackground.jpg' className={`object-cover `} sizes="100vw" quality={100} /> */}
+
           </div>
 
           <div className={`${'absolute'} ${visible[0] === 1 ? 'opacity-1 delay-500' : 'opacity-0 select-none blur-md'} flex transition-all duration-1000 h-screen w-full flex-col justify-center items-center text-center ${darkMode ? 'text-white' : normalAttribute}`}>
@@ -145,30 +147,30 @@ export default function Index() {
           </div>
 
           <div className={`${'absolute'} ${visible[2] === 1 ? 'opacity-1 delay-500' : 'opacity-0 select-none blur-md'} flex -translate-y-24 sm:-translate-y-24  transition-all duration-1000 h-screen w-full flex-col justify-center items-center text-center ${darkMode ? 'text-white' : normalAttribute}`}>
-            <SubTitleAnimate text={'100% Merino\nWool '} />
+            <SubTitleAnimate text={'100% Merino Wool '} />
           </div>
 
           <div className={`${'absolute'} ${visible[3] === 1 ? 'opacity-1 delay-500' : 'opacity-0 select-none blur-md'} flex  -translate-y-24 sm:-translate-y-24  transition-all duration-1000 h-screen w-full flex-col justify-center items-center text-center ${darkMode ? 'text-white' : normalAttribute}`}>
-            <SubTitleAnimate text={'Pro Women\nSportswear'} />
+            <SubTitleAnimate text={'Pro Women Sportswear'} />
           </div>
 
           <div className={`${'absolute'} flex transition-all duration-1000 w-full delay-1000 ${loaded ? 'opacity-1 ' : 'opacity-0'}  
           transition-all duration-700 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center ${darkMode ? 'text-white' : normalAttribute}`}>
-            <h2 className=' font-quick text-center mx-auto font-medium md:font-normal text-lg md:text-2xl 
-            max-w-[95%] mobl:max-w-[80%] md:max-w-lg   '>
+            <h2 className=' font-quick text-center font-medium md:font-normal text-lg md:text-2xl 
+            max-w-[95%] mobl:max-w-[80%] md:max-w-lg  mx-auto '>
               {'Every women deserves to feel confident and stylish during their favourite sports.'}
             </h2>
           </div>
-          
+
           {width < 550 && <div className='absolute rounded-full bg-orange-200 blur-[150px] bottom-0 right-0 translate-x-32 mobl:-translate-x-16 mobm:-translate-y-36 w-64 h-64'> </div>}
 
 
           <motion.div initial={false}
             animate={loaded ? "loaded" : "first"}
             variants={containerVariants}
-            className={`absolute grid grid-flow-row whitespace-pre mobl:whitespace-nowrap
-            sm:grid-flow-col ml-2 sm:flex-row left-1/2 top-1/2 font-semibold text-base -translate-x-1/2 translate-y-12  ${darkMode ? 'text-white' : normalAttribute}`}>
-            <div className=''>
+            className={`absolute w-full grid grid-flow-row whitespace-pre mobl:whitespace-nowrap
+            sm:grid-flow-col  sm:flex-row left-1/2 top-1/2 font-semibold text-base -translate-x-1/2 translate-y-12  ${darkMode ? 'text-white' : normalAttribute}`}>
+            {/* <div className=''>
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'Pre-Order'} to={'/pre-order'} /></motion.div>
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'Founding Story'} to={'/about'} /></motion.div>
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'100% Merino'} to={'/merino'} /></motion.div>
@@ -177,6 +179,15 @@ export default function Index() {
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'Collection'} to={'/collection'} /></motion.div>
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'The Blog'} to={'/blog'} /></motion.div>
               <motion.div variants={childVariants} ><ArrowLink inherit tabIndex={0} text={'Support us'} to={'/support'} /></motion.div>
+            </div> */}
+
+            <div className='flex justify-center flex-wrap w-full '>
+              <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'Pre-Order'} to={'/pre-order'} /></motion.div>
+              <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'Founding Story'} to={'/about'} /></motion.div>
+              <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'100% Merino'} to={'/merino'} /></motion.div>
+              {/* <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'Collection'} to={'/collection'} /></motion.div> */}
+              <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'The Blog'} to={'/blog'} /></motion.div>
+              <motion.div className='w-fit ' variants={childVariants} ><Button className=" m-2" med text={'Support us'} to={'/support'} /></motion.div>
             </div>
           </motion.div>
 

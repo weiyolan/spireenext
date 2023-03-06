@@ -15,7 +15,7 @@ export default function MerinoQuality({ visible, position, icon }) {
       mt-10 mobl:mt-20 xs:mt-28 md:mt-0
       w-full mobl:w-[75vw] md:max-w-[300px]
       
-      top-0 md:top-1/2 md:translate-y-[30%] lg:-translate-y-[70%]
+      bottom-0 md:top-1/2 md:translate-y-[30%] lg:-translate-y-[70%]
       left-1/2 -translate-x-1/2
       xl:min-w-[400px]
       
