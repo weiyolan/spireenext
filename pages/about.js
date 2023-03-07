@@ -6,7 +6,7 @@ import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
 
-import Title from '@/components/sections/Title'
+import Title from '@/components/atoms/Title'
 import Layout from '@/components/sections/Layout'
 import Footer from '@/components/sections/Footer'
 

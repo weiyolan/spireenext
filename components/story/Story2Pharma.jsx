@@ -35,7 +35,7 @@ export default function Story2Pharma({scrollMin, scrollMax, speed}) {
     return (
         <AnimateSVG print={false} alt='Story Part 2, a medical staff caduceus illustrating Astrids doctorate in pharmacy'
         scrollMin={scrollMin} scrollMax={scrollMax} speed={speed} fakeScroll={[]}>
-            {!mobile?<g id='mobile'>
+            {!mobile?<g id='desktop'>
             <Path drawDuration='1' position={0} scrolled={fakeScroll1} inverse={false} double={1} lengthFactor={1} id="fromAstrid1aMob" d="M574 511.623C586.334 521.557 623.44 552.279 669.003 543.413" stroke="white" stroke-width="2" stroke-linecap="round"/>
             <Path drawDuration='0.5' position={0} inverse={false} double={1} lengthFactor={1} id="fromAstrid1bMob" d="M574 511.623C586.334 521.557 623.44 552.279 669.003 543.413" stroke="white" stroke-width="2" stroke-linecap="round"/>
             <Path drawDuration='1' position={1} inverse={false} double={1} lengthFactor={1} id="fromAstrid2Mob" d="M669.003 543.413C717.504 533.975 693.503 479.833 747.005 469.402C800.506 458.971 819.507 513.113 874.508 497.715C929.51 482.317 948.5 444.5 948.5 397" stroke="white" stroke-width="2" stroke-linecap="round"/>
@@ -48,7 +48,7 @@ export default function Story2Pharma({scrollMin, scrollMax, speed}) {
             <Path drawDuration='2' animateFill={true} fastErase={true} animateStroke={true} id='Tail1Mob' position={3} inverse={false} lengthFactor={1} d="M947.609 383.017L947.383 376.47L950.03 375.58L949.776 381.873L947.609 383.017Z" fill="white"/>
             <Path drawDuration='2' animateFill={true} fastErase={true} animateStroke={true} id="Tail0Mob" position={2} inverse={false} lengthFactor={1} d="M949.613 386.297L949.184 394.632L948.126 395.421L947.766 387.012L949.613 386.297Z" fill="white"/>
             <Path drawDuration='2' animateFill={true} fastErase={true} animateStroke={true} id="HeadMob" position={6} inverse={false} lengthFactor={1} d="M956.356 311.996C956.356 313.851 955.547 315.63 954.108 316.942C952.669 318.254 950.717 318.991 948.682 318.991C946.646 318.991 944.694 318.254 943.255 316.942C941.816 315.63 941.008 313.851 941.008 311.996C941.008 310.14 941.816 308.361 943.255 307.049C944.694 305.737 946.646 305 948.682 305C950.717 305 952.669 305.737 954.108 307.049C955.547 308.361 956.356 310.14 956.356 311.996Z" fill="white"/>
-            </g>:<g id='desktop'>
+            </g>:<g id='mobile'>
             <Path drawDuration='1' position={0} scrolled={fakeScroll1} inverse={false} double={1} lengthFactor={1} id="fromAstrid1a" d="M348 794.5C360.334 804.434 399 805.5 431.5 788.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
             <Path drawDuration='0.5' position={0} inverse={false} double={1} lengthFactor={1} id="fromAstrid1b" d="M348 794.5C360.334 804.434 399 805.5 431.5 788.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
             <Path drawDuration='1' position={1} inverse={false} double={1} lengthFactor={1} id="fromAstrid2" d="M431.5 788.5C458 775.5 473.5 750.246 470.5 702.246" stroke="white" stroke-width="2" stroke-linecap="round"/>

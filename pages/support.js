@@ -6,14 +6,14 @@ import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
 
-import Title from '@/components/sections/Title'
+import Title from '@/components/atoms/Title'
 import Layout from '@/components/sections/Layout'
 import Footer from '@/components/sections/Footer'
 
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 import SupportCard from '@/components/support/SupportCard'
-import AddSupport from '@/components/support/AddSupport'
+import AddSupport from '@/components/atoms/AddSupport'
 import AllSupportCards from '@/components/support/AllSupportCards'
 
 export default function Support() {

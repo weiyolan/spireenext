@@ -42,7 +42,7 @@ export default function StayInTouch() {
   };
 
   return (
-    <form className='sm:-translate-x-2 flex flex-col justify-center sm:justify-start items-center sm:items-start'
+    <form className='sm:-translate-x-2 flex flex-wrap justify-center sm:justify-start items-center sm:items-start'
       onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true">
       {/* initial='hidden' viewport={{ once: true }} whileInView='visible' variants={variant}  netlify-honeypot="bot-field" */}
       <input required type='email' onChange={(e) => {setEmail(e.target.value) }}

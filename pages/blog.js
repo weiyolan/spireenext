@@ -7,7 +7,7 @@ import { useAppContext } from '@/components/context/appContext'
 import { client } from '@lib/sanity'
 // import { useDimensions } from '@/utils/useDimensions'
 
-import Title from '@/components/sections/Title'
+import Title from '@/components/atoms/Title'
 import Layout from '@/components/sections/Layout'
 import Footer from '@/components/sections/Footer'
 // import Overlay from '../public/images/blogBackgroundOverlay.svg'

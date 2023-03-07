@@ -296,6 +296,7 @@ export default function Nav({ from }) {
 
       {/* =================NavButtons================= */}
       <NavList onMouseEnter={() => { if (!mobile && !navLocked) { toggleNav() } }} onMouseLeave={() => { if (!mobile && !navLocked) { toggleNav() } }} >
+        <NavButton className='' to="home" text={'Home'} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="collection" text={collection[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="pre-order" text={order[locale].text} selectedB={selectedB} handleClick={selectButton} />
         {/* <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} /> */}
