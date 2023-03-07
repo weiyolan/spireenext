@@ -283,7 +283,7 @@ export default function Index() {
 
           </div>
 
-          <div className='relative h-[100vh] rounded-t-[60px] flex -translate-y-48 w-full overflow-hidden '>
+          <div className='relative h-[70vh] rounded-t-[60px] flex -translate-y-48 w-full overflow-hidden '>
             <div className='absolute w-full h-full top-0'>
               <Image alt='' fill src='/images/blogBackground2.png' className={`object-cover object-center`} sizes="100vw" quality={100} />
             </div>

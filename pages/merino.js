@@ -14,7 +14,6 @@ import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
 import MerinoText2 from '@/components/merino/MerinoOdour'
 import MerinoQualities from '@/components/sections/MerinoQualities'
-import TitleMoving from '@/components/sections/TitleMoving'
 
 let qualities = [
   { id:'Natural',title: 'Natural', list: ['Merino wool is natural, it comes from the shearing of sheep. In addition to being natural, it is renewable, biodegradable and consumes little water.'] }, 
