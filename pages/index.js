@@ -126,7 +126,7 @@ export default function Index() {
       </Head>
 
 
-      <main className={`w-full text-white`} onClick={handleLightboxes}>
+      <main style={{ height: 'calc(100% - 192px)' }} className={`w-full text-white`} onClick={handleLightboxes}>
         <PageWrapper
           darkMode={darkMode}
           mobile={mobile}
@@ -179,8 +179,10 @@ export default function Index() {
 
 
           <div className='relative bg-gradient-to-b from-emerald-600 z-[2] to-indigo-700 h-[175vh] rounded-b-[60px] shadow-2xl shadow-black/30'>
-            <div className='absolute w-full bottom-0 translate-y-20'>
-              <SpireeLogo className='w-10/12 opacity-5' />
+            <div className='absolute w-full h-full overflow-hidden'>
+              <div className='absolute w-full bottom-0 translate-y-20'>
+                <SpireeLogo className='w-10/12 opacity-5' />
+              </div>
             </div>
 
             <div className='h-[90vh] relative w-11/12 mx-auto -translate-y-20 overflow-hidden rounded-[60px] shadow-2xl shadow-black/30'>
@@ -246,7 +248,7 @@ export default function Index() {
               <Button className='my-8' text='EXPERIENCE THE STORY' to='/about' med />
             </div>
 
-            <div className='absolute  sm:-translate-y-28 sm:translate-x-80 w-full h-full'>
+            <div className='absolute right-0 sm:-translate-y-28 sm:translate-x-80 w-full h-full'>
               <Story1Astrid banner speed={1} scrollMin={0} scrollMax={0} />
               <Story2PharmaBanner speed={1} scrollMin={0} scrollMax={0} />
             </div>
@@ -292,17 +294,17 @@ export default function Index() {
               </div>
               <div className='flex flex-col w-1/2 items-end pr-24'>
                 <SubTitle darkMode={false} right mainTitle={'Newsletter'} subTitle={"Want to be the first to know when the\nCelestial Collection is ready for launch?"} />
-                <div className='my-8'><StayInTouch/></div>
+                <div className='my-8'><StayInTouch /></div>
                 {/* <Button className='my-8' text='EXPERIENCE THE STORY' to='/about' med /> */}
               </div>
-            <Footer/>
+              <Footer />
 
             </div>
-            
+
           </div>
 
 
-          
+
 
           <Navbar from='' />
           <ShoppingCart />

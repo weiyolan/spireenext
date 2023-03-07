@@ -1,5 +1,6 @@
 import React from 'react'
 import { usePageContext } from '../context/pageContext'
+import Spiree from './Spiree'
 
 export default function SubTitle({ mainTitle, subTitle, left, right, style, className , darkMode:darkModeProp}) {
 
