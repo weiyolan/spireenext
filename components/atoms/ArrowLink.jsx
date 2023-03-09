@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useState, useEffect } from 'react'
 import { BsArrowRightShort } from 'react-icons/bs'
 
-export default function ArrowLink ({ text, to, ext, inherit, inText, tabIndex ,className}) {
+export default function ArrowLink ({ text, to, ext, inherit, inText, tabIndex , className}) {
   let [hovering, setHovering] = useState(false)
 
   if (ext) {

@@ -110,15 +110,6 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
             <StayInTouch />
           </div>
 
-          {/* {(!mobile || (mobile && setFooterHeight === undefined)) && */}
-          {/* <div className="mb-4 w-full sm:w-fit">
-                <div className='mx-auto w-fit text-center'>
-                  <Link href='/' title='Go to homepage'>
-                    <SpireeLogo className='w-8 sm:w-14' alt='Spiree logo in white' />
-                  </Link>
-                </div><p className='text-white text-center text-xs font-extralight' ><br /></p>
-              </div> */}
-
           {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Contact' list={contactList[locale]} />}
           {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Legal' list={legalList[locale]} />}
 
@@ -135,24 +126,6 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
 
     )
   }
-
-  // let [style,setStyle] = useState({transform: 'translateY(100%) ', opacity:0 })
-  // let [appeared,setAppeared] = useState(false)
-
-  // useEffect(()=>{console.log(breakPointSmall)})
-
-  // useEffect(()=>{
-
-  //   if (!appeared && scrolled>0.85) {
-  //     setStyle({transform: 'translateY(0) ', opacity:1})
-  //     setAppeared(true)
-  //   } else if (appeared && scrolled<0.85) {
-  //     setStyle({transform: 'translateY(100%) ', opacity:0})
-  //     setAppeared(false)
-  //   }
-
-
-  // },[appeared, scrolled]) 
 
   if (noMotion) {
     return (
@@ -171,8 +144,8 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
       initial={{ y: `${width < breakPointSmall ? 100 : 200}` }}
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
-
-      className={`${style?.position === undefined && 'relative'} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} pb-2 sm:p-8 lg:p-6 bottom-0 w-full ${className}`}>
+      style={style}
+      className={`${style?.position === undefined ? 'relative': ''} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} pb-2 sm:p-8 lg:p-6  w-full ${className}`}>
 
       {getContent()}
 

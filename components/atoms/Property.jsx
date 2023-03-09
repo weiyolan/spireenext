@@ -6,7 +6,7 @@ export default function Property({ text, icon }) {
       <div>
         {icon}
       </div>
-      <p className='font-quick font-thin text-xs lg:text-sm whitespace-nowrap'>
+      <p className='font-quick font-thin text-xs mobm:text-sm lg:text-sm whitespace-nowrap'>
         {text}
       </p>
 

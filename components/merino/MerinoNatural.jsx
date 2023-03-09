@@ -41,7 +41,7 @@ export default function MerinoNatural({ fontSize, title, clicked, handleClick })
           <stop offset={'100%'} style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 0 }} />
 
         </linearGradient></> : <>
-        <PathMerino clicked={clicked} d="M437.74 69H561L642.255 161.083" stroke="url(#paint4_linear_635_13091)" strokeWidth="2.14452" />
+        <PathMerino clicked={clicked} d="M437.74 69 H561L642.255 161.083" stroke="url(#paint4_linear_635_13091)" strokeWidth="2.14452" />
         <TextMerino clicked={clicked}
           onClick={() => handleClick(!clicked)} id="Natural" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
           <tspan x="438" y="58.8664">Natural</tspan></TextMerino>

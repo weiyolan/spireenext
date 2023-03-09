@@ -16,9 +16,9 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
     // whitespace-pre-wrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
 
     <div style={style} className={`${style === undefined ? 'relative' : ''} w-full ${textStyle()} ${darkMode ? 'text-white' : 'text-black'} ${className}`}>
-      <h2 className={`font-sans font-semibold tracking-max uppercase leading-loose
-      whitespace-pre-wrap
-      text-2xl sm:text-3xl lg:text-4xl mb-2 mt-8 `}>
+      <h2 className={`font-sans font-semibold tracking-max uppercase leading-8 md:leading-10 
+      whitespace-pre-wrap ${right?'translate-x-2':''}
+      text-2xl mobm:text-4xl sm:text-4xl lg:text-4xl mb-2 sm:mb-2 mt-4 sm:mt-8 `}>
         {mainTitle.split("Spirée").length > 1 ?
           <>
             {mainTitle.split("Spirée")[0]}
@@ -33,7 +33,7 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
 
       </h2>
 {/* whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap */}
-      <h3 className='font-quick whitespace-pre-wrap text-md sm:text-lg lg:text-xl'>
+      <h3 className='font-quick whitespace-pre-wrap  lg:whitespace-pre-wrap text-sm mobm:text-lg sm:text-lg lg:text-xl'>
         {subTitle}
       </h3>
 
