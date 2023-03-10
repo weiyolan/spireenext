@@ -186,7 +186,7 @@ export default function AnimateSVGBanner({children, fakeScroll, scrollMin, scrol
     return (
       <SVGWrapper handleLength={handleLength} myRatio={allRatios} prevRatio={allPrevRatios} scrollMin={scrollMin} scrollMax={scrollMax} animationSpeed={speed}>
         <svg  ref={svgRef} alt={alt} style={{transform: `translate(-50%, 0px)`}} viewBox={viewBox} fill="none" xmlns="http://www.w3.org/2000/svg"
-          className={`absolute w-full xs:w-4/6 sm:w-3/6 md:w-5/6 xl:w-5/6 max-w-7xl left-1/2`}>
+          className={`absolute w-full xs:w-8/12 sm:w-5/6 md:w-[150%] lg:w-5/6 lg:bottom-0 max-w-7xl left-1/2`}>
           
           <g ref={animationRef}>
         

@@ -102,16 +102,16 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
         <div className='flex flex-col sm:flex-row items-center sm:items-start justify-between max-w-6xl mx-auto'>
 
 
-          <Links title='Navigate' list={navigateList[locale]} />
-          <Links title='Socials' list={socialList[locale]} />
+          <Links mobile={mobile} title='Navigate' list={navigateList[locale]} />
+          <Links mobile={mobile} title='Socials' list={socialList[locale]} />
 
           <div className='flex flex-col items-center sm:items-start'>
-            <AccentTitle noMargin text='Stay In Touch' />
+            <AccentTitle noMargin className='pt-2' text='Stay In Touch' />
             <StayInTouch />
           </div>
 
-          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Contact' list={contactList[locale]} />}
-          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links title='Legal' list={legalList[locale]} />}
+          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links mobile={mobile} title='Contact' list={contactList[locale]} />}
+          {(!mobile || (mobile && setFooterHeight === undefined)) && <Links mobile={mobile} title='Legal' list={legalList[locale]} />}
 
         </div>
 
@@ -132,20 +132,21 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
       <section
         ref={footerRef}
         style={{ ...style }}
-        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} px-4 pt-4 pb-2 lg:pt-4 w-full ${className}`}>
+        className={`${style?.position === undefined ? 'relative' : ''} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} pt-2 px-4 pb-2 lg:pt-4 w-full ${className}`}>
 
         {getContent()}
 
       </section>)
   }
 
+  // ========================== MAIN FOOTER CONTENT HERE =======================
   return (
     <motion.section ref={footerRef}
       initial={{ y: `${width < breakPointSmall ? 100 : 200}` }}
       whileInView={{ y: 0, transition: { type: 'spring', stiffness: 200, damping: 25 } }}
       viewport={{ once: true }}
       style={style}
-      className={`${style?.position === undefined ? 'relative': ''} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} pb-2 sm:p-8 lg:p-6  w-full ${className}`}>
+      className={`${style?.position === undefined ? 'relative': ''} backdrop-blur bg-black/20 ${noMargin?'':'mt-4 md:mt-10'} pt-2 px-4 pb-2 lg:pt-4   w-full ${className}`}>
 
       {getContent()}
 
@@ -153,29 +154,29 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
   )
 }
 
-function Links({ title, list }) {
+function Links({ title, list, mobile  }) {
   return (
     // <div className={`${position === 'center' ? 'text-center ' : position === 'left' ? 'text-left ' : 'text-right '}  align-start px-0`}>
     <div className={`text-center sm:text-left `}>
-      <AccentTitle noMargin text={title} />
-      <List list={list} />
+      <AccentTitle noMargin className='pt-2' text={title} />
+      <List mobile={mobile} list={list} />
     </div>
   )
 }
 
-function List({ list }) {
+function List({ list, mobile }) {
 
   return (
-    <ul className='font-quick '>
+    <ul className='font-quick flex flex-wrap sm:flex-col sm:flex-nowrap justify-center gap-x-2 '>
       {list.map((item, i) => {
         if (item.ext) {
           return (
             <li key={i}
               className={`text-white font-light whitespace-nowrap 
-            my-1 first:mt-0
+            
             text-sm sm:text-sm  `} >
               <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white ' rel="noopener noreferrer" >
-                {item.text}
+                {item.text} {mobile  && i<list.length-1?' |':''}
 
 
               </Link>
@@ -186,11 +187,10 @@ function List({ list }) {
           return (
             <li key={i}
               className={`${item.disabled ? 'text-primary/90' : 'text-white'} font-light whitespace-nowrap 
-          my-1  first:mt-0
           text-sm sm:text-sm `} >
               {item.disabled ? item.text :
                 <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>
-                  {item.text}
+                  {item.text} {mobile && i<list.length-1?' |':''}
                 </Link>}
             </li>)
         }

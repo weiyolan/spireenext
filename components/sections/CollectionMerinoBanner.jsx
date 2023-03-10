@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Button from '../atoms/Button'
 import Property from '../atoms/Property'
 import SpireeLogo from '../atoms/SpireeLogo'
@@ -13,13 +13,40 @@ import Layout from './Layout'
 import { useAppContext } from '../context/appContext'
 import Temp from '../atoms/Temp'
 
-export default function CollectionMerinoBanner() {
+export default function CollectionMerinoBanner({setHeight}) {
   const { width } = useAppContext();
   let mobile = width < 821;
 
+  let bannerRef=useRef(null)
+
+
+  let [dimensions, setDimensions] = useState({ height: undefined })
+
+  useEffect(() => {
+    function handleSize() {
+      const { height } = bannerRef.current.getBoundingClientRect();
+      if (height > 0) {
+        // Math.ceil(height + margin);
+        setDimensions({ height: height });
+        // print && console.log('dimensions setted: ' + 'width: ' + width+' , height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
+      }
+    }
+    window.addEventListener("resize", handleSize);
+    handleSize()
+    return () => window.removeEventListener("resize", handleSize);
+    // print && console.log(dimensions?.height === undefined || )
+  }, [])
+
+  useEffect(() => {
+    if (dimensions.height > 0 && setHeight !== undefined) {
+      setHeight(dimensions.height)
+    }
+  }, [dimensions])
+  
+
   return (
     // h-[310vh]
-    <div id='collection-merino-banner' className='relative bg-gradient-to-b from-emerald-600 z-[2] to-indigo-700 h-fit lg:h-[180vh] rounded-b-[40px] lg:rounded-b-[60px] shadow-2xl shadow-black/30'>
+    <div ref={bannerRef} id='collection-merino-banner' className='relative bg-gradient-to-b from-emerald-600 z-[2] to-indigo-700 h-fit lg:h-[180vh] rounded-b-[40px] lg:rounded-b-[60px] shadow-2xl shadow-black/30'>
       <div className='absolute w-full h-full overflow-hidden bottom-0 '>
         <div id='backgroundlogo' className='absolute flex items-center w-[150%] left-1/2 -translate-x-[40%] lg:left-0 lg:translate-x-0 lg:w-full lg:h-[110vh] translate-y-[8vh] rounded-[60px] bottom-[33%]  lg:bottom-0 '>
           <SpireeLogo className='w-11/12 opacity-5' />
@@ -27,7 +54,7 @@ export default function CollectionMerinoBanner() {
       </div>
       {/* h-[160vh] */}
       <div id='collection-banner' className='h-fit min-h-fit lg:h-[95vh] relative w-full sm:w-11/12 
-        2xl:w-10/12 mx-auto -translate-y-20 overflow-hidden rounded-[40px] lg:rounded-[60px] shadow-2xl shadow-black/30'>
+        2xl:w-10/12 mx-auto -top-16 overflow-hidden rounded-[40px] lg:rounded-[60px] shadow-2xl shadow-black/30'>
         <div className='absolute w-full h-full'>
           <Image alt='' fill src={mobile ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="90vw" quality={100} />
         </div>
@@ -39,7 +66,7 @@ export default function CollectionMerinoBanner() {
           </div>
 
           <div className='lg:flex lg:flex-row-reverse lg:w-1/2 lg:h-full relative'>
-            <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 mr-6 ml-auto lg:mx-0 lg:absolute lg:bottom-0 lg:right-2 xl:right-4'>
+            <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 mr-6 ml-auto lg:mx-0 lg:absolute lg:bottom-8 lg:right-2 xl:right-4'>
               <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
             </div>
 

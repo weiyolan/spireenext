@@ -307,15 +307,14 @@ export function Path(props) {
 
   switch (props.type) {
     case 'rect' :
-      return <rect ref={pathRef} style={style} {...childProps} />
+      return <rect ref={pathRef} className={`${props.animateFill?'drop-shadow-[0_10px_8px_rgba(0,0,0,0.2)]':'drop-shadow-[0_10px_8px_rgba(0,0,0,1)]'}`} style={style} {...childProps} />
     case 'circle' :
-      return <circle ref={pathRef} style={style} {...childProps} />
+      return <circle ref={pathRef} className={`${props.animateFill?'drop-shadow-[0_10px_8px_rgba(0,0,0,0.2)]':'drop-shadow-[0_10px_8px_rgba(0,0,0,1)]'}`} style={style} {...childProps} />
     case 'use' :
-      return <use href={props.useId} ref={pathRef} style={style} {...childProps} />
+      return <use href={props.useId} ref={pathRef} className={`${props.animateFill?'drop-shadow-[0_10px_8px_rgba(0,0,0,0.2)]':'drop-shadow-[0_10px_8px_rgba(0,0,0,1)]'}`} style={style} {...childProps} />
     default :
-      return <path ref={pathRef} style={style} {...childProps} />
+      return <path ref={pathRef} className={`${props.animateFill?'drop-shadow-[0_10px_8px_rgba(0,0,0,0.2)]':'drop-shadow-[0_10px_8px_rgba(0,0,0,1)]'}`} style={style} {...childProps} />
     }
-
 }
 
 export function AnimateIn({children, scrolled, at}) {

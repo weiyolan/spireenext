@@ -39,7 +39,10 @@ import BlogBanner from '@/components/sections/BlogBanner'
 export default function Index() {
 
   const { scrolled, width, height, handleLightboxes } = useAppContext();
-
+  let [banner1Height,setBanner1Height] = useState(undefined)
+  let [banner2Height,setBanner2Height] = useState(undefined)
+  let [banner3Height,setBanner3Height] = useState(undefined)
+  let [banner4Height,setBanner4Height] = useState(undefined)
   // let [tik, setTok] = useState(false)
   // function nextVisible (array) {
   // let i = array.findIndex((el)=>el===1)
@@ -72,7 +75,7 @@ export default function Index() {
 
       {/* height: 'calc(100% - 192px)' */}
       {/* h-[calc(535vh-12rem) */}
-      <main style={{}} className={`w-full min-h-fit lg:h-[calc(565vh-12rem)] text-white ]`} onClick={handleLightboxes}>
+      <main style={{height:`calc(100vh + ${banner1Height+banner2Height+banner3Height+banner4Height}px - 12rem`}} className={`w-full min-h-fit text-white ]`} onClick={handleLightboxes}>
         <PageWrapper
           darkMode={darkMode}
           mobile={mobile}
@@ -81,17 +84,17 @@ export default function Index() {
           viewBox={mobile ? "0 0 701 868" : "0 0 1468 635"}
         >
           {/* <Background style={{ objectPosition: `-${0 }px 0px` }} className='object-cover' src='/images/mainBackground.jpg'/> */}
-
+{/*  h-[100vh] */}
           <HeroBanner />
+{/*  lg:h-[180vh] */}
+          <CollectionMerinoBanner setHeight={setBanner1Height}/>
+{/* lg:h-[100vh] */}
+          <AboutBanner setHeight={setBanner2Height}/>
+{/*  lg:h-[100vh]  */}
+          <SupportBanner setHeight={setBanner3Height}/>
 
-          <CollectionMerinoBanner />
-
-          <AboutBanner />
-
-          <SupportBanner />
-
-          <BlogBanner />
-
+{/* lg:h-[65vh] 2xl:h-[50vh] */}
+          <BlogBanner setHeight={setBanner4Height}/> 
 
 
           <Navbar from='' />
