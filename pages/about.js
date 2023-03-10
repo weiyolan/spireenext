@@ -140,7 +140,7 @@ export default function Home({ }) {
 
         <PageWrapper 
         darkMode={true} 
-        viewBox={mobile?"0 0 701 5137":"0 0 1468 2322"} 
+        viewBox={mobile?"0 0 701 5157":"0 0 1468 2342"} 
         // svgWidth={""} 
         finished={finished} 
         mobile={mobile}
@@ -186,11 +186,11 @@ export default function Home({ }) {
             </FadeDiv>
 
             <ButtonBig tabIndex={finished?0:mobile?(scrolled>0.92?0:-1):-1} 
-            className={`${finished?'visible':mobile?(scrolled>0.92?'visible':'invisble'):'invisible'}`} 
-            style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.0209414:0.044709)-8}px`, 
-            left:'50%', transform:'translate(-50%,0)', top:(titleHeight+scrollingDivHeight-(svgHeight*(mobile?0.0209414:0.044709))+(mobile?3.5:2))+'px',
+            className={`${finished?'visible ':mobile?(scrolled>0.92?'visible ':'invisble'):'invisible'}`} 
+            style={{width: `${svgWidth*(mobile?0.487839:0.23276)-12}px`, height:`${svgHeight*(mobile?0.02113222179:0.0465414175)-8}px`, 
+            left:'50%', transform:'translate(-50%,0)', top:(titleHeight+scrollingDivHeight-(svgHeight*(mobile?0.025009693679:0.0550811272))+(mobile?4:4))+'px',
             opacity:finished?1:mobile?(scrolled>0.92?1:0):0, transition: 'opacity 1.5s ease, background 0.5s ease, border 0.5s ease' }} text='join' to='support'/>
-
+{/* svgHeight*(mobile?0.0209414:0.044709))+(mobile?3.5:2) */}
           </section>
 
           <Footer setFooterHeight={setFooterHeight} noMotion={true} style={{position: (mobile || finished)?'absolute':'fixed', top: (mobile || finished)?(titleHeight+scrollingDivHeight || 0):(screenHeight-footerHeight)+'px', opacity:finished?1:scrolled>finishingScroll?1:0, transition: 'opacity 1.5s ease', transitionDelay: '1s'} }/>

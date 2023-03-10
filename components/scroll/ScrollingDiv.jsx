@@ -167,7 +167,7 @@ export default function ScrollingDiv ({children, setMoveTracker,setMaxMoveTracke
     // transition:scrolled===step1.at || scrolled===step2.at || scrolled===step3.at?'all ease 0.8s':'none'
     // style={{ transform: `translate(-50%, ${-Y}px)`, transition: 'all 1s ease'}}>
     // transform:`translate(-50%,-${moves<totalMoves?moves*visibleHeight*factor:svgHeight-visibleHeight}px)`
-      <div id={`${svgHeight}`} ref={scrollDivRef} style={{...style, height: `${svgHeight}px`, transition: `${finished?'none':'all 1s ease'}` , transform: `translate(-50%,-${Y}px)`}} className={className} >
+      <div id={`scrolling-div-${svgHeight}`} ref={scrollDivRef} style={{...style, height: `${svgHeight}px`, transition: `${finished?'none':'all 1s ease'}` , transform: `translate(-50%,-${Y}px)`}} className={className} >
           
           {/* {console.log('Y: ' + (Y))}
           {console.log('MaxMove: ' + (titleHeight + (dimensions.height + dimensions.top - titleHeight)  + footerHeight-screenHeight))}

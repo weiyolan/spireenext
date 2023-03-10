@@ -13,18 +13,19 @@ import Layout from './Layout'
 import { useAppContext } from '../context/appContext'
 import Temp from '../atoms/Temp'
 
-export default function CollectionMerinoBanner({setHeight}) {
+export default function CollectionMerinoBanner({setHeight,...props}) {
   const { width } = useAppContext();
   let mobile = width < 821;
 
   let bannerRef=useRef(null)
 
-
   let [dimensions, setDimensions] = useState({ height: undefined })
 
   useEffect(() => {
     function handleSize() {
+
       const { height } = bannerRef.current.getBoundingClientRect();
+      console.log(height)
       if (height > 0) {
         // Math.ceil(height + margin);
         setDimensions({ height: height });
@@ -35,9 +36,10 @@ export default function CollectionMerinoBanner({setHeight}) {
     handleSize()
     return () => window.removeEventListener("resize", handleSize);
     // print && console.log(dimensions?.height === undefined || )
-  }, [])
+  }, [props.children])
 
   useEffect(() => {
+    // console.log('changing')
     if (dimensions.height > 0 && setHeight !== undefined) {
       setHeight(dimensions.height)
     }
@@ -90,7 +92,7 @@ export default function CollectionMerinoBanner({setHeight}) {
           <div className='relative w-full flex flex-wrap lg:flex-nowrap'>
             <div id='merino-title' className='w-full lg:w-1/2 flex flex-col justify-center h-full '>
               <div className='mb-8'>
-                <SubTitle mainTitle={'Yes, We Go\n100% Merino'} left subTitle={'High Performance 100% Merino Wool Base Layer For Running and Mountain Sports'} />
+                <SubTitle mainTitle={'Yes, 100%\nMerino'} left subTitle={'High Performance 100% Merino Wool Base Layer For Running and Mountain Sports'} />
               </div>
               <Button className='-translate-x-2 mx-auto lg:mx-0' text='Discover Merino' med to='/merino' />
               <p className='mt-8 text-sm mobm:text-base lg:text-base font-extralight lg:pr-8 text-justify'>

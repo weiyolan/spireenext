@@ -11,7 +11,7 @@ export default function BlogBanner({setHeight}) {
 const {width} = useAppContext()
 
 let bannerRef=useRef(null)
-
+let [footerHeight,setFooterHeight] = useState(undefined)
 let [dimensions, setDimensions] = useState({ height: undefined })
 
 useEffect(() => {
@@ -21,13 +21,14 @@ useEffect(() => {
       // Math.ceil(height + margin);
       setDimensions({ height: height });
       // print && console.log('dimensions setted: ' + 'width: ' + width+' , height: '+ height+ ', top: '+y+', bottom: '+(y + height) )
-    }
+    // console.log('handleSize', height)
+  }
   }
   window.addEventListener("resize", handleSize);
   handleSize()
   return () => window.removeEventListener("resize", handleSize);
   // print && console.log(dimensions?.height === undefined || )
-}, [])
+}, [footerHeight])
 
 useEffect(() => {
   if (dimensions.height > 0 && setHeight !== undefined) {
@@ -57,7 +58,7 @@ useEffect(() => {
         </div>
 
       </Layout>
-      <Footer style={{position: ''}} className='lg:absolute lg:bottom-0 ' noMargin />
+      <Footer setFooterHeight={setFooterHeight} style={{position: `${width<1024?'relative':'absolute'}`}} className=' lg:bottom-0 ' noMargin />
     </div>
 
   )

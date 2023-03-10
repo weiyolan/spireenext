@@ -105,7 +105,7 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
           <Links mobile={mobile} title='Navigate' list={navigateList[locale]} />
           <Links mobile={mobile} title='Socials' list={socialList[locale]} />
 
-          <div className='flex flex-col items-center sm:items-start'>
+          <div className='flex flex-col items-center gap-2 sm:items-start'>
             <AccentTitle noMargin className='pt-2' text='Stay In Touch' />
             <StayInTouch />
           </div>

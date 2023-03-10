@@ -55,7 +55,12 @@ export default function Index() {
   // console.log(visible)
 
 
-
+  useEffect(()=>{
+    // console.log(banner1Height)
+    // console.log(banner2Height)
+    // console.log(banner3Height)
+    // console.log(banner4Height)
+  })
 
 
   let darkMode = true
