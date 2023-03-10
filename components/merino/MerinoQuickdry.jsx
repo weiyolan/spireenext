@@ -23,7 +23,7 @@ export default function MerinoQuickdry({ fontSize, title, clicked, handleClick }
         <TextMerino clicked={clicked}
           onClick={() => handleClick(!clicked)}
           id='quickdry' fill="white"
-          fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+          fontSize={fontSize} fontWeight="300" letterSpacing="0em">
           <tspan x="889" y="192.866">{title}</tspan></TextMerino>
 
         <linearGradient id="paint1_linear_608_13503" x1="881" y1="203" x2="979" y2="203" gradientUnits="userSpaceOnUse">
@@ -34,7 +34,7 @@ export default function MerinoQuickdry({ fontSize, title, clicked, handleClick }
 
             <PathMerino clicked={clicked} d="M949.5 197H834.43L724 272.161" stroke="url(#paint1_linear_635_13091)" strokeWidth="2.14452" />
           <TextMerino clicked={clicked}
-            onClick={() => handleClick(!clicked)} id="Quickdry" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+            onClick={() => handleClick(!clicked)} id="Quickdry" fill="white" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
             <tspan x="864" y="187.866">{title}</tspan></TextMerino>
             <linearGradient id="paint1_linear_635_13091" x1="856.5" y1="272.161" x2="951" y2="272.161" gradientUnits="userSpaceOnUse">
             <stop offset="0%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 1 }} />

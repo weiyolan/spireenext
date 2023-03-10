@@ -125,16 +125,16 @@ export default function MerinoQualities({ name, title, span, text, position, rea
     <div  style={{ height: height - (titleHeight || 0) }  } id={name} className={`flex w-full flex-col md:flex-row`}>
       <div style={{ ...fadeStyle(), ...{ height: height } }} className='absolute z-0 top-0 left-0 h-[720px] w-full '>
         {/* <img style={{objectPosition:`-${218}px 0px`}} alt='' src='/images/merinoBackgroundWide.jpg' className={`object-cover h-full object-left-bottom `}/> */}
-        <Image style={{ objectPosition: `-${218 + offset}px 0px` }} alt='' fill src='/images/merinoBackgroundWide.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} />
+        <Image style={{ objectPosition: `-${218 + offset}px 0px` }} alt='' fill src='/images/merinoBackgroundWide2.png' priority className={`object-cover object-left-bottom `} sizes="100vw" quality={100} />
         {/* <Image alt='' fill src='/images/merinoBackground.jpg' className={`object-cover object-left-bottom `} sizes="100vw" quality={100} /> */}
       </div>
       
-      <div style={{ height: height }} className='absolute z-0 top-0 w-full'>
+      <div style={{ height: height }} className='absolute z-10 top-0 w-full'>
         {/* <div style={{}} className='z-10 w-screen h-screen'  > HELLO </div> */}
         <div style={{
           transform: `translate(${-offset-svgOffset}px,0px)`,
           height: (svgWidth * 0.65911) + 'px', width: svgWidth + 'px'
-        }} className='absolute bottom-0 left-0 ' >
+        }} className='absolute bottom-0 left-0 z-10' >
           <svg viewBox="0 0 1147 756" fill="none" xmlns="http://www.w3.org/2000/svg">
             {qualities.map((icon, i) => {
               return (

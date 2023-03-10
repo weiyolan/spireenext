@@ -54,7 +54,7 @@ export default function NavList({ children, onMouseEnter, onMouseLeave, setNavWi
   return (
     <motion.ul onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}
       className={`${mobile ? `m-0 p-6 pt-2 pb-0 z-[51] absolute justify-start text-start left-0 top-[40px] w-[200px]`
-        : `z-[51] absolute flex flex-row justify-start left-24 top-[22px]`}`}
+        : `z-[51] absolute flex flex-row w-full justify-start left-24 top-[22px]`}`}
       variants={variants}>
       {children.map((child, i) => {
         return (

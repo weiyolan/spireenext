@@ -80,12 +80,12 @@ const {height} = useAppContext();
 
     <div id='hero-banner' style={{}} className='relative h-[100vh] w-full'>
       <div id='hero-background' className='absolute top-0 w-full h-full '>
-        <Image alt='' fill src='/images/heroBannerCut2.jpg' className={`object-cover ${height<650?'object-[-500px_0px]':'object-[-600px_0px]'} mobm:object-[65%_0px] `} sizes="100vw" quality={100} />
+        <Image alt='' fill src='/images/heroBannerCut2Opt.png' className={`object-cover ${height<650?'object-[-500px_0px]':'object-[-600px_0px]'} mobm:object-[65%_0px] `} sizes="100vw" quality={100} />
       </div>
       <div id='hero-title' className='flex h-[100vh] relative text-center xs:text-left w-full flex-col justify-end xs:justify-center items-start 
       pb-20 mobm:pb-44 xs:pb-36 xs:pl-8 sm:pb-48 md:pl-16 lg:pl-32 lg:pb-20 xl:pl-96'>
         <div id='hero-mainTitle' className='absolute w-full bottom-0 mb-[15rem] mobm:mb-[23rem] mobl:mb-80 xs:top-[30%] xs:m-0 md:top-[35%] lg:top-[33%] xl:top-[50%] xl:-translate-y-[160%] h-fit xl:h-48'>
-          <div className={`${'absolute'} ${visible[0] === 1 ? 'opacity-1 delay-100' : 'opacity-0 select-none blur-md -rotate-90 scale-50 translate-x-20 md:translate-x-28'} bottom-0 flex w-full xs:w-fit transition-all z-[10] duration-1000  flex-col justify-center items-center ${darkMode ? 'text-white' : normalAttribute}`}>
+          <div className={`${'absolute'} ${visible[0] === 1 ? 'opacity-1 delay-100' : 'ease-out opacity-0 select-none blur-md -rotate-90 scale-50 translate-x-20 md:translate-x-28'} bottom-0 flex w-full xs:w-fit transition-all z-[10] duration-1000  flex-col justify-center items-center ${darkMode ? 'text-white' : normalAttribute}`}>
             <SpireeLogo className={`w-28 md:w-40 transition-all ease-in-out duration-1000`} />
           </div>
           <div className={`${'absolute'} ${visible[1] === 1 ? 'opacity-1 delay-100' : 'opacity-0 select-none blur-md'} bottom-0  flex w-full xs:w-fit transition-all duration-1000 flex-col items-center ${darkMode ? 'text-white' : normalAttribute}`}>

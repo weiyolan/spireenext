@@ -15,13 +15,19 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   const [navIsOpen, toggleNav] = useCycle(false, true);
   let [navLocked, setNavLocked] = useState(false)
   const [cartIsOpen, toggleCart] = useCycle(false, true);
-  let [content, setContent] = useState([])
+  
+  let [content, setContent] = useLocalStorage('content',[])
+  let [supportAmount, setSupportAmount] = useLocalStorage('supportAmount',0)
+  let [oldSupportAmount, setOldSupportAmount] = useLocalStorage('oldSupportAmount', undefined)
+  let [totalPrice, setTotalPrice] = useLocalStorage('totalPrice',0)
 
-  let [supportAmount, setSupportAmount] = useState(0)
-  let [oldSupportAmount, setOldSupportAmount] = useState(undefined)
+  // useEffect(()=>{
 
-  let [totalPrice, setTotalPrice] = useState(0)
 
+
+  // },[content, oldSupportAmount, supportAmount, totalPrice])
+
+  // console.log(localStorage)
   // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
 
   //   Checkout Open?

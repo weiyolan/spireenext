@@ -18,7 +18,7 @@ const {width} = useAppContext()
 
         <TextMerino clicked={clicked}
           onClick={() => handleClick(!clicked)}
-          id="Thermo" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em"><tspan x="875" y="93.8664">{title}</tspan></TextMerino>
+          id="Thermo" fill="white"  fontSize={fontSize} fontWeight="300" letterSpacing="0em"><tspan x="875" y="93.8664">{title}</tspan></TextMerino>
         <linearGradient id="paint2_linear_608_13503" x1="904.25" y1="103.5" x2="1049.5" y2="103.5" gradientUnits="userSpaceOnUse">
           <stop offset="0%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 1 }} />
           <stop offset="100%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 0 }} />
@@ -27,7 +27,7 @@ const {width} = useAppContext()
           <PathMerino clicked={clicked} d="M992.039 103.5L801.5 103.5L757 195.046" stroke="url(#paint2_linear_635_13091)" strokeWidth="2.14452" />
           <TextMerino clicked={clicked}
             onClick={() => handleClick(!clicked)}
-            id="Thermo" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+            id="Thermo" fill="white"  fontSize={fontSize} fontWeight="300" letterSpacing="0em">
             <tspan x="792" y="93.8664">{title}</tspan></TextMerino>
           <linearGradient id="paint2_linear_635_13091" x1="874.519" y1="103.5" x2="992" y2="103.5" gradientUnits="userSpaceOnUse">
             <stop offset="0%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 1 }} />

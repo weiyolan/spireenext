@@ -13,11 +13,11 @@ import Layout from './Layout'
 import { useAppContext } from '../context/appContext'
 import Temp from '../atoms/Temp'
 
-export default function CollectionMerinoBanner({setHeight,...props}) {
+export default function CollectionMerinoBanner({ setHeight, ...props }) {
   const { width } = useAppContext();
   let mobile = width < 821;
 
-  let bannerRef=useRef(null)
+  let bannerRef = useRef(null)
 
   let [dimensions, setDimensions] = useState({ height: undefined })
 
@@ -44,7 +44,7 @@ export default function CollectionMerinoBanner({setHeight,...props}) {
       setHeight(dimensions.height)
     }
   }, [dimensions])
-  
+
 
   return (
     // h-[310vh]
@@ -61,25 +61,26 @@ export default function CollectionMerinoBanner({setHeight,...props}) {
           <Image alt='' fill src={mobile ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="90vw" quality={100} />
         </div>
 
-        <div className='relative px-4 mobm:px-6 sm:px-12 lg:px-10 2xl:px-24 min-h-fit flex flex-col w-full lg:h-[70%] xl:h-[75%] lg:flex-row lg:flex-wrap lg:justify-center'>
+        <div className='relative px-4 mobm:px-6 sm:px-12 lg:px-10 min-[1800px]::px-24 min-h-fit flex flex-col w-full lg:h-full '>
           {/* <div className='relative w-full '> */}
-          <div className='mb-4 w-full mt-4'>
+          <div className='relative w-full mt-4 lg:mt-0 '>
             <SubTitle className={'lg:z-10'} mainTitle={'Our New\nCollection'} subTitle='High Performance 100% Merino Wool Base Layer For Running and Mountain Sports' />
           </div>
+          <div className='flex flex-col lg:flex-row h-full lg:flex-wrap lg:justify-center'>
+            <div className='lg:flex lg:flex-row-reverse lg:w-1/2 relative'>
+              <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 mr-6 ml-auto lg:mx-0 lg:absolute lg:bottom-8 lg:right-2 xl:right-4'>
+                <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+              </div>
 
-          <div className='lg:flex lg:flex-row-reverse lg:w-1/2 lg:h-full relative'>
-            <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 mr-6 ml-auto lg:mx-0 lg:absolute lg:bottom-8 lg:right-2 xl:right-4'>
-              <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+              <SunTitle sun />
             </div>
 
-            <SunTitle sun />
-          </div>
-
-          <div className='lg:flex lg:flex-row-reverse lg:w-1/2 lg:h-full relative'>
-            <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 ml-6 mr-auto lg:mx-0 lg:absolute lg:-top-4 xl:top-0 2xl:top-4 lg:left-2 xl:left-4'>
-              <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+            <div className='lg:flex lg:flex-row lg:w-1/2  relative mb-4'>
+              <div className='relative w-3/5 sm:w-1/2 lg:w-2/5 ml-6 mr-auto lg:mx-0 lg:absolute lg:-top-4 xl:top-0 2xl:top-4 lg:left-2 xl:left-4'>
+                <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+              </div>
+              <SunTitle moon />
             </div>
-            <SunTitle moon />
           </div>
 
           {/* </div> */}

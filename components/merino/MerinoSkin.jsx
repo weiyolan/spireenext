@@ -21,7 +21,7 @@ export default function MerinoSkin({ fontSize, title, clicked, handleClick }) {
 
         <TextMerino clicked={clicked}
           onClick={() => handleClick(!clicked)}
-          id="2ndSkin" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em"><tspan x="899" y="362.866">{title}</tspan></TextMerino>
+          id="2ndSkin" fill="white" fontSize={fontSize} fontWeight="300" letterSpacing="0em"><tspan x="899" y="362.866">{title}</tspan></TextMerino>
 
 
         <linearGradient id="paint3_linear_608_13503" x1="936.75" y1="371.5" x2="1050.5" y2="371.5" gradientUnits="userSpaceOnUse">
@@ -30,7 +30,7 @@ export default function MerinoSkin({ fontSize, title, clicked, handleClick }) {
         </linearGradient></> : <>
         <PathMerino clicked={clicked} d="M987 282.5H843.5L783 334" stroke="url(#paint3_linear_635_13091)" strokeWidth="2.14452" />
         <TextMerino clicked={clicked}
-          onClick={() => handleClick(!clicked)} id="2ndSkin" fill="white" fontFamily="Work Sans" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
+          onClick={() => handleClick(!clicked)} id="2ndSkin" fill="white" fontSize={fontSize} fontWeight="300" letterSpacing="0em">
           <tspan x="850" y="273.866">{title}</tspan></TextMerino>
         <linearGradient id="paint3_linear_635_13091" x1="870" y1="334" x2="987" y2="334" gradientUnits="userSpaceOnUse">
         <stop offset="0%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 1 }} />

@@ -6,8 +6,14 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'title',
-      title: 'Title',
+      name: 'titleEN',
+      title: 'Title EN',
+      type: 'string',
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'titleFR',
+      title: 'Titre FR',
       type: 'string',
       validation: Rule => Rule.required()
     }),
@@ -56,8 +62,14 @@ export default defineType({
 
     }),
     defineField({
-      name: 'body',
-      title: 'Body',
+      name: 'bodyEN',
+      title: 'Blog Text EN',
+      type: 'blockContent',
+      validation: Rule => Rule.required()
+    }),
+    defineField({
+      name: 'bodyFR',
+      title: 'Text pour ton blog FR',
       type: 'blockContent',
       validation: Rule => Rule.required()
     }),
