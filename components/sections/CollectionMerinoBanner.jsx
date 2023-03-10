@@ -25,7 +25,7 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
     function handleSize() {
 
       const { height } = bannerRef.current.getBoundingClientRect();
-      console.log(height)
+      // console.log(height)
       if (height > 0) {
         // Math.ceil(height + margin);
         setDimensions({ height: height });

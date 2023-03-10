@@ -7,15 +7,18 @@ export default function useLocalStorage(key, fallbackValue) {
     useEffect(() => {
         const stored = localStorage.getItem(key);
         // console.log(localStorage)
-        setValue(stored !== undefined ? JSON.parse(stored) : fallbackValue);
+        if (stored !== undefined) {
+            setValue(JSON.parse(stored));
+        }
         // console.log('update 1', stored !== undefined ? JSON.parse(stored) : fallbackValue)
-    }, []);
+    }, [key]);
 
     useEffect(() => {
         if (value !== fallbackValue) {
             localStorage.setItem(key, JSON.stringify(value))
             // console.log('update 2', value)
-    }}, [key, value]);
+        }
+    }, [key, value]);
 
     return [value, setValue];
 }

@@ -16,10 +16,10 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   let [navLocked, setNavLocked] = useState(false)
   const [cartIsOpen, toggleCart] = useCycle(false, true);
   
-  let [content, setContent] = useLocalStorage('content',[])
-  let [supportAmount, setSupportAmount] = useLocalStorage('supportAmount',0)
+  let [content, setContent] = useLocalStorage('content', [])
+  let [supportAmount, setSupportAmount] = useLocalStorage('supportAmount', 0)
   let [oldSupportAmount, setOldSupportAmount] = useLocalStorage('oldSupportAmount', undefined)
-  let [totalPrice, setTotalPrice] = useLocalStorage('totalPrice',0)
+  let [totalPrice, setTotalPrice] = useLocalStorage('totalPrice', 0)
 
   // useEffect(()=>{
 
