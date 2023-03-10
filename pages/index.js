@@ -39,10 +39,10 @@ import BlogBanner from '@/components/sections/BlogBanner'
 export default function Index() {
 
   const { scrolled, width, height, handleLightboxes } = useAppContext();
-  let [banner1Height,setBanner1Height] = useState(undefined)
-  let [banner2Height,setBanner2Height] = useState(undefined)
-  let [banner3Height,setBanner3Height] = useState(undefined)
-  let [banner4Height,setBanner4Height] = useState(undefined)
+  let [banner1Height,setBanner1Height] = useState(0)
+  let [banner2Height,setBanner2Height] = useState(0)
+  let [banner3Height,setBanner3Height] = useState(0)
+  let [banner4Height,setBanner4Height] = useState(0)
   // let [tik, setTok] = useState(false)
   // function nextVisible (array) {
   // let i = array.findIndex((el)=>el===1)
