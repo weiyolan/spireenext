@@ -78,7 +78,7 @@ export default function App({ Component, pageProps }) {
               // opacity:0
             }}
           }
-          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full overflow-hidden  `}>
+          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full min-h-full overflow-hidden  `}>
           
           <Component {...pageProps} />
           <Toaster/>
