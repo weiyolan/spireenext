@@ -16,7 +16,9 @@ export default async function handler(req, res) {
         // },
         // customer_creation:'always',
         shipping_options: [
-        { shipping_rate: 'shr_1Mg6C7EaaGtFLEjv5EfGKmIs' },
+        // { shipping_rate: 'shr_1Mg6C7EaaGtFLEjv5EfGKmIs' }, //test mode
+        { shipping_rate: 'shr_1Mk950EaaGtFLEjv9Jg1lGC8' }, //production
+        
         ],
         line_items: req.body.content.map((item) => {
           // =======from javascriptMastery: ============

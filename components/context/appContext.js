@@ -99,43 +99,61 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   }
 
   function updateSupport(amount) {
-    let newSupportAmount = typeof amount === 'Number' ? amount : supportAmount
-    let update = false;
-    console.log(supportAmount, newSupportAmount)
+    // console.log(amount, typeof amount === 'number')
+    let newSupportAmount = typeof amount === 'number' ? amount : supportAmount
+    // let update = false;
+    // console.log(amount, supportAmount, newSupportAmount)
     // console.log(update)
     if (newSupportAmount < 5 && newSupportAmount !== 0) {
       // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
-      toast.error(`${'Your amount should be 5€ or more.'}`, {
+      toast.error(`${'Sorry, your amount should be €5 or more.'}`, {
         style: {
           borderRadius: '10px',
           background: '#333',
           color: '#fff',
         },
       })
-  
+
       // console.log('less than 5')
       // console.log(content)
       return
     }
-    // console.log(newSupportAmount, oldSupportAmount)
-    setContent(oldContent => {
-      // //============== DELETE SUPPORT==============
-      // if (newSupportAmount === 0) {
-      //   let newContent = oldContent.filter((item) => item.id !== 'support')
-      //   // console.log('updated content 2')
-      //   // console.log(newContent)
-      //   return newContent
-      // }
 
-      //============== ADD SUPPORT TO BASKET==============
-      if (!oldContent.find((item) => item.id === 'support')) {
+    //============== ADD SUPPORT TO BASKET==============
+    if (!content.find((item) => item.id === 'support')) {
+      // console.log('no support yet')
+      // console.log(newSupportAmount, oldSupportAmount)
+      setContent(oldContent => {
+        // console.log(oldContent)
+        // if (!oldContent.find((item) => item.id === 'support')) {
         // console.log('updated content 1')
         // console.log([...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }])
-
         return [...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }]
-      }
-      //============== CHANGE SUPPORT AMOUNT==============
-      else {
+      })
+      
+      toast.success(`${'Support added successfully'}`, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      })
+    }
+    else if (oldSupportAmount === newSupportAmount){
+    
+      toast.success(`€${newSupportAmount} support already in cart.`, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+        icon: '🥳'
+      })
+    } else {
+    //============== CHANGE SUPPORT AMOUNT==============
+      // console.log('Yes,  support found in basket')
+      setContent(oldContent => {
+
         let newContent = oldContent.map((item) => {
           if (item.id === 'support') {
             return { ...item, price: newSupportAmount }
@@ -143,21 +161,23 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
             return item
           }
         })
-        update = true;
+
         return newContent
 
-      }
-    })
+      })
+      toast.success(`${'Support modified successfully'}`, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      })
+    }
+    // console.log(update)
     // console.log(update)
     setTotalPrice(oldPrice => (oldPrice + newSupportAmount - (oldSupportAmount || 0)));
     setOldSupportAmount(newSupportAmount)
-    toast.success(`${update ? 'Support modified successfully' : 'Support added successfully'}`, {
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
-    })
+
   }
 
 

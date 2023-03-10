@@ -37,7 +37,7 @@ export default function Support() {
           darkMode={true}
           mobile={mobile}
         >
-          <Background src='/images/mountainsRed.jpg' className='object-cover object-left-bottom '/>
+          <Background src='/images/supportBackground.jpg' className='object-cover object-left-bottom '/>
 
           <Layout>
             <Title mainTitle={'Join\nSpirée'} subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
@@ -54,6 +54,7 @@ Your support means everything to us, and we can't wait to show you the incredibl
 
 
             </section>
+            </Layout>
 
 
             <AllSupportCards/>
@@ -64,7 +65,6 @@ Your support means everything to us, and we can't wait to show you the incredibl
             </section> */}
 
 
-          </Layout>
           {/* <Title text={'Merino'}/> */}
           <Footer noMargin noMotion={true} />
 
