@@ -34,7 +34,7 @@ export default function CollectionMerinoBanner() {
 
         <div className='relative px-4 mobm:px-6 sm:px-12 lg:px-10 2xl:px-24 min-h-fit flex flex-col w-full lg:h-[70%] xl:h-[75%] lg:flex-row lg:flex-wrap lg:justify-center'>
           {/* <div className='relative w-full '> */}
-          <div className='mb-4 w-full'>
+          <div className='mb-4 w-full mt-4'>
             <SubTitle className={'lg:z-10'} mainTitle={'Our New\nCollection'} subTitle='High Performance 100% Merino Wool Base Layer For Running and Mountain Sports' />
           </div>
 

@@ -40,7 +40,7 @@ export default function Story2PharmaBanner({ scrollMin, scrollMax, speed }) {
         <TextAnimate scrolled={fakeScroll1} at={0} fromTop={true} id="Meet Astrid" fill="white" style="white-space: pre" font-family="var(--font-quicksand)" font-size={fontSize} letter-spacing="0em"><tspan x="168.527" y="54.875">Meet Astrid, a driven and sport-</tspan><tspan x="143.441" y="85.875">loving women who&#x2019;s on a mission to </tspan><tspan x="182.504" y="116.875">revolutionize the way women </tspan><tspan x="238.034" y="147.875">experience running.</tspan></TextAnimate>
         <Path drawDuration='1' position={0} scrolled={fakeScroll1} inverse={false} double={1} lengthFactor={1} id="fromAstridMob" myGradient='url(#paint4_linear_635_13091)'
         d="M351.698 797.416C479.229 833.871 431.006 733.407 494.185 690.492C570.998 638.316 714.43 806.968 776.143 547.499C843.901 262.617 970.631 568.967 1081.62 423.834" stroke="white" stroke-width="2" stroke-linecap="round" />
-        <linearGradient id="paint4_linear_635_13091" x1="539.997" y1="69" x2="568" y2="69" gradientUnits="userSpaceOnUse">
+        <linearGradient id="paint4_linear_635_13091" x1="539.997" y1="69" x2="700" y2="69" gradientUnits="userSpaceOnUse">
           <stop offset="0%" style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 1 }} />
           <stop offset={'100%'} style={{ 'stopColor': '#FFFFFF', 'stopOpacity': 0 }} />
         </linearGradient>

@@ -23,7 +23,7 @@ export default function AboutBanner() {
           </div>
         </Layout>
       </div>
-      <div className='absolute w-2/3 flex items-center right-0 top-1/2 sm:-translate-y-[calc(50%)] sm:translate-x-64 sm:w-full sm:h-full'>
+      <div className='absolute w-full h-4/5 flex items-center bottom-0 right-0 lg:top-1/2 sm:-translate-y-[calc(50%)] sm:translate-x-64 sm:w-full sm:h-full'>
         <Story1Astrid banner speed={1} scrollMin={0} scrollMax={0} />
         <Story2PharmaBanner speed={1} scrollMin={0} scrollMax={0} />
       </div>

@@ -296,7 +296,7 @@ export default function Nav({ from }) {
 
       {/* =================NavButtons================= */}
       <NavList onMouseEnter={() => { if (!mobile && !navLocked) { toggleNav() } }} onMouseLeave={() => { if (!mobile && !navLocked) { toggleNav() } }} >
-        <NavButton className='' to="home" text={'Home'} selectedB={selectedB} handleClick={selectButton} />
+        <NavButton className='' to="" text={home[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="collection" text={collection[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="pre-order" text={order[locale].text} selectedB={selectedB} handleClick={selectButton} />
         {/* <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} /> */}
@@ -318,7 +318,7 @@ export default function Nav({ from }) {
 
   )
 }
-
+let home = { en: { text: 'Home' }, fr: { text: 'Acceuil' } }
 let order = { en: { text: 'Pre-Order' }, fr: { text: 'Pre-Order' } }
 let collection = { en: { text: 'Collection' }, fr: { text: 'Collection' } }
 let sun = { en: { text: 'Sun' }, fr: { text: 'Soleil' } }
