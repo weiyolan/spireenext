@@ -39,10 +39,10 @@ import BlogBanner from '@/components/sections/BlogBanner'
 export default function Index() {
 
   const { scrolled, width, height, handleLightboxes } = useAppContext();
-  let [banner1Height,setBanner1Height] = useState(0)
-  let [banner2Height,setBanner2Height] = useState(0)
-  let [banner3Height,setBanner3Height] = useState(0)
-  let [banner4Height,setBanner4Height] = useState(0)
+  let [banner1Height,setBanner1Height] = useState(undefined)
+  let [banner2Height,setBanner2Height] = useState(undefined)
+  let [banner3Height,setBanner3Height] = useState(undefined)
+  let [banner4Height,setBanner4Height] = useState(undefined)
   // let [tik, setTok] = useState(false)
   // function nextVisible (array) {
   // let i = array.findIndex((el)=>el===1)
@@ -80,7 +80,7 @@ export default function Index() {
 
       {/* height: 'calc(100% - 192px)' */}
       {/* h-[calc(535vh-12rem) */}
-      <main style={{height:`calc(100vh + ${banner1Height+banner2Height+banner3Height+banner4Height}px - 12rem`}} className={`w-full min-h-fit text-white ]`} onClick={handleLightboxes}>
+      <main style={{height:`calc(100vh + ${banner1Height+banner2Height+banner3Height+banner4Height || 800*3}px - 12rem`}} className={`w-full min-h-fit text-white ]`} onClick={handleLightboxes}>
         <PageWrapper
           darkMode={darkMode}
           mobile={mobile}
