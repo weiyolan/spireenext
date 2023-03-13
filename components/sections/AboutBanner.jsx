@@ -59,7 +59,7 @@ export default function AboutBanner({ setHeight, ...props }) {
       <div className='relative md:absolute md:top-1/3 md:translate-y-1/4 min-[1900px]:top-1/4 w-full h-[fit] md:h-[52vh]'>
         {/* x701 y868 1:1.238*/}
         <div style={{ height: `${width < 480 ? (width * 1.24 * 1 + 20) + 'px' : width < 640 ? (width * 1.24 * 8 / 12 + 30) + 'px' : width < 768 ? (width * 1.24 * 5 / 6 + 40) + 'px' : width < 1024 ? (width * 1.24 * 5 / 6 +40) + 'px' : width < 1500 ? '100%' : '100%'}` }}
-          className='relative w-full md:w-3/5 h-fit flex md:translate-y-0 mobm:translate-x-12 md:translate-x-[500px] lg:translate-y-0' >
+          className='relative w-full md:w-3/5 lg:w-full h-fit flex md:translate-y-0 mobm:translate-x-12 md:translate-x-[500px] lg:translate-x-72 lg:translate-y-0' >
           <Story1Astrid banner setSvgHeight={setSvgHeight} setSvgWidth={() => { }} speed={1} scrollMin={0} scrollMax={0} />
           <Story2PharmaBanner speed={1} scrollMin={0} scrollMax={0} />
         </div>

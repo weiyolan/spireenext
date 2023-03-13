@@ -17,7 +17,7 @@ const {height} = useAppContext();
 
 
   function handleVisibility(i) {
-    let newVisibility = new Array(visible.length).fill(0);
+    let newVisibility = new Array(visible?.length).fill(0);
     newVisibility[i] = 1;
     // console.log(newVisibility)
     return newVisibility
@@ -30,7 +30,7 @@ const {height} = useAppContext();
       if (currentItem === -1) {
         return handleVisibility(0)
       } else {
-        let nextItem = currentItem === oldVisible.length - 1 ? 0 : currentItem + 1;
+        let nextItem = currentItem === oldVisible?.length - 1 ? 0 : currentItem + 1;
         // console.log(nextItem)
         return handleVisibility(nextItem)
       }

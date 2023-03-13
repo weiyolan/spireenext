@@ -69,7 +69,7 @@ export default function App({ Component, pageProps }) {
           transition={{duration:0.75}}
           variants={
             {initial: {
-              opacity:0.2
+              opacity:0.5
             },
             animate: {
               opacity:1

@@ -102,12 +102,12 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
       <div id='merino-banner' className='relative md:absolute md:bottom-0 flex items-start md:items-center w-full h-fit md:h-[calc(85vh+5rem)] '>
         <Layout className='relative -translate-y-12 sm:mt-8 md:mt-0 md:translate-y-0'>
           <div className='relative w-full flex flex-wrap md:flex-nowrap'>
-            <div id='merino-title' className='w-full md:w-1/2 flex flex-col justify-center h-full '>
+            <div id='merino-title' className='w-full  md:w-1/2 flex flex-col justify-center h-full '>
               <div className='mb-8'>
                 <SubTitle mainTitle={'Yes, 100%\nMerino'} left subTitle={'High Performance 100% Merino Wool Base Layer For Running and Mountain Sports'} />
               </div>
               <Button className='-translate-x-2 mx-auto md:mx-0' text='Discover Merino' med to='/merino' />
-              <p className='mt-8 text-sm mobm:text-base md:text-base font-extralight md:pr-8 text-justify'>
+              <p className='mt-8 text-sm mobm:text-base md:text-sm lg:text-base font-extralight md:pr-8 text-justify'>
                 {`Merino wool's natural capacities, evolved over thousands of years in Merino sheep living in temperatures from -10°C to +30°C, make it highly versatile, adaptive, soft, lightweight, and comfortable for a wide range of activities.`}
               </p>
               <div className='flex flex-wrap md:flex-nowrap justify-center md:justify-start md:bg-black/20 md:backdrop-blur-sm rounded-3xl md:-translate-x-2 my-8 xs:my-10 md:my-8 w-fit md:p-6 gap-6'>
@@ -119,20 +119,18 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
               </div>
             </div>
 
-            <div id='merino-photographs' className='relative w-full md:w-1/2 flex flex-col items-center md:items-end md:justify-center'>
+            <div id='merino-photographs' className='relative w-full  md:w-1/2 flex flex-col items-center md:items-end md:justify-start lg:justify-center'>
               <div className='relative'>
                 <Image alt='Beautiful landscape of very hot climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoSummer.png'
-                  className='w-72 mobm:w-96 xs:w-[450px] min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-t-[20px] md:rounded-t-[40px] translate-x-2 md:translate-x-10' />
+                  className='w-72 mobm:w-96 xs:w-[450px] md:w-80 xl:w-96  min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-t-[20px] md:rounded-t-[40px] translate-x-2 md:translate-x-4 lg:translate-x-10' />
                 <Temp from temp='+30°C' />
               </div>
 
               <div className='relative'>
                 <Image alt='Beautiful landscape of very cold climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoWinter.png'
-                  className='w-72 mobm:w-96 xs:w-[450px] min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-b-[20px] md:rounded-b-[40px] -translate-x-2 md:-translate-x-10' />
+                  className='w-72 mobm:w-96 xs:w-[450px] md:w-80  xl:w-96 min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-b-[20px] md:rounded-b-[40px] -translate-x-2 md:-translate-x-4 lg:-translate-x-10' />
                 <Temp temp='-10°C' />
-
               </div>
-
             </div>
           </div>
         </Layout>
