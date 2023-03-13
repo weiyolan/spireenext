@@ -32,7 +32,7 @@ export default function AddSize() {
         </select>
       </div>
 
-      <Button small={width<400} med={width>400 && width<680 || width>1200} text='Add to cart' />
+      <Button small={width<400} med={width>400 && width<1200} text='Add to cart' />
     </form>
   )
 }

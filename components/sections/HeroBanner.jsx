@@ -84,11 +84,14 @@ const {height} = useAppContext();
       </div>
       <div id='hero-title' className='flex h-[100vh] relative text-center xs:text-left w-full flex-col justify-end xs:justify-center items-start 
       pb-20 mobm:pb-44 xs:pb-36 xs:pl-8 sm:pb-48 md:pl-16 lg:pl-32 lg:pb-20 xl:pl-96'>
-        <div id='hero-mainTitle' className='absolute w-full bottom-0 mb-[15rem] mobm:mb-[23rem] mobl:mb-80 xs:top-[30%] xs:m-0 md:top-[35%] lg:top-[33%] xl:top-[50%] xl:-translate-y-[160%] h-fit xl:h-48'>
-          <div className={`${'absolute'} ${visible[0] === 1 ? 'opacity-1 delay-100' : 'ease-out opacity-0 select-none blur-md -rotate-90 scale-50 translate-x-20 md:translate-x-28'} bottom-0 flex w-full xs:w-fit transition-all z-[10] duration-1000  flex-col justify-center items-center ${darkMode ? 'text-white' : normalAttribute}`}>
+        {/* bottom-0 mb-[15rem] mobm:mb-[23rem] mobl:mb-80 xs:top-[30%] xs:m-0 md:top-[35%] lg:top-[33%] xl:top-[50%] xl:-translate-y-[160%] */}
+        <div id='hero-mainTitle' className='relative w-full h-[100px] flex items-center xl:h-48'>
+          {/*  bottom-0 ranslate-x-20 md:translate-x-28 */}
+          <div className={`${'absolute'} ${visible[0] === 1 ? 'opacity-1 delay-100 ' : 'ease-out opacity-0 select-none blur-md -rotate-90 scale-50 translate-x-20 md:translate-x-32 '} flex w-full xs:w-fit transition-all z-[10] duration-1000  flex-col justify-center items-center ${darkMode ? 'text-white' : normalAttribute}`}>
             <SpireeLogo className={`w-28 md:w-40 transition-all ease-in-out duration-1000`} />
           </div>
-          <div className={`${'absolute'} ${visible[1] === 1 ? 'opacity-1 delay-100' : 'opacity-0 select-none blur-md'} bottom-0  flex w-full xs:w-fit transition-all duration-1000 flex-col items-center ${darkMode ? 'text-white' : normalAttribute}`}>
+          {/* bottom-0 */}
+          <div className={`${'absolute'} ${visible[1] === 1 ? 'opacity-1 delay-100' : 'opacity-0 select-none blur-md'}   flex w-full xs:w-fit transition-all duration-1000 flex-col items-center ${darkMode ? 'text-white' : normalAttribute}`}>
             <h1 className={`font-sans w-full font-semibold tracking-max uppercase
                     whitespace-pre-wrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
                     text-5xl sm:text-6xl `}>
@@ -104,6 +107,7 @@ const {height} = useAppContext();
             </h1>
           </div>
         </div>
+
         <div id='hero-subTitle' className={`${'relative'} flex justify-center xs:justify-start mobm:mt-2 mb-6 sm:mb-2 md:mb-6 w-full transition-all duration-1000 ${loaded || true ? 'opacity-1 ' : 'opacity-0'}  
             transition-all duration-700 ${darkMode ? 'text-white' : normalAttribute}`}>
           <h2 className=' xs:backdrop-blur-none w-full xs:w-2/3 font-quick font-medium px-8 xs:px-0 md:font-normal text-lg md:text-2xl 

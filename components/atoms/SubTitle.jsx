@@ -33,7 +33,7 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
 
       </h2>
 {/* whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap */}
-      <h3 className='font-quick whitespace-pre-wrap  lg:whitespace-pre-wrap text-sm mobm:text-lg sm:text-lg lg:text-xl'>
+      <h3 className='font-quick whitespace-pre-wrap  text-sm mobm:text-lg sm:text-lg lg:text-xl'>
         {subTitle}
       </h3>
 
