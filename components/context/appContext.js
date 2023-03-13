@@ -110,7 +110,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     // let update = false;
     // console.log(amount, supportAmount, newSupportAmount)
     // console.log(update)
-    if (newSupportAmount < 5 && newSupportAmount !== 0) {
+    if (newSupportAmount < 5 ) {
       // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
       toast.error(`${'Sorry, your amount should be €5 or more.'}`, {
         style: {
@@ -187,43 +187,6 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   }
 
 
-  // function updateSupport() {
-  //   // console.log('updateSupport', supportAmount)
-  //         // console.log(content)
-  //         // console.log(supportAmount, oldSupportAmount)
-  //   setContent(oldContent => {
-  //     //============== NO SUPPORT YET==============
-  //     if (!oldContent.find((item) => item.id === 'support') && supportAmount>=5) {
-  //       // {id:'moon', price:99, name: 'Moon Merino Base Layer', description:''}
-  //       // console.log('updated content 1')
-  //       // console.log([...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }])
-  //       return [...oldContent, { id: 'support', price: supportAmount, name: 'Support', qty: 1 }]
-  //     } else if (!oldContent.find((item) => item.id === 'support') && supportAmount<5){
-  //         // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
-  //         console.log('less than 5')
-  //         console.log(content)
-  //         return [...oldContent]
-  //     //============== CHANGE SUPPORT AMOUNT==============
-  //     } else if (supportAmount>=5) {
-  //       let newContent = oldContent.map((item) => {
-  //         if (item.id === 'support') {
-  //           return { ...item, price: supportAmount }
-  //         } else {
-  //           return item
-  //         }
-  //       })
-  //       return newContent
-
-  //     } else if (supportAmount===0) {
-  //       let newContent = oldContent.filter((item) => item.id !== 'support')
-  //       // console.log('updated content 2')
-  //       // console.log(newContent)
-  //       return newContent
-  //     }
-  //   })
-  //   setTotalPrice(oldPrice => (oldPrice + supportAmount - (oldSupportAmount||0)));
-  //   setOldSupportAmount(supportAmount)
-  // }
 
   function removeSupport() {
     setContent(oldContent => {
@@ -231,6 +194,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
       return newContent
     })
     setTotalPrice(oldPrice => (oldPrice - (oldSupportAmount || 0)));
+    setSupportAmount(0)
     setOldSupportAmount(0)
 
     toast.success('Support removed successfully.', {

@@ -58,7 +58,7 @@ useEffect(() => {
         </div>
 
       </Layout>
-      <Footer setFooterHeight={setFooterHeight} style={{position: `${width<1024?'relative':'absolute'}`}} className=' lg:bottom-0 ' noMargin />
+      <Footer noMotion setFooterHeight={setFooterHeight} style={{position: `${width<1024?'relative':'absolute'}`}} className=' lg:bottom-0 ' noMargin />
     </div>
 
   )

@@ -148,6 +148,7 @@ export default function Cart({ from }) {
       className={`fixed top-0 right-0 sm:top-0 sm:right-2 h-0 z-[51] w-full min-[480px]:w-[320px]
         `}
       initial={false}
+      exit='exit'
       animate={cartIsOpen ? "open" : "closed"}
       // custom={height}
       // ref={containerRef}
@@ -159,8 +160,8 @@ export default function Cart({ from }) {
         className={`z-[51] absolute top-0 right-0 min-[480px]:top-2 min-[480px]:right-2`}
         // style={{ transition: 'border-radius 0.5s ease' }}
         variants={cartSidebarDesk}
-        onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
-        onMouseLeave={() => { if ((!mobile) && !clicked) { } }}
+        // onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
+        // onMouseLeave={() => { if ((!mobile) && !clicked) { } }}
       // key={cartDimensions.height}
       // custom={cartDimensions.height}
       >

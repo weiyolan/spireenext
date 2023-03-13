@@ -10,7 +10,7 @@ export default function AddSize() {
 
 
   return (
-    <form className='flex mx-auto mobm:mx-0'>
+    <form className='flex mx-auto mobm:mx-0 '>
       <div className='flex relative overflow-hidden rounded-full mr-4 sm:mr-8'>
         {/* <label required htmlFor='size' className='text-base cursor-pointer'>
         Size:
@@ -32,7 +32,7 @@ export default function AddSize() {
         </select>
       </div>
 
-      <Button small={width<400} med={width>400 && width<1200} text='Add to cart' />
+      <Button className='z-[2]' small={width<400} med={width>400 && width<1200} text='Add to cart' />
     </form>
   )
 }

@@ -73,11 +73,11 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
           <div className='flex flex-col md:flex-row h-full md:flex-wrap w-full md:justify-center'>
 
             <div className='relative md:flex md:w-full  '>
-              <div className='absolute w-[150vw] h-[150vw] md:w-[66vw] md:h-[66vw] left-0 bottom-0 -translate-y-24 -translate-x-1/2'>
+              <div className='absolute w-[150vw] h-[150vw] md:w-[66vw] md:h-[66vw] left-0 bottom-0 translate-y-12 -translate-x-1/2'>
                 <Image alt='sun decoration' width={700} height={700} src='/images/sun2.png' className='absolute w-full ' />
               </div>
               <div className='relative md:absolute w-3/5 sm:w-1/2 md:w-1/3 mr-6 ml-auto md:mx-0 md:top-0 md:right-0 md:translate-y-[10%] z-[1] lg:bottom-8 lg:right-2 xl:right-4'>
-                <Image alt='merino wool base layer - moon model' src='/images/sweaterBlackCut.png' width={461} height={591}  className='z-10'/>
+                <Image alt='merino wool base layer - moon model' src='/images/sweaterBlackCut.png' width={461} height={591}  className='z-[1]'/>
               </div>
               <SunTitle sun />
             </div>
@@ -86,8 +86,8 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
               <div className='absolute w-[150vw] h-[150vw] md:w-[66vw] md:h-[66vw] -rotate-90 right-0 bottom-0 translate-y-1/3 translate-x-1/2'>
                 <Image alt='moon decoration' width={700} height={700} src='/images/moon2.png' className='opacity-[0.15] absolute w-full ' />
               </div>
-              <div className='relative w-3/5 sm:w-1/2 md:w-1/3 ml-6 mr-auto md:mx-0 md:absolute md:bottom-0 xl:top-0 2xl:top-4 md:left-2 xl:left-4'>
-                <Image alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+              <div className='relative w-3/5 sm:w-1/2 md:w-1/3 ml-6 mr-auto md:mx-0 md:absolute z-[0] md:bottom-0 md:-translate-y-10 xl:top-0 2xl:top-4 md:left-2 xl:left-4'>
+                <Image className='z-[0]' alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
               </div>
 
               <SunTitle moon />
