@@ -302,8 +302,8 @@ export default function Nav({ from }) {
         {/* <NavButton className='' to="collection/#moon" text={moon[locale].text} selectedB={selectedB} handleClick={selectButton} /> */}
         <NavButton className='' to="support" text={support[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="merino" text={merino[locale].text} selectedB={selectedB} handleClick={selectButton} />
-        <NavButton className='' to="blog" text={progress[locale].text} selectedB={selectedB} handleClick={selectButton} />
         <NavButton className='' to="about" text={about[locale].text} selectedB={selectedB} handleClick={selectButton} />
+        <NavButton className='' to="blog" text={progress[locale].text} selectedB={selectedB} handleClick={selectButton} />
         {/* <NavButton className='' to="contact/#Form" title="Contact" text={merino[locale].text} handleClick={selectButton} mode={'dark'} /> */}
         {/* <NavButton className='' to="contact/#Form" title="Contact" text={progress[locale].text} handleClick={selectButton} mode={'dark'} /> */}
         <ChooseLanguage mobile={mobile} toggleNav={toggleNav} />

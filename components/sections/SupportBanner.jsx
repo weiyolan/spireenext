@@ -52,7 +52,7 @@ export default function SupportBanner({setHeight}) {
                 {joinText}
               </p>
               <AddSupport />
-              <Button className='my-8' text='See rewards' to='/support' med />
+              <Button className='my-8 -ml-2' text='See rewards' to='/support' med />
             </div>
           </Layout>
         </div>

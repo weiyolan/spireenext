@@ -27,7 +27,7 @@ const {setSupportAmount, updateSupport } = useAppContext().cart
       </p>
 
       <p className='mt-4'>
-        {<> <span className='font-semibold'>{`${percent}%`}</span> on your first purchase when the Sun and Moon collection becomes available. </>}
+        {<> <span className='font-semibold'>{`${percent}%`}</span> discount on your first purchase when the Sun and Moon collection becomes available. </>}
       </p>
       </div>
       <Button text='Add To Cart' handleClick={()=>{setSupportAmount(+amount); updateSupport(+amount)}} med/>
