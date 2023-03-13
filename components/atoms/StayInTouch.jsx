@@ -25,8 +25,16 @@ export default function StayInTouch() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
-    const submitEmail = fetch("/", {
+    console.log( encode({
+      "form-name": e.target.getAttribute("name"),
+      // 'name': name,
+      // 'lastName': lastName,
+      'email': email,
+      // 'message': message,
+      'bot-field': honey
+    }))
+    // const submitEmail = 
+    fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({
@@ -39,23 +47,23 @@ export default function StayInTouch() {
       }),
     })
       // .then(() => { setLightbox(true); setSuccess(true); setName(''); setLastName(''); setEmail(''); setHoney(''); setMessage('') })
-      .then(() => {; setEmail(''); setHoney('') })
-      .catch((error) => alert(error));
+      .then((res) => {console.log('success') ; console.log(res); setEmail(''); setHoney('') })
+      .catch((error) => console.log(error));
 
-    toast.promise(submitEmail, {
-      loading: 'Loading',
-      success: 'Email submitted',
-      loading: (err) => `There was an error registering your email: ${err.toString()}`
-    },
-    {
-      style: {
-        minWidth: '250px',
-      }})
+    // toast.promise(submitEmail, {
+    //   loading: 'Loading..',
+    //   success: 'Email submitted',
+    //   loading: (err) => `There was an error registering your email:\n${err.message.toString()}`
+    // },
+    // {
+    //   style: {
+    //     minWidth: '250px',
+    //   }})
   };
 
   return (
     <form className='sm:-translate-x-2 flex text-white flex-wrap justify-center sm:justify-start items-center sm:items-start'
-      onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true"  netlify-honeypot="bot-field">
       {/* initial='hidden' viewport={{ once: true }} whileInView='visible' variants={variant}   */}
       <input type='hidden' name='form-name' value='GetInTouch' />
       <input required type='email' onChange={(e) => { setEmail(e.target.value) }}
@@ -69,7 +77,6 @@ export default function StayInTouch() {
         id='email'
         placeholder="example@spiree.run"
         value={email}>
-
       </input>
 
       <p className='hidden'>
