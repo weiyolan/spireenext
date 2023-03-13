@@ -109,6 +109,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
 
         {/* <div className='grid grid-flow-row gap-4 grid-cols-1 h-full '> */}
 
+        {console.log(cart.content)}
 
         {/*  ====================== CART WITH MIN 1 ITEM ====================== */}
         {cart.content.length >= 1 &&
@@ -119,6 +120,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
 
             <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl' style={{ bottom: 0 + 'px' }} variants={childVariants}>
               <CartItem title />
+              
               {
                 cart.content.map((item) => {
                   // console.log(item)
