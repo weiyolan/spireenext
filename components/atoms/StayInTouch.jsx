@@ -47,7 +47,7 @@ export default function StayInTouch() {
       }),
     })
       // .then(() => { setLightbox(true); setSuccess(true); setName(''); setLastName(''); setEmail(''); setHoney(''); setMessage('') })
-      .then((res) => { console.log('success'); setEmail(''); setHoney('') })
+      .then(() => { setEmail(''); setHoney('') })
       .catch((error) => console.log(error));
 
     toast.promise(submitEmail, {
@@ -67,7 +67,7 @@ export default function StayInTouch() {
       onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true" netlify-honeypot="bot-field">
       {/* initial='hidden' viewport={{ once: true }} whileInView='visible' variants={variant}   */}
       <input type='hidden' name='form-name' value='GetInTouch' />
-      <input required type='email' onChange={(e) => { setEmail(e.target.value) }}
+      <input required type='email' name='email' onChange={(e) => { setEmail(e.target.value) }}
         className={`p-1 px-3 mb-2 mx-2 min-w-fit ml-0 text-sm block
           backdrop-blur bg-black/30 font-normal text-white placeholder:text-white/50 
           target:outline-white rounded-full
