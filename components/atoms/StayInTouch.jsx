@@ -26,14 +26,14 @@ export default function StayInTouch() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(encode({
-      "form-name": e.target.getAttribute("name"),
-      // 'name': name,
-      // 'lastName': lastName,
-      'email': email,
-      // 'message': message,
-      'bot-field': honey
-    }))
+    // console.log(encode({
+    //   "form-name": e.target.getAttribute("name"),
+    //   // 'name': name,
+    //   // 'lastName': lastName,
+    //   'email': email,
+    //   // 'message': message,
+    //   'bot-field': honey,
+    // }))
     const submitEmail = fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -43,17 +43,17 @@ export default function StayInTouch() {
         // 'lastName': lastName,
         'email': email,
         // 'message': message,
-        'bot-field': honey
+        'bot-field': honey,
       }),
     })
       // .then(() => { setLightbox(true); setSuccess(true); setName(''); setLastName(''); setEmail(''); setHoney(''); setMessage('') })
-      .then((res) => { console.log('success'); console.log(res); setEmail(''); setHoney('') })
+      .then((res) => { console.log('success'); setEmail(''); setHoney('') })
       .catch((error) => console.log(error));
 
     toast.promise(submitEmail, {
       loading: 'Loading..',
       success: 'Email submitted',
-      loading: (err) => `There was an error registering your email:\n${err.message.toString()}`
+      error: (err) => {return `There was an error registering your email:\n${err.toString()}`}
     },
       {
         style: {

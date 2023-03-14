@@ -17,7 +17,7 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
 
     <div style={style} className={`${style === undefined ? 'relative' : ''} w-full ${textStyle()} ${darkMode ? 'text-white' : 'text-black'} ${className}`}>
       <h2 className={`font-sans font-semibold tracking-max uppercase leading-8 md:leading-10 
-      whitespace-pre-wrap ${right?'translate-x-2':''}
+      whitespace-pre-wrap md:whitespace-nowrap ${right?'translate-x-2':''}
       text-2xl mobm:text-4xl sm:text-4xl lg:text-4xl mb-2 sm:mb-2 mt-4 sm:mt-8 `}>
         {mainTitle.split("Spirée").length > 1 ?
           <>

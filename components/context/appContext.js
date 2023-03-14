@@ -181,7 +181,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     }
     // console.log(update)
     // console.log(update)
-    setTotalPrice(oldPrice => (oldPrice + newSupportAmount - (oldSupportAmount || 0)));
+    // setTotalPrice(oldPrice => (oldPrice + newSupportAmount - (oldSupportAmount || 0)));
     setOldSupportAmount(newSupportAmount)
 
   }
@@ -193,7 +193,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
       let newContent = oldContent.filter((item) => item.id !== 'support')
       return newContent
     })
-    setTotalPrice(oldPrice => (oldPrice - (oldSupportAmount || 0)));
+    // setTotalPrice(oldPrice => (oldPrice - (oldSupportAmount || 0)));
     setSupportAmount(0)
     setOldSupportAmount(0)
 

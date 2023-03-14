@@ -87,7 +87,7 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
                 <Image alt='moon decoration' width={700} height={700} src='/images/moon2.png' className='opacity-[0.15] absolute w-full ' />
               </div>
               <div className='relative w-3/5 sm:w-1/2 md:w-1/3 ml-6 mr-auto md:mx-0 md:absolute z-[0] md:bottom-0 md:-translate-y-10 xl:top-0 2xl:top-4 md:left-2 xl:left-4'>
-                <Image className='z-[0]' alt='merino wool base layer - sun model' src='/images/sweaterBlackCut.png' width={461} height={591} />
+                <Image className='z-[0]' alt='merino wool base layer - sun model' src='/images/sweaterGreen.png' width={461} height={591} />
               </div>
 
               <SunTitle moon />

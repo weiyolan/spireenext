@@ -167,9 +167,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
             <Button med text='Add Support' to='/support' handleClick={() => { if (width < 648) { toggleCart() } }} />
           </motion.div>
         </motion.div>
-
       }
-
 
       {/* </div> */}
 
