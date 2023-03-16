@@ -13,6 +13,12 @@ import Footer from '@/components/sections/Footer'
 
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
+import SunTitle from '@/components/atoms/SunTitle'
+import SunGallery from '@/components/sections/SunGallery'
+import SunSign from '@/components/atoms/SunSign'
+import SunTitlePage from '@/components/atoms/SunTitlePage'
+import FadeDiv from '@/components/scroll/FadeDiv'
+import SunDetails from '@/components/sections/SunDetails'
 
 export default function Collection() {
 
@@ -29,6 +35,8 @@ export default function Collection() {
     setFront(oldFront => !oldFront)
   }
 
+  let sun = true;
+
   return (
 
     <>
@@ -44,70 +52,41 @@ export default function Collection() {
         <PageWrapper
           darkMode={true}
           mobile={mobile}
+          sun={sun}
         >
-          <div id='sun' className='w-full h-screen'>
-            <BackgroundSun />
-            <Layout>
-              <Title mainTitle='Celestial Design' subTitle='Every woman deserves to feel confident and stylish during their favourite sports.' />
-              
-              <div className='w-full flex'>
-              <div className='flex transition-all w-2/3 relative min-h-[600px] justify-center cursor-pointer' onClick={handleClick}>
+          {/* <BackgroundSun /> */}
+          <div id='part1' className='bg-gradient-to-b from-[#FF514C] to-[#FFB961]'>
 
-                {/* <div style={{ width: (shirtWidth * scale1) + 'px', height: (shirtWidth * 1.2819 * scale1) + 'px', transform:`translate(${front?-30:-30}%,${front?0:30}%)`, zIndex:front?0:1, animationFillMode:'forwards'}} className='${front?'animate-toBackL':'animate-toFrontL'} transition-all duration-1000 absolute'> */}
-                <div style={{ width: (shirtWidth * scale1) + 'px', height: (shirtWidth * 1.2819 * scale1) + 'px', animationFillMode: 'forwards' }} className={` transition-all right-1/3 duration-500 absolute  ${front ? 'animate-toLeft2 top-0' : ' animate-toLeft  top-24'}  `}>
-                  <Image alt='Back side of the Moon model from the Spirée Collection' className={`object-contain object-center`} fill src='/images/sweaterBlack.png' sizes={'50vw'} />
+            <FadeDiv amount={15} type='bottom' className='w-full -mb-[10%]'>
+              <div id='sun' className='w-full pb-[10%] bg-gradient-to-br from-[#FD7A2D] via-[#FD7A2D] to-[#FFCA87]'>
+                <div className='absolute w-[150vw] h-[150vw] top-0 right-0 md:w-[60vw] md:h-[60vw] -translate-y-1/3 translate-x-1/3 '>
+                  <Image alt='sun decoration' width={700} height={700} src='/images/sun2.png' priority className='relative w-full ' />
                 </div>
 
-                {/* <div style={{ width: (shirtWidth * scale2) + 'px', height: (shirtWidth * 1.2819 * scale2) + 'px', transform:`translate(${front?30:30}%,${front?30:0}%)`, zIndex:front?1:0, animationFillMode:'forwards'}} className={`' ${front?'animate-toFrontR':'animate-toBackR'} transition-all duration-1000 absolute'`}> */}
-                <div style={{ width: (shirtWidth * scale2) + 'px', height: (shirtWidth * 1.2819 * scale2) + 'px', animationFillMode: 'forwards' }} className={`transition-all left-1/3 ease-linear duration-500 absolute ${front ? 'animate-toRight top-24' : ' animate-toRight2 top-0'}   `}>
-                  <Image alt='Front side of the Moon model from the Spirée Collection' className={`object-contain object-center`} fill src='/images/sweaterBlack.png' sizes={'50vw'} />
-                </div>
-              </div>
+                <Layout className={'relative'}>
+                  <Title className='mb-8' mainTitle='Pro Sportswear' subTitle='High performance 100% merino wool base layer for running and mountain sports' />
 
-              <div className='flex flex-col text-right'>
-                <h3 className='font-quick font-thin text-9xl text-white'>
-                  Sun
-                </h3>
-                <h4 className='font-sans font-thin text-2xl text-white whitespace-pre ml-2'>
-                  {`Unleash Your Inner Fire\nA burst of energy, confidence, and courage`}
-                </h4>
-              </div>
-              </div>
-
-            </Layout>
-          </div>
-          <div id='moon' className='w-full relative h-screen'>
-            <BackgroundMoon />
-            {/* <Title text={'Merino'}/> */}
-            <Layout>
-              <Title mainTitle='Celestial Design' subTitle='Every woman deserves to feel confident and stylish during their favourite sports.' />
-
-              <div className='w-full flex'>
-                <div className='flex flex-col'>
-                  <h3 className='font-quick font-thin text-9xl text-white'>
-                    Moon
-                  </h3>
-                  <h4 className='font-sans font-thin text-2xl text-white whitespace-pre ml-2'>
-                    {`Embrace Your Ethereal Side\nA touch of mystery, tranquility, and grace`}
-                  </h4>
-                </div>
-                <div className='flex transition-all w-2/3 relative min-h-[600px] justify-center cursor-pointer' onClick={handleClick}>
-
-                  {/* <div style={{ width: (shirtWidth * scale1) + 'px', height: (shirtWidth * 1.2819 * scale1) + 'px', transform:`translate(${front?-30:-30}%,${front?0:30}%)`, zIndex:front?0:1, animationFillMode:'forwards'}} className='${front?'animate-toBackL':'animate-toFrontL'} transition-all duration-1000 absolute'> */}
-                  <div style={{ width: (shirtWidth * scale1) + 'px', height: (shirtWidth * 1.2819 * scale1) + 'px', animationFillMode: 'forwards' }} className={` transition-all right-1/3 duration-500 absolute  ${front ? 'animate-toLeft2 top-0' : ' animate-toLeft  top-24'}  `}>
-                    <Image alt='Back side of the Moon model from the Spirée Collection' className={`object-contain object-center`} fill src='/images/sweaterBlack.png' sizes={'50vw'} />
+                  <div className='flex mx-auto gap-12 text-white justify-center items-start'>
+                    <SunGallery className={'flex-1'} />
+                    <SunSign className='w-20' />
+                    <SunTitlePage className={'flex-1'} sun={sun} />
                   </div>
 
-                  {/* <div style={{ width: (shirtWidth * scale2) + 'px', height: (shirtWidth * 1.2819 * scale2) + 'px', transform:`translate(${front?30:30}%,${front?30:0}%)`, zIndex:front?1:0, animationFillMode:'forwards'}} className={`' ${front?'animate-toFrontR':'animate-toBackR'} transition-all duration-1000 absolute'`}> */}
-                  <div style={{ width: (shirtWidth * scale2) + 'px', height: (shirtWidth * 1.2819 * scale2) + 'px', animationFillMode: 'forwards' }} className={`transition-all left-1/3 ease-linear duration-500 absolute ${front ? 'animate-toRight top-24' : ' animate-toRight2 top-0'}   `}>
-                    <Image alt='Front side of the Moon model from the Spirée Collection' className={`object-contain object-center`} fill src='/images/sweaterBlack.png' sizes={'50vw'} />
-                  </div>
-                </div>
+
+
+                </Layout>
               </div>
+            </FadeDiv>
+
+            <Layout className={'relative'}>
+              {/* <div> */}
+              <SunDetails left title='Design' titleOn className='mt-24' />
+              <SunDetails title='Material' className='' />
+              <SunDetails title='Finish' left className='' />
+
+              {/* </div> */}
             </Layout>
           </div>
-
-
 
 
           <Navbar from='collection/#sun' />

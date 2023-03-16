@@ -38,7 +38,7 @@ const containerVariants = {
 
 export default function CartTotal() {
 
-  const { content, totalPrice, shipping, supportAmount } = useAppContext().cart
+  const { content, totalPrice, shipping, oldSupportAmount } = useAppContext().cart
 
 
   return (
@@ -48,7 +48,7 @@ export default function CartTotal() {
         <p>Subtotal</p>
       </div>
       <div className='flex justify-end items-center w-1/2'>
-        <p>€{totalPrice+supportAmount}</p>
+        <p>€{totalPrice+oldSupportAmount}</p>
       </div>
     </motion.div>
     <motion.div variants={childVariants} className={`w-full flex `}>
@@ -74,7 +74,7 @@ export default function CartTotal() {
         <p className=''>Total:</p>
       </div>
       <div className='flex justify-end w-1/3 items-center'>
-        <p className=''>€{totalPrice+supportAmount}</p>
+        <p className=''>€{totalPrice+oldSupportAmount}</p>
       </div>
     </motion.div>
 

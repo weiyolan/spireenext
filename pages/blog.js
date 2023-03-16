@@ -176,7 +176,7 @@ export default function Blog({ posts }) {
 
   useEffect(() => {
     // let {left}console
-    console.log(positions)
+    // console.log(positions)
   }, [positions])
 
   let pageMobile = width < 648;

@@ -294,6 +294,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
           updateSupport: updateSupport,
           removeSupport: removeSupport,
           supportAmount: supportAmount,
+          oldSupportAmount: oldSupportAmount,
           setSupportAmount: setSupportAmount,
         }
       }}>
