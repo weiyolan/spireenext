@@ -24,6 +24,7 @@ import SubTitle from '@/components/atoms/SubTitle'
 import AccentTitle from '@/components/atoms/AccentTitle'
 import SunCare from '@/components/sections/SunCare'
 import SunOrder from '@/components/sections/SunOrder'
+import SunSwitch from '@/components/atoms/SunSwitch'
 
 export default function Collection() {
 
@@ -113,7 +114,7 @@ export default function Collection() {
 
           </div>
 
-
+          <SunSwitch handleClick={()=>setSun(sun=>!sun)} />
           <Navbar key='collection' from='collection' />
           <ShoppingCart />
           {/* <Footer noMotion /> */}

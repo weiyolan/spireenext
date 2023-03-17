@@ -86,15 +86,15 @@ export default function SunDetails({ title, titleOn, left, className }) {
       case 'Pattern': return <DetailsSVGPattern key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
       case 'Paint': return <DetailsSVGPaint key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
       
-      case '100Merino': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case '100Merino': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
       case 'Luxe': return <DetailsSVGLuxe key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
-      case 'Breathable': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
-      case 'Density': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'Breathable': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'Density': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
       
-      case 'Flat': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
-      case 'Invisible': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
-      case 'Zipper': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
-      case 'ZipperFlap': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'Flat': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'Invisible': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'Zipper': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
+      // case 'ZipperFlap': return <MerinoThermo key={i} title={title} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} fontSize={fontSize} />
     }
   }, [handleVisibility])
 

@@ -24,7 +24,7 @@ export default function SunCare() {
 
     <div className='relative px-16'>
       <SubTitle left mainTitle={'Care'} subTitle='Maximizing the Longevity of Your Merino Wool Base Layer: Washing Tips and Tricks' className={'mb-4'} />
-      <p className='mb-12 text-primary font-light font-quick '>Merino wool is an incredibly durable material that requires minimal washing due to its natural antibacterial properties. However, when it comes time to give your base layer a refresh, it's important to take proper care in washing to ensure its longevity. With the right techniques, your merino wool base layer can continue to provide you with warmth, comfort, and odor resistance for years to come.</p>
+      <p className='mb-12 text-primary font-light font-quick '>{"Merino wool is an incredibly durable material that requires minimal washing due to its natural antibacterial properties. However, when it comes time to give your base layer a refresh, it's important to take proper care in washing to ensure its longevity. With the right techniques, your merino wool base layer can continue to provide you with warmth, comfort, and odor resistance for years to come."}</p>
       <div className='flex gap-24'>
         <div className='inline-flex flex-col '>
           <AccentTitle text='Washing' />
