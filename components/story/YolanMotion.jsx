@@ -73,7 +73,7 @@ export default function YolanMotion({ home, scrollMin, scrollMax }) {
         <h2 className='text-center my-8 min-[400px]:px-6 min-[440px]:px-0 font-sans font-light text-xl sm:text-2xl text-primary'>
           <span className='inline-block flex-none '><RiDoubleQuotesL  fill='rgb(23 27 77)'/></span>
           {`${locale==='en'?' As a passionate biomedical engineer and surfer, I am dedicated to having a ':" En tant qu'ingénieur biomédical et surfeur passionné, je m'efforce d'avoir un "}`}
-          <span className='text-white font-medium'>{`${locale==='en'?'global positive impact ':"impact positif au niveau mondial "}`} </span>
+          <span className='text-primary font-medium'>{`${locale==='en'?'global positive impact ':"impact positif au niveau mondial "}`} </span>
           <span className='inline-block flex-none '><RiDoubleQuotesR  fill='rgb(23 27 77)'/></span>
         </h2>
       </div>

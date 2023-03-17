@@ -90,7 +90,7 @@ export default function Merino() {
             {/* <Title text={'Merino'}/> */}
           {/* </Layout> */}
           <Footer noMotion noMargin/>
-          <Navbar from='merino' />
+          <Navbar key='merino' from='merino' />
           <ShoppingCart />
         </PageWrapper>
 

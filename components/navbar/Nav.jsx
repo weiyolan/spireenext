@@ -252,7 +252,7 @@ export default function Nav({ from }) {
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
         className={`z-[51] absolute top-0 left-0 min-[480px]:top-2 min-[480px]:left-2 md:border lg:rounded-full
-           ${navLocked ? ' border-white animate-borderPulse ' : 'border-transparent'} 
+           ${navLocked ? ' border-primary animate-borderPulse ' : 'border-transparent'} 
            `}
            
 
@@ -311,7 +311,7 @@ export default function Nav({ from }) {
       {/* =================Toggle================= */}
 
       {mobile && <NavToggle className={`outline-none border-transparent border-2 duration-300 rounded-none 
-    focus:outline-none focus-visible:border-white hover:cursor-pointer z-[51] w-fit h-fit top-0 left-0 absolute p-[17px] sm:p-[23px] bg-transparent`}
+    focus:outline-none focus-visible:border-primary hover:cursor-pointer z-[51] w-fit h-fit top-0 left-0 absolute p-[17px] sm:p-[23px] bg-transparent`}
         open={navIsOpen} toggle={() => { if (cartIsOpen){toggleCart()};toggleNav() }} />}
 
     </motion.nav>

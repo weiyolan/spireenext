@@ -8,7 +8,7 @@ const Path = ({open, darkMode, ...props}) => (
     fill="transparent"
     strokeWidth="3"
     // stroke={`${props.open?'#171B4D':'hsl(236, 0%, 100%)'}`}
-    stroke={`${open?'#fff':darkMode?'#FFF':'#000'}`}
+    stroke={`${open?'#FFFAEA':darkMode?'#FFFAEA':'#000'}`}
     // stroke="hsl(236, 45%, 20%)"
     strokeLinecap="round"
     {...props}

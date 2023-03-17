@@ -63,13 +63,13 @@ export default function StayInTouch() {
   };
 
   return (
-    <form className='sm:-translate-x-2 flex text-white flex-wrap justify-center sm:justify-start items-center sm:items-start'
+    <form className='sm:-translate-x-2 flex text-primary flex-wrap justify-center sm:justify-start items-center sm:items-start'
       onSubmit={handleSubmit} name='GetInTouch' method="POST" data-netlify="true" netlify-honeypot="bot-field">
       {/* initial='hidden' viewport={{ once: true }} whileInView='visible' variants={variant}   */}
       <input type='hidden' name='form-name' value='GetInTouch' />
       <input required type='email' name='email' onChange={(e) => { setEmail(e.target.value) }}
         className={`p-1 px-3 mb-2 mx-2 min-w-fit ml-0 text-sm block
-          backdrop-blur bg-black/30 font-normal text-white placeholder:text-white/50 
+          backdrop-blur bg-black/30 font-normal text-primary placeholder:text-primary/50 
           target:outline-white rounded-full
           autofill:bg-white/10  valid:scale-[0.99]
             outline-none -outline-offset-2 
@@ -90,7 +90,7 @@ export default function StayInTouch() {
     transition-all
     font-sans font-semibold whitespace-nowrap select-none uppercase tracking-max
     cursor-pointer text-xs px-3 py-1.5  
-    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/50 active:bg-black/50`}>
+    outline-none focus-visible:outline-white border border-solid border-transparent text-primary hover:bg-black/50 active:bg-black/50`}>
         SUBMIT
       </button>
 

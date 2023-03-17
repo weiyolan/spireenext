@@ -42,13 +42,13 @@ export default function CartTotal() {
 
 
   return (
-  <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl text-white  font-light text-base min-[480px]:text-sm font-sans' style={{ bottom: 0 + 'px' }} variants={containerVariants}>
+  <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl text-primary  font-light text-base min-[480px]:text-sm font-sans' style={{ bottom: 0 + 'px' }} variants={containerVariants}>
     <motion.div variants={childVariants} className={`w-full flex `}>
       <div className=' flex justify-left items-center w-1/2'>
         <p>Subtotal</p>
       </div>
       <div className='flex justify-end items-center w-1/2'>
-        <p>€{totalPrice+oldSupportAmount}</p>
+        <p>€{totalPrice+(oldSupportAmount||0)}</p>
       </div>
     </motion.div>
     <motion.div variants={childVariants} className={`w-full flex `}>
@@ -57,7 +57,7 @@ export default function CartTotal() {
       </div>
 
       <div className='flex justify-end items-center w-1/2'>
-        <p>€{(totalPrice - totalPrice / 1.2).toPrecision(2)}</p>
+        <p>€{(totalPrice - totalPrice / 1.2).toFixed(2)}</p>
       </div>
     </motion.div>
     <motion.div variants={childVariants} className={`w-full flex pb-2  border-b-[1px] border-b-white  `}>
@@ -74,7 +74,7 @@ export default function CartTotal() {
         <p className=''>Total:</p>
       </div>
       <div className='flex justify-end w-1/3 items-center'>
-        <p className=''>€{totalPrice+oldSupportAmount}</p>
+        <p className=''>€{totalPrice+(oldSupportAmount||0)}</p>
       </div>
     </motion.div>
 

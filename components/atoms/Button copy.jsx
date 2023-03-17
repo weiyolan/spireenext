@@ -16,7 +16,7 @@ export default function Button ({to, text, style, className}){
     font-sans font-semibold text-center whitespace-nowrap select-none uppercase tracking-max
     px-4 py-2 ${mobile?'text-sm':'text-base'} 
     cursor-pointer ${className}
-    outline-none focus-visible:outline-white border border-solid border-transparent text-white hover:bg-black/40 active:bg-black/50`}
+    outline-none focus-visible:outline-white border border-solid border-transparent text-primary hover:bg-black/40 active:bg-black/50`}
       href={`/${to||''}`}
       onClick={()=>handleClick(title)}
       title={`Go to the ${text} page`}>

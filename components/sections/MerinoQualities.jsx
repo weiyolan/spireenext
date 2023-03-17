@@ -202,9 +202,9 @@ export default function MerinoQualities({ name, title, span, text, position, rea
 //       w-9 h-9 sm:mt-2  min-[350px]:w-10 min-[350px]:h-10
 //       sm:w-10 sm:h-10 md:h-12 md:w-12 rounded-lg md:rounded-xl lg:h-14 lg:w-14
 //      p-2
-//     border-2 hover:border-white/30 focus:outline-none outline-none
+//     border-2 hover:border-primary/30 focus:outline-none outline-none
 //     `+
-//         (clicked ? ` border-white/30 focus:border-white/30 focus:animate-none animate-borderPulse shadow-md scale-95 translate-y-1 ` : `border-transparent hover:scale-[1.08] shadow-2xl focus:border-white/30 focus:scale-[1.08] `)}
+//         (clicked ? ` border-primary/30 focus:border-primary/30 focus:animate-none animate-borderPulse shadow-md scale-95 translate-y-1 ` : `border-transparent hover:scale-[1.08] shadow-2xl focus:border-primary/30 focus:scale-[1.08] `)}
 //       onClick={() => handleClick(!clicked)} onKeyDown={(e) => { if (e.code === 'Enter') { handleClick(!clicked) } }}
 //     >
 

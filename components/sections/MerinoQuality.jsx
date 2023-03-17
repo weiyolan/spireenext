@@ -20,7 +20,7 @@ export default function MerinoQuality({ visible, position, icon }) {
       xl:min-w-[400px]
       
       text-right lg:text-center
-      ${visible ? ` text-white blur-none ` :
+      ${visible ? ` text-primary blur-none ` :
         ` blur-sm invisible text-transparent`}`}
     >
       {/* ${position==='left'?'mobl:justify-start':'mobl:justify-end'}  */}

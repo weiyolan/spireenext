@@ -36,7 +36,7 @@ module.exports = {
         'mobm':'350px',
       },
       colors: {
-        'primary': '#171B4D',
+        'primary': '#FFFAEA',
         'accent':'#4100A4',
         'white':'#fff',
         'green':'#00CC99',

@@ -201,7 +201,7 @@ export default function Cart({ from }) {
           <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 sm:rounded-full overflow-visible`} />
           {cart.content?.length >=1 && <span className={`rounded-full w-4 h-4 text-center justify-center top-3 right-2 xs:top-4 xs:right-4 items-center flex 
           transition-all duration-500 ${cartIsOpen?'delay-[0] invisible opacity-0':'delay-300 visible opacity-100'}
-          absolute border-2 bg-red-600 border-red-600 select-none text-white text-xs font-normal`}>
+          absolute border-2 bg-red-600 border-red-600 select-none text-primary text-xs font-normal`}>
             {cart.content.reduce((acc,item)=> (acc + item.qty),0)}
           </span>}
         </motion.div>
@@ -210,7 +210,7 @@ export default function Cart({ from }) {
       {/* =================Toggle================= */}
 
       {false && <NavToggle className={`outline-none border-transparent border-2 duration-300 rounded-none 
-    focus:outline-none focus-visible:border-white hover:cursor-pointer z-[51] w-fit h-fit top-0 right-0 absolute p-[23px] bg-transparent`}
+    focus:outline-none focus-visible:border-primary hover:cursor-pointer z-[51] w-fit h-fit top-0 right-0 absolute p-[23px] bg-transparent`}
         open={cartIsOpen} toggle={() => { toggleCart() }} />}
 
     </motion.div>

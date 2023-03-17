@@ -115,7 +115,7 @@ export default function Footer({ style, className, noMotion, noMargin, setFooter
 
         </div>
 
-        <div role='presentation' className='w-full text-xs text-center mt-2 text-white font-thin'>
+        <div role='presentation' className='w-full text-xs text-center mt-2 text-primary font-thin'>
           <ul role='presentation' className='inline-flex flex-wrap justify-center'>
             {financialInfo[locale].map((val, i) => { return (<li role='presentation' className={`${i === 0 ? '' : 'pl-1'}`} key={val}>{`${i === 0 ? '' : '∘ '}${val}`}</li>) })}
           </ul>
@@ -172,7 +172,7 @@ function List({ list, mobile }) {
         if (item.ext) {
           return (
             <li key={i}
-              className={`text-white font-light whitespace-nowrap 
+              className={`text-primary font-light whitespace-nowrap 
             
             text-sm sm:text-sm  `} >
               <Link href={item.link} target='_blank' className='focus:outline-none cursor-alias focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white ' rel="noopener noreferrer" >
@@ -186,7 +186,7 @@ function List({ list, mobile }) {
         else {
           return (
             <li key={i}
-              className={`${item.disabled ? 'text-primary/90' : 'text-white'} font-light whitespace-nowrap 
+              className={`${item.disabled ? 'text-primary/90' : 'text-primary'} font-light whitespace-nowrap 
           text-sm sm:text-sm `} >
               {item.disabled ? item.text :
                 <Link className='focus:outline-none focus-within:scale-110 duration-200 border border-transparent focus-within:border-b-white hover:border-b-white  ' href={item.link}>

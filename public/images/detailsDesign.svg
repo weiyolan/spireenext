@@ -1,20 +1,26 @@
-<svg width="837" height="532" viewBox="0 0 837 532" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="982" height="532" viewBox="0 0 982 532" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="Design">
+<rect id="MoonShirt" x="276" y="18" width="429" height="514" fill="url(#pattern0)"/>
 <g id="Pattern">
-<text id="text5604" fill="#FFFAEA" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="672" y="146.875">Unique Color </tspan><tspan x="672" y="177.875">Pattern</tspan></text>
-<path id="path5147-0" d="M663.537 138H596.153L470 196.221" stroke="#FFFAEA" stroke-width="0.989183"/>
+<text id="text5604" fill="#FFFAEA" xml:space="preserve" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="730" y="169.875">Unique Color Pattern</tspan></text>
+<path id="path5147-0" d="M723.537 158H656.153L530 216.221" stroke="#FFFAEA" stroke-width="0.989183"/>
 </g>
 <g id="Paint">
-<text id="text5604_2" fill="#FFFAEA" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="14.002" y="242.875">Quality paint</tspan></text>
-<path id="path5147-0_2" d="M166.417 234.746H246.057L373.806 312.638" stroke="#FFFAEA" stroke-width="0.989183"/>
+<text id="text5604_2" fill="#FFFAEA" xml:space="preserve" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="95" y="290.875">Quality paint</tspan></text>
+<path id="path5147-0_2" d="M250.417 282.746H330.057L457.806 360.638" stroke="#FFFAEA" stroke-width="0.989183"/>
 </g>
 <g id="SignatureV">
-<text id="text5608" fill="#FFFAEA" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="42.04" y="39.875">Signature V </tspan><tspan x="103.295" y="70.875">Shape</tspan></text>
-<path id="path5627" d="M183.317 33.5H277.5L367.048 119.968" stroke="#FFFAEA" stroke-width="0.989183"/>
+<text id="text5608" fill="#FFFAEA" xml:space="preserve" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="0" y="42.875">Signature V Shape</tspan></text>
+<path id="path5627" d="M221.317 33.5H315.5L405.048 119.968" stroke="#FFFAEA" stroke-width="0.989183"/>
 </g>
 <g id="Logo">
-<path id="path5627_2" d="M741.057 401H673.674L603 441.82" stroke="#FFFAEA" stroke-width="0.989183"/>
-<text id="text5604_3" fill="#FFFAEA" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="747" y="408.875">Minimal</tspan><tspan x="747" y="439.875">Logo</tspan></text>
+<text id="text5604_3" fill="#FFFAEA" xml:space="preserve" style="white-space: pre" font-family="Quicksand" font-size="25" letter-spacing="0em"><tspan x="799" y="411.875">Minimal Logo</tspan></text>
+<path id="path5627_2" d="M793.057 401H725.674L655 441.82" stroke="#FFFAEA" stroke-width="0.989183"/>
 </g>
 </g>
+<defs>
+<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+<use xlink:href="#image0_805_15728" transform="matrix(0.00219682 0 0 0.00184302 -0.166234 -0.0610654)"/>
+</pattern>
+</defs>
 </svg>

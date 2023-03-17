@@ -15,7 +15,7 @@ export default function ChooseLanguage({mobile, toggleNav}) {
   return (
     <div 
     // onClick={()=>toggleNav()}
-    className={`text-white text-2xl xs:text-xl sm:text-base text-left font-sans duration-500 
+    className={`text-primary text-2xl xs:text-xl sm:text-base text-left font-sans duration-500 
     font-extralight self-center inline-flex border border-transparent 
     focus-within:outline-white hover:border-b-white active:bg-white/20 cursor-pointer select-none px-0 py-0 mx-0 md:mx-4 lg:mx-6 `}>
       {/* <p>Locale switcher:</p> */}

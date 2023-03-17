@@ -327,7 +327,7 @@ export function AnimateIn({children, scrolled, at}) {
   scrolled=fakeScrolled===undefined?realScrolled:fakeScrolled
 
   return (
-    // <div className='z-20 px-4 my-4 w-full text-sm font-extralight text-center outline-none -outline-offset-2 relative flex text-white font-sans ' 
+    // <div className='z-20 px-4 my-4 w-full text-sm font-extralight text-center outline-none -outline-offset-2 relative flex text-primary font-sans ' 
     <g className=''
     style={{opacity:(scrolled>at?1:0),transform:scrolled>at?'translateY(0)':'translateY(0)', transition:'all 0.4s ease'}}>
       {children}

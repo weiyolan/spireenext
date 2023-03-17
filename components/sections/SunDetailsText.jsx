@@ -11,9 +11,9 @@ export default function SunDetailsText({ left, title, visible, text }) {
 
   //       text-right lg:text-center
   return (
-    <div className={`absolute flex flex-col text-white duration-500 overflow-hidden
+    <div className={`absolute flex flex-col text-primary duration-500 overflow-hidden
       ${left ? 'items-start mr-auto' : 'ml-auto items-end'}
-      ${visible ? ` text-white blur-none ` : ` blur-sm invisible text-transparent`}
+      ${visible ? ` text-primary blur-none ` : ` blur-sm invisible text-transparent`}
         `}>
 
       <h4 className='font-quick font-medium text-lg mb-2  duration-500'>

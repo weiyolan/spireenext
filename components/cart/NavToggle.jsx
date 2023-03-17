@@ -7,7 +7,7 @@ const Path = props => (
     fill="transparent"
     strokeWidth="3"
     // stroke={`${props.open?'#171B4D':'hsl(236, 0%, 100%)'}`}
-    stroke={`${props.open?'#FFF':'hsl(236, 0%, 100%)'}`}
+    stroke={`${props.open?'#FFFAEA':'hsl(236, 0%, 100%)'}`}
     // stroke="hsl(236, 45%, 20%)"
     strokeLinecap="round"
     {...props}

@@ -281,7 +281,7 @@ export default function Home({ }) {
           {/* {console.log(footerHeight)} */}
           {/* titleHeight+svgHeight+'px' */}
           {/* </Layout> */}
-          <Navbar from='about' />
+          <Navbar key='about' from='about' />
           <ShoppingCart />
         </PageWrapper>
       </main>

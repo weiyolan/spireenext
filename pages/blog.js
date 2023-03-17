@@ -210,7 +210,7 @@ export default function Blog({ posts }) {
             <p className='text-lg sm:text-xl font-quick'>{`${posts[posts.length - 1].completion}%`}</p>
           </div>
 
-          <FadeDiv amount={pageMobile ? 10 : 20} style={{}} className='relative font-quick border border-white flex w-full mobl:mt-4 sm:mt-10 h-[70vh] sm:h-[60vh] left-1/2 -translate-x-1/2 '>
+          <FadeDiv amount={pageMobile ? 10 : 20} style={{}} className='relative font-quick border border-primary flex w-full mobl:mt-4 sm:mt-10 h-[70vh] sm:h-[60vh] left-1/2 -translate-x-1/2 '>
 
             <div style={{ left: positions?.linePosition }} className='absolute top-1/2 -translate-x-1/2 -translate-y-1/2  flex h-[90vh] mr-10'>
               <div id='line' className='h-full border-l-2 border-l-black' />
@@ -244,7 +244,7 @@ export default function Blog({ posts }) {
           {/* <Title text={'Merino'}/> */}
 
 
-          <Navbar from='blog' />
+          <Navbar key='blog' from='blog' />
           <Footer setFooterNormalHeight={setFooterHeight} className='' noMotion noMargin />
           <ShoppingCart />
         </PageWrapper>

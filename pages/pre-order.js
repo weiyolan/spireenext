@@ -52,7 +52,7 @@ export default function PreOrder() {
 
               <div className='flex flex-col mt-12'>
                 {/* <Button className='mx-auto' text='Go To Checkout' /> */}
-                <div className='flex text-center mt-12 justify-center font-quick font-extralight text-4xl text-white '>
+                <div className='flex text-center mt-12 justify-center font-quick font-extralight text-4xl text-primary '>
                   <p> €99,-</p><p className='ml-1 text-xs whitespace-pre text-start self-end'>{'incl.\nVAT'}</p>
                 </div>
 
@@ -61,7 +61,7 @@ export default function PreOrder() {
                     <SunLogo />
     
                     <Button className='my-2 mt-4' med text='Add To Cart' handleClick={()=>cart.addOne({id:'sun', price:99, name: 'Sun Merino Base Layer'})}/>
-                    <p className='text-center px-3 text-white font-quick text-sm'>
+                    <p className='text-center px-3 text-primary font-quick text-sm'>
                       The Sun and Moon base layers are currently in development and its designs are susceptible to minor changes. Curious when you will receive it?
                     </p>
                     <ArrowLink text='SEE PROGRESS' to='/progress' tabIndex={0} />
@@ -71,7 +71,7 @@ export default function PreOrder() {
                     <MoonLogo />
     
                     <Button className='my-2 mt-4' med text='Add To Cart' handleClick={()=>cart.addOne({id:'moon',price:99,name: 'Moon Merino Base Layer'})}/>
-                    <p className='text-center px-3 text-white font-quick text-sm'>
+                    <p className='text-center px-3 text-primary font-quick text-sm'>
                       When pre-ordering a Spirée base layer you provide a deposit ensuring you are one of the first ones to receive our unique and durable design.                    </p>
                     <ArrowLink text='SEE DESIGNS' to='/progress' tabIndex={0} />
 
@@ -92,7 +92,7 @@ export default function PreOrder() {
           {/* <Title text={'Merino'}/> */}
 
           <Footer noMotion />
-          <Navbar from='order' />
+          <Navbar key='pre-order' from='order' />
           <ShoppingCart />
         </PageWrapper>
 

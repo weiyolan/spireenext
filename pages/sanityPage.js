@@ -11,7 +11,7 @@ export default function Home({pets, products}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={"bg-black text-white"}>
+      <main className={"bg-black text-primary"}>
         <h1>TEST</h1>
         <h2>pets</h2>
         {pets.length > 0 && (

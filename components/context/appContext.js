@@ -15,7 +15,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
   const [navIsOpen, toggleNav] = useCycle(false, true);
   let [navLocked, setNavLocked] = useState(false)
   const [cartIsOpen, toggleCart] = useCycle(false, true);
-  
+
   let [content, setContent] = useLocalStorage('content', [])
   let [supportAmount, setSupportAmount] = useLocalStorage('supportAmount', 0)
   let [oldSupportAmount, setOldSupportAmount] = useLocalStorage('oldSupportAmount', undefined)
@@ -61,11 +61,11 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
 
   // ===================== CART LOGIC ========================
   function addOne(newItem) {
-    console.log('addOne')
+    // console.log('addOne')
     setContent(oldContent => {
-      if (oldContent.find((item) => item.id === newItem.id)) {
+      if (oldContent.find((item) => item.id === newItem.id && item.size === newItem.size)) {
         let newContent = oldContent.map((item) => {
-          if (item.id === newItem.id) {
+          if (item.id === newItem.id && item.size === newItem.size) {
             // item.qty += 1
             return { ...item, qty: item.qty + 1 }
           } else {
@@ -79,15 +79,26 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
       }
     })
     setTotalPrice(old => old + newItem.price)
+    toast.success(`${newItem.id==='sun'?'Sun model':'Moon model'}, size ${newItem.size.toUpperCase()} added to cart.`, {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#FFFAEA',
+      },
+    })
   }
 
   function removeOne(newItem) {
     // console.log('removeOne')
     setContent(oldContent => {
-      let oldQty = oldContent.find((item) => item.id === newItem.id).qty
+      console.log('oldContent:')
+      console.log(oldContent)
+      let oldQty = oldContent.find((item) => item.id === newItem.id && item.size === newItem.size).qty
+      console.log(oldQty)
+
       if (oldQty > 1) {
         let newContent = oldContent.map((item) => {
-          if (item.id === newItem.id) {
+          if (item.id === newItem.id && item.size === newItem.size) {
             return { ...item, qty: item.qty - 1 }
           } else {
             return item
@@ -95,12 +106,19 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
         })
         return newContent
       } else if (oldQty = 1) {
-        let newContent = oldContent.filter((item) => item.id !== newItem.id)
+        let newContent = oldContent.filter((item) => !(item.id === newItem.id && item.size === newItem.size))
         return newContent
       }
     })
 
     setTotalPrice(old => Math.max(old - newItem.price, 0))
+    toast.success(`${newItem.id==='sun'?'Sun model':'Moon model'}, size ${newItem.size.toUpperCase()} removed from cart.`, {
+      style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#FFFAEA',
+      },
+    })
 
   }
 
@@ -110,13 +128,13 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
     // let update = false;
     // console.log(amount, supportAmount, newSupportAmount)
     // console.log(update)
-    if (newSupportAmount < 5 ) {
+    if (newSupportAmount < 5) {
       // TOAST WITH MESSAGE THAT MINIMUM SUPPORT IS 5€OTHERWISE TO COSTLY UNFORTUNATELY
       toast.error(`${'Sorry, your amount should be €5 or more.'}`, {
         style: {
           borderRadius: '10px',
           background: '#333',
-          color: '#fff',
+          color: '#FFFAEA',
         },
       })
 
@@ -136,27 +154,27 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
         // console.log([...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }])
         return [...oldContent, { id: 'support', price: newSupportAmount, name: 'Support', qty: 1 }]
       })
-      
+
       toast.success(`${'Support added successfully'}`, {
         style: {
           borderRadius: '10px',
           background: '#333',
-          color: '#fff',
+          color: '#FFFAEA',
         },
       })
     }
-    else if (oldSupportAmount === newSupportAmount){
-    
+    else if (oldSupportAmount === newSupportAmount) {
+
       toast.success(`€${newSupportAmount} support already in cart.`, {
         style: {
           borderRadius: '10px',
           background: '#333',
-          color: '#fff',
+          color: '#FFFAEA',
         },
         icon: '🥳'
       })
     } else {
-    //============== CHANGE SUPPORT AMOUNT==============
+      //============== CHANGE SUPPORT AMOUNT==============
       // console.log('Yes,  support found in basket')
       setContent(oldContent => {
 
@@ -175,7 +193,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
         style: {
           borderRadius: '10px',
           background: '#333',
-          color: '#fff',
+          color: '#FFFAEA',
         },
       })
     }
@@ -201,7 +219,7 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
       style: {
         borderRadius: '10px',
         background: '#333',
-        color: '#fff',
+        color: '#FFFAEA',
       },
     })
 

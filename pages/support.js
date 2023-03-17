@@ -41,7 +41,7 @@ export default function Support() {
 
           <Layout>
             <Title mainTitle={'Join\nSpirée'} subTitle='Support Astrid and Spirée on their journey to empower women in sports.' />
-            <section className='w-full sm:w-4/5 lg:w-3/5 mt-4 mx-auto text-white font-quick font-light text-center whitespace-pre-wrap text-sm'>
+            <section className='w-full sm:w-4/5 lg:w-3/5 mt-4 mx-auto text-primary font-quick font-light text-center whitespace-pre-wrap text-sm'>
               <p>
                 {`Dear Supporter,\n
 Thank you for considering supporting Spirée on our mission to revolutionize sportswear for women. We are so grateful for your contribution in making the Sun and Moon series a reality. As a token of our appreciation, we are offering the following packages.\n
@@ -68,7 +68,7 @@ Your support means everything to us, and we can't wait to show you the incredibl
           {/* <Title text={'Merino'}/> */}
           <Footer noMargin noMotion={true} />
 
-          <Navbar from='support' />
+          <Navbar key='support' from='support' />
           <ShoppingCart />
 
         </PageWrapper>
