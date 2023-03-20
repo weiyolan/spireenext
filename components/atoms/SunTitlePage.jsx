@@ -4,6 +4,7 @@ import AddSun from './AddSun'
 import ArrowLink from './ArrowLink'
 import Price from './Price'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 
 export default function SunTitlePage({ sun , setSun, className}) {
 
@@ -25,7 +26,7 @@ export default function SunTitlePage({ sun , setSun, className}) {
       {/* <SunLinks/> */}
       <motion.div layout transition={{duration:0.5}} className={`font-quick text-xs flex gap-4 mt-4 font-medium`} >
         <motion.span className='cursor-pointer'>Size Chart</motion.span>
-        <a href={`#productdetails`}><motion.span>Product Details</motion.span></a>
+        <Link href={`#productdetails`}><motion.span>Product Details</motion.span></Link>
         <motion.span className='cursor-pointer' onClick={()=>setSun(sun=>!sun)}>{`${sun?'MOON':'SUN'} Edition`}</motion.span>
       </motion.div>
 

@@ -55,8 +55,8 @@ export default function Index() {
 
     <>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content=" " />
+        <title>Empowering Women to Run Everywhere - Spirée 2023</title>
+        <meta name="description" content="Shop the new Spirée Celestial Collection: high-performance, 100% Merino wool base layers for running and mountain sports. Empower women to run with confidence and style. Free shipping in the EU." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

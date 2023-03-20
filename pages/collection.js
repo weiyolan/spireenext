@@ -47,8 +47,8 @@ export default function Collection() {
 
     <>
       <Head>
-        <title>Create Next App</title>
-        <meta name="description" content=" " />
+        <title>Sun & Moon Merino Wool Base Layer | Spirée | High Performance</title>
+        <meta name="description" content="Discover Spiree's 100% merino wool base layers for running and mountain sports. Our sustainable and comfortable products will help you stay warm, fashionable and eco-friendly while exploring the great outdoors. Pre-order now!" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

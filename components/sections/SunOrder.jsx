@@ -33,7 +33,7 @@ export default function SunOrder() {
           </div>
         </div>
 
-        <div className='mt-36 md:mt-40 lg:mt-8 flex flex-col gap-4 md:gap-8 md:flex-row md:justify-center '>
+        <div className='mt-36 md:mt-40 lg:mt-8 flex flex-col gap-4 md:gap-8  md:flex-row md:justify-center '>
           <SunCollectionOrder sun />
           <SunCollectionOrder />
         </div>

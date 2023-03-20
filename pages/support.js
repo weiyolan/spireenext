@@ -25,7 +25,7 @@ export default function Support() {
 
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Women's Sportswear | Spirée 2023 | Reach New Heights</title>
         <meta name="description" content=" " />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
