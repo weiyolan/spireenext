@@ -8,6 +8,7 @@ import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
 import getStripe from "@/lib/getStripe";
 import ArrowLink from "../atoms/ArrowLink";
+import Link from "next/link";
 
 const containerVariants = {
   open: {
@@ -142,7 +143,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
             <Button text='To Checkout' handleClick={handleCheckout} />
           </motion.div>
           {!oldSupportAmount && <motion.div variants={childVariants} className="text-primary  font-quick text-sm font-thin" >
-            <a className='hover:underline transition-all' href='/support'>Support Spirée</a>
+            <Link className='hover:underline transition-all' href='/support'>Support Spirée</Link>
           </motion.div>}
         </motion.div>
       }

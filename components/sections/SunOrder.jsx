@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
-import SunLogo from '../atoms/SunLogo'
-import MoonLogo from '../atoms/MoonLogo'
+// import SunLogo from '../atoms/SunLogo'
+// import MoonLogo from '../atoms/MoonLogo'
 import SubTitle from '../atoms/SubTitle'
 import { useAppContext } from '../context/appContext'
 import FadeDiv from '../scroll/FadeDiv'
@@ -9,7 +9,7 @@ import Footer from './Footer'
 import Layout from './Layout'
 import SunCollectionOrder from './SunCollectionOrder'
 import Price from '../atoms/Price'
-import AddSize from '../atoms/AddSize'
+// import AddSize from '../atoms/AddSize'
 import AddSunMoon from '../atoms/AddSunMoon'
 
 export default function SunOrder() {
