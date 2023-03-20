@@ -1,9 +1,9 @@
-import React , {useEffect} from 'react'
+import React, { useEffect } from 'react'
 
 let fadeStyleDefault = amount => ({
-  'maskImage': `linear-gradient(to bottom, transparent, black ${amount}%, black ${100-amount}%, transparent)`,
+  'maskImage': `linear-gradient(to bottom, transparent, black ${amount}%, black ${100 - amount}%, transparent)`,
   'maskSize': '100% 100%',
-  'WebkitMaskImage':`linear-gradient(to bottom, transparent, black ${amount}%, black ${100-amount}%, transparent)`,
+  'WebkitMaskImage': `linear-gradient(to bottom, transparent, black ${amount}%, black ${100 - amount}%, transparent)`,
   'maskPosition': '0 0',
   'maskRepeat': 'no-repeat',
 })
@@ -11,39 +11,49 @@ let fadeStyleDefault = amount => ({
 let fadeStyleTop = amount => ({
   'maskImage': `linear-gradient(to bottom, transparent, black ${amount}%, black ${100}%)`,
   'maskSize': '100% 100%',
-  'WebkitMaskImage':`linear-gradient(to bottom, transparent, black ${amount}%, black ${100}%)`,
+  'WebkitMaskImage': `linear-gradient(to bottom, transparent, black ${amount}%, black ${100}%)`,
+  'maskPosition': '0 0',
+  'maskRepeat': 'no-repeat',
+})
+
+let fadeStyleLeftRight = amount => ({
+  'maskImage': `linear-gradient(to right, transparent, black ${amount}%, black ${100-amount}%, transparent)`,
+  'maskSize': '100% 100%',
+  'WebkitMaskImage': `linear-gradient(to right, transparent, black ${amount}%, black ${100-amount}%, transparent)`,
   'maskPosition': '0 0',
   'maskRepeat': 'no-repeat',
 })
 
 let fadeStyleBottom = amount => ({
-  'maskImage': `linear-gradient(to bottom,black ${0}%, black ${100-amount}%, transparent)`,
+  'maskImage': `linear-gradient(to bottom,black ${0}%, black ${100 - amount}%, transparent)`,
   'maskSize': '100% 100%',
-  'WebkitMaskImage':`linear-gradient(to bottom, black ${0}%, black ${100-amount}%, transparent)`,
+  'WebkitMaskImage': `linear-gradient(to bottom, black ${0}%, black ${100 - amount}%, transparent)`,
   'maskPosition': '0 0',
   'maskRepeat': 'no-repeat',
 })
 
-const FadeDiv = ({children, className, type, amount, style}) => {
-  useEffect(()=>{
+const FadeDiv = ({ children, className, type, amount, style }) => {
+  useEffect(() => {
     // console.log(className)
-  },[className])
+  }, [className])
 
-  function getFadeStyle (type) {
+  function getFadeStyle(type) {
     switch (type) {
-      case 'top' :
+      case 'top':
         return fadeStyleTop(amount)
-    case 'bottom' :
+      case 'bottom':
         return fadeStyleBottom(amount)
-    case 'none' :
+      case 'none':
         return {}
-    default: 
-      return fadeStyleDefault(amount)
+      case 'leftRight':
+        return fadeStyleLeftRight(amount)
+      default:
+        return fadeStyleDefault(amount)
     }
   }
 
   return (
-    <div style={{...getFadeStyle(type), ...style}} className={className}>
+    <div style={{ ...getFadeStyle(type), ...style }} className={className}>
       {children}
     </div>
   )

@@ -21,14 +21,16 @@ let guidelines = [
 ]
 export default function SunCare() {
   return (
-
-    <div className='relative px-16'>
+    <div className='relative xl:px-16 '>
       <SubTitle left mainTitle={'Care'} subTitle='Maximizing the Longevity of Your Merino Wool Base Layer: Washing Tips and Tricks' className={'mb-4'} />
-      <p className='mb-12 text-primary font-light font-quick '>{"Merino wool is an incredibly durable material that requires minimal washing due to its natural antibacterial properties. However, when it comes time to give your base layer a refresh, it's important to take proper care in washing to ensure its longevity. With the right techniques, your merino wool base layer can continue to provide you with warmth, comfort, and odor resistance for years to come."}</p>
-      <div className='flex gap-24'>
+      
+      <p className='mb-6 lg:mb-12 text-justify  lg:w-3/4 text-primary font-light text-sm xs:text-base font-quick '>
+        {"Merino wool is an incredibly durable material that requires minimal washing due to its natural antibacterial properties. However, when it comes time to give your base layer a refresh, it's important to take proper care in washing to ensure its longevity. With the right techniques, your merino wool base layer can continue to provide you with warmth, comfort, and odor resistance for years to come."}</p>
+      
+      <div className='flex flex-col md:flex-row gap-8 lg:gap-24'>
         <div className='inline-flex flex-col '>
           <AccentTitle text='Washing' />
-          <ul className='text-primary font-light font-quick pl-4 border-l border-l-white'>
+          <ul className='text-primary font-light font-quick pl-4 border-l border-l-primary'>
             {washing.map((item, i) => (
               <li className='mb-2' key={i}>
                 {item}
@@ -38,7 +40,7 @@ export default function SunCare() {
 
         <div className='inline-flex flex-col '>
           <AccentTitle text='Guidelines' />
-          <ul className='text-primary font-light font-quick pl-4 border-l border-l-white'>
+          <ul className='text-primary font-light font-quick pl-4 border-l border-l-primary'>
             {guidelines.map((item, i) => (
               <li className='mb-4' key={i}>
                 {item.text}

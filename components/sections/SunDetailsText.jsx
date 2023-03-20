@@ -13,14 +13,13 @@ export default function SunDetailsText({ left, title, visible, text }) {
   return (
     <div className={`absolute flex flex-col text-primary duration-500 overflow-hidden
       ${left ? 'items-start mr-auto' : 'ml-auto items-end'}
-      ${visible ? ` text-primary blur-none ` : ` blur-sm invisible text-transparent`}
-        `}>
+      ${visible ? ` text-primary blur-none ` : ` blur-sm invisible scale-90 text-transparent`}`}>
 
       <h4 className='font-quick font-medium text-lg mb-2  duration-500'>
         {title}
       </h4>
 
-      <p className='font-quick text-justify font-light duration-500'>
+      <p className='font-quick text-justify md:text-sm font-light duration-500'>
         {text}
       </p>
     </div>

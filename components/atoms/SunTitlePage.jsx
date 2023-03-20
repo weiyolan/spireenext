@@ -5,7 +5,9 @@ import ArrowLink from './ArrowLink'
 import Price from './Price'
 import { motion } from 'framer-motion'
 
-export default function SunTitlePage({ sun , className}) {
+export default function SunTitlePage({ sun , setSun, className}) {
+
+  
   return (
     // transition: { staggerChildren: 0.05, staggerDirection: -1, when: "afterChildren" },
 
@@ -13,13 +15,19 @@ export default function SunTitlePage({ sun , className}) {
       <motion.h3 layout transition={{duration:0.5}} className='font-quick font-thin md:font-thin text-6xl sm:text-8xl md:text-5xl lg:text-7xl 2xl:text-9xl text-primary'>
         {sun ? 'Sun' : 'Moon'}
       </motion.h3>
-      <motion.h4 layout transition={{duration:0.5}} className='font-sans font-extralight text-base mobm:text-xl sm:text-2xl md:text-lg lg:text-xl text-primary whitespace-pre-wrap ml-1'>
+      <motion.h4 layout transition={{duration:0.5}} className='font-sans font-extralight text-sm mobm:text-xl sm:text-2xl md:text-lg lg:text-xl text-primary whitespace-pre-wrap ml-1'>
         {sun ? `Unleash Your Inner Fire\nA burst of energy, confidence, and courage` : `Embrace Your Ethereal Side,\nA touch of mystery, tranquility, and grace`}
       </motion.h4>
 
       <Price />
 
       <AddSun sun={sun}/>
+      {/* <SunLinks/> */}
+      <motion.div layout transition={{duration:0.5}} className={`font-quick text-xs flex gap-4 mt-4 font-medium`} >
+        <motion.span className='cursor-pointer'>Size Chart</motion.span>
+        <a href={`#productdetails`}><motion.span>Product Details</motion.span></a>
+        <motion.span className='cursor-pointer' onClick={()=>setSun(sun=>!sun)}>{`${sun?'MOON':'SUN'} Edition`}</motion.span>
+      </motion.div>
 
       {/* <ArrowLink className={`${sun?' ':'translate-x-4' } md:pl-0  font-quick fill-primary font-medium text-primary`} inherit text='Take a closer look' to={sun?'/collection#sun':'/collection#moon'} /> */}
 

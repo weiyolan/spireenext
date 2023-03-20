@@ -6,15 +6,15 @@ import SunLogo from '../atoms/SunLogo'
 export default function SunCollectionOrder({ sun }) {
   return (
     <div className='flex-1 flex flex-col items-center'>
-      <div className='w-16'>
-      {sun ? <SunLogo /> : <MoonLogo />}
+      <div className='w-10 sm:w-16'>
+        {sun ? <SunLogo /> : <MoonLogo />}
       </div>
-      <div className='w-1/2 py-4 px-6'>
+      <div className='w-4/5 md:w-full lg:w-1/2 py-4 px-6'>
         {!sun ? <Image alt='merino wool base layer - moon model' src='/images/sweaterBlackCut.png' width={461} height={591} /> :
           <Image className='z-[0]' alt='merino wool base layer - sun model' src='/images/sweaterGreenDetails.png' width={461} height={591} />}
       </div>
 
-      <h3 className='font-sans text-center font-extralight text-base mobm:text-xl sm:text-2xl md:text-lg lg:text-xl text-primary whitespace-pre-wrap ml-1'>
+      <h3 className='font-sans text-center font-extralight text-base mobm:text-xl sm:text-2xl md:text-lg lg:text-xl text-primary whitespace-pre-wrap '>
         {sun ? `Unleash Your Inner Fire\nA burst of energy, confidence, and courage` : `Embrace Your Ethereal Side,\nA touch of mystery, tranquility, and grace`}
       </h3>
     </div>

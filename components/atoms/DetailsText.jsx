@@ -29,8 +29,8 @@ export default function DetailsText({ children, left, clicked, ...props }) {
 
   return (
     <text
-      className={`transition-all duration-200  cursor-pointer font-quick text-end
-    ${clicked ? '  scale-105' : ' '}`}
+      className={`transition-all duration-200  cursor-pointer font-quick text-end 
+    ${clicked ? '  scale-105 underline   ' : ' '}`}
       style={{ transformOrigin: "center", transformBox: 'fill-box', whiteSpace: "pre" }}
       {...getTextProps(props)}
     >

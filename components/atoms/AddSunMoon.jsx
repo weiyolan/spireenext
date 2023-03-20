@@ -25,7 +25,7 @@ export default function AddSunMoon({className}) {
 
 
   return (
-    <form className='flex gap-4 mx-auto '>
+    <form className='flex gap-2 mobl:gap-4 mx-auto '>
       <div className='flex relative overflow-hidden rounded-full'>
         {/* <label required htmlFor='size' className='text-base cursor-pointer'>
         Size:
@@ -37,7 +37,7 @@ export default function AddSunMoon({className}) {
           cursor-pointer focus:outline-none outline-none target:outline-none hover:border-primary/50 hover:invalid:border-red-400 invalid:text-red-400 invalid:border-red-400 invalid:border-b-2 `}
           onChange={(e) => { setSize(e.target.value) }} required>
 
-          <option value='select your size'>select your size</option>
+          <option value='select your size'>Your size</option>
           <option value='xs'>xs</option>
           <option value='s'>s</option>
           <option value='m'>m</option>

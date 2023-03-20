@@ -66,7 +66,7 @@ const Title = ({ mainTitle, subTitle, setHeight, style, className }) => {
 
       </h1>
 
-      <div className='font-quick whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-md sm:text-lg lg:text-xl'>
+      <div className='ml-1 font-quick whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap text-base sm:text-lg lg:text-xl'>
         {subTitle}
       </div>
 

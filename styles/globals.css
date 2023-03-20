@@ -23,7 +23,7 @@ html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px red solid; */
+  border: 1px red solid;
 }
 
 *:focus:not(:focus-visible) {

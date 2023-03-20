@@ -1,7 +1,7 @@
 import React from 'react'
 import { usePageContext } from '../context/pageContext'
 import Spiree from './Spiree'
-
+import { motion } from 'framer-motion'
 export default function SubTitle({ mainTitle, subTitle, left, right, style, className , darkMode:darkModeProp}) {
 
   const { darkMode: darkModeContext } = usePageContext()
@@ -15,10 +15,10 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
   return (
     // whitespace-pre-wrap min-[445px]:whitespace-nowrap sm:whitespace-pre-wrap md:whitespace-nowrap 
 
-    <div style={style} className={`${style === undefined ? 'relative' : ''} w-full ${textStyle()} ${darkMode ? 'text-primary' : 'text-black'} ${className}`}>
-      <h2 className={`font-sans font-semibold tracking-max uppercase leading-8 md:leading-10 
+    <motion.div layout transition={{duration:2}}  style={style} className={`${style === undefined ? 'relative' : ''} w-full ${textStyle()} ${darkMode ? 'text-primary' : 'text-black'} ${className}`}>
+      <motion.h2 layout transition={{duration:2}} className={`font-sans font-semibold tracking-max uppercase leading-8 md:leading-10 
       whitespace-pre-wrap md:whitespace-nowrap ${right?'translate-x-2':''}
-      text-2xl mobm:text-4xl sm:text-4xl lg:text-4xl mb-2 sm:mb-2 mt-4 sm:mt-8 `}>
+      text-xl mobm:text-2xl sm:text-2xl lg:text-2xl mb-2 sm:mb-2 mt-4 sm:mt-8 `}>
         {mainTitle.split("Spirée").length > 1 ?
           <>
             {mainTitle.split("Spirée")[0]}
@@ -31,13 +31,13 @@ export default function SubTitle({ mainTitle, subTitle, left, right, style, clas
 
         }
 
-      </h2>
+      </motion.h2>
 {/* whitespace-pre-wrap sm:whitespace-nowrap md:whitespace-nowrap */}
       <div className='font-quick whitespace-pre-wrap  text-sm mobm:text-lg sm:text-lg lg:text-xl'>
         {subTitle}
       </div>
 
-    </div>
+    </motion.div>
 
 
   )

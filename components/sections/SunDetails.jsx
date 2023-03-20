@@ -99,27 +99,30 @@ export default function SunDetails({ title, titleOn, left, className }) {
   }, [handleVisibility])
 
   return (
-    <div className={`bg-black/30 mb-12 py-8 px-16 rounded-[40px] ${titleOn ? 'pt-4' : ''}  ${className}`}>
-      {titleOn && <SubTitle className={`mb-12 sm:w-2/3 xl:w-1/2 ${left ? 'ml-auto' : 'mr-auto'}`} right={left} left={!left} mainTitle='Product Details' subTitle='Discover the technical details of our sustainable and comfortable merino wool products.' />}
-      <div className={`flex ${left ? '' : 'flex-row-reverse'} `}>
+    <div id='productdetails' className={`bg-black/30 mb-6 md:mb-8 xl:mb-12 p-2 md:px-6 2xl:px-16 md:py-4 xl:py-8 rounded-[30px] md:rounded-[40px] ${titleOn ? 'pt-4 md:pt-0 -mt-12' : ''}  ${className}`}>
+
+      {titleOn && <SubTitle className={`xl:mb-4 2xl:mb-12 sm:w-2/3 xl:w-1/2 md:-mt-4 ${left ? 'ml-auto ' : 'mr-auto'}`} right={left} left={!left} 
+      mainTitle={'Product Details'} subTitle='Discover the technical details of our sustainable and comfortable merino wool products.' />}
+      
+      <div className={`flex md:items-center ${left ? 'flex-col-reverse md:flex-row' : 'flex-col-reverse md:flex-row-reverse'} `}>
   {/* ===================DETAILS===================== */}
-        <motion.div layout transition={{duration:2}} className='w-2/5'>
-          <div className={`flex flex-col  text-primary ${left ? 'items-start' : 'ml-auto items-end'}`}>
+        <motion.div layout transition={{duration:2}} className='w-full px-2 md:w-2/5'>
+          <motion.div layout transition={{duration:2}} className={`flex flex-col text-primary ${left ? 'items-start' : 'ml-auto items-end'}`}>
             {/* =======DETAILS TITLE======== */}
             <AccentTitle noMargin text={title} />
             {/* =======DETAILS ICONS======== */}
-            <motion.div layout transition={{duration:2}} className='flex w-fit gap-2 rounded-2xl p-3 my-6 border-2 border-primary'>
+            <motion.div layout transition={{duration:2}} className='flex w-fit gap-1 xl:gap-2 rounded-xl md:rounded-2xl p-1.5 xl:p-3 my-2 md:my-4 xl:my-6 border-2 border-primary'>
               {details.map((icon, i) => <DetailIcon key={i} clicked={visibleItem[i]} handleClick={(newVal) => { handleVisibility(newVal, i); setClicked(true) }} icon={icon.icon} />)}
             </motion.div>
             {/* =======DETAILS TEXT======== */}
-            <motion.div layout transition={{duration:2}} className={`flex w-full relative flex-col text-primary ${left ? 'items-start' : 'ml-auto items-end'}`}>
+            <motion.div layout transition={{duration:2}} className={`flex w-full h-64 xs:h-48 md:h-[15rem] lg:h-40 relative flex-col text-primary ${left ? 'items-start' : 'ml-auto items-end'}`}>
               {details.map((icon, i) => <SunDetailsText key={i} left={left} title={icon.title} text={icon.text} visible={visibleItem[i]} />)}
             </motion.div>
-          </div>
+          </motion.div>
         </motion.div>
 
   {/* ===================PICTURE===================== */}
-        <motion.div layout transition={{duration:2}}  className='w-3/5 relative px-8 my-4'>
+        <motion.div layout transition={{duration:2}}  className='w-full md:w-3/5 h-fit relative xl:px-8 my-4'>
           <div className='flex absolute top-0 left-0 w-full h-full'>
             <Image className='object-contain object-center' alt='merino wool base layer - sun model' src='/images/sweaterGreenDetails.png' fill sizes='40vw' />
             {/* width={461 * 0.9} height={591 * 0.9}  */}
@@ -145,7 +148,7 @@ function DetailIcon({ icon, clicked, handleClick, title }) {
       className={`flex justify-center select-none cursor-pointer items-center duration-200 bg-white/10  
       rounded-lg md:rounded-xl 
       w-9 h-9 mobm:w-10 mobm:h-10
-      sm:w-10 sm:h-10 md:h-12 md:w-12 
+      sm:w-10 sm:h-10 xl:h-12 xl:w-12 
       border-2 hover:border-primary/30 focus:outline-none outline-none
       ${clicked ? ' border-primary/30 focus:border-primary/30 focus:animate-none animate-borderPulse shadow-md scale-95 translate-y-0.5 '
           : 'border-transparent hover:scale-[1.08] shadow-2xl focus:border-primary/30 focus:scale-[1.08] '}

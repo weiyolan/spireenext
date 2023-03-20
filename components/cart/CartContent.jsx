@@ -51,7 +51,7 @@ const childVariants = {
 export default function CartContent({ onMouseEnter, onMouseLeave }) {
   // Dimensions caluclation is not possible on mount because intially display is none
   // let [dimensions, setDimensions] = useState({width:undefined,height:undefined})
-  let { cartIsOpen, cart, width, toggleCart } = useAppContext()
+  let { cartIsOpen, cart, width, toggleCart, oldSupportAmount } = useAppContext()
   const { mobile } = usePageContext()
   // const {items} = useAppContext().cart
   // const {total} = useAppContext().cart
@@ -138,9 +138,12 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
           <CartTotal />
           {/* </motion.div> */}
 
-          <motion.div className='block mb-5' style={{ bottom: 0 + 'px' }} variants={childVariants}>
+          <motion.div className='block mb-2' style={{ bottom: 0 + 'px' }} variants={childVariants}>
             <Button text='To Checkout' handleClick={handleCheckout} />
           </motion.div>
+          {!oldSupportAmount && <motion.div variants={childVariants} className="text-primary  font-quick text-sm font-thin" >
+            <a className='hover:underline transition-all' href='/support'>Support Spirée</a>
+          </motion.div>}
         </motion.div>
       }
       {/*  ====================== EMPTY CART ====================== */}

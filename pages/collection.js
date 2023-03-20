@@ -25,12 +25,13 @@ import AccentTitle from '@/components/atoms/AccentTitle'
 import SunCare from '@/components/sections/SunCare'
 import SunOrder from '@/components/sections/SunOrder'
 import SunSwitch from '@/components/atoms/SunSwitch'
+import SunHero from '@/components/sections/SunHero'
 
 export default function Collection() {
 
   const { scrolled, width, height, handleLightboxes } = useAppContext();
   let [front, setFront] = useState(true)
-  let mobile = width < 768
+  let pageMobile = width < 768
   let [sun, setSun] = useState(true)
 
   let scale1 = front ? 0.75 : 1;
@@ -56,56 +57,50 @@ export default function Collection() {
 
         <PageWrapper
           darkMode={true}
-          mobile={mobile}
+          pageMobile={pageMobile}
           sun={sun}
         >
           {/* <BackgroundSun /> */}
           <div id='part1' className={`relative `}>
-            <div className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-100' : 'opacity-0'} from-[#FF514C] to-[#FFB961]`} />
-            <div className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-0' : 'opacity-100'}  from-[#30005F] to-[#A850B4]`} />
+            <div role='presentation' className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-100' : 'opacity-0'} from-[#FF514C] to-[#FFB961]`} />
+            <div role='presentation' className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-0' : 'opacity-100'}  from-[#30005F] to-[#A850B4]`} />
 
-            <div className={`absolute w-[100vw] h-[100vw] ease-linear duration-[2.5s] top-0 ${sun?'left-0':''} translate-y-1/3 -translate-x-1/3`}>
-              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionSunBackground.svg' className='relative w-full ' />
+            <div className={`absolute w-[100vw] h-[100vw] ease-linear duration-[2.5s] top-0 ${sun ? 'left-0 opacity-100' : 'opacity-0'} translate-y-1/3 -translate-x-1/3`}>
+              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionSunBackground.svg' className={`relative w-full ${sun ? '' : ''}`} />
             </div>
 
-            <FadeDiv amount={15} type='bottom' className='w-full relative -mb-[10%]'>
-              <div className={`absolute w-full h-full transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-100' : 'opacity-0'} bg-gradient-to-br from-[#FD7A2D] via-[#FD7A2D] to-[#FFCA87]`} />
-              <div className={`absolute w-full h-full transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-0' : 'opacity-100'} bg-gradient-to-bl from-[#14003D] via-[#14003D] to-[#24006C] `} />
+            <div className={`absolute w-[70vw] h-[70vw] ease-linear duration-[2.5s] top-0 ${sun ? 'opacity-0' : 'left-0 opacity-30'} translate-y-[100vh] translate-x-[5vw] `}>
+              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionMoonBackground.svg' className={`relative w-full ${sun ? '' : ''}`} />
+            </div>
 
-              <div id='hero-banner' className={`w-full pb-[10%] transition-all`}>
-                <div className={`absolute w-[150vw] h-[150vw] duration-[2.5s]  md:w-[60vw] md:h-[60vw] top-0  ${sun?'right-0 -translate-y-1/3 translate-x-1/3':'right-full translate-y-1/4 translate-x-2/3'}`}>
-                  <Image alt='sun decoration' width={700} height={700} src='/images/sun2.png' priority className={`absolute transition-all duration-[2.5s] w-full ${sun?'opacity-100':'opacity-0'}`} />
-                  <Image alt='moon decoration' width={700} height={700} src='/images/moon2.png' priority className={`absolute transition-all duration-[2.5s] w-full ${sun?'opacity-0':'opacity-20'}`} />
-                </div>
-
-                <Layout className={'relative'}>
-                  <Title className='mb-8' mainTitle='Pro Sportswear' subTitle='High performance 100% merino wool base layer for running and mountain sports' />
-                  <div className={`flex ${sun?'':'flex-row-reverse'} h-fit mx-auto gap-12 text-primary justify-center items-start`}>
-                    <SunGallery className={'flex-1'} />
-                    <SunSign handleClick={() => setSun(sun => !sun)} className='w-20' />
-                    <SunTitlePage className={'flex-1'} sun={sun} />
-                  </div>
-                </Layout>
-              </div>
+            <FadeDiv amount={pageMobile ? 10 : 15} type='bottom' className='w-full relative mb-0 '>
+              <SunHero setSun={setSun} />
             </FadeDiv>
 
-            <Layout className={'relative pb-20'}>
-              <SunDetails left={sun} title='Design' titleOn className='mt-24' />
+            <Layout cardSection className={'relative pb-20'}>
+              <SunDetails left={sun} title='Design' titleOn className='' />
               <SunDetails left={!sun} title='Material' className='' />
-              <SunDetails left={sun} title='Finish'  className='' />
+              <SunDetails left={sun} title='Finish' className='' />
             </Layout>
           </div>
 
           <div id='part2' className=' relative'>
-            <div className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-100' : 'opacity-0'} from-[#FFB2CE] to-[#FC5753]`} />
-            <div className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-0' : 'opacity-100'}  from-[#1F999E] to-[#360856]`} />
+            <div role='presentation' className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-100' : 'opacity-0'} from-[#FFB2CE] to-[#FC5753]`} />
+            <div role='presentation' className={`absolute w-full h-full bg-gradient-to-b transition-all ease-linear duration-[2.5s] ${sun ? 'opacity-0' : 'opacity-100'}  from-[#1F999E] to-[#360856]`} />
 
-            <div className='absolute w-[66vw] h-[66vw] top-0 right-0 translate-y-12 translate-x-1/3'>
-              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionSunBackground.svg' className='relative w-full ' />
+            <div className={`absolute w-[66vw] h-[66vw] ease-linear duration-[2.5s] top-0 right-0  ${sun ? ' opacity-100 translate-x-1/3 translate-y-12' : 'opacity-0 -translate-x-64'}  `}>
+              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionSunBackground.svg' className={`relative w-full ${sun ? '' : ''}`} />
             </div>
-            <Layout >
-              <SunResponsibilities />
+            <div className={`absolute w-[30vw] h-[30vw] ease-linear duration-[2.5s] top-1/4 left-0  ${sun ? 'opacity-0 rotate-180 translate-x-[80vw]' : 'translate-x-1/3 opacity-30'}  `}>
+              <Image alt='' role='presentation' width={2000} height={2000} src='/images/collectionMoonBackground.svg' className={`relative w-full ${sun ? '' : ''}`} />
+            </div>
 
+            {/* <FadeDiv className={'w-full'} type='leftRight' amount={}> */}
+              <Layout cardSection >
+                <SunResponsibilities />
+              </Layout>
+            {/* </FadeDiv> */}
+            <Layout >
               <SunCare />
 
             </Layout>
@@ -114,7 +109,7 @@ export default function Collection() {
 
           </div>
 
-          <SunSwitch handleClick={()=>setSun(sun=>!sun)} />
+          <SunSwitch handleClick={() => setSun(sun => !sun)} />
           <Navbar key='collection' from='collection' />
           <ShoppingCart />
           {/* <Footer noMotion /> */}

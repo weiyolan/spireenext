@@ -25,7 +25,7 @@ export default function AddSun({ className, sun }) {
   // {id:'moon',price:99,name: 'Moon Merino Base Layer'}
 
   return (
-    <motion.form layout transition={{duration:0.5}} className='flex mx-auto mobm:mx-0 '>
+    <motion.form layout transition={{duration:0.5}} className='flex  mobm:mx-0 '>
       <div className='flex relative overflow-hidden rounded-full mr-4 sm:mr-8'>
         {/* <label required htmlFor='size' className='text-base cursor-pointer'>
         Size:
