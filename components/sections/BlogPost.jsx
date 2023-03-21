@@ -100,12 +100,12 @@ export default function BlogPost({ style, myKey, visibility, className, post, se
         </motion.div>
 
       </div>
-{console.log(post)}
+{/* {console.log(post)} */}
       <div ref={textRef} name='blogPost' className=' flex flex-col w-9/12 max-w-xl items-start'>
         <h2 className={`border-b transition-all duration-500 mb-2 ${visible ? 'border-b-black text-2xl mobm:text-3xl mobm:ml-1 sm:ml-3 ' : ' ml-0 border-b-transparent text-xl'}`}>{post.title[locale]}</h2> 
         {/* post.title[locale] */}
         <div className={`w-full mobm:px-1 mobm:pr-2 sm:px-3 transition-all text-sm sm:text-base text-justify duration-500 ${visible ? 'opacity-1 delay-300 visible' : 'opacity-0 invisible'}`}>
-          {/* <PortableText value={'test'} /> */}
+          <PortableText value={post.body[locale]} />
           {/* post.body[locale] */}
         </div>
       </div>

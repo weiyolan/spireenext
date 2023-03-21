@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import {client, urlFor} from '@lib/sanity'
+// import Image from 'next/image'
+import {client} from '@lib/sanity'
 
 export default function Home({pets, products}) {
   return (

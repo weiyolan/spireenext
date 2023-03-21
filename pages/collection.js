@@ -27,6 +27,7 @@ import SunOrder from '@/components/sections/SunOrder'
 import SunSwitch from '@/components/atoms/SunSwitch'
 import SunHero from '@/components/sections/SunHero'
 
+import {client} from '@lib/sanity'
 
 
 let responsibilities = [
@@ -35,7 +36,7 @@ let responsibilities = [
   { icon: <div></div>, title: 'Health', text: "Merino wool is not only a luxurious and eco-friendly material, but it's also recyclable and compostable! Unlike synthetic materials that pollute the environment, merino wool can be broken down naturally and reused in new products. By choosing merino wool, you're not only making a sustainable choice for yourself but also for the planet. Join us in our mission to create a circular fashion economy and reduce waste by choosing sustainable materials like merino wool." },
 ]
 
-export default function Collection() {
+export default function Collection({responsibilities}) {
 
   const { scrolled, width, height, handleLightboxes } = useAppContext();
   let [front, setFront] = useState(true)
@@ -107,6 +108,7 @@ export default function Collection() {
             {/* <FadeDiv className={'w-full'} type='leftRight' amount={}> */}
               <Layout cardSection >
                 <SunResponsibilities responsibilities={responsibilities}/>
+ {/* {                console.log(responsibilities)} */}
               </Layout>
             {/* </FadeDiv> */}
             <Layout >
@@ -130,4 +132,15 @@ export default function Collection() {
 
 
   )
+}
+
+export async function getStaticProps() {
+  const responsibilities = await client.fetch(`*[_type == "responsibility"]`);
+  // const products = await client.fetch(`*[_type == "product"]`);
+    // console.log(responsibilities)
+  return {
+    props: {
+      responsibilities
+    }
+  };
 }

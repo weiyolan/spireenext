@@ -30,7 +30,7 @@ export default function Blog({ posts }) {
   let [visibility, setVisibility] = useState(() => { let newArray = new Array(posts.length).fill(false); newArray[posts.length - 1] = true; return newArray })
 
   function handleTouchStart(e) {
-    console.log(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
+    // console.log(e.targetTouches[0].clientX, e.targetTouches[0].clientY)
     // console.log()
 
     // setTouchStart(e.targetTouches[0].clientY);
@@ -147,7 +147,7 @@ export default function Blog({ posts }) {
   function handleVisibility(i) {
     let newVisibility = new Array(posts.length).fill(false);
     newVisibility[i] = true;
-    console.log(newVisibility)
+    // console.log(newVisibility)
 
     setVisibility(newVisibility)
   }
@@ -187,7 +187,7 @@ export default function Blog({ posts }) {
 
     <>
       <Head>
-        <title>Create Next App</title>
+        <title>Read Along | Spirée Women Sportswear Blog 2023</title>
         <meta name="description" content=" " />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
