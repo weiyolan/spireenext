@@ -42,43 +42,43 @@ export default function CartTotal() {
 
 
   return (
-  <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl text-primary  font-light text-base min-[480px]:text-sm font-sans' style={{ bottom: 0 + 'px' }} variants={containerVariants}>
-    <motion.div variants={childVariants} className={`w-full flex `}>
-      <div className=' flex justify-left items-center w-1/2'>
-        <p>Subtotal</p>
-      </div>
-      <div className='flex justify-end items-center w-1/2'>
-        <p>€{totalPrice+(oldSupportAmount||0)}</p>
-      </div>
-    </motion.div>
-    <motion.div variants={childVariants} className={`w-full flex `}>
-      <div className=' flex justify-left items-center w-1/2'>
-        <p>incl. TVA</p>
-      </div>
+    <motion.div className='flex flex-col mb-5 p-4 gap-2 bg-black/30 rounded-2xl select-none cursor-default text-primary  font-light text-base min-[480px]:text-sm font-sans' style={{ bottom: 0 + 'px' }} variants={containerVariants}>
+      <motion.div variants={childVariants} className={`w-full flex `}>
+        <motion.div whileHover={{scale:1.05}} className=' flex justify-left items-center w-1/2'>
+          <p>Subtotal</p>
+        </motion.div>
+        <motion.div whileHover={{scale:1.05}} className='flex justify-end items-center w-1/2'>
+          <p>€{totalPrice + (oldSupportAmount || 0)}</p>
+        </motion.div>
+      </motion.div>
+      <motion.div variants={childVariants} className={`w-full flex `}>
+        <motion.div whileHover={{scale:1.05}} className=' flex justify-left items-center w-1/2'>
+          <p>incl. TVA</p>
+        </motion.div>
 
-      <div className='flex justify-end items-center w-1/2'>
-        <p>€{(totalPrice - totalPrice / 1.2).toFixed(2)}</p>
-      </div>
-    </motion.div>
-    <motion.div variants={childVariants} className={`w-full flex pb-2  border-b-[1px] border-b-white  `}>
-      <div className=' flex justify-left items-center w-1/2'>
-        <p>Shipping</p>
-      </div>
-      <div className='flex justify-end items-center w-1/2'>
-        {shipping ? <p>€{shipping}</p> : <p>free</p>}
-      </div>
-    </motion.div>
+        <motion.div whileHover={{scale:1.05}} className='flex justify-end items-center w-1/2'>
+          <p>€{(totalPrice - totalPrice / 1.2).toFixed(2)}</p>
+        </motion.div>
+      </motion.div>
+      <motion.div variants={childVariants} className={`w-full flex pb-2  border-b-[1px] border-b-white  `}>
+        <motion.div whileHover={{scale:1.05}} className=' flex justify-left items-center w-1/2'>
+          <p>Shipping</p>
+        </motion.div>
+        <motion.div whileHover={{scale:1.05}}className='flex justify-end items-center w-1/2'>
+          {shipping ? <p>€{shipping}</p> : <p>free</p>}
+        </motion.div>
+      </motion.div>
 
-    <motion.div variants={childVariants} className={`w-full flex font-medium text-lg min-[480px]:text-base `}>
-      <div className='flex justify-end w-2/3 items-center'>
-        <p className=''>Total:</p>
-      </div>
-      <div className='flex justify-end w-1/3 items-center'>
-        <p className=''>€{totalPrice+(oldSupportAmount||0)}</p>
-      </div>
-    </motion.div>
+      <motion.div variants={childVariants} className={`w-full flex font-medium text-lg min-[480px]:text-base `}>
+        <motion.div whileHover={{scale:1.05}} className='flex justify-end w-2/3 items-center'>
+          <p className=''>Total:</p>
+        </motion.div>
+        <motion.div whileHover={{scale:1.05}} className='flex justify-end w-1/3 items-center'>
+          <p className=''>€{totalPrice + (oldSupportAmount || 0)}</p>
+        </motion.div>
+      </motion.div>
 
-  </motion.div>
+    </motion.div>
 
   )
 

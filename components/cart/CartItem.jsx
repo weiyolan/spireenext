@@ -21,12 +21,22 @@ const childVariants = {
   }
 };
 
-export default function CartItem({ item, title }) {
-  const { content, supportAmount, setSupportAmount, addOne, removeOne, updateSupport, removeSupport } = useAppContext().cart;
-  let [showSave, setShowSave] = useState(false)
+// initial='closed' 
+// animate='open' 
+// exit='closed' 
+// layoutId={myId}  
 
+export default function CartItem({ myId, item, title }) {
+  const { content, supportAmount, setSupportAmount, addOne, removeOne, updateSupport, removeSupport } = useAppContext().cart;
+  let [showSave, setShowSave] = useState(false);
+  let [stop, setStop] = useState(false);
+  
   if (item?.id === 'support') {
-    return (<motion.div variants={childVariants} className={`w-full flex text-primary text-base min-[480px]:text-sm ${title ? ' font-normal pb-1 border-b-[1px] border-primary' : ' font-light'} font-sans `}>
+    return (
+    <motion.div variants={childVariants}  
+
+    whileHover={{scale:1.05}}
+    className={`w-full flex text-primary text-base min-[480px]:text-sm ${title ? ' font-normal pb-1 border-b-[1px] border-primary' : ' font-light'} font-sans `}>
       <div className=' flex justify-center text-center items-center w-3/12'>
         <Add product={item} handleClick={removeSupport} />
       </div>
@@ -45,17 +55,21 @@ export default function CartItem({ item, title }) {
 
         </form>
       </div>
-
     </motion.div>)
   }
 
 
   return (
-    <motion.div variants={childVariants} className={`w-full flex text-primary text-base min-[480px]:text-sm ${title ? ' font-normal pb-1 border-b-[1px] border-primary' : ' font-light'} font-sans `}>
-      <div className=' flex justify-center text-center items-center w-3/12'>
+    <motion.div variants={childVariants} 
+    initial='closed' 
+    animate='open' 
+    exit='closed' 
+    layoutId={myId}  
+    className={`w-full flex text-primary text-base min-[480px]:text-sm ${title ? ' font-normal pb-1 border-b-[1px] border-primary' : ' font-light'} font-sans `}>
+      <div className=' flex justify-center select-none cursor-default text-center items-center w-3/12'>
         {title ? <p>#</p> :
           <>
-            <Add product={item} handleClick={() => {removeOne(item)}} />
+            <Add product={item} handleClick={() => {if (!stop) {removeOne(item)}; if (item.qty===1){setStop(true)}; }} />
             <p className='mx-auto'>
               {item.qty}
             </p>
@@ -63,20 +77,22 @@ export default function CartItem({ item, title }) {
           </>}
       </div>
 
-      <div className={`flex ml-4 text-left w-7/12 items-center whitespace-pre-wrap ${!title ? content[item?.id] === 0 ? 'opacity-30' : 'opacity-100' : ''}`}>
+      <motion.div 
+    whileHover={{scale:1.03}}
+    className={`flex ml-4 text-left w-7/12 items-center select-none cursor-default whitespace-pre-wrap ${!title ? content[item?.id] === 0 ? 'opacity-30' : 'opacity-100' : ''}`}>
         {title ? 'Item' : item.name}
         {/* {item.title +'\n' +item.size } */}
-      </div>
+      </motion.div>
       {/* <div className='flex text-left w-3/5'>
             { }
         </div> */}
-      <div className={`flex w-2/12 ${!title ? 'uppercase justify-center': ''}`}>
+      <motion.div whileHover={{scale:1.05}} className={`select-none cursor-default flex w-2/12 ${!title ? 'uppercase justify-center': ''}`}>
         {title ? 'Size' : (item.size)}
-      </div>
+      </motion.div>
 
-      <div className={`flex w-2/12 justify-end ${!title ? content[item?.id] === 0 ? 'opacity-30' : 'opacity-100' : ''}`}>
+      <motion.div whileHover={{scale:1.05}} className={`select-none cursor-default flex w-2/12 justify-end ${!title ? content[item?.id] === 0 ? 'opacity-30' : 'opacity-100' : ''}`}>
         {title ? 'Price' : '€' + (item.qty * item.price)}
-      </div>
+      </motion.div>
 
     </motion.div>
   )

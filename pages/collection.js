@@ -1,31 +1,39 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, {  useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
-import BackgroundSun from '@/components/sections/BackgroundSun'
-import BackgroundMoon from '@/components/sections/BackgroundMoon'
+// import BackgroundSun from '@/components/sections/BackgroundSun'
+// import BackgroundMoon from '@/components/sections/BackgroundMoon'
 import { PageWrapper } from '@/components/context/pageContext'
 import { useAppContext } from '@/components/context/appContext'
 // import { useDimensions } from '@/utils/useDimensions'
 
-import Title from '@/components/atoms/Title'
+// import Title from '@/components/atoms/Title'
 import Layout from '@/components/sections/Layout'
-import Footer from '@/components/sections/Footer'
+// import Footer from '@/components/sections/Footer'
 
 import Navbar from '@/components/navbar/Navbar'
 import ShoppingCart from '@/components/cart/ShoppingCart'
-import SunTitle from '@/components/atoms/SunTitle'
-import SunGallery from '@/components/sections/SunGallery'
-import SunSign from '@/components/atoms/SunSign'
-import SunTitlePage from '@/components/atoms/SunTitlePage'
+// import SunTitle from '@/components/atoms/SunTitle'
+// import SunGallery from '@/components/sections/SunGallery'
+// import SunSign from '@/components/atoms/SunSign'
+// import SunTitlePage from '@/components/atoms/SunTitlePage'
 import FadeDiv from '@/components/scroll/FadeDiv'
 import SunDetails from '@/components/sections/SunDetails'
 import SunResponsibilities from '@/components/sections/SunResponsibilities'
-import SubTitle from '@/components/atoms/SubTitle'
-import AccentTitle from '@/components/atoms/AccentTitle'
+// import SubTitle from '@/components/atoms/SubTitle'
+// import AccentTitle from '@/components/atoms/AccentTitle'
 import SunCare from '@/components/sections/SunCare'
 import SunOrder from '@/components/sections/SunOrder'
 import SunSwitch from '@/components/atoms/SunSwitch'
 import SunHero from '@/components/sections/SunHero'
+
+
+
+let responsibilities = [
+  { icon: <div></div>, title: 'Planet', text: "Merino wool is a sustainable clothing choice with minimal ecological impact. Its production process uses less energy and water compared to synthetic fibers, and its natural antibacterial properties reduce the need for frequent washing, extending its lifespan. Additionally, merino wool is biodegradable and can be recycled, making it a responsible choice for those who want to reduce their environmental footprint. At Spiree, we take pride in using this eco-friendly fabric for our products, ensuring you stay warm and comfortable while reducing your impact on the planet." },
+  { icon: <div></div>, title: 'Non Mulesing', text: "At Spiree, we care deeply about animal welfare, and that's why we make sure that no mulesing is practiced by our suppliers. Mulesing is a painful process that involves removing strips of skin from the sheep's rear end to prevent flystrike. This practice is cruel and unnecessary, and we refuse to support it. By choosing Spiree, you can trust that your sustainable and eco-friendly merino wool garments are not only good for the planet but also for the animals who provide us with this amazing material." },
+  { icon: <div></div>, title: 'Health', text: "Merino wool is not only a luxurious and eco-friendly material, but it's also recyclable and compostable! Unlike synthetic materials that pollute the environment, merino wool can be broken down naturally and reused in new products. By choosing merino wool, you're not only making a sustainable choice for yourself but also for the planet. Join us in our mission to create a circular fashion economy and reduce waste by choosing sustainable materials like merino wool." },
+]
 
 export default function Collection() {
 
@@ -42,6 +50,7 @@ export default function Collection() {
     setFront(oldFront => !oldFront)
   }
 
+  
 
   return (
 
@@ -97,7 +106,7 @@ export default function Collection() {
 
             {/* <FadeDiv className={'w-full'} type='leftRight' amount={}> */}
               <Layout cardSection >
-                <SunResponsibilities />
+                <SunResponsibilities responsibilities={responsibilities}/>
               </Layout>
             {/* </FadeDiv> */}
             <Layout >

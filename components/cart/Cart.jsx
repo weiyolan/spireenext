@@ -17,7 +17,7 @@ import NavToggle from "./NavToggle";
 // let borderDebug = 'border border-red-500';
 
 export default function Cart({ from }) {
-  let { locale, width, cartIsOpen, toggleCart, navIsOpen,toggleNav, cart } = useAppContext()
+  let { locale, width, cartIsOpen, toggleCart, navIsOpen, toggleNav, cart } = useAppContext()
   let { mobile } = usePageContext()
   let [clicked, setClicked] = useState(false)
   let [hover, setHover] = useState(false)
@@ -47,10 +47,10 @@ export default function Cart({ from }) {
     if (navIsOpen) {
       toggleNav()
     }
-    
+
     toggleCart()
-      // setClicked(true)
-  
+    // setClicked(true)
+
 
     // When unclicking the hover will take care of the closing 
     // else if (clicked && !cartIsOpen) {
@@ -60,11 +60,11 @@ export default function Cart({ from }) {
 
 
 
-  const cartSidebarDesk ={
+  const cartSidebarDesk = {
     open: {
       y: 0, x: 0,
       width: '100%',
-      height: 520,
+      height: '100%',
       // opacity:1,
       transition: {
         type: "spring",
@@ -145,7 +145,7 @@ export default function Cart({ from }) {
   return (
     // =================PARENT ORCHESTRATING MOTION=================
     <motion.div
-      className={`fixed top-0 right-0 sm:top-0 sm:right-2 h-0 z-[51] w-full min-[480px]:w-[320px]
+      className={`fixed top-0 right-0 sm:top-0 sm:right-2 h-0 z-[51] w-full min-[480px]:w-[420px]
         `}
       initial={false}
       exit='exit'
@@ -156,56 +156,61 @@ export default function Cart({ from }) {
     >
       {/* =================COLORED MENU BAR=====================*/}
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
-      <motion.div
-        className={`z-[51] absolute top-0 right-0 min-[480px]:top-2 min-[480px]:right-2`}
-        // style={{ transition: 'border-radius 0.5s ease' }}
-        variants={cartSidebarDesk}
+      <div style={{height: (400+ (Math.max(cart.content?.length,1))*30)+'px'}} className={`w-full relative transition-all ${cartIsOpen?'delay-[0] visible':'invisible delay-500'}`}>
+        <motion.div
+          className={`z-[51] absolute flex top-0 right-0 min-[480px]:top-2 min-[480px]:right-2`}
+          // style={{ transition: 'border-radius 0.5s ease' }}
+          variants={cartSidebarDesk}
+        // custom={}
         // onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
         // onMouseLeave={() => { if ((!mobile) && !clicked) { } }}
-      // key={cartDimensions.height}
-      // custom={cartDimensions.height}
-      >
-        <div style={{transition: `opacity 0.5s ease, border-radius 0.5s ease`,
-        transitionDelay: `${cartIsOpen?'0s':hover?'0s':'0.5s'}, 0s`}} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] 
+        // key={cartDimensions.height}
+        // custom={cartDimensions.height}
+        >
+          <div style={{
+            transition: `opacity 0.5s ease, border-radius 0.5s ease`,
+            transitionDelay: `${cartIsOpen ? '0s' : hover ? '0s' : '0.5s'}, 0s`
+          }} className={`transition-all after:transition-all duration-500 after:duration-500 after:delay-[0] 
         ${cartIsOpen || hover ? 'opacity-100' : 'opacity-0'} 
         bg-gradient-to-r from-black/30 ${true ? 'to-[#6F3041]/30' : 'to-black/30'} backdrop-blur w-[100%] h-full 
         after:w-full after:h-full after:absolute after:top-0 after:right-0 after:shadow-xl 
         rounded-[40px] after:rounded-[40px]  
         ${cartIsOpen ? ' rounded-tr-none after:rounded-tr-none' : ' '}`}
-        />
+          />
 
-      </motion.div>
+        </motion.div>
+      </div>
 
 
 
       {/* =================Cart Content================= */}
 
       <CartContent
-        // onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
-        // onMouseLeave={() => { if ((!mobile) && !clicked) { } }}
-        // setCartDimensions={setCartDimensions}
+      // onMouseEnter={() => { if ((!mobile) && !clicked) { } }}
+      // onMouseLeave={() => { if ((!mobile) && !clicked) { } }}
+      // setCartDimensions={setCartDimensions}
       />
 
       {/* =================LOGO================= */}
- 
-        <motion.div
-          variants={cartLogo}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          className={`${true ? 'absolute flex sm:rounded-full top-[0] z-[51] right-[0] cursor-pointer '
-            : ''}`}
-          onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
-          onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false)  } }}
-          onClick={handleClick}
-        >
-          <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 sm:rounded-full overflow-visible`} />
-          {cart.content?.length >=1 && <span className={`rounded-full w-4 h-4 text-center justify-center top-3 right-2 xs:top-4 xs:right-4 items-center flex 
-          transition-all duration-500 ${cartIsOpen?'delay-[0] invisible opacity-0':'delay-300 visible opacity-100'}
+
+      <motion.div
+        variants={cartLogo}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+        className={`${true ? 'absolute flex sm:rounded-full top-[0] z-[51] right-[0] cursor-pointer '
+          : ''}`}
+        onMouseEnter={() => { if ((!mobile) && !clicked) { setHover(true) } }}
+        onMouseLeave={() => { if ((!mobile) && !clicked) { setHover(false) } }}
+        onClick={handleClick}
+      >
+        <CartIcon className={`${cartIsOpen ? 'w-6' : 'w-6 sm:w-9'} m-[15px] sm:m-[17px] transition-all duration-300 sm:rounded-full overflow-visible`} />
+        {cart.content?.length >= 1 && <span className={`rounded-full w-4 h-4 text-center justify-center top-3 right-2 xs:top-4 xs:right-4 items-center flex 
+          transition-all duration-500 ${cartIsOpen ? 'delay-[0] invisible opacity-0' : 'delay-300 visible opacity-100'}
           absolute border-2 bg-red-600 border-red-600 select-none text-primary text-xs font-normal`}>
-            {cart.content.reduce((acc,item)=> (acc + item.qty),0)}
-          </span>}
-        </motion.div>
- 
+          {cart.content.reduce((acc, item) => (acc + item.qty), 0)}
+        </span>}
+      </motion.div>
+
 
       {/* =================Toggle================= */}
 

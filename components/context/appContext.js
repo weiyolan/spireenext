@@ -90,11 +90,13 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
 
   function removeOne(newItem) {
     // console.log('removeOne')
+
+
     setContent(oldContent => {
-      console.log('oldContent:')
-      console.log(oldContent)
-      let oldQty = oldContent.find((item) => item.id === newItem.id && item.size === newItem.size).qty
-      console.log(oldQty)
+      // console.log('oldContent:')
+      // console.log(oldContent)
+      // console.log(oldQty)
+      let oldQty = content.find((item) => item.id === newItem.id && item.size === newItem.size)?.qty
 
       if (oldQty > 1) {
         let newContent = oldContent.map((item) => {
@@ -108,18 +110,18 @@ export function AppWrapper({ children, breakPointSmall, scrolled }) {
       } else if (oldQty = 1) {
         let newContent = oldContent.filter((item) => !(item.id === newItem.id && item.size === newItem.size))
         return newContent
-      }
+      } else return oldContent
     })
 
     setTotalPrice(old => Math.max(old - newItem.price, 0))
-    toast.success(`${newItem.id==='sun'?'Sun model':'Moon model'}, size ${newItem.size.toUpperCase()} removed from cart.`, {
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#FFFAEA',
-      },
-    })
-
+      toast.success(`${newItem.id==='sun'?'Sun model':'Moon model'}, size ${newItem.size.toUpperCase()} removed from cart.`, {
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#FFFAEA',
+        },
+      })
+    
   }
 
   function updateSupport(amount) {

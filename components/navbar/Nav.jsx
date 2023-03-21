@@ -288,7 +288,7 @@ export default function Nav({ from }) {
         >
           {/* <Link className='rounded-full' href={`/`} onClick={() => selectButton('Home')}> */}
           {/* title='Go to the homepage' */}
-          <SpireeLogo fill={width<1025?'white':false} className='w-10 h-10 rounded-full overflow-visible' />
+          <SpireeLogo fill={width<1025?'#FFFAEA':false} className='w-10 h-10 rounded-full overflow-visible' />
           {/* </Link> */}
 
         </motion.div>

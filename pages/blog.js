@@ -218,6 +218,8 @@ export default function Blog({ posts }) {
 
             <div className='flex flex-col w-full'>
               {/* {console.log(posts.length)} */}
+{/* {console.log(posts)} */}
+
               {posts.map((post, i) => <BlogPost linePosition={positions?.linePosition || undefined} setPositions={i === 0 ? setPositions : undefined} visibility={visibility} style={{}} myKey={i} key={i} post={post} />)}
             </div>
 
@@ -260,7 +262,7 @@ export default function Blog({ posts }) {
 export async function getStaticProps() {
   const posts = await client.fetch(`*[_type == "post"] | order(date)`);
   // const products = await client.fetch(`*[_type == "product"]`);
-
+  console.log(posts)
   return {
     props: {
       posts

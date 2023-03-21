@@ -21,7 +21,7 @@ export default function DetailsText({ children, left, clicked, ...props }) {
     delete newProps.transform
     delete newProps.style
     // newProps.fill = '#171B4D'
-    // newProps.fill = 'white'
+    // newProps.fill = '#FFFAEA'
     // console.log(newProps)
     return newProps
   }, [])

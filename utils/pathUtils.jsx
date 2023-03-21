@@ -98,9 +98,9 @@ export function Path(props) {
     pathProps.strokeDasharray = dashArray.length>0?dashArray:(pathLength) + ' ' + (pathLength);
 
     if (visible) {
-      let myStroke = props.myGradient?props.myGradient:props?.strokeColor||'white'
+      let myStroke = props.myGradient?props.myGradient:props?.strokeColor||'#FFFAEA'
       pathProps.stroke = props.animateStroke?animationEnd?'transparent':myStroke:myStroke
-      pathProps.fill = props.animateFill?animationEnd?props?.fillColor||'white':'transparent':'transparent';
+      pathProps.fill = props.animateFill?animationEnd?props?.fillColor||'#FFFAEA':'transparent':'transparent';
     } else {
       pathProps.stroke = 'transparent'
       pathProps.fill = 'transparent'
@@ -203,9 +203,9 @@ export function Path(props) {
     
   //   // if (newOffset!=0 ) {
 
-  //   //   let myStroke = props.myGradient?props.myGradient:props?.strokeColor||'white'
+  //   //   let myStroke = props.myGradient?props.myGradient:props?.strokeColor||'#FFFAEA'
   //   //   childProps.stroke = props.animateStroke?Math.abs(newOffset)===1?'transparent':myStroke:myStroke
-  //   //   childProps.fill = props.animateFill?Math.abs(newOffset)===1?props?.fillColor||'white':'transparent':'transparent';
+  //   //   childProps.fill = props.animateFill?Math.abs(newOffset)===1?props?.fillColor||'#FFFAEA':'transparent':'transparent';
   //   //   console.log('print!')
   //   // }
 
@@ -378,7 +378,7 @@ function handleTextProps (props) {
   delete newProps.fromTop
   delete newProps.transform
   // newProps.fill = '#171B4D'
-  newProps.fill='white'
+  newProps.fill='#FFFAEA'
   // console.log(newProps)
   return newProps
 }

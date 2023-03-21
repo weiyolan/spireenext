@@ -6,27 +6,24 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'titleEN',
-      title: 'Title EN',
-      type: 'string',
+      name: 'title',
+      title: 'Title',
+      type: 'localeString',
       validation: Rule => Rule.required()
     }),
-    defineField({
-      name: 'titleFR',
-      title: 'Titre FR',
-      type: 'string',
-      validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
-      validation: Rule => Rule.required()
-    }),
+
+    // defineField({
+    //   name: 'slug',
+    //   title: 'Slug',
+    //   type: 'slug',
+    //   options: {
+    //     // source: 'title',
+    //     source: (doc, context) => context.parent.title.en,
+
+    //     maxLength: 96,
+    //   },
+    //   validation: Rule => Rule.required()
+    // }),
     defineField({
       name: 'completion',
       title: 'Completion Percentage',
@@ -62,28 +59,28 @@ export default defineType({
 
     }),
     defineField({
-      name: 'bodyEN',
-      title: 'Blog Text EN',
-      type: 'blockContent',
+      name: 'body',
+      title: 'Blog Text',
+      type: 'localeBlockContent',
       validation: Rule => Rule.required()
     }),
-    defineField({
-      name: 'bodyFR',
-      title: 'Text pour ton blog FR',
-      type: 'blockContent',
-      validation: Rule => Rule.required()
-    }),
+    // defineField({
+    //   name: 'bodyFR',
+    //   title: 'Text pour ton blog FR',
+    //   type: 'blockContent',
+    //   validation: Rule => Rule.required()
+    // }),
   ],
 
   preview: {
     select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
+      title: 'title.en',
+      date: 'date',
+      completion: 'completion',
     },
     prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
+      const {date, completion} = selection
+      return {...selection, subtitle: `${completion}%, ${new Intl.DateTimeFormat("en-US", { day: 'numeric', month: 'short', year:'numeric' }).format(new Date(date))}`}
     },
   },
 })
