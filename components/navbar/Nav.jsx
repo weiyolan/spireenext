@@ -17,7 +17,7 @@ import NavList from "./NavList";
 
 export default function Nav({ from }) {
   let [selectedB, setSelectedB] = useState(from);
-  let { mobile, locale, width, navIsOpen, toggleNav, navLocked, setNavLocked, toggleCart,cartIsOpen} = useAppContext()
+  let { mobile, locale, width, navIsOpen, toggleNav, navLocked, setNavLocked, toggleCart, cartIsOpen} = useAppContext()
   // let {  } = usePageContext()
   // let [navLocked, setNavLocked] = useState(false)
   //  let [navWidth, setNavWidth] = useState(false)
@@ -28,13 +28,10 @@ export default function Nav({ from }) {
   // let [lastTop, setLastTop] = useState(0)
 
   function selectButton(selection) {
-
     if (mobile) {
       toggleNav()
     }
-
     setSelectedB(selection)
-
   }
 
   function handleClick() {
@@ -61,7 +58,7 @@ export default function Nav({ from }) {
     open: {
       y: 0, x: 0,
       width: '100%',
-      // opacity:1,
+      // height: 55,
       transition: {
         type: "spring",
         stiffness: 400,
@@ -76,7 +73,7 @@ export default function Nav({ from }) {
       y: 0,
       // opacity:0,
       width: 55,
-      height: 55,
+      // height: 55,
       // opacity: state?1:0,
       transition: {
         delay: 0.5+0.3,
@@ -251,7 +248,7 @@ export default function Nav({ from }) {
 
       {/* ${mobile?'h-[600px]':'h-[510px]'} w-[100%] sm:w-[350px] */}
       <motion.div
-        className={`z-[51] absolute top-0 left-0 min-[480px]:top-2 min-[480px]:left-2 md:border lg:rounded-full
+        className={`z-[51] absolute top-0 left-0 min-[480px]:top-2 min-[480px]:left-2 md:border lg:rounded-full ${mobile?'':'h-[55px]'}
            ${navLocked ? ' border-primary animate-borderPulse ' : 'border-transparent'} 
            `}
            
