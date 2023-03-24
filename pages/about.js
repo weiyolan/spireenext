@@ -174,7 +174,7 @@ export default function Home({ }) {
         // setMoved={setMoved}
         >
           {/* 1468 */}
-          <BackgroundMoving src={'/images/StoryBackground2.png'} moves={moveTracker} maxMoves={maxMoveTracker} />
+          <BackgroundMoving src={'/images/StoryBackground.jpg'} moves={moveTracker} maxMoves={maxMoveTracker} />
 
           {/* <Layout> */}
           <Title style={{ position: (mobile || finished) ? 'relative' : 'fixed', left: '50%', top: 0, transform: `translate(-50%, -${(mobile || finished) ? 0 : moveTracker >= 1 ? titleHeight : 0}px)`, transition: 'all 1s ease' }}

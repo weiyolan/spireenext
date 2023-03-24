@@ -80,7 +80,7 @@ const {height} = useAppContext();
 
     <div id='hero-banner' style={{}} className='relative h-[100vh] w-full'>
       <div id='hero-background' className='absolute top-0 w-full h-full '>
-        <Image alt='' fill src='/images/heroBannerCut2Opt.png' className={`object-cover ${height<650?'object-[-500px_0px]':'object-[-600px_0px]'} mobm:object-[65%_0px] `} sizes="100vw" quality={100} />
+        <Image alt='' fill src='/images/heroBanner.jpg' className={`object-cover ${height<650?'object-[-500px_0px]':'object-[-600px_0px]'} mobm:object-[65%_0px] `} sizes="100vw" quality={100} />
       </div>
       <div id='hero-title' className='flex h-[100vh] relative text-center xs:text-left w-full flex-col justify-end xs:justify-center items-start 
       pb-20 mobm:pb-44 xs:pb-36 xs:pl-8 sm:pb-48 md:pl-16 lg:pl-32 lg:pb-20 xl:pl-96'>
