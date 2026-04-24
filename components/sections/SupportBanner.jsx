@@ -38,7 +38,7 @@ export default function SupportBanner({setHeight}) {
     <div ref={bannerRef}  className='relative h-fit lg:h-[100vh] flex -top-32 w-full overflow-hidden '>
 
       <div className='absolute w-full h-full top-0'>
-        <Image alt='' fill src='/images/supportBackground.jpg' className={`object-cover object-center`} sizes="100vw" quality={100} />
+        <Image alt='' fill src='/images/supportBackground.jpg' className={`object-cover object-center`} sizes="100vw" quality={80} />
       </div>
 
       <div className='relative flex flex-col lg:flex-row w-full h-full'>
@@ -65,7 +65,7 @@ export default function SupportBanner({setHeight}) {
               </clipPath>
             </svg>
             <Image style={{ clipPath: 'url(#svgClip)' }}
-              width={3840 / 2} height={2490 / 2} src='/images/blogBackground2.png' className='w-64 h-[250px] drop-shadow-2xl ' alt='spirée logo' />
+              width={3840 / 2} height={2490 / 2} src='/images/blogBackground.jpg' className='w-64 h-[250px] drop-shadow-2xl ' alt='spirée logo' />
           </div>
         </div>
       </div>

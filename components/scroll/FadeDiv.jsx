@@ -33,9 +33,9 @@ let fadeStyleBottom = amount => ({
 })
 
 const FadeDiv = ({ children, className, type, amount, style }) => {
-  useEffect(() => {
+  // useEffect(() => {
     // console.log(className)
-  }, [className])
+  // }, [className])
 
   function getFadeStyle(type) {
     switch (type) {

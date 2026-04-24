@@ -11,7 +11,7 @@ export default function BannerCollection() {
     <div id='collection-banner' className='h-fit min-h-fit md:h-[95vh] relative w-full sm:w-11/12 
     2xl:w-10/12 mx-auto -top-16 overflow-hidden rounded-[40px] md:rounded-[60px] shadow-2xl shadow-black/30'>
     <div className='absolute w-full h-full'>
-      <Image alt='' fill src={mobile ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="90vw" quality={100} />
+      <Image alt='' fill src={mobile ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="90vw" quality={80} />
     </div>
 
     {/* <div className='absolute w-1/2 h-1/3 overflow-visible'> */}

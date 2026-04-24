@@ -151,7 +151,7 @@ export default function Home({ }) {
   return (
     <>
       <Head>
-        <title>Meet Astrid | Spirée 2023</title>
+        <title>Meet Astrid | Spirée 2026</title>
         <meta name="description" content=" " />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

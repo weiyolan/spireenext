@@ -12,6 +12,14 @@
   .animation-delay-6000 {
     animation-delay: 6s;
   }
+  .animate-pageFade {
+    animation: pageFade 0.75s ease;
+  }
+}
+
+@keyframes pageFade {
+  from { opacity: 0.5; }
+  to { opacity: 1; }
 }
 
 html {

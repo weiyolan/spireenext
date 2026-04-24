@@ -20,7 +20,7 @@ export default function SunOrder() {
     <div className='relative w-full mt-12'>
       <div className='absolute w-full h-full'>
         <FadeDiv className={'w-full h-full relative'} amount={20} type='top'>
-          <Image alt='' fill src={width<768 ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="100vw" quality={100} />
+          <Image alt='' fill src={width<768 ? '/images/collectionBackground2Mob.png' : '/images/collectionBackground2.png'} priority className={`object-cover object-center`} sizes="100vw" quality={80} />
         </FadeDiv>
       </div>
       <Layout className='relative lg:pt-10 '>

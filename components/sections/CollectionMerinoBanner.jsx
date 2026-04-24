@@ -80,13 +80,13 @@ export default function CollectionMerinoBanner({ setHeight, ...props }) {
 
             <div id='merino-photographs' className='relative w-full  md:w-1/2 flex flex-col items-center md:items-end md:justify-start lg:justify-center'>
               <div className='relative'>
-                <Image alt='Beautiful landscape of very hot climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoSummer.png'
+                <Image alt='Beautiful landscape of very hot climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoSummer.jpg'
                   className='w-72 mobm:w-96 xs:w-[450px] md:w-80 xl:w-96  min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-t-[20px] md:rounded-t-[40px] translate-x-2 md:translate-x-4 lg:translate-x-10' />
                 <Temp from temp='+30°C' />
               </div>
 
               <div className='relative'>
-                <Image alt='Beautiful landscape of very cold climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoWinter.png'
+                <Image alt='Beautiful landscape of very cold climate with Merino sheep in the foreground' width={548 / 1} height={313 / 1} src='/images/merinoWinter.jpg'
                   className='w-72 mobm:w-96 xs:w-[450px] md:w-80  xl:w-96 min-[1800px]:w-[500px] shadow-2xl shadow-black/50 rounded-b-[20px] md:rounded-b-[40px] -translate-x-2 md:-translate-x-4 lg:-translate-x-10' />
                 <Temp temp='-10°C' />
               </div>

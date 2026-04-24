@@ -38,9 +38,10 @@ useEffect(() => {
 
 
   return (
-    <div ref={bannerRef}  id='blog-banner' className='relative h-fit lg:h-[65vh] 2xl:h-[65vh] min-[1800px]:h-[50vh] rounded-t-[40px] lg:rounded-t-[60px] -top-48 w-full overflow-hidden '>
-      <div className='absolute w-full h-full top-0'>
-        <Image alt='' fill src='/images/blogBackground2.png' className={`object-cover object-center`} sizes="100vw" quality={100} />
+    <div ref={bannerRef}  id='blog-banner' className='relative  h-fit lg:h-[65vh] 2xl:h-[65vh] min-[1800px]:h-[50vh] rounded-t-[40px] lg:rounded-t-[60px] -mt-48 w-full overflow-hidden '>
+      
+      <div className='absolute w-full h-full '>
+        <Image alt='' fill src='/images/blogBackground.jpg' className={`object-cover object-center`} sizes="100vw" quality={80} />
       </div>
       
       <Layout>

@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const withPWA = require("next-pwa")({
   dest: "public",
   register: true,
@@ -10,6 +14,7 @@ const withPWA = require("next-pwa")({
 
 const nextConfig = withPWA({
   images: {
+    formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
@@ -32,5 +37,5 @@ const nextConfig = withPWA({
   reactStrictMode: true,
 })
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(nextConfig)
 

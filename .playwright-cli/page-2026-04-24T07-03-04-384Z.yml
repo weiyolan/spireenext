@@ -1,0 +1,203 @@
+- generic [active] [ref=e1]:
+  - main [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - img "sun decoration" [ref=e11]
+          - img "moon decoration" [ref=e12]
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - heading "Pro Sportswear" [level=1] [ref=e15]
+            - generic [ref=e16]: High performance 100% merino wool base layer for running and mountain sports
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - img "merino wool base layer - moon model" [ref=e19]
+              - generic [ref=e20]:
+                - img [ref=e21]
+                - img [ref=e23]
+                - img [ref=e25]
+                - img [ref=e27]
+                - img [ref=e29]
+            - generic [ref=e33]:
+              - heading "Sun" [level=3] [ref=e34]
+              - heading "Unleash Your Inner Fire A burst of energy, confidence, and courage" [level=4] [ref=e35]
+              - generic [ref=e36]:
+                - paragraph [ref=e37]: €99,-
+                - paragraph [ref=e38]: Incl. VAT & Shipping in EU
+              - generic [ref=e39]:
+                - combobox [ref=e41] [cursor=pointer]:
+                  - option "select your size" [selected]
+                  - option "xs"
+                  - option "s"
+                  - option "m"
+                  - option "l"
+                - paragraph [ref=e43]: Add to cart
+              - generic [ref=e44]:
+                - generic [ref=e45] [cursor=pointer]: Size Chart
+                - link "Product Details" [ref=e46] [cursor=pointer]:
+                  - /url: /collection#productdetails
+                - generic [ref=e47] [cursor=pointer]: MOON Edition
+      - generic [ref=e48]:
+        - generic [ref=e49]:
+          - generic [ref=e50]:
+            - heading "Product Details" [level=2] [ref=e51]
+            - generic [ref=e52]: Discover the technical details of our sustainable and comfortable merino wool products.
+          - generic [ref=e53]:
+            - generic [ref=e55]:
+              - heading "Design" [level=3] [ref=e56]
+              - generic [ref=e63]:
+                - heading "Signature V Shape" [level=4] [ref=e64]
+                - paragraph [ref=e65]: The signature V shape in the back of the Sun and Moon models is more than just a design element, it's a symbol of strength and resilience. Like the celestial bodies they are named after, these leggings are a reminder that we can overcome any challenge and shine our brightest, no matter what the world throws our way.
+            - generic [ref=e66]:
+              - img "merino wool base layer - sun model" [ref=e68]
+              - img [ref=e69]:
+                - generic [ref=e71] [cursor=pointer]: Signature V Shape
+                - generic [ref=e74] [cursor=pointer]: Unique Color Pattern
+                - generic [ref=e77] [cursor=pointer]: Quality paint
+                - generic [ref=e81] [cursor=pointer]: Minimal Logo
+        - generic [ref=e83]:
+          - generic [ref=e85]:
+            - heading "Material" [level=3] [ref=e86]
+            - generic [ref=e93]:
+              - heading "Signature V Shape" [level=4] [ref=e94]
+              - paragraph [ref=e95]: The signature V shape in the back of the Sun and Moon models is more than just a design element, it's a symbol of strength and resilience. Like the celestial bodies they are named after, these leggings are a reminder that we can overcome any challenge and shine our brightest, no matter what the world throws our way.
+          - generic [ref=e96]:
+            - img "merino wool base layer - sun model" [ref=e98]
+            - img [ref=e99]:
+              - generic [ref=e101] [cursor=pointer]: Signature V Shape
+              - generic [ref=e104] [cursor=pointer]: Unique Color Pattern
+              - generic [ref=e107] [cursor=pointer]: Quality paint
+              - generic [ref=e111] [cursor=pointer]: Minimal Logo
+        - generic [ref=e113]:
+          - generic [ref=e115]:
+            - heading "Finish" [level=3] [ref=e116]
+            - generic [ref=e123]:
+              - heading "Minimal Logo" [level=4] [ref=e124]
+              - paragraph [ref=e125]: Our merino wool base layer is designed to be both functional and stylish, with a small and minimal logo applied on the left sleeve as a subtle reminder that you are wearing a high-quality, sustainably sourced garment that is as comfortable as it is environmentally conscious.
+          - generic [ref=e126]:
+            - img "merino wool base layer - sun model" [ref=e128]
+            - img [ref=e129]:
+              - generic [ref=e131] [cursor=pointer]: Signature V Shape
+              - generic [ref=e134] [cursor=pointer]: Unique Color Pattern
+              - generic [ref=e137] [cursor=pointer]: Quality paint
+              - generic [ref=e141] [cursor=pointer]: Minimal Logo
+    - generic [ref=e142]:
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - heading "Global Responsibility" [level=2] [ref=e148]
+          - generic [ref=e149]: Elevate your performance, sustainably.
+        - generic [ref=e151]:
+          - generic [ref=e152]:
+            - heading "Non Mulesing" [level=3] [ref=e154]
+            - paragraph [ref=e155]: At Spiree, we care deeply about animal welfare, and that's why we make sure that no mulesing is practiced by our suppliers. Mulesing is a painful process that involves removing strips of skin from the sheep's rear end to prevent flystrike. This practice is cruel and unnecessary, and we refuse to support it. By choosing Spiree, you can trust that your sustainable and eco-friendly merino wool garments are not only good for the planet but also for the animals who provide us with this amazing material.
+          - generic [ref=e156]:
+            - heading "Planet" [level=3] [ref=e158]
+            - paragraph [ref=e159]: Merino wool is a sustainable clothing choice with minimal ecological impact. Its production process uses less energy and water compared to synthetic fibers, and its natural antibacterial properties reduce the need for frequent washing, extending its lifespan. Additionally, merino wool is biodegradable and can be recycled, making it a responsible choice for those who want to reduce their environmental footprint. At Spiree, we take pride in using this eco-friendly fabric for our products, ensuring you stay warm and comfortable while reducing your impact on the planet.
+          - generic [ref=e160]:
+            - heading "Health" [level=3] [ref=e162]
+            - paragraph [ref=e163]: Merino wool is not only a luxurious and eco-friendly material, but it's also recyclable and compostable! Unlike synthetic materials that pollute the environment, merino wool can be broken down naturally and reused in new products. By choosing merino wool, you're not only making a sustainable choice for yourself but also for the planet. Join us in our mission to create a circular fashion economy and reduce waste by choosing sustainable materials like merino wool.
+      - generic [ref=e165]:
+        - generic [ref=e166]:
+          - heading "Care" [level=2] [ref=e167]
+          - generic [ref=e168]: "Maximizing the Longevity of Your Merino Wool Base Layer: Washing Tips and Tricks"
+        - paragraph [ref=e169]: Merino wool is an incredibly durable material that requires minimal washing due to its natural antibacterial properties. However, when it comes time to give your base layer a refresh, it's important to take proper care in washing to ensure its longevity. With the right techniques, your merino wool base layer can continue to provide you with warmth, comfort, and odor resistance for years to come.
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - heading "Washing" [level=3] [ref=e172]
+            - list [ref=e173]:
+              - listitem [ref=e174]: Machine wash on a gentle cycle with cold water and similar colors.
+              - listitem [ref=e175]: Use a mild detergent specifically designed for wool and avoid enzyme washing powder.
+              - listitem [ref=e176]: Avoid fabric softeners and bleach.
+              - listitem [ref=e177]: Lay flat to dry, do not tumble dry or wring and twist.
+              - listitem [ref=e178]: Do not dry clean.
+              - listitem [ref=e179]: Store your merino wool base layer clean and dry, away from direct sunlight and heat sources.
+          - generic [ref=e180]:
+            - heading "Guidelines" [level=3] [ref=e181]
+            - list [ref=e182]:
+              - listitem [ref=e183]: Do Not Bleach
+              - listitem [ref=e184]: Do Not Rumble Dry
+              - listitem [ref=e185]: Do Not Dry Clean
+              - listitem [ref=e186]: 30 Normal
+              - listitem [ref=e187]: Iron Max Heat 110°C
+      - generic [ref=e188]:
+        - generic [ref=e191]:
+          - generic [ref=e192]:
+            - heading "Pre-Order Now" [level=2] [ref=e193]
+            - generic [ref=e194]: Empowering women to run everywhere, with confidence and style.
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - paragraph [ref=e197]: €99,-
+              - paragraph [ref=e198]: Incl. VAT & Shipping in EU
+            - generic [ref=e200]:
+              - combobox [ref=e202] [cursor=pointer]:
+                - option "Your size" [selected]
+                - option "xs"
+                - option "s"
+                - option "m"
+                - option "l"
+              - paragraph [ref=e204] [cursor=pointer]: Add Sun
+              - paragraph [ref=e206] [cursor=pointer]: Add Moon
+          - generic [ref=e207]:
+            - generic [ref=e208]:
+              - img [ref=e210]
+              - img "merino wool base layer - sun model" [ref=e213]
+              - heading "Unleash Your Inner Fire A burst of energy, confidence, and courage" [level=3] [ref=e214]
+            - generic [ref=e215]:
+              - img [ref=e217]
+              - img "merino wool base layer - moon model" [ref=e220]
+              - heading "Embrace Your Ethereal Side, A touch of mystery, tranquility, and grace" [level=3] [ref=e221]
+        - generic [ref=e222]:
+          - generic [ref=e223]:
+            - generic [ref=e224]:
+              - heading "Navigate" [level=3] [ref=e225]
+              - list [ref=e226]:
+                - listitem [ref=e227]:
+                  - link "Our Collection" [ref=e228] [cursor=pointer]:
+                    - /url: /collection
+                - listitem [ref=e229]:
+                  - link "Pre-Order Sun & Moon" [ref=e230] [cursor=pointer]:
+                    - /url: /collection#pre-order
+                - listitem [ref=e231]:
+                  - link "About Spirée" [ref=e232] [cursor=pointer]:
+                    - /url: /about
+            - generic [ref=e233]:
+              - heading "Socials" [level=3] [ref=e234]
+              - list [ref=e235]:
+                - listitem [ref=e236]:
+                  - link "Instagram" [ref=e237]:
+                    - /url: https://www.instagram.com/spiree_officiel/
+                - listitem [ref=e238]:
+                  - link "Facebook" [ref=e239]:
+                    - /url: https://www.facebook.com/groups/runeverywhere.spiree/
+            - generic [ref=e240]:
+              - heading "Stay In Touch" [level=3] [ref=e241]
+              - generic [ref=e242]:
+                - textbox "example@spiree.run" [ref=e243]
+                - button "SUBMIT" [ref=e244] [cursor=pointer]
+            - generic [ref=e245]:
+              - heading "Contact" [level=3] [ref=e246]
+              - list [ref=e247]:
+                - listitem [ref=e248]:
+                  - link "hello@spiree.run" [ref=e249]:
+                    - /url: mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A
+                - listitem [ref=e250]:
+                  - link "Call" [ref=e251] [cursor=pointer]:
+                    - /url: tel:+33659775111
+            - generic [ref=e252]:
+              - heading "Legal" [level=3] [ref=e253]
+              - list [ref=e254]:
+                - listitem [ref=e255]:
+                  - link "Legal Notice" [ref=e256] [cursor=pointer]:
+                    - /url: /
+                - listitem [ref=e257]:
+                  - link "Terms of Use" [ref=e258] [cursor=pointer]:
+                    - /url: /services
+                - listitem [ref=e259]:
+                  - link "Cookie Notice" [ref=e260] [cursor=pointer]:
+                    - /url: /aboutme
+          - text: 2023 SPIRÉE, Inc. All rights reserved.
+    - img [ref=e262] [cursor=pointer]
+    - navigation:
+      - img [ref=e268] [cursor=pointer]
+    - img [ref=e271] [cursor=pointer]
+  - alert [ref=e275]

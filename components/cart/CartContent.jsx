@@ -6,7 +6,6 @@ import Button from "../atoms/Button";
 import { useAppContext } from "../context/appContext";
 import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
-import getStripe from "@/lib/getStripe";
 import ArrowLink from "../atoms/ArrowLink";
 import Link from "next/link";
 
@@ -88,6 +87,7 @@ export default function CartContent({ onMouseEnter, onMouseLeave }) {
 
   const handleCheckout = async () => {
     console.log(cart.content)
+    const { default: getStripe } = await import('@/lib/getStripe');
     const stripe = await getStripe();
     // console.log(stripe)
     const response = await fetch('/api/stripe', {

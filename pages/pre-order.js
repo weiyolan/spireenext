@@ -40,7 +40,7 @@ export default function PreOrder() {
           darkMode={true}
           mobile={mobile}
         >
-          <Background src='/images/orderBackground.png' />
+          <Background src='/images/orderBackground.jpg' />
           {/* </Sun><Moon/> */}
           <Title mainTitle='Pre-Order' subTitle={`Be the first to run everywhere with a\n100% merino woolen Spirée base layer`} />
           <Layout>

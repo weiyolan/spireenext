@@ -1,0 +1,202 @@
+- generic [active] [ref=e1]:
+  - main [ref=e4]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - img [ref=e10]
+        - heading "Spir e" [level=1] [ref=e13]:
+          - generic [ref=e14]:
+            - text: Spir
+            - img [ref=e16]
+            - generic [ref=e18]: e
+      - heading "Empowering women to run everywhere, with confidence and style." [level=2] [ref=e20]
+      - generic [ref=e21]:
+        - heading "100% Merino" [level=3] [ref=e22]
+        - heading "Pro Women Sportswear" [level=3] [ref=e23]
+    - generic [ref=e24]:
+      - img [ref=e27]
+      - generic [ref=e31]:
+        - generic [ref=e33]:
+          - heading "Our New Collection" [level=2] [ref=e34]
+          - generic [ref=e35]: High Performance 100% Merino Wool Base Layer For Running and Mountain Sports
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - img "sun decoration" [ref=e39]
+            - img "merino wool base layer - moon model" [ref=e41]
+            - generic [ref=e42]:
+              - heading "Sun" [level=3] [ref=e43]
+              - heading "Unleash Your Inner Fire A burst of energy, confidence, and courage" [level=4] [ref=e44]
+              - generic [ref=e45]:
+                - paragraph [ref=e46]: €99,-
+                - paragraph [ref=e47]: Incl. VAT & Shipping in EU
+              - generic [ref=e48]:
+                - combobox "Your Amount:" [ref=e50] [cursor=pointer]:
+                  - option "select your size" [selected]
+                  - option "xs"
+                  - option "s"
+                  - option "m"
+                  - option "l"
+                - paragraph [ref=e52]: Add to cart
+              - link "Take a closer look" [ref=e54] [cursor=pointer]:
+                - /url: /collection#sun
+                - generic [ref=e55]:
+                  - text: Take a closer look
+                  - generic [ref=e56]:
+                    - img [ref=e58]
+                    - img [ref=e61]
+          - generic [ref=e63]:
+            - img "moon decoration" [ref=e65]
+            - img "merino wool base layer - sun model" [ref=e67]
+            - generic [ref=e68]:
+              - heading "Moon" [level=3] [ref=e69]
+              - heading "Embrace Your Ethereal Side, A touch of mystery, tranquility, and grace" [level=4] [ref=e70]
+              - generic [ref=e71]:
+                - paragraph [ref=e72]: €99,-
+                - paragraph [ref=e73]: Incl. VAT & Shipping in EU
+              - generic [ref=e74]:
+                - combobox [ref=e76] [cursor=pointer]:
+                  - option "select your size" [selected]
+                  - option "xs"
+                  - option "s"
+                  - option "m"
+                  - option "l"
+                - paragraph [ref=e78]: Add to cart
+              - link "Take a closer look" [ref=e80] [cursor=pointer]:
+                - /url: /collection#moon
+                - generic [ref=e81]:
+                  - text: Take a closer look
+                  - generic [ref=e82]:
+                    - img [ref=e84]
+                    - img [ref=e87]
+      - generic [ref=e91]:
+        - generic [ref=e92]:
+          - generic [ref=e94]:
+            - heading "Yes, 100% Merino" [level=2] [ref=e95]
+            - generic [ref=e96]: High Performance 100% Merino Wool Base Layer For Running and Mountain Sports
+          - link "Discover Merino" [ref=e98] [cursor=pointer]:
+            - /url: /merino
+            - paragraph [ref=e100]: Discover Merino
+          - paragraph [ref=e101]: Merino wool's natural capacities, evolved over thousands of years in Merino sheep living in temperatures from -10°C to +30°C, make it highly versatile, adaptive, soft, lightweight, and comfortable for a wide range of activities.
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - img [ref=e105]
+              - paragraph [ref=e107]: Odour Resistant
+            - generic [ref=e108]:
+              - img [ref=e110]
+              - paragraph [ref=e112]: Ultra Soft
+            - generic [ref=e113]:
+              - img [ref=e115]
+              - paragraph [ref=e118]: Thermoregulating
+            - generic [ref=e119]:
+              - img [ref=e121]
+              - paragraph [ref=e124]: Quickdry
+            - generic [ref=e125]:
+              - img [ref=e127]
+              - paragraph [ref=e129]: Natural
+        - generic [ref=e130]:
+          - generic [ref=e131]:
+            - img "Beautiful landscape of very hot climate with Merino sheep in the foreground" [ref=e132]
+            - generic [ref=e133]:
+              - paragraph [ref=e134]: from
+              - paragraph [ref=e135]: +30°C
+          - generic [ref=e136]:
+            - img "Beautiful landscape of very cold climate with Merino sheep in the foreground" [ref=e137]
+            - generic [ref=e138]:
+              - paragraph [ref=e139]: to
+              - paragraph [ref=e140]: "-10°C"
+    - generic [ref=e141]:
+      - generic [ref=e145]:
+        - generic [ref=e146]:
+          - heading "Meet Astrid" [level=2] [ref=e147]
+          - generic [ref=e148]: Meet Astrid and discover the inspiration behind Spirée's mission to empower runners.
+        - link "Watch The Story" [ref=e150] [cursor=pointer]:
+          - /url: /about
+          - paragraph [ref=e152]: Watch The Story
+      - generic [ref=e154]:
+        - img [ref=e155]
+        - img [ref=e159]:
+          - generic [ref=e161]: Meet Astrid, a driven and sport-loving women who’s on a mission to revolutionize the way women experience running.
+    - generic [ref=e165]:
+      - generic [ref=e168]:
+        - heading "Join Us" [level=2] [ref=e171]
+        - paragraph [ref=e172]: Join us in bringing the Celestial Sun and Moon series to life by supporting our crowdfunding campaign! For a limited time, donations of €50 or more will receive a special gift package including a limited edition Spirée headband, gloves, and neck warmer. Help us create high-quality, sustainable sportswear while receiving exclusive rewards. Donate now and be a part of our journey!
+        - generic [ref=e174]:
+          - generic [ref=e175] [cursor=pointer]: "Your Amount:"
+          - text: €
+          - spinbutton [ref=e176]: "0"
+          - paragraph [ref=e178] [cursor=pointer]: Change
+        - link "See rewards" [ref=e180] [cursor=pointer]:
+          - /url: /support
+          - paragraph [ref=e182]: See rewards
+      - generic [ref=e184]:
+        - img
+        - img "spirée logo" [ref=e185]
+    - generic [ref=e186]:
+      - generic [ref=e189]:
+        - generic [ref=e190]:
+          - generic [ref=e191]:
+            - heading "Our Blog" [level=2] [ref=e192]
+            - generic [ref=e193]: Join us on the journey to unleash your inner athlete with Spirée's celestial collection.
+          - link "Read our Blog" [ref=e195] [cursor=pointer]:
+            - /url: /blog
+            - paragraph [ref=e197]: Read our Blog
+        - generic [ref=e198]:
+          - generic [ref=e199]:
+            - heading "Newsletter" [level=2] [ref=e200]
+            - generic [ref=e201]: Want to be the first to know when the Celestial Collection is ready for launch?
+          - generic [ref=e203]:
+            - textbox "example@spiree.run" [ref=e204]
+            - button "SUBMIT" [ref=e205] [cursor=pointer]
+      - generic [ref=e206]:
+        - generic [ref=e207]:
+          - generic [ref=e208]:
+            - heading "Navigate" [level=3] [ref=e209]
+            - list [ref=e210]:
+              - listitem [ref=e211]:
+                - link "Our Collection" [ref=e212] [cursor=pointer]:
+                  - /url: /collection
+              - listitem [ref=e213]:
+                - link "Pre-Order Sun & Moon" [ref=e214] [cursor=pointer]:
+                  - /url: /collection#pre-order
+              - listitem [ref=e215]:
+                - link "About Spirée" [ref=e216] [cursor=pointer]:
+                  - /url: /about
+          - generic [ref=e217]:
+            - heading "Socials" [level=3] [ref=e218]
+            - list [ref=e219]:
+              - listitem [ref=e220]:
+                - link "Instagram" [ref=e221]:
+                  - /url: https://www.instagram.com/spiree_officiel/
+              - listitem [ref=e222]:
+                - link "Facebook" [ref=e223]:
+                  - /url: https://www.facebook.com/groups/runeverywhere.spiree/
+          - generic [ref=e224]:
+            - heading "Stay In Touch" [level=3] [ref=e225]
+            - generic [ref=e226]:
+              - textbox "example@spiree.run" [ref=e227]
+              - button "SUBMIT" [ref=e228] [cursor=pointer]
+          - generic [ref=e229]:
+            - heading "Contact" [level=3] [ref=e230]
+            - list [ref=e231]:
+              - listitem [ref=e232]:
+                - link "hello@spiree.run" [ref=e233]:
+                  - /url: mailto:contact@ywdesign.co?subject=Website%20Project&body=Hi%20Yolan%2C%0A%0AI%20have%20a%20website%20that%20needs%20an%20update.%0ACould%20we%20talk%20about%20this%20any%20time%20soon%3F%0A%0AThanks%20in%20advance%2C%0A%0A
+              - listitem [ref=e234]:
+                - link "Call" [ref=e235] [cursor=pointer]:
+                  - /url: tel:+33659775111
+          - generic [ref=e236]:
+            - heading "Legal" [level=3] [ref=e237]
+            - list [ref=e238]:
+              - listitem [ref=e239]:
+                - link "Legal Notice" [ref=e240] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e241]:
+                - link "Terms of Use" [ref=e242] [cursor=pointer]:
+                  - /url: /services
+              - listitem [ref=e243]:
+                - link "Cookie Notice" [ref=e244] [cursor=pointer]:
+                  - /url: /aboutme
+        - text: 2023 SPIRÉE, Inc. All rights reserved.
+    - navigation:
+      - img [ref=e248] [cursor=pointer]
+    - img [ref=e251] [cursor=pointer]
+  - alert [ref=e255]

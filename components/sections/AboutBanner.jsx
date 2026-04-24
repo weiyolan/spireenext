@@ -44,7 +44,7 @@ export default function AboutBanner({ setHeight, ...props }) {
     pt-20 md:pt-[4rem] '>
 
       <div ref={bannerRef} className='absolute w-full h-full top-0'>
-        <Image alt='' fill src='/images/aboutBanner2.png' className={`object-cover object-[-250px_100%] md:object-left-bottom`} sizes="100vw" quality={100} />
+        <Image alt='' fill priority src='/images/aboutBanner2.jpg' className={`object-cover object-[-250px_100%] md:object-left-bottom`} sizes="100vw" quality={80} />
       </div>
 
       <div className='relative z-10 flex h-fit md:h-full items-center'>

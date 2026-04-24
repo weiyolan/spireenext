@@ -1,19 +1,14 @@
 import '@/styles/globals.css'
-import Head from 'next/head'
 import React, {useState, useEffect} from 'react'
+import Head from 'next/head'
 import {Work_Sans, Quicksand} from '@next/font/google'
 import {AppWrapper} from '@components/context/appContext';
-import ScrollVisual from '@/components/scroll/ScrollVisual';
 import { useRouter } from 'next/router';
-// import { useScrollPercentage } from 'react-scroll-percentage';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Router } from 'next/router';
 import { Toaster } from 'react-hot-toast';
 const workSans = Work_Sans({
   subsets: ['latin'],
   variable: '--font-worksans',
   display:'swap',
-  // weight:[100,200,300,400,500,600,700,800,900]
 })
 
 const quickSand = Quicksand({
@@ -26,29 +21,22 @@ const quickSand = Quicksand({
 export default function App({ Component, pageProps }) {
   let [scrolled, setScrolled] = useState(0)
   let router = useRouter();
-  // let scrolled=0;
-    // let [ref, percentage] = useScrollPercentage();
-
-  // useEffect(()=>{
-  //  console.log(scrolled) 
-  //  console.log(document.documentElement.scrollTop)
-  //  console.log(percentage) 
-  // })
-
-  function handleScroll () {
-    let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)
-    setScrolled(ratio)
-    // scrolled = ratio
-  }
 
   useEffect(()=>{
-    
-    let ratio = (document.documentElement.scrollTop + document.body.scrollTop)/(document.documentElement.scrollHeight - document.documentElement.clientHeight)
-    setScrolled(ratio)
-    // scrolled = ratio;
-    
-    window.addEventListener('scroll', handleScroll, {passive:true})
+    let pending = false;
+    function handleScroll () {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(() => {
+        const denom = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const ratio = denom > 0 ? (document.documentElement.scrollTop + document.body.scrollTop) / denom : 0;
+        setScrolled(ratio);
+        pending = false;
+      });
+    }
 
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, {passive:true})
     return () => {window.removeEventListener('scroll', handleScroll)}
   },[])
 
@@ -56,36 +44,15 @@ export default function App({ Component, pageProps }) {
   <>
       <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-
       </Head>
-{/* scrolled.toPrecision(2) */}
       <AppWrapper scrolled={scrolled}>
-        <AnimatePresence mode='wait'>
-          <motion.div 
+        <div
           key={router.route}
-          initial='initial'
-          animate='animate'
-          exit ='exit'
-          transition={{duration:0.75}}
-          variants={
-            {initial: {
-              opacity:0.5
-            },
-            animate: {
-              opacity:1
-            },
-            exit: {
-              // opacity:0
-            }}
-          }
-          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full h-[100dh] overflow-hidden  `}>
-          
+          className={`${workSans.variable} ${quickSand.variable} font-sans relative scroll-smooth w-full h-[100dh] overflow-hidden animate-pageFade`}>
           <Component {...pageProps} />
           <Toaster/>
-        </motion.div>
-        </AnimatePresence>
+        </div>
       </AppWrapper>
-
     </>
     )
 }

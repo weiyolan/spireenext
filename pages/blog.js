@@ -187,7 +187,7 @@ export default function Blog({ posts }) {
 
     <>
       <Head>
-        <title>Read Along | Spirée Women Sportswear Blog 2023</title>
+        <title>Read Along | Spirée Women Sportswear Blog 2026</title>
         <meta name="description" content=" " />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -201,7 +201,7 @@ export default function Blog({ posts }) {
           pageMobile={pageMobile}
         // mobile={mobile}
         >
-          <Background className='object-cover object-bottom' src='/images/blogBackground2.png' />
+          <Background className='object-cover object-bottom' src='/images/blogBackground.jpg' />
           {/* <Overlay className='fixed min-h-screen min-w-full opacity-90 left-1/2 top-0 -translate-x-1/2' /> */}
           <Title setHeight={setTitleHeight} mainTitle='The Finish Line' subTitle={`Read along and get updated on when\nyou will receive your celestial shirt`} />
 
